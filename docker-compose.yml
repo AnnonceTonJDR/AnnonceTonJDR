@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  app:
+    image: php:7.1-apache
+    container_name: annonce-ton-jdr
+    ports:
+      - "80:80"
+    volumes:
+      - ".:/var/www/html"
+
+networks:
+    default:
+        external:
+             name: local.dev
