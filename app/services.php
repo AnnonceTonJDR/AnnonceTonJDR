@@ -33,7 +33,7 @@ class Services
      */
     public static function login(string $login, string $password) :bool
     {
-        $this->hashPass($password);
+        Self::hashPass($password);
 
         /* 
         /!\ TODO /!\ 
@@ -52,7 +52,7 @@ class Services
      */
     public static function register(string $login, string $password)
     {
-        $this->hashPass($password);
+        Self::hashPass($password);
 
         /* 
         /!\ TODO /!\ 
@@ -84,7 +84,7 @@ class Services
         $date = date_create('now');
 
         setcookie("last-connect", date_format($date, 'd-m-Y H:i:s'));
-        setcookie("last-hash", $this->hashPass($password));
+        setcookie("last-hash", Self::hashPass($password));
     }
 
     /**

@@ -24,7 +24,7 @@ class User
 
 
 $test = new user();
-$test->makeCookie('aaaaaa');
+Services::makeCookie('aaaaaa');
 echo '<br>';
 echo '-------------------';
 echo '<br>';
