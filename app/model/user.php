@@ -4,7 +4,7 @@ include_once("../services.php");
 
 class User extends Services
 {
-    private $table_name = "user";
+    private $_table_name = "user";
 
     private $_id;
     private $_user_name;

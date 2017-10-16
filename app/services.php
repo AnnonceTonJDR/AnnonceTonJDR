@@ -19,7 +19,7 @@ class Services
     arguments:     string $password
     return:        string
     */
-    function checkMail(string $mail) :bool
+    function checkMail(string $mail) :string
     {
         return filter_var($mail, FILTER_VALIDATE_EMAIL);
     }
@@ -59,8 +59,6 @@ class Services
         /!\ TODO /!\ 
         faire la requete qui écrit login / hash mdp
         */
-
-        return true;
     }
 
     /* 
@@ -68,14 +66,11 @@ class Services
     version:       1.0
     arguments:     $hash
                    $lastConnect
-    return:        void
     */
     function connectCookie( string $lastConnect, string $hash)
     {
 
         // TODO faire la connectiuon via cookie
-        
-        return true;
     }
 
     /* 
@@ -90,8 +85,22 @@ class Services
 
         setcookie("last-connect", date_format($date, 'd-m-Y H:i:s'));
         setcookie("last-hash", $this->hashPass($password));
-        
-        return true;
     }
 
+    /* 
+    services:      reset password
+    version:       1.0
+    arguments:     $mail
+    return:        void
+    */
+    function resetPassword( string $mail)
+    {
+        // TODO faire la requete qui verifie l'adresse email
+
+        // TODO verifier que une requete na pas déjà été faite.
+
+        // TODO écrire dans la bdd la date de péremption du lien.
+
+        // TODO faire l'envoi de mail.
+    }
 }
