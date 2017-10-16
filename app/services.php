@@ -2,37 +2,36 @@
 
 class Services
 {
-    /* 
-    services:      cryptage du password
-    version:       1.0
-    arguments:     string $password
-    return:        string
-    */
-    function hashPass(string $password) :string
+    /**
+     * cryptage du password
+     *
+     * @param string $password
+     * @return string
+     */
+    public static function hashPass(string $password) :string
     {
         return hash(sha256 ,PREFIX_SALT.$password.SUFFIX_SALT);
     }
 
-    /* 
-    services:      verification email
-    version:       1.0
-    arguments:     string $password
-    return:        string
-    */
-    function checkMail(string $mail) :string
+    /**
+     * verification email
+     *
+     * @param string $mail
+     * @return bool
+     */
+    public static function checkMail(string $mail) :bool
     {
         return filter_var($mail, FILTER_VALIDATE_EMAIL);
     }
 
-
-    /* 
-    services:      login
-    version:       1.0
-    arguments:     login $login
-                    string $password
-    return:        bool
-    */
-    function login(string $login, string $password) :bool
+    /**
+     * log un user
+     *
+     * @param string $login
+     * @param string $password
+     * @return bool
+     */
+    public static function login(string $login, string $password) :bool
     {
         $this->hashPass($password);
 
@@ -44,14 +43,14 @@ class Services
         return true;
     }
 
-    /* 
-    services:      register
-    version:       1.0
-    arguments:     login $login
-                    string $password
-    return:        void
-    */
-    function register(string $login, string $password)
+    /**
+     * inscrire un user
+     *
+     * @param string $login
+     * @param string $password
+     * @return void
+     */
+    public static function register(string $login, string $password)
     {
         $this->hashPass($password);
 
@@ -61,25 +60,26 @@ class Services
         */
     }
 
-    /* 
-    services:      connect cookie
-    version:       1.0
-    arguments:     $hash
-                   $lastConnect
-    */
-    function connectCookie( string $lastConnect, string $hash)
+    /**
+     * connection via cookie
+     *
+     * @param string $lastConnect
+     * @param string $hash
+     * @return void
+     */
+    public static function connectCookie( string $lastConnect, string $hash)
     {
 
         // TODO faire la connectiuon via cookie
     }
 
-    /* 
-    services:      make cookie
-    version:       1.0
-    arguments:     $hash
-    return:        void
-    */
-    function makeCookie( string $password)
+    /**
+     * crée le cookie
+     *
+     * @param string $password
+     * @return void
+     */
+    public static function makeCookie( string $password)
     {
         $date = date_create('now');
 
@@ -87,13 +87,13 @@ class Services
         setcookie("last-hash", $this->hashPass($password));
     }
 
-    /* 
-    services:      reset password
-    version:       1.0
-    arguments:     $mail
-    return:        void
-    */
-    function resetPassword( string $mail)
+    /**
+     * réinitialisation du mots de passe
+     *
+     * @param string $mail
+     * @return void
+     */
+    public static function resetPassword( string $mail)
     {
         // TODO faire la requete qui verifie l'adresse email
 

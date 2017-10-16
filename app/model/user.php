@@ -2,19 +2,23 @@
 include_once("../constant.php");
 include_once("../services.php");
 
-class User extends Services
+class User
 {
     private $_table_name = "user";
 
     private $_id;
     private $_user_name;
     private $_user_password;
-    private $_user_salt;
 
-
+    /**
+     * création du mot de passe
+     *
+     * @param string $password
+     * @return void
+     */
     public function create_password(string $password)
     {
-        $this->hashPass($password);
+        Services::hashPass($password);
     }
 }
 
