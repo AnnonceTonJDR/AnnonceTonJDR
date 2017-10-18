@@ -1,0 +1,13 @@
+{
+    "name": "annonce-ton-jdr/framework",
+    "authors": [
+        {
+            "name": "PIARDSylvian",
+            "email": "piard.sylvian@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    }
+}
