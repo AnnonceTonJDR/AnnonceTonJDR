@@ -6,7 +6,14 @@
             "email": "piard.sylvian@gmail.com"
         }
     ],
-    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework"
+        }
+    },
+    "require": {
+        "guzzlehttp/psr7": "^1.4"
+    },
     "require-dev": {
         "phpunit/phpunit": "^6.4"
     }
