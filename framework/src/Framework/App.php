@@ -6,10 +6,11 @@ use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+class App
+{
 
-class App {
-
-    public function run(ServerRequestInterface $request): ResponseInterface {
+    public function run(ServerRequestInterface $request): ResponseInterface
+    {
         $uri = $request->getUri()->getPath();
         if (!empty($uri) && $uri[-1] === "/") {
             return (new Response())
@@ -17,8 +18,10 @@ class App {
                 ->withHeader('location', substr($uri, 0, -1));
         }
 
-        $response = new Response();
-        $response->getBody()->write('Bonjour');
-        return $response;
+        if ($uri === '/blog') {
+            return new response(200, [], '<h1>Bienvenue sur le blog</h1>');
+        }
+
+        return new response(404, [], '<h1>Erreur 404</h1>');
     }
 }
