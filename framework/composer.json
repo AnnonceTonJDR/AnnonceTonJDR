@@ -12,7 +12,9 @@
         }
     },
     "require": {
-        "guzzlehttp/psr7": "^1.4"
+        "guzzlehttp/psr7": "^1.4",
+        "http-interop/response-sender": "^1.0",
+        "squizlabs/php_codesniffer": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4"
