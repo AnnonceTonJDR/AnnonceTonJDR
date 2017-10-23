@@ -37,4 +37,3 @@
     {
         echo index();
     }
-		echo : coucou
