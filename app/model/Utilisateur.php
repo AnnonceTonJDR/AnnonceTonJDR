@@ -10,7 +10,7 @@ class Utilisateurs
     public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom)
     {
         $cle = md5(microtime(TRUE) * 100000);
-        $mdpHash = sha1($motDePasse);
+        $mdpHash = hash('sha512', $motDePasse);
         $reqInsertionUtilisateur = BD::connexionBDD()->exec("INSERT INTO JOUEUR(nom, prenom, pseudo, motDePasse, mail, etat, dateInscription, cle) 
                                               VALUES('$nom' , '$prenom', '$pseudo', '$mdpHash', '$mail', 0, NOW(), '$cle');");  //requete pour l'insertion d'un utilisateur
         $destinataire = $_POST['mail'];
