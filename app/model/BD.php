@@ -13,12 +13,12 @@ class BD
     /**
      * @var string user
      */
-    private static $user = 'user';
+    private static $user = 'lucasoms_aTJDR';
 
     /**
      * @var string password
      */
-    private static $pass = 'pass';
+    private static $pass = 'lucasoms_aTJDR';
 
 
     /**********************************************
