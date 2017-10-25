@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS `UtilisateurPrivate` (
   AUTO_INCREMENT = 0;
 
 ALTER TABLE `UtilisateurPrivate`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `UtilisateurPrivate`
   ADD FOREIGN KEY (`id`) REFERENCES `lucasoms_annoncetonjdr`.`Utilisateur` (
   `id`
 )
