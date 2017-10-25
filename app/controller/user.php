@@ -7,4 +7,4 @@
  */
 
 //IF everything ok :
-include_once '../views/user.php';
+include_once 'app/views/user.php';

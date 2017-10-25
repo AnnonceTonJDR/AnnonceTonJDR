@@ -7,4 +7,4 @@
  */
 
 //IF everything ok :
-include_once '../views/register.php';
+include_once 'app/views/register.php';
