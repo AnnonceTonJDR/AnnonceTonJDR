@@ -21,6 +21,8 @@
 <div id="wrapper">
     <div id="contenu">
         <p>Je suis la page d'index</p>
+        <?php include_once 'app/model/BD.php';
+         ?>
     </div>
 </div>
 

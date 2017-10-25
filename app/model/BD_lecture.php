@@ -13,7 +13,7 @@ class BD_lecture
     /**
      * @var string user
      */
-    private static $user = 'lucasoms_aTJDR';
+    private static $user = 'lucasoms_atjdr';
 
     /**
      * @var string password

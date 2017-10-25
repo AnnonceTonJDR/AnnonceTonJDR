@@ -9,10 +9,16 @@ class Utilisateurs
 
     public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom)
     {
+        $resp = BD::connexionBDD()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
+        $id = ($resp != null ? $resp : 0) + 1;
         $salt = md5(microtime(TRUE) * 100000);
         $mdpHash = hash('sha512', $motDePasse);
-        $reqInsertionUtilisateur = BD::connexionBDD()->exec("INSERT INTO Utilisateur(nom, prenom, pseudo, motDePasse, mail, etat, dateInscription, cle) 
-                                              VALUES('$nom' , '$prenom', '$pseudo', '$mdpHash', '$mail', 0, NOW(), '$salt');");  //requete pour l'insertion d'un utilisateur
+        //Ajout des infos de base
+        BD::connexionBDD()->exec("INSERT INTO Utilisateur(id, nom, prenom, pseudo, dateInscription) 
+                                              VALUES($id , '$nom' , '$prenom', '$pseudo', NOW());");  //requete pour l'insertion d'un utilisateur
+        //Ajout des données sensibles
+        BD::connexionBDD()->exec("INSERT INTO UtilisateurPrivate(id, mail, motDePasse, sel) 
+                                              VALUES($id , '$mail', '$mdpHash','$salt');");
         $destinataire = $_POST['mail'];
         $sujet = "Activer votre compte";
         $entete = "From: inscription@annoncetonjdr.fr";
@@ -38,7 +44,7 @@ class Utilisateurs
         $this->bdd = BD::connexionBDD();
         $this->utilisateurs = array();
 
-        $reqSelectUser = $this->bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM JOUEUR;");
+        $reqSelectUser = $this->bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM Utilisateur JOIN UtilisateurPrivate ON Utilisateur.id=UtilisateurPrivate.id;");
         $reqSelectUser->execute();
         $res = $reqSelectUser->fetchall();
         foreach ($res as $user) {
@@ -227,12 +233,4 @@ class Utilisateur
         if ($pass_hache == $this->motDePasse)
             return true;
     }
-
-    public function estProprietaire($idVille): bool
-    {
-        return !is_bool(BD_lecture::connexionBDD_lecture()->query("SELECT idVille FROM POSSEDE WHERE idJoueur=" . $this->id . " AND idVille=" . $idVille)->fetch());
-    }
-
 }
-
-?>
