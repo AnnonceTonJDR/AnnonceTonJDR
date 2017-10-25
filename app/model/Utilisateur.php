@@ -9,10 +9,16 @@ class Utilisateurs
 
     public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom)
     {
-        $cle = md5(microtime(TRUE) * 100000);
-        $mdpHash = hash('sha512', $motDePasse);
-        $reqInsertionUtilisateur = BD::connexionBDD()->exec("INSERT INTO JOUEUR(nom, prenom, pseudo, motDePasse, mail, etat, dateInscription, cle) 
-                                              VALUES('$nom' , '$prenom', '$pseudo', '$mdpHash', '$mail', 0, NOW(), '$cle');");  //requete pour l'insertion d'un utilisateur
+        $resp = BD::connexionBDD()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
+        $id = ($resp != null ? $resp : 0) + 1;
+        $salt = md5(microtime(TRUE) * 100000);
+        $mdpHash = hash('sha512', $motDePasse . $salt);
+        //Ajout des infos de base
+        BD::connexionBDD()->exec("INSERT INTO Utilisateur(id, nom, prenom, pseudo, dateInscription) 
+                                              VALUES($id , '$nom' , '$prenom', '$pseudo', NOW());");  //requete pour l'insertion d'un utilisateur
+        //Ajout des données sensibles
+        BD::connexionBDD()->exec("INSERT INTO UtilisateurPrivate(id, mail, motDePasse, sel) 
+                                              VALUES($id , '$mail', '$mdpHash','$salt');");
         $destinataire = $_POST['mail'];
         $sujet = "Activer votre compte";
         $entete = "From: inscription@annoncetonjdr.fr";
@@ -23,7 +29,7 @@ class Utilisateurs
 			Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 			ou le copier/coller dans votre navigateur internet.
 			    		
-			http://lucasoms.alwaysdata.net/controler/connexion/validerInscription.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($cle) . '
+			http://lucasoms.alwaysdata.net/app/controller/connexion/validerInscription.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($salt) . '
 			    		
 			    		
 			---------------
@@ -38,11 +44,11 @@ class Utilisateurs
         $this->bdd = BD::connexionBDD();
         $this->utilisateurs = array();
 
-        $reqSelectUser = $this->bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM JOUEUR;");
+        $reqSelectUser = $this->bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM Utilisateur JOIN UtilisateurPrivate ON Utilisateur.id=UtilisateurPrivate.id;");
         $reqSelectUser->execute();
         $res = $reqSelectUser->fetchall();
         foreach ($res as $user) {
-            $this->utilisateurs[] = new Utilisateur($user['id'], $user['pseudo'], $user['mail'], $user['motDePasse'], $user['etat'], $user['cle'], $user['nom'], $user['prenom'], $user['dateInsc']);
+            $this->utilisateurs[] = new Utilisateur($user['id'], $user['pseudo'], $user['mail'], $user['motDePasse'], $user['etat'], $user['sel'], $user['nom'], $user['prenom'], $user['dateInsc']);
         }
     }
 
@@ -192,7 +198,7 @@ class Utilisateur
 
     public function validerInscription()
     {
-        $reqValider = BD::connexionBDD()->exec("UPDATE JOUEUR SET etat = 1 WHERE id = $this->id;");
+        $reqValider = BD::connexionBDD()->exec("UPDATE UtilisateurPrivate SET etat = 1 WHERE id = $this->id;");
         if ($reqValider != 0) {
             $this->etat = 1;
             return true;
@@ -211,7 +217,7 @@ class Utilisateur
 
     public function changerMotDePasse($motDePasse)
     {
-        $mdpHash = sha1($motDePasse);
+        $mdpHash = hash('sha512', $motDePasse);
         if ($mdpHash == $this->motDePasse)
             return true;
         $reqModifPWD = BD::connexionBDD()->exec("UPDATE JOUEUR SET motDePasse = '$mdpHash' WHERE id = $this->id;");
@@ -223,16 +229,10 @@ class Utilisateur
 
     public function verifierMotDePasse($motDePasse)
     {
-        $pass_hache = sha1($motDePasse);
+        //On vérifie si le mdp+sel de la DB correspond au mdp+sel entré
+        $pass_hache = hash('sha512', $motDePasse . $this->cle);
         if ($pass_hache == $this->motDePasse)
             return true;
+        return false;
     }
-
-    public function estProprietaire($idVille): bool
-    {
-        return !is_bool(BD_lecture::connexionBDD_lecture()->query("SELECT idVille FROM POSSEDE WHERE idJoueur=" . $this->id . " AND idVille=" . $idVille)->fetch());
-    }
-
 }
-
-?>

@@ -13,7 +13,7 @@ class BD
     /**
      * @var string user
      */
-    private static $user = 'lucasoms_aTJDR';
+    private static $user = 'lucasoms_atjdr';
 
     /**
      * @var string password
@@ -30,7 +30,7 @@ class BD
     {
         $pdo = null;
         try {
-            $pdo = new PDO("mysql:host=host;dbname=name;charset=utf8", BD::$user, BD::$pass);
+            $pdo = new PDO("mysql:host=mysql-lucasoms.alwaysdata.net;dbname=lucasoms_annoncetonjdr;charset=utf8", BD::$user, BD::$pass);
             if (isset($pdo))
                 self::$bdd = $pdo;
         } catch (Exception $e) {
