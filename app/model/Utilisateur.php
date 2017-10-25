@@ -9,10 +9,10 @@ class Utilisateurs
 
     public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom)
     {
-        $cle = md5(microtime(TRUE) * 100000);
+        $salt = md5(microtime(TRUE) * 100000);
         $mdpHash = hash('sha512', $motDePasse);
-        $reqInsertionUtilisateur = BD::connexionBDD()->exec("INSERT INTO JOUEUR(nom, prenom, pseudo, motDePasse, mail, etat, dateInscription, cle) 
-                                              VALUES('$nom' , '$prenom', '$pseudo', '$mdpHash', '$mail', 0, NOW(), '$cle');");  //requete pour l'insertion d'un utilisateur
+        $reqInsertionUtilisateur = BD::connexionBDD()->exec("INSERT INTO Utilisateur(nom, prenom, pseudo, motDePasse, mail, etat, dateInscription, cle) 
+                                              VALUES('$nom' , '$prenom', '$pseudo', '$mdpHash', '$mail', 0, NOW(), '$salt');");  //requete pour l'insertion d'un utilisateur
         $destinataire = $_POST['mail'];
         $sujet = "Activer votre compte";
         $entete = "From: inscription@annoncetonjdr.fr";
@@ -23,7 +23,7 @@ class Utilisateurs
 			Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 			ou le copier/coller dans votre navigateur internet.
 			    		
-			http://lucasoms.alwaysdata.net/controler/connexion/validerInscription.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($cle) . '
+			http://lucasoms.alwaysdata.net/controler/connexion/validerInscription.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($salt) . '
 			    		
 			    		
 			---------------
