@@ -15,8 +15,8 @@ session_start();
             <label for="pwdConnection">Mot de passe</label><input type="password" name="motDePasseConnexion"
                                                                   id="pwdConnection"><br>
             <button id="connectionButton">Se connecter</button>
-            <a id="forgottenPswd" href="">Mot de passe oublié ?</a>
-            <a id="signUp" href="">S'inscrire</a>
+            <a id="forgottenPswd" href="//lucasoms.alwaysdata.net?page=forgottenPwd">Mot de passe oublié ?</a>
+            <a id="signUp" href="//lucasoms.alwaysdata.net?page=register">S'inscrire</a>
         </div>
     </div>
 

@@ -24,7 +24,7 @@ session_start();
 <div id="wrapper">
     <div id="contenu">
         <?php include_once 'app/views/utils/header.php'; ?>
-        <p>Je suis la page d'index</p>
+        <p>Je suis la page d'oubli de mot de passe</p>
     </div>
 </div>
 
