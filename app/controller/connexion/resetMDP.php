@@ -1,7 +1,7 @@
 <?php
 /**
  * Script ajax pour reset le MDP
- * @see envoyerMDPOublie.php
+ * @see sendForgottenPWD.php
  *
  * @author Lucas OMS
  */
