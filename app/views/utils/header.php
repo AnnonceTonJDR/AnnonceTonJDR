@@ -11,5 +11,10 @@
         <button id="connectionButton">Se connecter</button>
         <a id="forgottenPswd" href="">Mot de passe oublié ?</a>
         <a id="signUp" href="">S'inscrire</a>
+<?php
+include 'app/model/Utilisateur.php';
+include 'app/model/session.php';
+session_start();
+?>
     </div>
 </div>
