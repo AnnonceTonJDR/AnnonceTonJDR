@@ -28,40 +28,41 @@ $(document).ready(function () {
         }).done(function (data) {
             if (data.ok) {
                 $('#erreur').hide();
-                document.location.href = "../../vue/vitrine.php";
+                //TODO Afficher l'activation par mail requise
+                //TODO Un bouton pour revnir à l'accueil explicitement
             }
             else {
-                console.log({
-                    'nom': $('#nom').val(),
-                    'prenom': $('#prenom').val(),
-                    'pseudo': $('#pseudo').val(),
-                    'mail': $('#mail').val(),
-                    'motDePasse': $('#motDePasse').val(),
-                    'motDePasseConfirmation': $('#motDePasseConfirmation').val()
-                });
+                // console.log({
+                //     'nom': $('#nom').val(),
+                //     'prenom': $('#prenom').val(),
+                //     'pseudo': $('#pseudo').val(),
+                //     'mail': $('#mail').val(),
+                //     'motDePasse': $('#motDePasse').val(),
+                //     'motDePasseConfirmation': $('#motDePasseConfirmation').val()
+                // });
                 if (data.pseudo) {
-                    $('#inputPseudo').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                    $('#inputPseudo').removeClass("successForm").remove("errorForm").addClass("successForm");
                 }
                 else {
-                    $('#inputPseudo').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                    $('#inputPseudo').removeClass("successForm").remove("errorForm").addClass("errorForm");
                 }
                 if (data.mail) {
-                    $('#inputMail').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                    $('#inputMail').removeClass("successForm").remove("errorForm").addClass("successForm");
                 }
                 else {
-                    $('#inputMail').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                    $('#inputMail').removeClass("successForm").remove("errorForm").addClass("errorForm");
                 }
                 if (data.motDePasse) {
-                    $('#inputPassword').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                    $('#inputPassword').removeClass("successForm").remove("errorForm").addClass("successForm");
                 }
                 else {
-                    $('#inputPassword').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                    $('#inputPassword').removeClass("successForm").remove("errorForm").addClass("errorForm");
                 }
                 if (data.motDePasseConfirmation) {
-                    $('#inputPasswordConfirm').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                    $('#inputPasswordConfirm').removeClass("successForm").remove("errorForm").addClass("successForm");
                 }
                 else {
-                    $('#inputPasswordConfirm').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                    $('#inputPasswordConfirm').removeClass("successForm").remove("errorForm").addClass("errorForm");
                 }
                 $('#erreur ul').empty();
                 var ul = $('<ul />');
