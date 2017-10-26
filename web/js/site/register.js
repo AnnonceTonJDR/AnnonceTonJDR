@@ -1,59 +1,79 @@
 /**
- * Javascript pour le formulaire de connexion contenu dans le header
+ * Js destiné à la page d'inscription
  *
  * @author Lucas OMS
  */
 
 function erreurCritique() {
-    $('#contenu').html(
+    $('body').html(
         'Une erreur irrécupérable est survenue. <br />'
         + 'Merci de contcter l\'admin <br/>'
-        + 'contact@annonceTonJDR.fr'
+        + 'contact@projectworld.fr'
     );
 }
 
-function seConnecter() {
-    $.ajax({
-        type: 'post',
-        url: '/app/controller/connexion/connexion.php',
-        data: {
-            'identifiant': $('#idConnection').val(),
-            'motDePasse': $('#pwdConnection').val()
-        }
-    }).done(function (data) {
-        if (data.ok === 1) {
-            location.reload(true);
-        }
-        else if (data.ok === -1) {
-            $('#pwdConnection').css({'background': 'rgb(200,25,25)'});
-        }
-        else if (data.ok === -2) {
-            $('#idConnection').css({'background': 'rgb(200,25,25)'});
-        }
-    }).fail(erreurCritique);
-}
-
 $(document).ready(function () {
-    $("#connectionButton").click(function () {
-        seConnecter();
-    });
-
-    $('#idConnection').keypress(function (event) {
-        if (event.key === 'Enter')
-            seConnecter();
-    });
-
-    $('#pwdConnection').keypress(function (event) {
-        if (event.key === 'Enter')
-            seConnecter();
-    });
-
-    $('#deconnectionButton').click(function () {
+    $("#boutonValider").click(function () {
         $.ajax({
-            type: 'get',
-            url: '/app/controller/connexion/deconnexion.php'
-        }).done(function () {
-            location.reload(true);
+            type: 'post',
+            url: '/app/controller/connexion/inscription.php',
+            data: {
+                'nom': $('#nom').val(),
+                'prenom': $('#prenom').val(),
+                'pseudo': $('#pseudo').val(),
+                'mail': $('#mail').val(),
+                'motDePasse': $('#motDePasse').val(),
+                'motDePasseConfirmation': $('#motDePasseConfirmation').val()
+            }
+        }).done(function (data) {
+            if (data.ok) {
+                $('#erreur').hide();
+                document.location.href = "../../vue/vitrine.php";
+            }
+            else {
+                console.log({
+                    'nom': $('#nom').val(),
+                    'prenom': $('#prenom').val(),
+                    'pseudo': $('#pseudo').val(),
+                    'mail': $('#mail').val(),
+                    'motDePasse': $('#motDePasse').val(),
+                    'motDePasseConfirmation': $('#motDePasseConfirmation').val()
+                });
+                if (data.pseudo) {
+                    $('#inputPseudo').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                }
+                else {
+                    $('#inputPseudo').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                }
+                if (data.mail) {
+                    $('#inputMail').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                }
+                else {
+                    $('#inputMail').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                }
+                if (data.motDePasse) {
+                    $('#inputPassword').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                }
+                else {
+                    $('#inputPassword').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                }
+                if (data.motDePasseConfirmation) {
+                    $('#inputPasswordConfirm').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("succesFormulaire");
+                }
+                else {
+                    $('#inputPasswordConfirm').removeClass("succesFormulaire").remove("erreurFormulaire").addClass("erreurFormulaire");
+                }
+                $('#erreur ul').empty();
+                var ul = $('<ul />');
+                for (var j in data.messageErreur) {
+                    ul.append($('<li>').html(data.messageErreur[j]));
+                }
+                $('#erreur').append(ul).show();
+            }
+
         }).fail(erreurCritique);
+        return false;  //a garder sinon va recharger la page
     });
 });
+
+
