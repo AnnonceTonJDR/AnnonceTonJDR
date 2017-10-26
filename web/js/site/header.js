@@ -16,6 +16,7 @@ function seConnecter() {
     $.ajax({
         type: 'post',
         url: '/controler/connexion/connexion.php',
+        url: '/app/controller/connexion/connexion.php',
         data: {
             'identifiant': $('#identifiantConnexion').val(),
             'motDePasse': $('#motDePasseConnexion').val()

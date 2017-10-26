@@ -14,6 +14,8 @@
 <?php
 include 'app/model/Utilisateur.php';
 include 'app/model/session.php';
+include_once 'app/model/Utilisateur.php';
+include_once 'app/model/session.php';
 session_start();
 ?>
     </div>
