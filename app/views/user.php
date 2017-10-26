@@ -20,6 +20,7 @@
 <!-- Add your site or application content here -->
 <div id="wrapper">
     <div id="contenu">
+        <?php include_once 'app/views/utils/header.php'; ?>
         <p>Je suis la page d'un utilisateur</p>
     </div>
 </div>
