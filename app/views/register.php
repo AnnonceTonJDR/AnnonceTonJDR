@@ -48,8 +48,8 @@
             <div id="inputPassword">
                 <label for="motDePasse">Mot de passe : <strong style="color: red">*</strong> </label>
                 <input type="password" name="motDePasse" id="motDePasse" required="">
-                <p>Le mot de passe doit faire une taille minimale de 8 charactères, comporter une
-                    majuscule, une minuscule, et un caractère spécial</p>
+                <p>Le mot de passe doit faire une taille minimale de 8 charactères</p>
+                <!-- comporter une majuscule, une minuscule, et un caractère spécial -->
                 <!-- doit contenir une majuscule, un caractère spécial, 8 caractère minimum, un chiffre -->
             </div>
             <div id="inputPasswordConfirm">
