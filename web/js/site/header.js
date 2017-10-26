@@ -8,46 +8,52 @@ function erreurCritique() {
     $('#contenu').html(
         'Une erreur irrécupérable est survenue. <br />'
         + 'Merci de contcter l\'admin <br/>'
-        + 'contact@projectworld.fr'
+        + 'contact@annonceTonJDR.fr'
     );
 }
 
 function seConnecter() {
     $.ajax({
         type: 'post',
-        url: '/controler/connexion/connexion.php',
         url: '/app/controller/connexion/connexion.php',
         data: {
-            'identifiant': $('#identifiantConnexion').val(),
-            'motDePasse': $('#motDePasseConnexion').val()
+            'identifiant': $('#idConnection').val(),
+            'motDePasse': $('#pwdConnection').val()
         }
     }).done(function (data) {
         if (data.ok === 1) {
-            document.location.href = "/controler/jeu/menuMatch.php";
+            location.reload(true);
         }
         else if (data.ok === -1) {
-            $('#motDePasseConnexion').css({'background': 'rgb(200,25,25)'});
+            $('#pwdConnection').css({'background': 'rgb(200,25,25)'});
         }
         else if (data.ok === -2) {
-            $('#identifiantConnexion').css({'background': 'rgb(200,25,25)'});
+            $('#idConnection').css({'background': 'rgb(200,25,25)'});
         }
     }).fail(erreurCritique);
 }
 
 $(document).ready(function () {
-    $("#boutonConnexion").click(function () {
+    $("#connectionButton").click(function () {
         seConnecter();
     });
 
-    $("#contenu, #header, footer").click(fermerInterfaceConnexion);
-
-    $('#identifiantConnexion').keypress(function (event) {
+    $('#idConnection').keypress(function (event) {
         if (event.key === 'Enter')
             seConnecter();
     });
 
-    $('#motDePasseConnexion').keypress(function (event) {
+    $('#pwdConnection').keypress(function (event) {
         if (event.key === 'Enter')
             seConnecter();
+    });
+
+    $('#deconnectionButton').click(function () {
+        $.ajax({
+            type: 'get',
+            url: '/app/controller/connexion/deconnexion.php'
+        }).done(function () {
+            location.reload(true);
+        }).fail(erreurCritique);
     });
 });
