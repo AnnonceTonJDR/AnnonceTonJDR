@@ -25,19 +25,17 @@ $(document).ready(function () {
         });
     });
     $('#hasCodeAlreadyButton').click(function () {
-        mail = $("#id").val();
+        mail = $("#mail").val();
         $('#askingReset').slideUp('quick', function () {
             $('#askingMail').slideDown('down');
         });
     });
     $('#validateMail').click(function () {
-        mail = $("#mail").val();
         $('#askingMail').slideUp('quick', function () {
             $('#enterCode').slideDown('down');
         });
     });
     $('#btnCode').click(function () {
-        mail = $("#id").val();
         $('#enterCode').slideUp('quick', function () {
             $('#reset').slideDown('down');
         });
