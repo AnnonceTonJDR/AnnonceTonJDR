@@ -25,23 +25,27 @@ $(document).ready(function () {
             $('#enterCode').slideDown('down');
         });
     });
+
     $('#hasCodeAlreadyButton').click(function () {
         mail = $("#mail").val();
         $('#askingReset').slideUp('quick', function () {
             $('#askingMail').slideDown('down');
         });
     });
+
     $('#validateMail').click(function () {
         $('#askingMail').slideUp('quick', function () {
             $('#enterCode').slideDown('down');
         });
     });
+
     $('#btnCode').click(function () {
         //TODO vérifie le code sur la BD
         $('#enterCode').slideUp('quick', function () {
             $('#reset').slideDown('down');
         });
     });
+
     $('#validateNewPwd').click(function () {
         //TODO ajax avec mail, code, et new mdp /mdp confirm
         //TODO renvoie oui ou non (et si erreur, affichage)
@@ -49,7 +53,6 @@ $(document).ready(function () {
             $('#succesPassword').slideDown('down');
         });
     });
-
 
 // $('#btnReinitialisation').click(function () {
 //     $.ajax({
@@ -72,8 +75,6 @@ $(document).ready(function () {
 //
 //     }).fail(erreurCritique);
 // })
-
-})
-;
+});
 
 
