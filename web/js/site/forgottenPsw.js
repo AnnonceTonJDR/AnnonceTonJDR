@@ -23,12 +23,14 @@ $(document).ready(function () {
         $('#askingReset').slideUp('quick', function () {
             $('#enterCode').slideDown('down');
         })
+        });
     });
     $('#hasCodeAlreadyButton').click(function () {
         mail = $("#id").val();
         $('#askingReset').slideUp('quick', function () {
             $('#askingMail').slideDown('down');
         })
+        });
     });
     $('#validateMail').click(function () {
         mail = $("#mail").val();
@@ -41,11 +43,13 @@ $(document).ready(function () {
         $('#enterCode').slideUp('quick', function () {
             $('#reset').slideDown('down');
         })
+        });
     });
     $('#validateNewPwd').click(function () {
         $('#reset').slideUp('quick', function () {
             $('#succesPassword').slideDown('down');
         })
+        });
     });
 
 
