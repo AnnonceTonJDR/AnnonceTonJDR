@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Gueldar - CGU</title>
+    <title>AnnonceTonJDR - CGU</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,7 +27,7 @@
 <div id="wrapper">
     <?php include_once 'utils/accueilHeader.php' ?>
     <div id="contenu" class="CGU">
-        <h1 id="CGU">Conditions générales d'utilisations - Gueldar</h1>
+        <h1 id="CGU">Conditions générales d'utilisations - AnnonceTonJDR</h1>
         <div class="titre">
             <img src="/img/site/titreCGU.png">
             <h2>Présentation</h2>
@@ -35,23 +35,23 @@
         <div class="mentionsLégales">
             <p>
                 <strong>1.1</strong> Les présentes Conditions Générales d'Utilisation (ci-après les <strong>«&nbsp;CGU&nbsp;»</strong>)
-                énoncent les conditions d'utilisation des services fournis par Gueldar,
+                énoncent les conditions d'utilisation des services fournis par AnnonceTonJDR,
                 projet en équipe à but non lucratif ci-après individuellement ou conjointement désignés
-                <strong>«&nbsp;Gueldar&nbsp;»</strong>,
+                <strong>«&nbsp;AnnonceTonJDR&nbsp;»</strong>,
                 l'<strong>«&nbsp;Équipe&nbsp;»</strong> ou <strong>«&nbsp;Nous&nbsp;»</strong>).<br><br>
 
                 <strong>1.2</strong> Certains services ne nécessite pas de connection et vous place en <strong>
                     «&nbsp;visiteur&nbsp;»</strong>, le reste des services que Nous proposons vous place en
                 <strong>«&nbsp;utilisateur&nbsp;»</strong>.<br>
 
-                La consultation, l'utilisation du jeu, les contacts et toutes fonctionnalités du site sont
+                La consultation, l'utilisation des annonces, les contacts et toutes fonctionnalités du site sont
                 désignés
                 collectivement par le terme «&nbsp;Services&nbsp;».<br><br>
 
                 <strong>1.3</strong> Ainsi, les CGU déterminent le cadre contractuel des relations entre
                 l'utilisateur
                 des Services (ci-après <strong>«&nbsp;vous&nbsp;»</strong>, le
-                <strong>«&nbsp;visiteur&nbsp;»</strong> ou l'<strong>«&nbsp;utilisateur&nbsp;»</strong>) et Gueldar.<br><br>
+                <strong>«&nbsp;visiteur&nbsp;»</strong> ou l'<strong>«&nbsp;utilisateur&nbsp;»</strong>) et AnnonceTonJDR.<br><br>
             </p>
         </div>
         <div class="titre">
@@ -73,7 +73,7 @@
                 <strong>2.3</strong> L’acceptation des CGU est matérialisée par votre signature électronique,
                 concrétisée par le fait de cocher la case prévue à cet effet.
                 Cette acceptation est requise pour créer un Compte et/ou utiliser les Services et/ou
-                participer au Jeu. En cas de désaccord avec ces dispositions, vous ne devez pas cocher la
+                participer au Annonces. En cas de désaccord avec ces dispositions, vous ne devez pas cocher la
                 case ou cliquer sur le bouton d’acceptation des CGU. En cas de mise à jour des CGU, il sera demandé
                 aux
                 utilisateurs de marquer leur accord par le biais d’une case à cocher ou d’un clic sur un bouton
@@ -97,16 +97,16 @@
                 Vous reconnaissez que la qualité des Services, le délai de réponse ou l’accès à certaines
                 fonctionnalités peuvent
                 dépendre des capacités de votre appareil mobile et du réseau de communication électronique.
-                Vous reconnaissez que les Services proposés par Gueldar sur appareil mobile peuvent ne pas être
+                Vous reconnaissez que les Services proposés par AnnonceTonJDR sur appareil mobile peuvent ne pas être
                 disponibles sur tous
                 les appareils mobiles ou certaines résolutions d'écran.<br><br>
                 <strong>3.3</strong> Pour accéder aux Services et/ou à l’ensemble des fonctionnalités des
-                Services, l'Association pourra vous demander de créer un compte Gueldar (ci-après le <strong>«&nbsp;Compte&nbsp;»</strong>).
+                Services, Nous pourrons vous demander de créer un compte AnnonceTonJDR (ci-après le <strong>«&nbsp;Compte&nbsp;»</strong>).
                 Vous pouvez créer un Compte à partir des encarts prévus à cet effet sur le
                 site
-                internet de Gueldar (ci-après le <strong>«&nbsp;Site&nbsp;»</strong>), se trouvant dans le
+                internet de AnnonceTonJDR (ci-après le <strong>«&nbsp;Site&nbsp;»</strong>), se trouvant dans le
                 formulaire de connexion
-                après l'appuie du bouton <strong>«&nbsp;JOUER&nbsp;»</strong>, en suivant <strong>«&nbsp;S'inscrire&nbsp;»</strong>.<br><br>
+                après l'appuie du bouton <strong>«&nbsp;INSCRIPTION&nbsp;»</strong>.<br><br>
             </p>
         </div>
         <div class="titre">
@@ -127,19 +127,19 @@
                 <strong>4.1.4</strong> Pour créer un Compte, vous devrez entrer les informations suivantes :
             </p>
             <ul>
-                <li>nom et prénom ;</li>
                 <li>pseudonyme ;</li>
+                <li>date de naissance ;</li>
                 <li>adresse e-mail;</li>
                 <li>mot de passe ;</li>
             </ul>
             <p>
-                <strong>4.1.5</strong>Le nom et prénom Nous permettent de vous restituer un accès à un compte perdu
+                <strong>4.1.5</strong>La date de naissance ainsi que le pseudonyme Nous permettent de vous restituer un accès à un compte perdu
                 ou bloqué par la justification de votre identité.
                 Le pseudonyme ou l'adresse mail couplé au mot de passe vous permet d'accéder
                 aux Services. L’adresse e-mail Nous permet de communiquer avec vous dans le cadre de la gestion et
                 du suivi de votre Compte et de vous envoyer des informations relatives aux Services.<br><br>
-                <strong>4.2.1</strong> Le pseudonyme n'est pas visible par les autres utilisateurs. <br><br>
-                <strong>4.2.2</strong> Le pseudo doit respecter au minimum les règles suivantes :
+                <strong>4.2.1</strong> Le pseudonyme est visible par les autres utilisateurs dès lors que vous utilisez les Services. <br><br>
+                <strong>4.2.2</strong> Le pseudonyme doit respecter au minimum les règles suivantes :
             </p>
             <ul>
                 <li>correspondre à un mot prononçable (par exemple le mot ssdfzxjf ne respecte pas cette règle) ;
@@ -148,9 +148,6 @@
                 </li>
                 <li>ne pas être vulgaire ou insultant ;</li>
                 <li>ne pas avoir de connotation sexuelle voire pornographique ;</li>
-                <li>ne pas contenir votre prénom (les pseudos avec un prenom suivi d'un numéro ne seront pas
-                    autorisés);
-                </li>
                 <li>ne pas ressembler ou imiter une marque déposée ou un terme protégé par le droit d’auteur ;
                 </li>
                 <li>ne pas faire la promotion d'un service commercial ;</li>
@@ -158,18 +155,17 @@
                     législation ;
                 </li>
                 <li>ne pas ressembler ou imiter le nom d'un modérateur ou d'un membre ayant droit au sein de
-                    l'Association ;
+                    l'Équipe ;
                 </li>
                 <li>ne pas être orthographié ou épelé alternativement dans le but de contourner les règles
                     imposées ci-dessus ;
                 </li>
             </ul>
             <p>
-                L’appréciation du respect ou du non-respect de ces règles (notamment l’appréciation de la
-                ressemblance entre un pseudo et un autre terme) est laissée à la libre discrétion de
+                L’appréciation du respect ou du non-respect de ces règles est laissée à la libre discrétion de
                 l'Équipe.<br>
-                L'Équipe se réserve le droit de modifier sans avertissement ou justification un pseudo qui ne
-                respecterait pas les contraintes précedemments définies, le nouveau pseudo sera alors choisi par un
+                L'Équipe se réserve le droit de modifier sans avertissement ou justification un pseudonyme qui ne
+                respecterait pas les contraintes précedemments définies, le nouveau pseudonyme sera alors choisi par un
                 membre de l'Équipe parmis un pannel défini.
                 <br><br>
             </p>
@@ -180,7 +176,7 @@
         </div>
         <div class="mentionsLégales">
             <p>
-                <strong>5.1</strong> Le Support Gueldar mettra tout en œuvre pour vous assister dans les
+                <strong>5.1</strong> Le Support AnnonceTonJDR mettra tout en œuvre pour vous assister dans les
                 meilleurs délais. Néanmoins, le Support se réserve le droit de ne pas répondre à une demande,
                 notamment en cas de non-respect des règles du présent article.<br><br>
                 <strong>5.2</strong> Tout harcèlement, menace, insulte ou autre comportement inadéquat à l’égard
@@ -203,18 +199,18 @@
             <p>
                 <strong>6.1</strong> Toutes les images, documents, vidéos sont protégés par les lois françaises
                 et internationales sur le droit d'auteur et la propriété intellectuelle. Tous ces éléments,
-                fonctionnalités, outils, documents appartiennent à Gueldar. Sauf autorisation écrite
-                préalable de Gueldar, vous vous engagez à ne pas faire le commerce d’éléments issus des créations de
-                Gueldar et à ne pas faire la promotion de ce genre d’activités portant atteinte aux droits
-                de Gueldar. Gueldar mettra tout en œuvre pour empêcher de tels actes.<br><br>
-                <strong>6.2</strong> Toutes données liées au Site ou Services appartiennent à Gueldar et
+                fonctionnalités, outils, documents appartiennent à AnnonceTonJDR. Sauf autorisation écrite
+                préalable de AnnonceTonJDR, vous vous engagez à ne pas faire le commerce d’éléments issus des créations de
+                AnnonceTonJDR et à ne pas faire la promotion de ce genre d’activités portant atteinte aux droits
+                de AnnonceTonJDR. AnnonceTonJDR mettra tout en œuvre pour empêcher de tels actes.<br><br>
+                <strong>6.2</strong> Toutes données liées au Site ou Services appartiennent à AnnonceTonJDR et
                 sont protégées par les lois françaises, européennes et internationales sur le droit d'auteur. Vous
                 n'avez pas le droit, en tout ou partie, de copier, reproduire, traduire, extraire, modifier le code
                 source,
                 désassembler, décompiler, modifier, louer, vendre, distribuer ou créer des œuvres dérivées
-                inspirées du Site de Gueldar sans notre accord préalable.<br><br>
+                inspirées du Site de AnnonceTonJDR sans notre accord préalable.<br><br>
                 <strong>6.4</strong> Toute utilisation non conforme met fin à l'autorisation ou à la licence
-                accordée par Gueldar<br><br>
+                accordée par AnnonceTonJDR<br><br>
             </p>
         </div>
         <div class="titre" id="donneesPersonnelles">
@@ -230,15 +226,15 @@
                 informatique destiné à permettre de vous contacter dans le cadre du suivi de vos commandes ou de
                 manière générale de gérer la relation client, de vérifier votre identité lors d'échanges avec le
                 Support ou encore de vous rendre l'accès à un compte.<br><br>
-
+				
                 Conformément à la loi "Informatique et libertés" du 6 janvier 1978, vous bénéficiez d'un droit
                 d'accès et de rectification aux informations qui vous concernent, que vous pouvez exercer via le
-                Support vos noms, prénoms, adresse e-mail et en justifiant de votre identité.<br>
+                Support votre adresse e-mail et en justifiant de votre identité.<br>
                 Vous pouvez également, pour des motifs légitimes, vous opposer au traitement des données vous
                 concernant.<br><br>
                 <strong>7.3</strong> L'Équipe s'engage à ne pas communiquer vos informations à des tiers et
                 à tout mettre en œuvre pour empêcher la diffusion de celles-ci, sauf autorisation expresse de votre
-                part. Gueldar se réserve le droit de poursuivre toute personne qui tenterait d'accéder à des
+                part. AnnonceTonJDR se réserve le droit de poursuivre toute personne qui tenterait d'accéder à des
                 informations personnelles qui ne la concernerait pas.<br><br>
                 <strong>7.5</strong> L'Équipe n'a aucune obligation de fournir des informations liées à un
                 Compte spécifique, même si un utilisateur le demande, sauf aux autorités compétentes dans le cadre
@@ -280,27 +276,23 @@
                 améliorations de nos Services.<br><br>
             </p>
         </div>
-        <h1 id="mentionsLegales">Mentions légales - Gueldar</h1>
+        <h1 id="mentionsLegales">Mentions légales - AnnonceTonJDR</h1>
         <div class="mentionsLégales center">
             <h3>Editeur</h3>
             <p>
-                Gueldar <br>
+                AnnonceTonJDR<br>
                 Projet à but non lucratif<br>
-                Coordonnées du chef de projet&nbsp;:<br>
-                136 Boulevard Chave<br>
-                13005 Marseille<br>
-                Téléphone (contact du projet)&nbsp;: 06&nbsp;21&nbsp;83&nbsp;54&nbsp;36<br>
-                Email&nbsp;: lucas.oms@hotmail.fr<br><br>
+                Chef de projet et directeur des publications&nbsp;:<br>
+                Amir Hammoutene
+                Email&nbsp;: amir.hammoutene@gmail.com<br><br>
             </p>
-            <h3>Directeur de la publication</h3>
-            <p>Monsieur Lucas OMS</p>
-
+            
             <h3>Hébergement</h3>
             <p>
-                Serveur alwaysdata<br>
+                Serveur EX2<br>
                 Détenteur du compte :<br>
-                Lucas OMS<br>
-                lucas.oms@hotmail.fr<br>
+                Amir Hammoutene<br>
+                amir.hammoutene@gmail.com<br>
                 <br><br><br>
             </p>
         </div>
