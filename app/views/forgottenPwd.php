@@ -27,23 +27,25 @@ session_start();
         <?php include_once 'app/views/utils/header.php'; ?>
         <div id="demandeReinitialisation" class="panel panel-danger">
             <div>
-                <strong>Quel est votre identifiant ?</strong> (mail ou pseudo)
+                <strong>Quel est votre mail ?</strong>
             </div>
             <div>
                 <div>
                     Un mail vous sera envoyé avec un code pour changer votre mot de passe.
                 </div>
-                <div>
-                    Le code n'est valide que pour la session de navigation courante, veuillez ne pas quitter (ou
-                    recharger) la page.
-                </div>
                 <div id="erreurIdentifiant"></div>
-                <label>Votre identifiant : </label>
-                <input type="text" id="identifiant">
+                <label for="identifiant"> Votre mail : </label>
+                <input type="text" name="identifiant" id="identifiant">
             </div>
             <div>
-                <button id="btnDemande" type="button">Réinitialiser</button>
+                <button id="btnDemande" type="button">Envoyez moi le code</button>
+                <button id="btnDemande" type="button">J'ai déjà le code</button>
             </div>
+        </div>
+        <div id="saisieMail" class="invisible">
+            <p>Veuillez indiquez votre mail (cela a pour but de vérifier votre identité)</p>
+            <label for="mail">Votre mail : </label>
+            <input type="text" name="mail" id="mail">
         </div>
         <div id="codeReinitialisation" style="display: none;">
             <div>
