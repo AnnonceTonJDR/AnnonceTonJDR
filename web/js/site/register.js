@@ -71,7 +71,8 @@ function envoyerFormulaireInscription() {
             }
             $('#erreur').append(ul).show();
         }
-    }).fail(erreurCritique);
+    });
+    // .fail(erreurCritique);
 }
 
 $(document).ready(function () {

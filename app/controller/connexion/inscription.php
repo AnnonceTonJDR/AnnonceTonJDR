@@ -30,7 +30,8 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
     } else
         $mail = true;
 
-    if (!DateTime::createFromFormat('Y/m/d', $_POST['dateNaissance']) || DateTime::createFromFormat('Y/m/d', $_POST['dateNaissance'])->format('Y') < 1900) {
+    $date = date_parse_from_format("Y/m/d", $_POST['dateNaissance']);
+    if (checkdate($date['month'], $date['day'], $date['year']) && $date['year'] > 1900) {
         $AErreurInscription[] = 'La date est invalide';
         $dateNaissance = false;
         $drapeau = false;
