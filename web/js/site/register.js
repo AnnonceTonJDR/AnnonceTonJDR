@@ -28,6 +28,7 @@ function envoyerFormulaireInscription() {
     }).done(function (data) {
         if (data.ok) {
             $('#erreur').hide();
+            alert("Inscription effectuée!");
             //TODO Afficher l'activation par mail requise
             //TODO Un bouton pour revnir à l'accueil explicitement
         }
