@@ -25,7 +25,7 @@ session_start();
 <div id="wrapper">
     <div id="contenu">
         <?php include_once 'app/views/utils/header.php'; ?>
-        <div id="demandeReinitialisation" class="panel panel-danger">
+        <div id="askingReset" class="panel panel-danger">
             <div>
                 <strong>Quel est votre mail ?</strong>
             </div>
@@ -34,20 +34,21 @@ session_start();
                     Un mail vous sera envoyé avec un code pour changer votre mot de passe.
                 </div>
                 <div id="erreurIdentifiant"></div>
-                <label for="identifiant"> Votre mail : </label>
-                <input type="text" name="identifiant" id="identifiant">
+                <label for="id"> Votre mail : </label>
+                <input type="text" name="id" id="id">
             </div>
             <div>
-                <button id="btnDemande" type="button">Envoyez moi le code</button>
-                <button id="btnDemande" type="button">J'ai déjà le code</button>
+                <button id="sendCodeButton" type="button">Envoyez moi le code</button>
+                <button id="hasCodeAlreadyButton" type="button">J'ai déjà le code</button>
             </div>
         </div>
-        <div id="saisieMail" class="invisible">
+        <div id="askingMail" class="invisible">
             <p>Veuillez indiquez votre mail (cela a pour but de vérifier votre identité)</p>
             <label for="mail">Votre mail : </label>
             <input type="text" name="mail" id="mail">
+            <button id="validateMail" type="button">Valider</button>
         </div>
-        <div id="codeReinitialisation" style="display: none;">
+        <div id="enterCode" style="display: none;">
             <div>
                 <strong>Saisissez votre code de réinitialisation</strong>
             </div>
@@ -59,7 +60,7 @@ session_start();
                 <button id="btnCode" type="button">Réinitialiser</button>
             </div>
         </div>
-        <div id="reinitialisation" style="display: none;">
+        <div id="reset" style="display: none;">
             <div>
                 <strong>Veuillez saisir votre nouveau mot de passe</strong>
             </div>
@@ -74,7 +75,7 @@ session_start();
                 <input type="password" id="motDePasseConfirmation">
             </div>
             <div>
-                <button id="btnReinitialisation" type="button">Réinitialiser</button>
+                <button id="validateNewPwd" type="button">Réinitialiser</button>
             </div>
         </div>
         <div id="succesPassword" style="display:none;">
@@ -86,5 +87,6 @@ session_start();
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="/web/js/site/forgottenPsw.js"></script>
 </body>
 </html>
