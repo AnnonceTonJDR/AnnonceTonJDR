@@ -7,7 +7,7 @@ class Utilisateurs
     private $bdd;
     private $utilisateurs;
 
-    public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom)
+    public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom, $dateNaissance)
     {
         $resp = BD::connexionBDD()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
         $id = ($resp != null ? $resp : 0) + 1;
@@ -17,8 +17,8 @@ class Utilisateurs
         BD::connexionBDD()->exec("INSERT INTO Utilisateur(id, nom, prenom, pseudo, dateInscription) 
                                               VALUES($id , '$nom' , '$prenom', '$pseudo', NOW());");  //requete pour l'insertion d'un utilisateur
         //Ajout des données sensibles
-        BD::connexionBDD()->exec("INSERT INTO UtilisateurPrivate(id, mail, motDePasse, sel) 
-                                              VALUES($id , '$mail', '$mdpHash','$salt');");
+        BD::connexionBDD()->exec("INSERT INTO UtilisateurPrivate(id, dateNaissance, mail, motDePasse, sel) 
+                                              VALUES($id, '$dateNaissance', '$mail', '$mdpHash','$salt');");
         $destinataire = $_POST['mail'];
         $sujet = "Activer votre compte";
         $entete = "From: inscription@annoncetonjdr.fr";
