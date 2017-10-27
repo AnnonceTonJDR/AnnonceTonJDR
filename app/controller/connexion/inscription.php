@@ -83,6 +83,7 @@ $obj = new stdClass();
 $obj->ok = $drapeau;
 $obj->mail = $mail;
 $obj->pseudo = $pseudo;
+$obj->dateNaissance = $dateNaissance;
 //$obj->motDePasse = $password;
 //$obj->motDePasseConfirmation = $password;
 $obj->motDePasse = $_POST['motDePasse'];
