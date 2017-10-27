@@ -16,7 +16,7 @@ $pseudo = false;
 $password = false;
 $passwordConfirm = false;
 
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['motDePasse']) && isset($_POST['motDePasseConfirmation'])) {  //si tous les champs obligatoire ont été renseignés
+if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) && isset($_POST['dateNaissance']) && isset($_POST['mail']) && isset($_POST['motDePasse']) && isset($_POST['motDePasseConfirmation'])) {  //si tous les champs obligatoire ont été renseignés
     $drapeau = true;  //pourl'instant on peut ajouter l'utilisateur
     $utilisateurs = new Utilisateurs();
 
@@ -29,6 +29,11 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
         $drapeau = false;
     } else
         $mail = true;
+
+    if (!DateTime::createFromFormat('Y/m/d', $_POST['dateNaissance']) || DateTime::createFromFormat('Y/m/d', $_POST['dateNaissance'])->format('Y') < 1900) {
+        $dateNaissance = false;
+        $drapeau = false;
+    } else $dateNaissance = true;
 
     if (strlen($_POST['pseudo']) < 4) {
         $AErreurInscription[] = 'Le pseudo doit faire au minimum 4 charactères';
@@ -58,7 +63,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
     } else
         $passwordConfirm = true;
 
-    if (strlen($_POST['motDePasse']) < 8 ){ //|| preg_match('#[A-Z]#', $_POST['motDePasse']) < 1 || preg_match('#[0-9]#', $_POST['motDePasse']) < 1 || preg_match('/[^a-zA-Z0-9]+/', $_POST['motDePasse'] < 1)) {
+    if (strlen($_POST['motDePasse']) < 8) { //|| preg_match('#[A-Z]#', $_POST['motDePasse']) < 1 || preg_match('#[0-9]#', $_POST['motDePasse']) < 1 || preg_match('/[^a-zA-Z0-9]+/', $_POST['motDePasse'] < 1)) {
         $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
         $password = false;
         $drapeau = false;
