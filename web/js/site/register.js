@@ -20,6 +20,7 @@ function envoyerFormulaireInscription() {
             'nom': $('#nom').val(),
             'prenom': $('#prenom').val(),
             'pseudo': $('#pseudo').val(),
+            'dateNaissance': $('#dateNaissance').val(),
             'mail': $('#mail').val(),
             'motDePasse': $('#motDePasse').val(),
             'motDePasseConfirmation': $('#motDePasseConfirmation').val()
