@@ -34,6 +34,10 @@
                 <label for="nom">Nom : <strong style="color: red">*</strong></label>
                 <input type="text" name="nom" id="nom" required="">
             </div>
+            <div id="inputDateNaissance">
+                <label for="dateNaissance">Date de naissance : <strong style="color: red">*</strong></label>
+                <input type="date" name="dateNaissance" id="dateNaissance" required="">
+            </div>
             <div id="inputPseudo">
                 <label for="pseudo">Pseudo : <strong style="color: red">*</strong></label>
                 <input type="text" name="pseudo" id="pseudo" required="">
