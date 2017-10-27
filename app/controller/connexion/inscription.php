@@ -32,10 +32,12 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
 
     $date = date_parse_from_format("Y/m/d", $_POST['dateNaissance']);
     if (checkdate($date['month'], $date['day'], $date['year']) && $date['year'] > 1900) {
+        $dateNaissance = true;
+    } else {
         $AErreurInscription[] = 'La date est invalide';
         $dateNaissance = false;
         $drapeau = false;
-    } else $dateNaissance = true;
+    }
 
     if (strlen($_POST['pseudo']) < 4) {
         $AErreurInscription[] = 'Le pseudo doit faire au minimum 4 charactères';
@@ -73,7 +75,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
         $password = true;
 
     if ($drapeau) {
-        $utilisateurs->inscrireUtilisateur($_POST['pseudo'], $_POST['mail'], $_POST['motDePasse'], $_POST['nom'], $_POST['prenom']);
+        $utilisateurs->inscrireUtilisateur($_POST['pseudo'], $_POST['mail'], $_POST['motDePasse'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance']);
     }
 } else
     $AErreurInscription[] = 'Vous n\'avez pas renseigné tous les champs requis';
