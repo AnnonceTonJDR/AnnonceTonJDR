@@ -11,6 +11,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/web/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/web/css/laptop.css">
+    <link rel="stylesheet" type="text/css" href="/web/css/mobile.css">
     <script src="/web/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -24,7 +26,44 @@ session_start();
 <div id="wrapper">
     <div id="contenu">
         <?php include_once 'app/views/utils/header.php'; ?>
-        <p>Je suis la page d'index</p>
+        <div class="row">
+            <div class="col-2">
+                <div id="div2">
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+            <div class="col-8 col-md-12 ">
+                <div id="div1">
+                    <ul>
+                        <li><img src="/image/logo.png"></li>
+                        <li><a href="#">Recherche de partie</a></li>
+                        <li><a href="#">Mon profil</a></li>
+                        <li><a href="#">Connection</a></li>
+                    </ul>
+                    <div id="fondblanc">
+                        &nbsp;
+                    </div>
+                    <br>
+                    <br>
+                    <h1> Annonce ton JDR </h1>
+                    <br>
+                    <br>
+                    <h2> Recherche de partie </h2>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum.</p>
+                </div>
+            </div>
+            <div class="col-2">
+                <div id="div2">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

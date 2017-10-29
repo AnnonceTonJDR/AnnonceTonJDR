@@ -15,7 +15,7 @@
 body {
 margin: 0;
 padding: 0;
-background: url(image/dessin.jpg), url(image/dessin2.jpg);
+background: url(../../image/dessin.jpg), url(../../image/Dessin2.jpg);
 background-position: top right, top left;
 background-repeat: repeat-y, repeat-y;
   }
@@ -61,7 +61,7 @@ li a:hover {
 }
 
 #div1 {
-  background: url(image/parchemin.png);
+  background: url(../../image/parchemin.png);
   background-size: cover;
   min-height: 1000px
 }
@@ -90,7 +90,7 @@ h2 {
 }
 @font-face {
   font-family: Tangerine;
-  src: url(font/Tangerine_Regular.ttf);
+  src: url(../../font/Tangerine_Regular.ttf);
 }
 p {
   text-align: justify;
