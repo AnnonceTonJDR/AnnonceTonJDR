@@ -1,0 +1,99 @@
+@media screen {
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+body {
+margin: 0;
+padding: 0;
+background: url(image/dessin.jpg), url(image/dessin2.jpg);
+background-position: top right, top left;
+background-repeat: repeat-y, repeat-y;
+  }
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 0px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #6F5E41;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #D4B17D;
+}
+
+#div1 {
+  background: url(image/parchemin.png);
+  background-size: cover;
+  min-height: 1000px
+}
+img {
+  margin-top: 10px ;
+  margin-left : 15px;
+  margin-right: 7.5px;
+
+}
+#fondblanc {
+  background-color: #FFFFFF;
+}
+h1 {
+  font-size: 35pt;
+  text-align: center;
+  font-family: Tangerine, serif;
+  color: #483C27;
+}
+h2 {
+  padding-left: 25px;
+  font-size: 23pt;
+  text-align: left;
+  font-family: Tangerine, serif;
+  color: #483C27;
+  text-decoration: underline;
+}
+@font-face {
+  font-family: Tangerine;
+  src: url(font/Tangerine_Regular.ttf);
+}
+p {
+  text-align: justify;
+  padding: 25px;
+}
+}
