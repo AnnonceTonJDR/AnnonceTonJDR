@@ -13,12 +13,12 @@ class BD_lecture
     /**
      * @var string user
      */
-    private static $user = 'user';
+    private static $user = 'lucasoms_atjdr';
 
     /**
      * @var string password
      */
-    private static $pass = 'pass';
+    private static $pass = 'lucasoms_aTJDR';
 
 
     /**********************************************
@@ -30,7 +30,7 @@ class BD_lecture
     {
         $pdo = null;
         try {
-            $pdo = new PDO("mysql:host=host;dbname=databasename;charset=utf8", BD_lecture::$user, BD_lecture::$pass);
+            $pdo = new PDO("mysql:host=mysql-lucasoms.alwaysdata.net;dbname=lucasoms_annoncetonjdr;charset=utf8", BD_lecture::$user, BD_lecture::$pass);
             if (isset($pdo))
                 self::$bdd = $pdo;
         } catch (Exception $e) {
