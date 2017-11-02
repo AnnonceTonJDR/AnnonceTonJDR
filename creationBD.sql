@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `UtilisateurPrivate` (
 ALTER TABLE `UtilisateurPrivate`
   ADD PRIMARY KEY (`id`);
 ALTER TABLE `UtilisateurPrivate`
-  ADD FOREIGN KEY (`id`) REFERENCES `lucasoms_annoncetonjdr`.`Utilisateur` (
+  ADD FOREIGN KEY (`id`) REFERENCES `Utilisateur` (
   `id`
 )
   ON DELETE CASCADE
