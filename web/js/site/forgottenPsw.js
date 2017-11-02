@@ -1,4 +1,25 @@
 var mail;
+
+
+function envoyerCode() {
+    mail = $("#id").val();
+    //TODO envoi du mail avec le code
+    $.ajax({
+        type: 'get',
+        url: 'app/controller/connexion/sendResetPwdCode.php?identifiant=' + mail
+    }).done(function (data) {
+        if (data.ok) {
+            $('#askingReset').slideUp('quick', function () {
+                $('#enterCode').slideDown('down');
+            });
+        }
+        else {
+            alert("Mail invalide");
+        }
+
+    }).fail(erreurCritique);
+}
+
 $(document).ready(function () {
 
     // $('#btnDemande').click(function () {
