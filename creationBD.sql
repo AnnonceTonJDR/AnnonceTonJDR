@@ -49,3 +49,7 @@ ALTER TABLE `RecupMDP`
 )
   ON DELETE NO ACTION
   ON UPDATE CASCADE;
+
+ALTER TABLE  `RecupMDP` ADD UNIQUE (
+  `idUtilisateur`
+);

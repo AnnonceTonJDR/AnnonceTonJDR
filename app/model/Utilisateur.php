@@ -124,6 +124,14 @@ class Utilisateurs
                 $users[] = $user;
         return $users;
     }
+
+    public function getByMail($mail)
+    {
+        foreach ($this->utilisateurs as $user)
+            if ($user->getMail() == $mail)
+                return $user;
+        return false;
+    }
 }
 
 class Utilisateur

@@ -11,10 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/web/css/normalize.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="/web/css/forgottenPwd.css">
-=======
->>>>>>> parent of f31d58e... Ajout des fichiers pour la récupération de mot de passe, début de n'anglissisation
     <script src="/web/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>

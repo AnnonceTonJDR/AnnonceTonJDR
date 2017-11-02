@@ -8,7 +8,7 @@ session_start();
     <script src="/web/js/site/header.js"></script>
 
 <?php if (!isset($_SESSION['session'])) { ?>
-    <div id="menuConnexion" class="invisible">
+    <div id="menuConnexion">
         <div class="formulaireConnexion">
             <label for="idConnection">Identifiant</label><input type="text" name="identifiantConnexion"
                                                                 id="idConnection"><br>
