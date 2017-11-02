@@ -11,6 +11,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/web/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/web/css/laptop.css">
+    <link rel="stylesheet" type="text/css" href="/web/css/mobile.css">
     <script src="/web/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
