@@ -43,11 +43,7 @@ $(document).ready(function () {
     });
 
     $('#sendCodeButton').click(function () {
-        mail = $("#id").val();
-        //TODO envoi du mail avec le code
-        $('#askingReset').slideUp('quick', function () {
-            $('#enterCode').slideDown('down');
-        });
+        envoyerCode();
     });
 
     $('#hasCodeAlreadyButton').click(function () {
@@ -69,23 +65,17 @@ $(document).ready(function () {
     });
 
     $('#btnCode').click(function () {
-        //TODO vérifie le code sur la BD
-        $('#enterCode').slideUp('quick', function () {
-            $('#reset').slideDown('down');
-        });
+        validateCode();
     });
 
-    $('#validateNewPwd').click(function () {
-        //TODO ajax avec mail, code, et new mdp /mdp confirm
-        //TODO renvoie oui ou non (et si erreur, affichage)
-        $('#reset').slideUp('quick', function () {
-            $('#succesPassword').slideDown('down');
-        });
     $("#motDePasseReset, #motDePasseConfirmation").keypress(function (event) {
         if (event.key === 'Enter')
             resetMDP();
     });
 
+    $('#validateNewPwd').click(function () {
+        resetMDP();
+    });
 });
 
 
