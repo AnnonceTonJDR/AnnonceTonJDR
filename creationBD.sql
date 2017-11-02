@@ -39,4 +39,13 @@ CREATE TABLE IF NOT EXISTS `RecupMDP` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
+
+ALTER TABLE `RecupMDP`
+  ADD PRIMARY KEY (`code`);
+
+ALTER TABLE `RecupMDP`
+  ADD FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (
+  `id`
+)
+  ON DELETE NO ACTION
   ON UPDATE CASCADE;
