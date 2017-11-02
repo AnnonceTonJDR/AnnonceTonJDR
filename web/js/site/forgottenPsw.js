@@ -20,6 +20,21 @@ function envoyerCode() {
     }).fail(erreurCritique);
 }
 
+function validateCode() {
+    //TODO vérifie le code sur la BD
+    $('#enterCode').slideUp('quick', function () {
+        $('#reset').slideDown('down');
+    });
+}
+
+function resetMDP() {
+    //TODO ajax avec mail, code, et new mdp /mdp confirm
+    //TODO renvoie oui ou non (et si erreur, affichage)
+    $('#reset').slideUp('quick', function () {
+        $('#succesPassword').slideDown('down');
+    });
+}
+
 $(document).ready(function () {
 
     // $('#btnDemande').click(function () {
