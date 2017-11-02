@@ -30,3 +30,13 @@ ALTER TABLE `UtilisateurPrivate`
 )
   ON DELETE CASCADE
   ON UPDATE CASCADE;
+
+
+CREATE TABLE IF NOT EXISTS `RecupMDP` (
+  `code`          VARCHAR(32),
+  `idUtilisateur` INT(11) NOT NULL,
+  `dateDemande`   TIMESTAMP
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+  ON UPDATE CASCADE;
