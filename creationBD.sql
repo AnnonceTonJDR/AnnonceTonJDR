@@ -25,8 +25,27 @@ CREATE TABLE IF NOT EXISTS `UtilisateurPrivate` (
 ALTER TABLE `UtilisateurPrivate`
   ADD PRIMARY KEY (`id`);
 ALTER TABLE `UtilisateurPrivate`
-  ADD FOREIGN KEY (`id`) REFERENCES `lucasoms_annoncetonjdr`.`Utilisateur` (
+  ADD FOREIGN KEY (`id`) REFERENCES `Utilisateur` (
   `id`
 )
   ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+CREATE TABLE IF NOT EXISTS `RecupMDP` (
+  `code`          VARCHAR(32),
+  `idUtilisateur` INT(11) NOT NULL,
+  `dateDemande`   TIMESTAMP
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+ALTER TABLE `RecupMDP`
+  ADD PRIMARY KEY (`code`);
+
+ALTER TABLE `RecupMDP`
+  ADD FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (
+  `id`
+)
+  ON DELETE NO ACTION
   ON UPDATE CASCADE;
