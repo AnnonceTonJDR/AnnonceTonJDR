@@ -37,6 +37,10 @@ function resetMDP() {
 
 $(document).ready(function () {
 
+    $("#id").keypress(function (event) {
+        if (event.key === 'Enter')
+            envoyerCode();
+    });
 
     $('#sendCodeButton').click(function () {
         mail = $("#id").val();
@@ -59,6 +63,11 @@ $(document).ready(function () {
         });
     });
 
+    $("#codeReinit").keypress(function (event) {
+        if (event.key === 'Enter')
+            envoyerCode();
+    });
+
     $('#btnCode').click(function () {
         //TODO vérifie le code sur la BD
         $('#enterCode').slideUp('quick', function () {
@@ -72,6 +81,9 @@ $(document).ready(function () {
         $('#reset').slideUp('quick', function () {
             $('#succesPassword').slideDown('down');
         });
+    $("#motDePasseReset, #motDePasseConfirmation").keypress(function (event) {
+        if (event.key === 'Enter')
+            resetMDP();
     });
 
 });
