@@ -21,7 +21,7 @@ if (isset($_SESSION['session']))
  *************************************************************************************************/
 if (isset($_GET['identifiant'])) {
     $utilisateurs = new Utilisateurs();
-    $user = $utilisateurs->getByIdentifiantConnexion($_GET['identifiant']);
+    $user = $utilisateurs->getByMail($_GET['identifiant']);
 
     if (!isset($user)) {
         $erreur = 'Pseudo ou mail inexistant!';
@@ -33,8 +33,10 @@ if (isset($_GET['identifiant'])) {
     else {
         $destinataire = $user->getMail();
         $sujet = "Réinitialisation de votre mot de passe sur le jeu de Lucas OMS";
-        $entete = "From: inscription@lucasoms.alwaysdata.net";
-        $rand = substr(md5(microtime()), rand(0, 26), 5);
+        $entete = "From: motDePasse@annonceTonJDR.fr";
+        $rand = md5(microtime());
+        //Ajout en BD du code
+        BD::connexionBDD()->exec("INSERT INTO RecupMDP(code, idUtilisateur) VALUES ('$rand', " . $user->getId() . ")");
 
         // Le lien d'activation est composé du pseudo(log) et de la clé(cle)
         $message = 'Bonjour,
