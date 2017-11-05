@@ -38,11 +38,22 @@ function validateCode() {
 }
 
 function resetMDP() {
+    $.ajax({
+        type: 'get',
+        url: 'app/controller/connexion/resetPwdWithCode.php?identifiant=' + mail + "&code=" + $('#codeReinit').val()
+        + "&mdp=" + $('#motDePasseReset').val() + "&confirm=" + $('#motDePasseConfirmation').val()
+    }).done(function (data) {
+        if (data.ok) {
+            $('#reset').slideUp('quick', function () {
+                $('#succesPassword').slideDown('down');
+            });
+        }
+        else {
+            alert(data.message);
+        }
+    }).fail(erreurCritique);
     //TODO ajax avec mail, code, et new mdp /mdp confirm
     //TODO renvoie oui ou non (et si erreur, affichage)
-    $('#reset').slideUp('quick', function () {
-        $('#succesPassword').slideDown('down');
-    });
 }
 
 $(document).ready(function () {
