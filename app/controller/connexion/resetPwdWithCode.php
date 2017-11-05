@@ -44,7 +44,7 @@ if (isset($_GET['mdp']) && isset($_GET['confirm']) && isset($_GET['code']) && is
             $AErreurInscription[] = 'Les mot de passes ne coresspondent pas';
             $drapeau = false;
         }
-        if (!Utils::validatePwd($_GET['mdp'])) {
+        if (!Utils::isValidePwd($_GET['mdp'])) {
             $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
             $drapeau = false;
         }

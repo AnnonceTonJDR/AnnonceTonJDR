@@ -68,7 +68,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
     } else
         $passwordConfirm = true;
 
-    if (!Utils::validatePwd($_POST['motDePasse'])) {
+    if (!Utils::isValidePwd($_POST['motDePasse'])) {
         $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
         $password = false;
         $drapeau = false;
@@ -89,10 +89,6 @@ $obj->ok = $drapeau;
 $obj->mail = $mail;
 $obj->pseudo = $pseudo;
 $obj->dateNaissance = $dateNaissance;
-//$obj->motDePasse = $password;
-//$obj->motDePasseConfirmation = $password;
-$obj->motDePasse = $_POST['motDePasse'];
-$obj->motDePasseConfirmation = $_POST['motDePasseConfirmation'];
 $obj->messageErreur = Array();
 if (count($AErreurInscription) > 0)
     foreach ($AErreurInscription as $erreur) {
