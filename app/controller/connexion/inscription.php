@@ -68,7 +68,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
     } else
         $passwordConfirm = true;
 
-    if (Utils::validatePwd($_POST['motDePasse'])) {
+    if (!Utils::validatePwd($_POST['motDePasse'])) {
         $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
         $password = false;
         $drapeau = false;
