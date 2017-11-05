@@ -60,7 +60,6 @@ if (isset($_GET['identifiant'])) {
 $obj = new stdClass();
 $obj->ok = $drapeau;
 $obj->message = $erreur;
-$obj->code = $rand;
 
 ////////////Sorties des variables en JSON
 header('Cache-Control: no-cache, must-revalidate');

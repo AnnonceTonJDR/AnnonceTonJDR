@@ -225,14 +225,11 @@ class Utilisateur
 
     public function changerMotDePasse($motDePasse)
     {
-        $mdpHash = hash('sha512', $motDePasse);
+        $mdpHash = hash('sha512', $motDePasse . $this->cle);
         if ($mdpHash == $this->motDePasse)
             return true;
-        $reqModifPWD = BD::connexionBDD()->exec("UPDATE JOUEUR SET motDePasse = '$mdpHash' WHERE id = $this->id;");
-        if ($reqModifPWD != 0)
-            return true;
-        else
-            return false;
+        $reqModifPWD = BD::connexionBDD()->exec("UPDATE UtilisateurPrivate SET motDePasse = '$mdpHash' WHERE id = $this->id;");
+        return $reqModifPWD != 0;
     }
 
     public function verifierMotDePasse($motDePasse)

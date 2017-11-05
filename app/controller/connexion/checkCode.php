@@ -19,35 +19,22 @@ if (isset($_SESSION['session']))
 /************************************************************************************************
  *Si un identifiant est renseigné on essaie de récupèrer l'utilisateur et on vérifie que son compte ai bien été activé        *
  *************************************************************************************************/
-if (isset($_GET['identifiant'])) {
+if (isset($_GET['identifiant']) && isset($_GET['code'])) {
     $utilisateurs = new Utilisateurs();
-    $user = $utilisateurs->getByIdentifiantConnexion($_GET['identifiant']);
+    $user = $utilisateurs->getByMail($_GET['identifiant']);
 
     if (!isset($user)) {
-        $erreur = 'Pseudo ou mail inexistant!';
+        $erreur = 'Mail inexistant!';
     } else if ($user->getEtat() == 0) {
         $erreur = 'Votre compte n\'a pas été activé !';
     } /**********************************************************************************
-     *Si tout est ok on envoie un mail à l'utilisateuravec un code généré aléatoirement à récupérer        *
+     *Si tout est ok on vérifie que le code existe en BD
      ***********************************************************************************/
     else {
-        $destinataire = $user->getMail();
-        $sujet = "Réinitialisation de votre mot de passe sur le jeu de Lucas OMS";
-        $entete = "From: inscription@lucasoms.alwaysdata.net";
-        $rand = substr(md5(microtime()), rand(0, 26), 5);
-
-        // Le lien d'activation est composé du pseudo(log) et de la clé(cle)
-        $message = 'Bonjour,
-                        Vous avez demandé la réinitialisation de votre mot de passe,
-                        Pour finaliser la réinitialisation, veuillez saisir ce code de réinitialisation dans le champs demandé.
-                                    
-                        ' . $rand . '            
-                                    
-                        ---------------
-                        Ceci est un mail automatique, Merci de ne pas y répondre.';
-
-        mail($destinataire, $sujet, $message, $entete); // Envoi du mail
-        $drapeau = true;
+        $req = BD_lecture::connexionBDD_lecture()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
+        $res = $req->fetch();
+        $drapeau = is_bool($res);
+        $erreur = "Aucune demande d'oubli de mot de passe recensée pour ce compte";
     }
 }
 
@@ -57,7 +44,6 @@ if (isset($_GET['identifiant'])) {
 $obj = new stdClass();
 $obj->ok = $drapeau;
 $obj->message = $erreur;
-$obj->code = $rand;
 
 ////////////Sorties des variables en JSON
 header('Cache-Control: no-cache, must-revalidate');

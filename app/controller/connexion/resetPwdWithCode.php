@@ -7,6 +7,7 @@
  */
 session_start();
 include_once '../../model/Utilisateur.php';
+include_once '../../controller/Utils.php';
 $utilisateurs = new Utilisateurs();
 $user = $utilisateurs->getByIdentifiantConnexion($_GET['log']);
 
@@ -15,29 +16,55 @@ $drapeau = false;
 /**************************************************************************************
  *On fait les même vérifications sur le mot de passe que pour l'inscription avant de faire le changement        *
  ***************************************************************************************/
-if (isset($_GET['mdp']) && isset($_GET['confirm'])) {  //si tous les champs obligatoire ont été renseignés
+if (isset($_GET['mdp']) && isset($_GET['confirm']) && isset($_GET['code']) && isset($_GET['identifiant'])) {  //si tous les champs obligatoire ont été renseignés
     $drapeau = true;  //pour l'instant on peut modifier le mot de passe
 
-    if ($_GET['mdp'] != $_GET['confirm']) {
-        $AErreurInscription[] = 'Les mot de passes ne coresspondent pas';
+    //En premier lieu, on vérifie son code
+    $utilisateurs = new Utilisateurs();
+    $user = $utilisateurs->getByMail($_GET['identifiant']);
+
+    if (!isset($user)) {
+        $erreur = 'Mail inexistant!';
         $drapeau = false;
-    }
-    if (strlen($_GET['mdp']) < 8 || preg_match('#[A-Z]#', $_GET['mdp']) < 1 || preg_match('#[0-9]#', $_GET['mdp']) < 1 || preg_match('/[^a-zA-Z0-9]+/', $_GET['mdp'] < 1)) {
-        $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
+    } else if ($user->getEtat() == 0) {
+        $erreur = 'Votre compte n\'a pas été activé !';
         $drapeau = false;
+    } /**********************************************************************************
+     *Si tout est ok on vérifie que le code existe en BD
+     ***********************************************************************************/
+    else {
+        $req = BD_lecture::connexionBDD_lecture()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
+        $res = $req->fetch();
+        $drapeau = is_bool($res);
+        $erreur = "Aucune demande d'oubli de mot de passe recensée pour ce compte";
     }
 
-    /**********************************************************************
-     *Si tout est ok on essaie de changer le mot de passe si échec on en avertit l'utilisateur    *
-     ***********************************************************************/
     if ($drapeau) {
-        $AErreurInscription = array();
-        if ($user->changerMotDePasse($_GET['confirm'])) {
-            $drapeau = true;
-        } else {
-            $AErreurInscription[] = 'Votre mot de passe n\'a pas été modifié dans la base de données';
+        if ($_GET['mdp'] != $_GET['confirm']) {
+            $AErreurInscription[] = 'Les mot de passes ne coresspondent pas';
             $drapeau = false;
         }
+        if (!Utils::validatePwd($_GET['mdp'])) {
+            $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
+            $drapeau = false;
+        }
+
+        /**********************************************************************
+         *Si tout est ok on essaie de changer le mot de passe si échec on en avertit l'utilisateur    *
+         ***********************************************************************/
+        if ($drapeau) {
+            $AErreurInscription = array();
+            if ($user->changerMotDePasse($_GET['confirm'])) {
+                $drapeau = true;
+                //SI tout s'est bien passé, on supprime le code de la BD
+                BD::connexionBDD()->exec("DELETE FROM RecupMDP WHERE idUtilisateur=" . $user->getId());
+            } else {
+                $AErreurInscription[] = 'Votre mot de passe n\'a pas été modifié dans la base de données';
+                $drapeau = false;
+            }
+        }
+    } else {
+        $AErreurInscription[] = "Votre code de réinitialisation n'existe pas";
     }
 
 } else {

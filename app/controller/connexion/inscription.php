@@ -6,6 +6,7 @@
  */
 session_start();
 include_once '../../model/Utilisateur.php';
+include_once '../../controller/Utils.php';
 
 /************************************************
  *On considère au départ que aucune action n'est valide        *
@@ -67,7 +68,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
     } else
         $passwordConfirm = true;
 
-    if (strlen($_POST['motDePasse']) < 8) { //|| preg_match('#[A-Z]#', $_POST['motDePasse']) < 1 || preg_match('#[0-9]#', $_POST['motDePasse']) < 1 || preg_match('/[^a-zA-Z0-9]+/', $_POST['motDePasse'] < 1)) {
+    if (Utils::validatePwd($_POST['motDePasse'])) {
         $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
         $password = false;
         $drapeau = false;
