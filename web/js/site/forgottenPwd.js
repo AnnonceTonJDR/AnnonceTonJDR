@@ -1,5 +1,5 @@
 var mail;
-
+var code;
 
 function envoyerCode() {
     mail = $("#id").val();
@@ -21,10 +21,20 @@ function envoyerCode() {
 }
 
 function validateCode() {
-    //TODO vérifie le code sur la BD
-    $('#enterCode').slideUp('quick', function () {
-        $('#reset').slideDown('down');
-    });
+    $.ajax({
+        type: 'get',
+        url: 'app/controller/connexion/checkCode.php?identifiant=' + mail + "&code=" + $('#codeReinit').val()
+    }).done(function (data) {
+        if (data.ok) {
+            code = $('#codeReinit').val();
+            $('#enterCode').slideUp('quick', function () {
+                $('#reset').slideDown('down');
+            });
+        }
+        else {
+            alert(data.message);
+        }
+    }).fail(erreurCritique);
 }
 
 function resetMDP() {
@@ -47,13 +57,13 @@ $(document).ready(function () {
     });
 
     $('#hasCodeAlreadyButton').click(function () {
-        mail = $("#mail").val();
         $('#askingReset').slideUp('quick', function () {
             $('#askingMail').slideDown('down');
         });
     });
 
     $('#validateMail').click(function () {
+        mail = $("#mail").val();
         $('#askingMail').slideUp('quick', function () {
             $('#enterCode').slideDown('down');
         });
@@ -61,7 +71,7 @@ $(document).ready(function () {
 
     $("#codeReinit").keypress(function (event) {
         if (event.key === 'Enter')
-            envoyerCode();
+            validateCode();
     });
 
     $('#btnCode').click(function () {
