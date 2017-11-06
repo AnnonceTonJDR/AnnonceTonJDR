@@ -53,3 +53,28 @@ ALTER TABLE `RecupMDP`
 ALTER TABLE  `RecupMDP` ADD UNIQUE (
   `idUtilisateur`
 );
+
+
+/* Ajout d'un compte de test pour la connexion */
+INSERT INTO  `Utilisateur` (
+`id` ,
+`nom` ,
+`prenom` ,
+`pseudo` ,
+`dateInscription`
+)
+VALUES (
+1, 'test','test','test', NOW()
+);
+
+INSERT INTO  `UtilisateurPrivate` (
+`id` ,
+`mail` ,
+`etat` ,
+`motDePasse` ,
+`sel` ,
+`dateNaissance`
+)
+VALUES (
+'2',  'test@test.fr',  '1',  'c508630359b61efdb2c9912e9188a8db',  '132e21374bc8ac35487014f7780fe7eb8bfe2e1991433dd8af28768e7ba6dcc2c21d01a1e0c2695c4a642b6190bb8d2c9d8ebd91a79fc3ad6e761fcdbc316125', '31-10-2017'
+);
