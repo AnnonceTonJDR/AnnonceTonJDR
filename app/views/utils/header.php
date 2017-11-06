@@ -10,22 +10,25 @@ session_start();
 <?php if (!isset($_SESSION['session'])) { ?>
     <div id="menuConnexion">
         <div class="formulaireConnexion">
-            <label for="idConnection">Identifiant</label><input type="text" name="identifiantConnexion"
-                                                                id="idConnection"><br>
-            <label for="pwdConnection">Mot de passe</label><input type="password" name="motDePasseConnexion"
-                                                                  id="pwdConnection"><br>
-            <button id="connectionButton">Se connecter</button>
-            <a id="forgottenPswd" href="//lucasoms.alwaysdata.net?page=forgottenPwd">Mot de passe oublié ?</a>
-            <a id="signUp" href="//lucasoms.alwaysdata.net?page=register">S'inscrire</a>
+          <ul>
+            <li><img src="image/logo.png"></li>
+            <li><label for="idConnection">Identifiant</label><input type="text" name="identifiantConnexion"
+                                                                id="idConnection"></li>
+            <li><label for="pwdConnection">Mot de passe</label><input type="password" name="motDePasseConnexion"
+                                                                  id="pwdConnection"></li>
+            <li><button id="connectionButton">Se connecter</button></li>
+            <li><a id="forgottenPswd" href="//lucasoms.alwaysdata.net?page=forgottenPwd">Mot de passe oublié ?</a></li>
+            <li><a id="signUp" href="//lucasoms.alwaysdata.net?page=register">S'inscrire</a></li>
         </div>
     </div>
 
 <?php } else { ?>
 
-    <p>Vous etes connectés : <?php
+    <li><p>Vous etes connectés : <?php
         echo unserialize($_SESSION['session'])->getUtilisateur()->getPseudo(); ?>
         <button id="deconnectionButton">Déconnexion</button>
     </p>
 
-
+  </li>
+</ul>
 <?php }
