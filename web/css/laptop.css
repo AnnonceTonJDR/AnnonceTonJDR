@@ -52,6 +52,7 @@ li a {
     display: block;
     color: white;
     text-align: center;
+    vertical-align: middle;
     padding: 14px 16px;
     text-decoration: none;
 }
@@ -65,14 +66,16 @@ li a:hover {
   background-size: cover;
   min-height: 1000px
 }
+
 img {
   margin-top: 10px ;
   margin-left : 15px;
   margin-right: 7.5px;
 
 }
-#fondblanc {
-  background-color: #FFFFFF;
+
+#texteblanc {
+  color: #FFFFFF;
 }
 h1 {
   font-size: 35pt;
