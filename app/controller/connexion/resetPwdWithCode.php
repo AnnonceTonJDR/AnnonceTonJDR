@@ -8,8 +8,6 @@
 session_start();
 include_once '../../model/Utilisateur.php';
 include_once '../../controller/Utils.php';
-$utilisateurs = new Utilisateurs();
-$user = $utilisateurs->getByIdentifiantConnexion($_GET['log']);
 
 $drapeau = false;
 
