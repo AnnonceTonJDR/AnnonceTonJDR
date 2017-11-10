@@ -53,7 +53,7 @@ session_start();
                 <strong>Saisissez votre code de réinitialisation</strong>
             </div>
             <div>
-                <label>Code de réinitialisation : </label>
+                <label for="codeReinit">Code de réinitialisation : </label>
                 <input type="text" id="codeReinit">
             </div>
             <div>
@@ -69,9 +69,9 @@ session_start();
                     <ul>
                     </ul>
                 </div>
-                <label>Votre nouveau mot de passe : </label>
+                <label for="motDePasseReset">Votre nouveau mot de passe : </label>
                 <input type="password" id="motDePasseReset">
-                <label>Confirmer votre nouveau mot de passe : </label>
+                <label for="motDePasseConfirmation">Confirmer votre nouveau mot de passe : </label>
                 <input type="password" id="motDePasseConfirmation">
             </div>
             <div>
