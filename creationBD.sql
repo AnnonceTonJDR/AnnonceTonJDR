@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `UtilisateurPrivate` (
   `id`         INT(11),
   `mail`       VARCHAR(255) NOT NULL,
   `etat`       INT(11)      NOT NULL,
-  `motDePasse` VARCHAR(64)  NOT NULL,
+  `motDePasse` VARCHAR(128)  NOT NULL,
   `sel`        VARCHAR(32)  NOT NULL
 )
   ENGINE = InnoDB
