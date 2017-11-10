@@ -12,9 +12,9 @@ session_start();
 /************************************************************************
  *Si les champs ont été renseignés on cherche à récupérer l'utilisateur correspondant        *
  *************************************************************************/
-if (isset($_POST['identifiant']) && isset($_POST['motDePasse'])) {
+if (isset($_POST['id']) && isset($_POST['motDePasse'])) {
     $utilisateurs = new Utilisateurs();
-    $utilisateur = $utilisateurs->getByIdentifiantConnexion($_POST['identifiant']);
+    $utilisateur = $utilisateurs->getByIdentifiantConnexion($_POST['id']);
 
     /**********************************************************************
      *Lorsqu'on a l'utilisateur on vérifie que son compte a bien été activé                            *

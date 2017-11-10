@@ -17,11 +17,11 @@ if (isset($_SESSION['session']))
     $erreur = 'Vous êtes connecté vous ne pouvez donc pas réinitialiser votre mot de passe';
 
 /************************************************************************************************
- *Si un identifiant est renseigné on essaie de récupèrer l'utilisateur et on vérifie que son compte ai bien été activé        *
+ *Si un id est renseigné on essaie de récupèrer l'utilisateur et on vérifie que son compte ai bien été activé        *
  *************************************************************************************************/
-if (isset($_GET['identifiant']) && isset($_GET['code'])) {
+if (isset($_GET['id']) && isset($_GET['code'])) {
     $utilisateurs = new Utilisateurs();
-    $user = $utilisateurs->getByMail($_GET['identifiant']);
+    $user = $utilisateurs->getByMail($_GET['id']);
 
     if (!isset($user)) {
         $erreur = 'Mail inexistant!';

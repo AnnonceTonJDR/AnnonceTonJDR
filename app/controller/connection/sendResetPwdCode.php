@@ -19,9 +19,9 @@ if (isset($_SESSION['session']))
 /************************************************************************************************
  *Si un identifiant est renseigné on essaie de récupèrer l'utilisateur et on vérifie que son compte ai bien été activé        *
  *************************************************************************************************/
-if (isset($_GET['identifiant'])) {
+if (isset($_GET['id'])) {
     $utilisateurs = new Utilisateurs();
-    $user = $utilisateurs->getByMail($_GET['identifiant']);
+    $user = $utilisateurs->getByMail($_GET['id']);
 
     if (!isset($user)) {
         $erreur = 'Pseudo ou mail inexistant!';
