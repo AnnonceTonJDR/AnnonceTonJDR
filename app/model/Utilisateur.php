@@ -62,6 +62,7 @@ class Utilisateurs
         foreach ($this->utilisateurs as $user)
             if ($user->getMail() == $identifiant || $user->getPseudo() == $identifiant)
                 return $user;
+        return null;
     }
 
     public function getById($id)
@@ -69,6 +70,7 @@ class Utilisateurs
         foreach ($this->utilisateurs as $user)
             if ($user->getId() == $id)
                 return $user;
+        return null;
     }
 
     public function getByPseudo($pseudo)
@@ -76,6 +78,7 @@ class Utilisateurs
         foreach ($this->utilisateurs as $user)
             if ($user->getPseudo() == $pseudo)
                 return $user;
+        return null;
     }
 
     public function pseudoExisteDeja($pseudo)
