@@ -15,7 +15,7 @@ else if (isset($_GET["page"]) && $_GET["page"] === "cgu") {
     include_once 'app/views/conditionsUtilisation.php';
 } // Profil l'utilisateur
 else if (isset($_GET["page"]) && $_GET["page"] === "user") {
-    include_once 'app/controller/user.php';
+    include_once 'app/controller/userProfile.php';
 } // Index
 else {
     include_once 'app/controller/index.php';
