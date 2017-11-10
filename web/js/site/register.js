@@ -15,7 +15,7 @@ function erreurCritique() {
 function envoyerFormulaireInscription() {
     $.ajax({
         type: 'post',
-        url: '/app/controller/connexion/inscription.php',
+        url: '/app/controller/connection/register.php',
         data: {
             'nom': $('#nom').val(),
             'prenom': $('#prenom').val(),
