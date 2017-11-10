@@ -1,7 +1,7 @@
 var mail;
 var code;
 
-function envoyerCode() {
+function sendMailWithCode() {
     mail = $("#id").val();
     $.ajax({
         type: 'get',
@@ -40,7 +40,7 @@ function resetMDP() {
     $.ajax({
         type: 'get',
         url: 'app/controller/connexion/resetPwdWithCode.php?identifiant=' + mail + "&code=" + $('#codeReinit').val()
-        + "&mdp=" + $('#motDePasseReset').val() + "&confirm=" + $('#motDePasseConfirmation').val()
+        + "&mdp=" + $('#pwdReset').val() + "&confirm=" + $('#pwdConfirm').val()
     }).done(function (data) {
         if (data.ok) {
             $('#reset').slideUp('quick', function () {
@@ -59,11 +59,11 @@ $(document).ready(function () {
 
     $("#id").keypress(function (event) {
         if (event.key === 'Enter')
-            envoyerCode();
+            sendMailWithCode();
     });
 
     $('#sendCodeButton').click(function () {
-        envoyerCode();
+        sendMailWithCode();
     });
 
     $('#hasCodeAlreadyButton').click(function () {
@@ -88,7 +88,7 @@ $(document).ready(function () {
         validateCode();
     });
 
-    $("#motDePasseReset, #motDePasseConfirmation").keypress(function (event) {
+    $("#pwdReset, #pwdConfirm").keypress(function (event) {
         if (event.key === 'Enter')
             resetMDP();
     });
