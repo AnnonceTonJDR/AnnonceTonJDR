@@ -42,7 +42,7 @@ session_start();
                 <button id="hasCodeAlreadyButton" type="button">J'ai déjà le code</button>
             </div>
         </div>
-        <div id="askingMail" class="invisible">
+        <div id="askingMail" style="display: none">
             <p>Veuillez indiquez votre mail (cela a pour but de vérifier votre identité)</p>
             <label for="mail">Votre mail : </label>
             <input type="text" name="mail" id="mail">
@@ -53,7 +53,7 @@ session_start();
                 <strong>Saisissez votre code de réinitialisation</strong>
             </div>
             <div>
-                <label>Code de réinitialisation : </label>
+                <label for="codeReinit">Code de réinitialisation : </label>
                 <input type="text" id="codeReinit">
             </div>
             <div>
@@ -69,9 +69,9 @@ session_start();
                     <ul>
                     </ul>
                 </div>
-                <label>Votre nouveau mot de passe : </label>
+                <label for="motDePasseReset">Votre nouveau mot de passe : </label>
                 <input type="password" id="motDePasseReset">
-                <label>Confirmer votre nouveau mot de passe : </label>
+                <label for="motDePasseConfirmation">Confirmer votre nouveau mot de passe : </label>
                 <input type="password" id="motDePasseConfirmation">
             </div>
             <div>

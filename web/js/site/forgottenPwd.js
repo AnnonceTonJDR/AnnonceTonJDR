@@ -3,7 +3,6 @@ var code;
 
 function envoyerCode() {
     mail = $("#id").val();
-    //TODO envoi du mail avec le code
     $.ajax({
         type: 'get',
         url: 'app/controller/connexion/sendResetPwdCode.php?identifiant=' + mail
