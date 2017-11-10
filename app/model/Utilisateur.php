@@ -57,16 +57,6 @@ class Utilisateurs
         return $this->utilisateurs;
     }
 
-    public function changerProfil($pseudo, $mail, $motDePasse, $id)
-    {
-        $sel = md5(microtime(TRUE) * 1000000);
-        $reqModifUtilisateur = BD::connexionBDD()->prepare("UPDATE Administrateur SET motDePasse = :mdp, sel = :sel, pseudo = :pseudo, mail = :mail  WHERE idAdministrateur = :id;",
-            array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));  //requete pour l'insertion d'un utilisateur
-        $mdpHash = $motDePasse . $sel;
-        $reqModifUtilisateur->execute(array('mdp' => sha1($mdpHash), 'sel' => $sel, 'pseudo' => $pseudo, 'mail' => $mail, 'id' => $id));
-        $this->getById($id)->modifierProfil($pseudo, $mail, sha1($mdpHash), $sel);
-    }
-
     public function getByIdentifiantConnexion($identifiant)
     {
         foreach ($this->utilisateurs as $user)
@@ -102,27 +92,6 @@ class Utilisateurs
             if ($user->getMail() == $mail)
                 return true;
         return false;
-    }
-
-    public function supprimerUser($id)
-    {
-        $reqSupressionUtilisateur = BD::connexionBDD()->exec("UPDATE Administrateur SET etat = 2 WHERE idAdministrateur = $id;");  //requete pour l'insertion d'un utilisateur
-        if ($reqSupressionUtilisateur > 0) {
-            $admin = $this->getById($id);
-            $key = array_search($admin, $this->administrateurs);
-            unset($this->administrateurs[$key]);
-        }
-    }
-
-    public function getUtilisateursLike($search)
-    {
-        foreach ($this->utilisateurs as $user)
-            if (strpos(strtolower($user->getNom()), $search) !== false
-                || strpos(strtolower($user->getPrenom()), $search) !== false
-                || strpos(strtolower($user->getPseudo()), $search) !== false
-            )
-                $users[] = $user;
-        return $users;
     }
 
     public function getByMail($mail)
@@ -213,14 +182,6 @@ class Utilisateur
         } else {
             return false;
         }
-    }
-
-    public function modifierProfil($pseudo, $mail, $motDePasse, $sel)
-    {
-        $this->pseudo = $pseudo;
-        $this->mail = $mail;
-        $this->motDePasse = $motDePasse;
-        $this->sel = $sel;
     }
 
     public function changerMotDePasse($motDePasse)
