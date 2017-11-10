@@ -42,7 +42,7 @@ session_start();
                 <button id="hasCodeAlreadyButton" type="button">J'ai déjà le code</button>
             </div>
         </div>
-        <div id="askingMail" class="invisible">
+        <div id="askingMail" style="display: none">
             <p>Veuillez indiquez votre mail (cela a pour but de vérifier votre identité)</p>
             <label for="mail">Votre mail : </label>
             <input type="text" name="mail" id="mail">
