@@ -5,7 +5,7 @@ function sendMailWithCode() {
     mail = $("#id").val();
     $.ajax({
         type: 'get',
-        url: 'app/controller/connection/sendResetPwdCode.php?identifiant=' + mail
+        url: 'app/controller/connection/sendResetPwdCode.php?id=' + mail
     }).done(function (data) {
         if (data.ok) {
             $('#askingReset').slideUp('quick', function () {
@@ -22,7 +22,7 @@ function sendMailWithCode() {
 function validateCode() {
     $.ajax({
         type: 'get',
-        url: 'app/controller/connection/checkCode.php?identifiant=' + mail + "&code=" + $('#codeReinit').val()
+        url: 'app/controller/connection/checkCode.php?id=' + mail + "&code=" + $('#codeReinit').val()
     }).done(function (data) {
         if (data.ok) {
             code = $('#codeReinit').val();
@@ -39,7 +39,7 @@ function validateCode() {
 function resetMDP() {
     $.ajax({
         type: 'get',
-        url: 'app/controller/connection/resetPwdWithCode.php?identifiant=' + mail + "&code=" + $('#codeReinit').val()
+        url: 'app/controller/connection/resetPwdWithCode.php?id=' + mail + "&code=" + $('#codeReinit').val()
         + "&mdp=" + $('#pwdReset').val() + "&confirm=" + $('#pwdConfirm').val()
     }).done(function (data) {
         if (data.ok) {

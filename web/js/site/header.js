@@ -17,7 +17,7 @@ function seConnecter() {
         type: 'post',
         url: '/app/controller/connection/connection.php',
         data: {
-            'identifiant': $('#idConnection').val(),
+            'id': $('#idConnection').val(),
             'motDePasse': $('#pwdConnection').val()
         }
     }).done(function (data) {
