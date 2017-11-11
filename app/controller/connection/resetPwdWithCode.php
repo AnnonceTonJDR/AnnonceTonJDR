@@ -9,76 +9,76 @@ session_start();
 include_once '../../model/Utilisateur.php';
 include_once '../../controller/Utils.php';
 
-$drapeau = false;
+$flag = false;
 
 /**************************************************************************************
  *On fait les même vérifications sur le mot de passe que pour l'inscription avant de faire le changement        *
  ***************************************************************************************/
 if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && isset($_GET['id'])) {  //si tous les champs obligatoire ont été renseignés
-    $drapeau = true;  //pour l'instant on peut modifier le mot de passe
+    $flag = true;  //pour l'instant on peut modifier le mot de passe
 
     //En premier lieu, on vérifie son code
-    $utilisateurs = new Utilisateurs();
-    $user = $utilisateurs->getByMail($_GET['id']);
+    $users = new Utilisateurs();
+    $user = $users->getByMail($_GET['id']);
 
     if (!isset($user)) {
-        $erreur = 'Mail inexistant!';
-        $drapeau = false;
+        $error = 'Mail inexistant!';
+        $flag = false;
     } else if ($user->getEtat() == 0) {
-        $erreur = 'Votre compte n\'a pas été activé !';
-        $drapeau = false;
+        $error = 'Votre compte n\'a pas été activé !';
+        $flag = false;
     } /**********************************************************************************
      *Si tout est ok on vérifie que le code existe en BD
      ***********************************************************************************/
     else {
         $req = BD::connexionBDD()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
         $res = $req->fetch();
-        $drapeau = is_bool($res);
-        $erreur = "Aucune demande d'oubli de mot de passe recensée pour ce compte";
+        $flag = is_bool($res);
+        $error = "Aucune demande d'oubli de mot de passe recensée pour ce compte";
     }
 
-    if ($drapeau) {
+    if ($flag) {
         if ($_GET['pwd'] != $_GET['confirm']) {
-            $AErreurInscription[] = 'Les mot de passes ne coresspondent pas';
-            $drapeau = false;
+            $AInscriptionError[] = 'Les mot de passes ne coresspondent pas';
+            $flag = false;
         }
         if (!Utils::isValidePwd($_GET['pwd'])) {
-            $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
-            $drapeau = false;
+            $AInscriptionError[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
+            $flag = false;
         }
 
         /**********************************************************************
          *Si tout est ok on essaie de changer le mot de passe si échec on en avertit l'utilisateur    *
          ***********************************************************************/
-        if ($drapeau) {
-            $AErreurInscription = array();
+        if ($flag) {
+            $AInscriptionError = array();
             if ($user->changerMotDePasse($_GET['confirm'])) {
-                $drapeau = true;
+                $flag = true;
                 //SI tout s'est bien passé, on supprime le code de la BD
                 BD::connexionBDD()->exec("DELETE FROM RecupMDP WHERE idUtilisateur=" . $user->getId());
             } else {
-                $AErreurInscription[] = 'Votre mot de passe n\'a pas été modifié dans la base de données';
-                $drapeau = false;
+                $AInscriptionError[] = 'Votre mot de passe n\'a pas été modifié dans la base de données';
+                $flag = false;
             }
         }
     } else {
-        $AErreurInscription[] = "Votre code de réinitialisation n'existe pas";
+        $AInscriptionError[] = "Votre code de réinitialisation n'existe pas";
     }
 
 } else {
-    $AErreurInscription[] = 'Vous n\'avez pas renseigné les champs de mot de passe';
-    $drapeau = false;
+    $AInscriptionError[] = 'Vous n\'avez pas renseigné les champs de mot de passe';
+    $flag = false;
 }
 
 /****************************************************************************************
  *On envoie si le changement a bien été effectué ou non et les erreurs qui peuvent être la cause de l'échec    *
  *****************************************************************************************/
 $obj = new stdClass();
-$obj->ok = $drapeau;
+$obj->ok = $flag;
 $obj->message = Array();
-if (count($AErreurInscription) > 0)
-    foreach ($AErreurInscription as $erreur) {
-        array_push($obj->message, $erreur);
+if (count($AInscriptionError) > 0)
+    foreach ($AInscriptionError as $error) {
+        array_push($obj->message, $error);
     }
 
 ////////////Sorties des variables en JSON
