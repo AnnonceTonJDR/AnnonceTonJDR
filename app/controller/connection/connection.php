@@ -12,9 +12,9 @@ session_start();
 /************************************************************************
  *Si les champs ont été renseignés on cherche à récupérer l'utilisateur correspondant        *
  *************************************************************************/
-if (isset($_POST['identifiant']) && isset($_POST['motDePasse'])) {
+if (isset($_POST['id']) && isset($_POST['pwd'])) {
     $utilisateurs = new Utilisateurs();
-    $utilisateur = $utilisateurs->getByIdentifiantConnexion($_POST['identifiant']);
+    $utilisateur = $utilisateurs->getByIdentifiantConnexion($_POST['id']);
 
     /**********************************************************************
      *Lorsqu'on a l'utilisateur on vérifie que son compte a bien été activé                            *
@@ -25,7 +25,7 @@ if (isset($_POST['identifiant']) && isset($_POST['motDePasse'])) {
         if ($utilisateur->getEtat() == 0) {
             $messageConexion = 'Votre compte n\'a pas été activé !';
         } else {
-            if ($utilisateur->verifierMotDePasse($_POST['motDePasse'])) {
+            if ($utilisateur->verifierMotDePasse($_POST['pwd'])) {
                 $_SESSION['session'] = serialize(new Session($utilisateur));
                 $drapeau = 1;
             } else {

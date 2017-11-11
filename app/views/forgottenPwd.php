@@ -33,7 +33,7 @@ session_start();
                 <div>
                     Un mail vous sera envoyé avec un code pour changer votre mot de passe.
                 </div>
-                <div id="erreurIdentifiant"></div>
+                <div id="idError"></div>
                 <label for="id"> Votre mail : </label>
                 <input type="text" name="id" id="id">
             </div>
@@ -65,14 +65,14 @@ session_start();
                 <strong>Veuillez saisir votre nouveau mot de passe</strong>
             </div>
             <div>
-                <div id="erreurPassword" style="display: none;">
+                <div id="pwdError" style="display: none;">
                     <ul>
                     </ul>
                 </div>
-                <label for="motDePasseReset">Votre nouveau mot de passe : </label>
-                <input type="password" id="motDePasseReset">
-                <label for="motDePasseConfirmation">Confirmer votre nouveau mot de passe : </label>
-                <input type="password" id="motDePasseConfirmation">
+                <label for="pwdReset">Votre nouveau mot de passe : </label>
+                <input type="password" id="pwdReset">
+                <label for="pwdConfirm">Confirmer votre nouveau mot de passe : </label>
+                <input type="password" id="pwdConfirm">
             </div>
             <div>
                 <button id="validateNewPwd" type="button">Réinitialiser</button>

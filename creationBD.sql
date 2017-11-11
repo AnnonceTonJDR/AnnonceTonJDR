@@ -55,7 +55,7 @@ ALTER TABLE  `RecupMDP` ADD UNIQUE (
 );
 
 
-/* Ajout d'un compte de test pour la connexion */
+/* Ajout d'un compte de test pour la connection */
 INSERT INTO  `Utilisateur` (
 `id` ,
 `nom` ,

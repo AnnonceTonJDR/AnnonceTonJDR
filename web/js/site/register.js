@@ -15,15 +15,15 @@ function erreurCritique() {
 function envoyerFormulaireInscription() {
     $.ajax({
         type: 'post',
-        url: '/app/controller/connexion/inscription.php',
+        url: '/app/controller/connection/register.php',
         data: {
             'nom': $('#nom').val(),
             'prenom': $('#prenom').val(),
             'pseudo': $('#pseudo').val(),
             'dateNaissance': $('#dateNaissance').val(),
             'mail': $('#mail').val(),
-            'motDePasse': $('#motDePasse').val(),
-            'motDePasseConfirmation': $('#motDePasseConfirmation').val()
+            'pwd': $('#motDePasse').val(),
+            'pwdConfirm': $('#motDePasseConfirmation').val()
         }
     }).done(function (data) {
         if (data.ok) {

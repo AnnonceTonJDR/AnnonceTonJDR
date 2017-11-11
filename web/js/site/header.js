@@ -1,5 +1,5 @@
 /**
- * Javascript pour le formulaire de connexion contenu dans le header
+ * Javascript pour le formulaire de connection contenu dans le header
  *
  * @author Lucas OMS
  */
@@ -15,10 +15,10 @@ function erreurCritique() {
 function seConnecter() {
     $.ajax({
         type: 'post',
-        url: '/app/controller/connexion/connexion.php',
+        url: '/app/controller/connection/connection.php',
         data: {
-            'identifiant': $('#idConnection').val(),
-            'motDePasse': $('#pwdConnection').val()
+            'id': $('#idConnection').val(),
+            'pwd': $('#pwdConnection').val()
         }
     }).done(function (data) {
         if (data.ok === 1) {
@@ -51,7 +51,7 @@ $(document).ready(function () {
     $('#deconnectionButton').click(function () {
         $.ajax({
             type: 'get',
-            url: '/app/controller/connexion/deconnexion.php'
+            url: '/app/controller/connection/deconnexion.php'
         }).done(function () {
             location.reload(true);
         }).fail(erreurCritique);

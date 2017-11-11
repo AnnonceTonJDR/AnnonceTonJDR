@@ -17,7 +17,7 @@ $pseudo = false;
 $password = false;
 $passwordConfirm = false;
 
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) && isset($_POST['dateNaissance']) && isset($_POST['mail']) && isset($_POST['motDePasse']) && isset($_POST['motDePasseConfirmation'])) {  //si tous les champs obligatoire ont été renseignés
+if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) && isset($_POST['dateNaissance']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdConfirm'])) {  //si tous les champs obligatoire ont été renseignés
     $drapeau = true;  //pourl'instant on peut ajouter l'utilisateur
     $utilisateurs = new Utilisateurs();
 
@@ -61,14 +61,14 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
     } else
         $mail = true;
 
-    if ($_POST['motDePasse'] != $_POST['motDePasseConfirmation']) {
+    if ($_POST['motDePasse'] != $_POST['pwdConfirmation']) {
         $AErreurInscription[] = 'Les mot de passes ne coresspondent pas';
         $drapeau = false;
         $passwordConfirm = false;
     } else
         $passwordConfirm = true;
 
-    if (!Utils::isValidePwd($_POST['motDePasse'])) {
+    if (!Utils::isValidePwd($_POST['pwd'])) {
         $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
         $password = false;
         $drapeau = false;
@@ -76,7 +76,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) &
         $password = true;
 
     if ($drapeau) {
-        $utilisateurs->inscrireUtilisateur($_POST['pseudo'], $_POST['mail'], $_POST['motDePasse'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance']);
+        $utilisateurs->inscrireUtilisateur($_POST['pseudo'], $_POST['mail'], $_POST['pwd'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance']);
     }
 } else
     $AErreurInscription[] = 'Vous n\'avez pas renseigné tous les champs requis';

@@ -1,11 +1,11 @@
 var mail;
 var code;
 
-function envoyerCode() {
+function sendMailWithCode() {
     mail = $("#id").val();
     $.ajax({
         type: 'get',
-        url: 'app/controller/connexion/sendResetPwdCode.php?identifiant=' + mail
+        url: 'app/controller/connection/sendResetPwdCode.php?id=' + mail
     }).done(function (data) {
         if (data.ok) {
             $('#askingReset').slideUp('quick', function () {
@@ -22,7 +22,7 @@ function envoyerCode() {
 function validateCode() {
     $.ajax({
         type: 'get',
-        url: 'app/controller/connexion/checkCode.php?identifiant=' + mail + "&code=" + $('#codeReinit').val()
+        url: 'app/controller/connection/checkCode.php?id=' + mail + "&code=" + $('#codeReinit').val()
     }).done(function (data) {
         if (data.ok) {
             code = $('#codeReinit').val();
@@ -39,8 +39,8 @@ function validateCode() {
 function resetMDP() {
     $.ajax({
         type: 'get',
-        url: 'app/controller/connexion/resetPwdWithCode.php?identifiant=' + mail + "&code=" + $('#codeReinit').val()
-        + "&mdp=" + $('#motDePasseReset').val() + "&confirm=" + $('#motDePasseConfirmation').val()
+        url: 'app/controller/connection/resetPwdWithCode.php?id=' + mail + "&code=" + $('#codeReinit').val()
+        + "&pwd=" + $('#pwdReset').val() + "&confirm=" + $('#pwdConfirm').val()
     }).done(function (data) {
         if (data.ok) {
             $('#reset').slideUp('quick', function () {
@@ -59,11 +59,11 @@ $(document).ready(function () {
 
     $("#id").keypress(function (event) {
         if (event.key === 'Enter')
-            envoyerCode();
+            sendMailWithCode();
     });
 
     $('#sendCodeButton').click(function () {
-        envoyerCode();
+        sendMailWithCode();
     });
 
     $('#hasCodeAlreadyButton').click(function () {
@@ -88,7 +88,7 @@ $(document).ready(function () {
         validateCode();
     });
 
-    $("#motDePasseReset, #motDePasseConfirmation").keypress(function (event) {
+    $("#pwdReset, #pwdConfirm").keypress(function (event) {
         if (event.key === 'Enter')
             resetMDP();
     });

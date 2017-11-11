@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Permet la connexion à la base de données en lecture uniquement, et via un singleton
+ * Permet la connection à la base de données en lecture uniquement, et via un singleton
  *
  * @author Lucas OMS
  *
@@ -40,7 +40,7 @@ class BD_lecture
     }
 
     /**************************************************************
-     *Fonction statique pour récupèrer l'unique connexion à la base de donnée    *
+     *Fonction statique pour récupèrer l'unique connection à la base de donnée    *
      ***************************************************************/
     public static function connexionBDD_lecture()
     {
