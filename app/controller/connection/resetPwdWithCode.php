@@ -14,7 +14,7 @@ $drapeau = false;
 /**************************************************************************************
  *On fait les même vérifications sur le mot de passe que pour l'inscription avant de faire le changement        *
  ***************************************************************************************/
-if (isset($_GET['mdp']) && isset($_GET['confirm']) && isset($_GET['code']) && isset($_GET['id'])) {  //si tous les champs obligatoire ont été renseignés
+if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && isset($_GET['id'])) {  //si tous les champs obligatoire ont été renseignés
     $drapeau = true;  //pour l'instant on peut modifier le mot de passe
 
     //En premier lieu, on vérifie son code
@@ -38,11 +38,11 @@ if (isset($_GET['mdp']) && isset($_GET['confirm']) && isset($_GET['code']) && is
     }
 
     if ($drapeau) {
-        if ($_GET['mdp'] != $_GET['confirm']) {
+        if ($_GET['pwd'] != $_GET['confirm']) {
             $AErreurInscription[] = 'Les mot de passes ne coresspondent pas';
             $drapeau = false;
         }
-        if (!Utils::isValidePwd($_GET['mdp'])) {
+        if (!Utils::isValidePwd($_GET['pwd'])) {
             $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
             $drapeau = false;
         }

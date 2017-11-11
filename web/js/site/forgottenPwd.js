@@ -40,7 +40,7 @@ function resetMDP() {
     $.ajax({
         type: 'get',
         url: 'app/controller/connection/resetPwdWithCode.php?id=' + mail + "&code=" + $('#codeReinit').val()
-        + "&mdp=" + $('#pwdReset').val() + "&confirm=" + $('#pwdConfirm').val()
+        + "&pwd=" + $('#pwdReset').val() + "&confirm=" + $('#pwdConfirm').val()
     }).done(function (data) {
         if (data.ok) {
             $('#reset').slideUp('quick', function () {
