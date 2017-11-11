@@ -42,7 +42,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
             $AInscriptionError[] = 'Les mot de passes ne coresspondent pas';
             $flag = false;
         }
-        if (!Utils::isValidePwd($_GET['pwd'])) {
+        if (!Utils::isValidPwd($_GET['pwd'])) {
             $AInscriptionError[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
             $flag = false;
         }

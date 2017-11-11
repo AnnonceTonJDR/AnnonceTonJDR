@@ -68,7 +68,7 @@ if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pse
     } else
         $pwdConfirm = true;
 
-    if (!Utils::isValidePwd($_POST['pwd'])) {
+    if (!Utils::isValidPwd($_POST['pwd'])) {
         $AInscriptionsError[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
         $pwd = false;
         $flag = false;
