@@ -1,11 +1,11 @@
 <?php
 /**************************************
- *Créateur:        Alexis POYEN                            *
+ *Créateur:        Lucas OMS                            *
  *Date:                14/04/17                                    *
  *Description:    Classe pour gérer les sessions        *
  ***************************************/
 
-include_once 'Utilisateur.php';
+include_once 'Users.php';
 
 class Session
 {
@@ -21,7 +21,7 @@ class Session
         $this->utilisateur = $utilisateur;
     }
 
-    public function getUtilisateur(): Utilisateur
+    public function getUtilisateur(): User
     {
         return $this->utilisateur;
     }

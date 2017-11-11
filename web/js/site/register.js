@@ -17,10 +17,10 @@ function envoyerFormulaireInscription() {
         type: 'post',
         url: '/app/controller/connection/register.php',
         data: {
-            'nom': $('#nom').val(),
-            'prenom': $('#prenom').val(),
+            'lastName': $('#nom').val(),
+            'firstName': $('#prenom').val(),
             'pseudo': $('#pseudo').val(),
-            'dateNaissance': $('#dateNaissance').val(),
+            'birth': $('#dateNaissance').val(),
             'mail': $('#mail').val(),
             'pwd': $('#motDePasse').val(),
             'pwdConfirm': $('#motDePasseConfirmation').val()

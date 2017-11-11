@@ -6,7 +6,7 @@
  * @author Lucas OMS
  *
  */
-class BD_lecture
+class DB_readOnly
 {
     private static $bdd = null;
 
@@ -30,7 +30,7 @@ class BD_lecture
     {
         $pdo = null;
         try {
-            $pdo = new PDO("mysql:host=mysql-lucasoms.alwaysdata.net;dbname=lucasoms_annoncetonjdr;charset=utf8", BD_lecture::$user, BD_lecture::$pass);
+            $pdo = new PDO("mysql:host=mysql-lucasoms.alwaysdata.net;dbname=lucasoms_annoncetonjdr;charset=utf8", DB_readOnly::$user, DB_readOnly::$pass);
             if (isset($pdo))
                 self::$bdd = $pdo;
         } catch (Exception $e) {
@@ -42,10 +42,10 @@ class BD_lecture
     /**************************************************************
      *Fonction statique pour récupèrer l'unique connection à la base de donnée    *
      ***************************************************************/
-    public static function connexionBDD_lecture()
+    public static function connectionDB_readOnly() : PDO
     {
         if (self::$bdd == null) {
-            new BD_lecture();
+            new DB_readOnly();
         }
         return self::$bdd;
     }
