@@ -13,29 +13,29 @@ session_start();
  *Si les champs ont été renseignés on cherche à récupérer l'utilisateur correspondant        *
  *************************************************************************/
 if (isset($_POST['id']) && isset($_POST['pwd'])) {
-    $utilisateurs = new Utilisateurs();
-    $utilisateur = $utilisateurs->getByIdentifiantConnexion($_POST['id']);
+    $users = new Utilisateurs();
+    $user = $users->getByIdentifiantConnexion($_POST['id']);
 
     /**********************************************************************
      *Lorsqu'on a l'utilisateur on vérifie que son compte a bien été activé                            *
      *Si tel est le cas on vérifie son mot de passe et si tout est ok on initialise la session        *
      ***********************************************************************/
 
-    if (isset($utilisateur)) {
-        if ($utilisateur->getEtat() == 0) {
-            $messageConexion = 'Votre compte n\'a pas été activé !';
+    if (isset($user)) {
+        if ($user->getEtat() == 0) {
+            $connectionMsg = 'Votre compte n\'a pas été activé !';
         } else {
-            if ($utilisateur->verifierMotDePasse($_POST['pwd'])) {
-                $_SESSION['session'] = serialize(new Session($utilisateur));
-                $drapeau = 1;
+            if ($user->verifierMotDePasse($_POST['pwd'])) {
+                $_SESSION['session'] = serialize(new Session($user));
+                $flag = 1;
             } else {
-                $drapeau = -1;
-                $messageConexion = 'Votre mot de passe est invalide';
+                $flag = -1;
+                $connectionMsg = 'Votre mot de passe est invalide';
             }
         }
     } else {
-        $drapeau = -2;
-        $messageConexion = 'Vos identifiants sont invalides';
+        $flag = -2;
+        $connectionMsg = 'Vos identifiants sont invalides';
     }
 }
 
@@ -44,9 +44,9 @@ if (isset($_POST['id']) && isset($_POST['pwd'])) {
  *********************************************************************/
 
 $obj = new stdClass();
-$obj->ok = $drapeau;
-$obj->message = $messageConexion;
-$obj->nomUser = (isset($utilisateur) ? $utilisateur->getNom() : "Utilisateur introuvable");
+$obj->ok = $flag;
+$obj->msg = $connectionMsg;
+$obj->userName = (isset($user) ? $user->getNom() : "Utilisateur introuvable");
 
 ////////////Sorties des variables en JSON
 header('Cache-Control: no-cache, must-revalidate');
