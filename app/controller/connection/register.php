@@ -11,87 +11,87 @@ include_once '../../controller/Utils.php';
 /************************************************
  *On considère au départ que aucune action n'est valide        *
  *************************************************/
-$drapeau = false;
+$flag = false;
 $mail = false;
 $pseudo = false;
-$password = false;
-$passwordConfirm = false;
+$pwd = false;
+$pwdConfirm = false;
 
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) && isset($_POST['dateNaissance']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdConfirm'])) {  //si tous les champs obligatoire ont été renseignés
-    $drapeau = true;  //pourl'instant on peut ajouter l'utilisateur
-    $utilisateurs = new Utilisateurs();
+if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['birth']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdConfirm'])) {  //si tous les champs obligatoire ont été renseignés
+    $flag = true;  //pourl'instant on peut ajouter l'utilisateur
+    $users = new Utilisateurs();
 
     /****************************************************
      *Vérifications des différentes infos saisies dans le formulaire        *
      *****************************************************/
     if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-        $AErreurInscription[] = 'Le format de l\'adresse mail est invalide';
+        $AInscriptionsError[] = 'Le format de l\'adresse mail est invalide';
         $mail = false;
-        $drapeau = false;
+        $flag = false;
     } else
         $mail = true;
 
-    $date = date_parse_from_format("Y/m/d", $_POST['dateNaissance']);
+    $date = date_parse_from_format("Y/m/d", $_POST['birth']);
     if (checkdate($date['month'], $date['day'], $date['year']) && $date['year'] > 1900) {
-        $dateNaissance = true;
+        $birth = true;
     } else {
-        $AErreurInscription[] = 'La date est invalide';
-        $dateNaissance = false;
-        $drapeau = false;
+        $AInscriptionsError[] = 'La date est invalide';
+        $birth = false;
+        $flag = false;
     }
 
     if (strlen($_POST['pseudo']) < 4) {
-        $AErreurInscription[] = 'Le pseudo doit faire au minimum 4 charactères';
+        $AInscriptionsError[] = 'Le pseudo doit faire au minimum 4 charactères';
         $pseudo = false;
-        $drapeau = false;
+        $flag = false;
     } else
         $pseudo = true;
 
-    if ($utilisateurs->pseudoExisteDeja($_POST['pseudo'])) {
-        $AErreurInscription[] = 'Le pseudo que vous voulez utiliser existe déjà';
+    if ($users->pseudoExisteDeja($_POST['pseudo'])) {
+        $AInscriptionsError[] = 'Le pseudo que vous voulez utiliser existe déjà';
         $pseudo = false;
-        $drapeau = false;
+        $flag = false;
     } else
         $pseudo = true;
 
-    if ($utilisateurs->mailExisteDeja($_POST['mail'])) {
-        $AErreurInscription[] = 'Le mail que vous voulez utiliser est déjà associé à un compte';
+    if ($users->mailExisteDeja($_POST['mail'])) {
+        $AInscriptionsError[] = 'Le mail que vous voulez utiliser est déjà associé à un compte';
         $mail = false;
-        $drapeau = false;
+        $flag = false;
     } else
         $mail = true;
 
     if ($_POST['motDePasse'] != $_POST['pwdConfirmation']) {
-        $AErreurInscription[] = 'Les mot de passes ne coresspondent pas';
-        $drapeau = false;
-        $passwordConfirm = false;
+        $AInscriptionsError[] = 'Les mot de passes ne coresspondent pas';
+        $flag = false;
+        $pwdConfirm = false;
     } else
-        $passwordConfirm = true;
+        $pwdConfirm = true;
 
     if (!Utils::isValidePwd($_POST['pwd'])) {
-        $AErreurInscription[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
-        $password = false;
-        $drapeau = false;
+        $AInscriptionsError[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
+        $pwd = false;
+        $flag = false;
     } else
-        $password = true;
+        $pwd = true;
 
-    if ($drapeau) {
-        $utilisateurs->inscrireUtilisateur($_POST['pseudo'], $_POST['mail'], $_POST['pwd'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance']);
+    if ($flag) {
+        $users->inscrireUtilisateur($_POST['pseudo'], $_POST['mail'], $_POST['pwd'], $_POST['lastName'], $_POST['firstName'], $_POST['birth']);
     }
 } else
-    $AErreurInscription[] = 'Vous n\'avez pas renseigné tous les champs requis';
+    $AInscriptionsError[] = 'Vous n\'avez pas renseigné tous les champs requis';
 
 /****************************************************************************************
  *On envoie en JSON quels ont pue être les champs invalides et les erreurs en conséquences ou le drapeau        *
  *****************************************************************************************/
 $obj = new stdClass();
-$obj->ok = $drapeau;
+$obj->ok = $flag;
 $obj->mail = $mail;
 $obj->pseudo = $pseudo;
-$obj->dateNaissance = $dateNaissance;
-$obj->messageErreur = Array();
-if (count($AErreurInscription) > 0)
-    foreach ($AErreurInscription as $erreur) {
+$obj->birth = $birth;
+$obj->msgError = Array();
+if (count($AInscriptionsError) > 0)
+    foreach ($AInscriptionsError as $erreur) {
         array_push($obj->messageErreur, $erreur);
     }
 

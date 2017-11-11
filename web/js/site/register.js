@@ -67,7 +67,7 @@ function envoyerFormulaireInscription() {
             }
             $('#erreur ul').empty();
             var ul = $('<ul />');
-            for (var j in data.messageErreur) {
+            for (var j in data.msgError) {
                 ul.append($('<li>').html(data.messageErreur[j]));
             }
             $('#erreur').append(ul).show();
