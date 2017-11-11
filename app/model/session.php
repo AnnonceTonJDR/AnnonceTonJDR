@@ -1,6 +1,6 @@
 <?php
 /**************************************
- *Créateur:        Alexis POYEN                            *
+ *Créateur:        Lucas OMS                            *
  *Date:                14/04/17                                    *
  *Description:    Classe pour gérer les sessions        *
  ***************************************/
