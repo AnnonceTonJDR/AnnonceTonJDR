@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Permet la connection à la base de données en lecture uniquement, et via un singleton
+ * Permet la connection à la base de données en écriture, et via un singleton
  *
  * @author Lucas OMS
  *
  */
-class BD_lecture
+class DB
 {
     private static $bdd = null;
 
@@ -30,7 +30,7 @@ class BD_lecture
     {
         $pdo = null;
         try {
-            $pdo = new PDO("mysql:host=mysql-lucasoms.alwaysdata.net;dbname=lucasoms_annoncetonjdr;charset=utf8", BD_lecture::$user, BD_lecture::$pass);
+            $pdo = new PDO("mysql:host=mysql-lucasoms.alwaysdata.net;dbname=lucasoms_annoncetonjdr;charset=utf8", DB::$user, DB::$pass);
             if (isset($pdo))
                 self::$bdd = $pdo;
         } catch (Exception $e) {
@@ -42,10 +42,10 @@ class BD_lecture
     /**************************************************************
      *Fonction statique pour récupèrer l'unique connection à la base de donnée    *
      ***************************************************************/
-    public static function connectionDB_readOnly()
+    public static function connectionDB()
     {
         if (self::$bdd == null) {
-            new BD_lecture();
+            new DB();
         }
         return self::$bdd;
     }

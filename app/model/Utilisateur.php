@@ -1,6 +1,6 @@
 <?php
-include_once 'BD.php';
-require_once 'BD_lecture.php';
+include_once 'DB.php';
+require_once 'DB_readOnly.php';
 
 class Utilisateurs
 {
@@ -9,15 +9,15 @@ class Utilisateurs
 
     public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom, $dateNaissance)
     {
-        $resp = BD::connectionDB()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
+        $resp = DB::connectionDB()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
         $id = ($resp != null ? $resp : 0) + 1;
         $salt = md5(microtime(TRUE) * 100000);
         $mdpHash = hash('sha512', $motDePasse . $salt);
         //Ajout des infos de base
-        BD::connectionDB()->exec("INSERT INTO Utilisateur(id, nom, prenom, pseudo, dateInscription) 
+        DB::connectionDB()->exec("INSERT INTO Utilisateur(id, nom, prenom, pseudo, dateInscription) 
                                               VALUES($id , '$nom' , '$prenom', '$pseudo', NOW());");  //requete pour l'insertion d'un utilisateur
         //Ajout des données sensibles
-        BD::connectionDB()->exec("INSERT INTO UtilisateurPrivate(id, dateNaissance, mail, motDePasse, sel) 
+        DB::connectionDB()->exec("INSERT INTO UtilisateurPrivate(id, dateNaissance, mail, motDePasse, sel) 
                                               VALUES($id, '$dateNaissance', '$mail', '$mdpHash','$salt');");
         $destinataire = $_POST['mail'];
         $sujet = "Activer votre compte";
@@ -41,7 +41,7 @@ class Utilisateurs
 
     public function __construct()
     {
-        $this->bdd = BD::connectionDB();
+        $this->bdd = DB::connectionDB();
         $this->utilisateurs = array();
 
         $reqSelectUser = $this->bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM Utilisateur JOIN UtilisateurPrivate ON Utilisateur.id=UtilisateurPrivate.id;");
@@ -178,7 +178,7 @@ class Utilisateur
 
     public function validerInscription()
     {
-        $reqValider = BD::connectionDB()->exec("UPDATE UtilisateurPrivate SET etat = 1 WHERE id = $this->id;");
+        $reqValider = DB::connectionDB()->exec("UPDATE UtilisateurPrivate SET etat = 1 WHERE id = $this->id;");
         if ($reqValider != 0) {
             $this->etat = 1;
             return true;
@@ -192,7 +192,7 @@ class Utilisateur
         $mdpHash = hash('sha512', $motDePasse . $this->cle);
         if ($mdpHash == $this->motDePasse)
             return true;
-        $reqModifPWD = BD::connectionDB()->exec("UPDATE UtilisateurPrivate SET motDePasse = '$mdpHash' WHERE id = $this->id;");
+        $reqModifPWD = DB::connectionDB()->exec("UPDATE UtilisateurPrivate SET motDePasse = '$mdpHash' WHERE id = $this->id;");
         return $reqModifPWD != 0;
     }
 
