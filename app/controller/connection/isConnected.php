@@ -5,7 +5,7 @@
  * @author Lucas OMS
  */
 session_start();
-require_once '../../model/Utilisateur.php';
+require_once '../../model/Users.php';
 require_once '../../model/session.php';
 $returnValue = false;
 

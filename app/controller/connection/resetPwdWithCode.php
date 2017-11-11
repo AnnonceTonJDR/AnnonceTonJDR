@@ -6,7 +6,7 @@
  * @author Lucas OMS
  */
 session_start();
-include_once '../../model/Utilisateur.php';
+include_once '../../model/Users.php';
 include_once '../../controller/Utils.php';
 
 $flag = false;
@@ -18,22 +18,23 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
     $flag = true;  //pour l'instant on peut modifier le mot de passe
 
     //En premier lieu, on vérifie son code
-    $users = new Utilisateurs();
+    $users = new Users();
     $user = $users->getByMail($_GET['id']);
 
     if (!isset($user)) {
         $error = 'Mail inexistant!';
         $flag = false;
-    } else if ($user->getEtat() == 0) {
+    } else if ($user->getState() == 0) {
         $error = 'Votre compte n\'a pas été activé !';
         $flag = false;
     } /**********************************************************************************
      *Si tout est ok on vérifie que le code existe en BD
      ***********************************************************************************/
     else {
-        $req = DB::connectionDB()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
+        DB::connectionDB()->exec("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY);");
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
         $res = $req->fetch();
-        $flag = is_bool($res);
+        $flag = is_array($res);
         $error = "Aucune demande d'oubli de mot de passe recensée pour ce compte";
     }
 
@@ -52,7 +53,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
          ***********************************************************************/
         if ($flag) {
             $AInscriptionError = array();
-            if ($user->changerMotDePasse($_GET['confirm'])) {
+            if ($user->changePwd($_GET['confirm'])) {
                 $flag = true;
                 //SI tout s'est bien passé, on supprime le code de la BD
                 DB::connectionDB()->exec("DELETE FROM RecupMDP WHERE idUtilisateur=" . $user->getId());

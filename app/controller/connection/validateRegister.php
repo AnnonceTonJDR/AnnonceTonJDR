@@ -5,7 +5,7 @@
  * @author Lucas OMS
  */
 session_start();
-require_once '../../model/Utilisateur.php';
+require_once '../../model/Users.php';
 require_once '../../model/session.php';
 
 $flag = false;
@@ -24,7 +24,7 @@ if (!isset($_GET['cle']))
  *On essaie de récupérer le compte lié au pseudo    *
  *Si on y arrive pas c'est que le compte n'existe pas        *
  *******************************************/
-$users = new Utilisateurs();
+$users = new Users();
 $user = $users->getByPseudo($pseudo);
 if (!isset($user))
     $returnMsg = "Ce compte n'existe pas";
@@ -35,8 +35,8 @@ if (!isset($user))
  *Sinon c'est que son compte a déjà été activé on l'en informe                    *
  *************************************************************/
 
-else if ($user->getEtat() == 0) {
-    $return = $user->validerInscription($pseudo, $key);
+else if ($user->getState() == 0) {
+    $return = $user->validateRegister();
     if ($return) {
         $flag = true;
         $returnMsg = "Votre compte a été activé";

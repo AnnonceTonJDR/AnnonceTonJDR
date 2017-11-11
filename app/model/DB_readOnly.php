@@ -42,7 +42,7 @@ class DB_readOnly
     /**************************************************************
      *Fonction statique pour récupèrer l'unique connection à la base de donnée    *
      ***************************************************************/
-    public static function connectionDB_readOnly()
+    public static function connectionDB_readOnly() : PDO
     {
         if (self::$bdd == null) {
             new DB_readOnly();

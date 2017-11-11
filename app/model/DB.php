@@ -42,7 +42,7 @@ class DB
     /**************************************************************
      *Fonction statique pour récupèrer l'unique connection à la base de donnée    *
      ***************************************************************/
-    public static function connectionDB()
+    public static function connectionDB() : PDO
     {
         if (self::$bdd == null) {
             new DB();

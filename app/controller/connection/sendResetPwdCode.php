@@ -5,7 +5,7 @@
  * @author Lucas OMS
  */
 session_start();
-include_once '../../model/Utilisateur.php';
+include_once '../../model/Users.php';
 include_once '../../model/session.php';
 
 /**************************************************************
@@ -20,12 +20,12 @@ if (isset($_SESSION['session']))
  *Si un identifiant est renseigné on essaie de récupèrer l'utilisateur et on vérifie que son compte ai bien été activé        *
  *************************************************************************************************/
 if (isset($_GET['id'])) {
-    $users = new Utilisateurs();
+    $users = new Users();
     $user = $users->getByMail($_GET['id']);
 
     if (!isset($user)) {
         $error = 'Pseudo ou mail inexistant!';
-    } else if ($user->getEtat() == 0) {
+    } else if ($user->getState() == 0) {
         $error = 'Votre compte n\'a pas été activé !';
     } /**********************************************************************************
      *Si tout est ok on envoie un mail à l'utilisateuravec un code généré aléatoirement à récupérer        *

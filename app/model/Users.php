@@ -2,23 +2,23 @@
 include_once 'DB.php';
 require_once 'DB_readOnly.php';
 
-class Utilisateurs
+class Users
 {
     private $bdd;
-    private $utilisateurs;
+    private $users;
 
-    public function inscrireUtilisateur($pseudo, $mail, $motDePasse, $nom, $prenom, $dateNaissance)
+    public function registerUser($pseudo, $mail, $pwd, $lastName, $firstName, $birthday)
     {
         $resp = DB::connectionDB()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
         $id = ($resp != null ? $resp : 0) + 1;
         $salt = md5(microtime(TRUE) * 100000);
-        $mdpHash = hash('sha512', $motDePasse . $salt);
+        $mdpHash = hash('sha512', $pwd . $salt);
         //Ajout des infos de base
         DB::connectionDB()->exec("INSERT INTO Utilisateur(id, nom, prenom, pseudo, dateInscription) 
-                                              VALUES($id , '$nom' , '$prenom', '$pseudo', NOW());");  //requete pour l'insertion d'un utilisateur
+                                              VALUES($id , '$lastName' , '$firstName', '$pseudo', NOW());");  //requete pour l'insertion d'un utilisateur
         //Ajout des données sensibles
         DB::connectionDB()->exec("INSERT INTO UtilisateurPrivate(id, dateNaissance, mail, motDePasse, sel) 
-                                              VALUES($id, '$dateNaissance', '$mail', '$mdpHash','$salt');");
+                                              VALUES($id, '$birthday', '$mail', '$mdpHash','$salt');");
         $destinataire = $_POST['mail'];
         $sujet = "Activer votre compte";
         $entete = "From: inscription@annoncetonjdr.fr";
@@ -42,93 +42,93 @@ class Utilisateurs
     public function __construct()
     {
         $this->bdd = DB::connectionDB();
-        $this->utilisateurs = array();
+        $this->users = array();
 
         $reqSelectUser = $this->bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM Utilisateur JOIN UtilisateurPrivate ON Utilisateur.id=UtilisateurPrivate.id;");
         $reqSelectUser->execute();
         $res = $reqSelectUser->fetchall();
         foreach ($res as $user) {
-            $this->utilisateurs[] = new Utilisateur($user['id'], $user['pseudo'], $user['mail'], $user['motDePasse'], $user['etat'], $user['sel'], $user['nom'], $user['prenom'], $user['dateInsc']);
+            $this->users[] = new User($user['id'], $user['pseudo'], $user['mail'], $user['motDePasse'], $user['etat'], $user['sel'], $user['nom'], $user['prenom'], $user['dateInsc']);
         }
     }
 
-    public function getUtilisateurs()
+    public function getUsers() : array
     {
-        return $this->utilisateurs;
+        return $this->users;
     }
 
-    public function getByIdentifiantConnexion($identifiant)
+    public function getByConnectionId($identifiant) : User
     {
-        foreach ($this->utilisateurs as $user)
+        foreach ($this->users as $user)
             if ($user->getMail() == $identifiant || $user->getPseudo() == $identifiant)
                 return $user;
         return null;
     }
 
-    public function getById($id)
+    public function getById($id) : User
     {
-        foreach ($this->utilisateurs as $user)
+        foreach ($this->users as $user)
             if ($user->getId() == $id)
                 return $user;
         return null;
     }
 
-    public function getByPseudo($pseudo)
+    public function getByPseudo($pseudo) : User
     {
-        foreach ($this->utilisateurs as $user)
+        foreach ($this->users as $user)
             if ($user->getPseudo() == $pseudo)
                 return $user;
         return null;
     }
 
-    public function pseudoExisteDeja($pseudo)
+    public function pseudoAlreadyExists($pseudo)
     {
-        foreach ($this->utilisateurs as $user)
+        foreach ($this->users as $user)
             if ($user->getPseudo() == $pseudo)
                 return true;
         return false;
     }
 
-    public function mailExisteDeja($mail)
+    public function mailAlreadyExists($mail)
     {
-        foreach ($this->utilisateurs as $user)
+        foreach ($this->users as $user)
             if ($user->getMail() == $mail)
                 return true;
         return false;
     }
 
-    public function getByMail($mail)
+    public function getByMail($mail) : User
     {
-        foreach ($this->utilisateurs as $user)
+        foreach ($this->users as $user)
             if ($user->getMail() == $mail)
                 return $user;
         return false;
     }
 }
 
-class Utilisateur
+class User
 {
     private $id;
     private $pseudo;
     private $mail;
-    private $motDePasse;
-    private $etat;
-    private $cle;
-    private $prenom;
-    private $nom;
-    private $dateInscription;
+    private $pwd;
+    private $state;
+    private $salt;
+    private $firstName;
+    private $lastName;
+    private $subscriptionDate;
 
-    public function __construct($id, $pseudo, $mail, $motDePasse, $etat, $cle, $nom, $prenom, $dateInscription)
+    public function __construct($id, $pseudo, $mail, $pwd, $state, $salt, $lastName, $firstName, $subDate)
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
         $this->mail = $mail;
-        $this->motDePasse = $motDePasse;
-        $this->etat = $etat;
-        $this->cle = $cle;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->dateInscription = $dateInscription;
+        $this->pwd = $pwd;
+        $this->state = $state;
+        $this->salt = $salt;
+        $this->lastName = $lastName;
+        $this->firstName = $firstName;
+        $this->subscriptionDate = $subDate;
     }
 
     public function getMail()
@@ -136,19 +136,19 @@ class Utilisateur
         return $this->mail;
     }
 
-    public function getDateInscription()
+    public function getSubscriptionDate()
     {
-        return $this->dateInscription;
+        return $this->subscriptionDate;
     }
 
-    public function getMotDePasse()
+    public function getPwd()
     {
-        return $this->motDePasse;
+        return $this->pwd;
     }
 
-    public function getEtat()
+    public function getState()
     {
-        return $this->etat;
+        return $this->state;
     }
 
     public function getPseudo()
@@ -156,9 +156,9 @@ class Utilisateur
         return $this->pseudo;
     }
 
-    public function getCle()
+    public function getSalt()
     {
-        return $this->cle;
+        return $this->salt;
     }
 
     public function getId()
@@ -166,41 +166,41 @@ class Utilisateur
         return $this->id;
     }
 
-    public function getNom()
+    public function getLastName()
     {
-        return $this->nom;
+        return $this->lastName;
     }
 
-    public function getPrenom()
+    public function getFirstName()
     {
-        return $this->prenom;
+        return $this->firstName;
     }
 
-    public function validerInscription()
+    public function validateRegister()
     {
-        $reqValider = DB::connectionDB()->exec("UPDATE UtilisateurPrivate SET etat = 1 WHERE id = $this->id;");
-        if ($reqValider != 0) {
-            $this->etat = 1;
+        $valdiateReq = DB::connectionDB()->exec("UPDATE UtilisateurPrivate SET etat = 1 WHERE id = $this->id;");
+        if ($valdiateReq != 0) {
+            $this->state = 1;
             return true;
         } else {
             return false;
         }
     }
 
-    public function changerMotDePasse($motDePasse)
+    public function changePwd($pwd)
     {
-        $mdpHash = hash('sha512', $motDePasse . $this->cle);
-        if ($mdpHash == $this->motDePasse)
+        $pwd_hashed = hash('sha512', $pwd . $this->salt);
+        if ($pwd_hashed == $this->pwd)
             return true;
-        $reqModifPWD = DB::connectionDB()->exec("UPDATE UtilisateurPrivate SET motDePasse = '$mdpHash' WHERE id = $this->id;");
-        return $reqModifPWD != 0;
+        $modifPwdReq = DB::connectionDB()->exec("UPDATE UtilisateurPrivate SET motDePasse = '$pwd_hashed' WHERE id = $this->id;");
+        return $modifPwdReq != 0;
     }
 
-    public function verifierMotDePasse($motDePasse)
+    public function verifyPwd($pwd)
     {
         //On vérifie si le mdp+sel de la DB correspond au mdp+sel entré
-        $pass_hache = hash('sha512', $motDePasse . $this->cle);
-        if ($pass_hache == $this->motDePasse)
+        $pass_hashed = hash('sha512', $pwd . $this->salt);
+        if ($pass_hashed == $this->pwd)
             return true;
         return false;
     }

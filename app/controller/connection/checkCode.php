@@ -5,7 +5,7 @@
  * @author Lucas OMS
  */
 session_start();
-include_once '../../model/Utilisateur.php';
+include_once '../../model/Users.php';
 include_once '../../model/session.php';
 
 /**************************************************************
@@ -20,12 +20,12 @@ if (isset($_SESSION['session']))
  *Si un id est renseigné on essaie de récupèrer l'utilisateur et on vérifie que son compte ai bien été activé        *
  *************************************************************************************************/
 if (isset($_GET['id']) && isset($_GET['code'])) {
-    $users = new Utilisateurs();
+    $users = new Users();
     $user = $users->getByMail($_GET['id']);
 
     if (!isset($user)) {
         $error = 'Mail inexistant!';
-    } else if ($user->getEtat() == 0) {
+    } else if ($user->getState() == 0) {
         $error = 'Votre compte n\'a pas été activé !';
     } /**********************************************************************************
      *Si tout est ok on vérifie que le code existe en BD

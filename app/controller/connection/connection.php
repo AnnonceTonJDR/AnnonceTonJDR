@@ -5,7 +5,7 @@
  * @author Lucas OMS
  */
 
-include '../../model/Utilisateur.php';
+include '../../model/Users.php';
 include '../../model/session.php';
 session_start();
 
@@ -13,8 +13,8 @@ session_start();
  *Si les champs ont été renseignés on cherche à récupérer l'utilisateur correspondant        *
  *************************************************************************/
 if (isset($_POST['id']) && isset($_POST['pwd'])) {
-    $users = new Utilisateurs();
-    $user = $users->getByIdentifiantConnexion($_POST['id']);
+    $users = new Users();
+    $user = $users->getByConnectionId($_POST['id']);
 
     /**********************************************************************
      *Lorsqu'on a l'utilisateur on vérifie que son compte a bien été activé                            *
@@ -22,10 +22,10 @@ if (isset($_POST['id']) && isset($_POST['pwd'])) {
      ***********************************************************************/
 
     if (isset($user)) {
-        if ($user->getEtat() == 0) {
+        if ($user->getState() == 0) {
             $connectionMsg = 'Votre compte n\'a pas été activé !';
         } else {
-            if ($user->verifierMotDePasse($_POST['pwd'])) {
+            if ($user->verifyPwd($_POST['pwd'])) {
                 $_SESSION['session'] = serialize(new Session($user));
                 $flag = 1;
             } else {
@@ -46,7 +46,7 @@ if (isset($_POST['id']) && isset($_POST['pwd'])) {
 $obj = new stdClass();
 $obj->ok = $flag;
 $obj->msg = $connectionMsg;
-$obj->userName = (isset($user) ? $user->getNom() : "Utilisateur introuvable");
+$obj->userName = (isset($user) ? $user->getLastName() : "Utilisateur introuvable");
 
 ////////////Sorties des variables en JSON
 header('Cache-Control: no-cache, must-revalidate');
