@@ -8,26 +8,26 @@ session_start();
 require_once '../../model/Utilisateur.php';
 require_once '../../model/session.php';
 
-$drapeau = false;
-$messageRetour = "Erreur inconnue";
+$flag = false;
+$returnMsg = "Erreur inconnue";
 $pseudo = $_GET['log'];
-$cle = $_GET['cle'];
+$key = $_GET['cle'];
 
 /****************************************************************
  *Si la clé n'est pas renseigné dans l'URL on ne peut valider l'inscription            *
  *On en informe donc l'utilisateur qui doit réouvrir le lien depuis sa boite mail    *
  *****************************************************************/
 if (!isset($_GET['cle']))
-    $messageRetour = "Essayer de ré-ouvrir le lien depuis votre boite mail";
+    $returnMsg = "Essayer de ré-ouvrir le lien depuis votre boite mail";
 
 /******************************************
  *On essaie de récupérer le compte lié au pseudo    *
  *Si on y arrive pas c'est que le compte n'existe pas        *
  *******************************************/
-$utilisateurs = new Utilisateurs();
-$user = $utilisateurs->getByPseudo($pseudo);
+$users = new Utilisateurs();
+$user = $users->getByPseudo($pseudo);
 if (!isset($user))
-    $messageRetour = "Ce compte n'existe pas";
+    $returnMsg = "Ce compte n'existe pas";
 
 /************************************************************
  *Si l'état de l'utilisateur vaut 0 c'est que son compte n'était pas activé    *
@@ -36,14 +36,15 @@ if (!isset($user))
  *************************************************************/
 
 else if ($user->getEtat() == 0) {
-    $retour = $user->validerInscription($pseudo, $cle);
-    if ($retour) {
-        $drapeau = true;
-        $messageRetour = "Votre compte a été activé";
+    $return = $user->validerInscription($pseudo, $key);
+    if ($return) {
+        $flag = true;
+        $returnMsg = "Votre compte a été activé";
         $_SESSION['session'] = serialize(new Session($user));
+        //TODO rediriger l'utilisateur après l'activation vers le site
     }
 } else {
-    $messageRetour = "Votre compte a déjà été activé";
+    $returnMsg = "Votre compte a déjà été activé";
 }
 
 /******************************************************
@@ -51,8 +52,8 @@ else if ($user->getEtat() == 0) {
  *******************************************************/
 
 $obj = new stdClass();
-$obj->ok = $drapeau;
-$obj->erreur = $messageRetour;
+$obj->ok = $flag;
+$obj->erreur = $returnMsg;
 
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
