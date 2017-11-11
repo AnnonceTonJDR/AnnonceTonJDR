@@ -31,7 +31,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
      *Si tout est ok on vérifie que le code existe en BD
      ***********************************************************************************/
     else {
-        $req = BD::connexionBDD()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
+        $req = BD::connectionDB()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
         $res = $req->fetch();
         $flag = is_bool($res);
         $error = "Aucune demande d'oubli de mot de passe recensée pour ce compte";
@@ -55,7 +55,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
             if ($user->changerMotDePasse($_GET['confirm'])) {
                 $flag = true;
                 //SI tout s'est bien passé, on supprime le code de la BD
-                BD::connexionBDD()->exec("DELETE FROM RecupMDP WHERE idUtilisateur=" . $user->getId());
+                BD::connectionDB()->exec("DELETE FROM RecupMDP WHERE idUtilisateur=" . $user->getId());
             } else {
                 $AInscriptionError[] = 'Votre mot de passe n\'a pas été modifié dans la base de données';
                 $flag = false;

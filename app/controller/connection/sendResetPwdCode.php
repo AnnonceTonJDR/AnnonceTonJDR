@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
         $header = "From: motDePasse@annonceTonJDR.fr";
         $rand = md5(microtime());
         //Ajout en BD du code
-        BD::connexionBDD()->exec("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY) OR idUtilisateur=" . $user->getId()
+        BD::connectionDB()->exec("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY) OR idUtilisateur=" . $user->getId()
             . "; INSERT INTO RecupMDP(code, idUtilisateur) VALUES ('$rand', " . $user->getId() . ")");
 
         // Le lien d'activation est composé du pseudo(log) et de la clé(cle)

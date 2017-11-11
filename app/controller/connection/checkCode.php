@@ -31,7 +31,7 @@ if (isset($_GET['id']) && isset($_GET['code'])) {
      *Si tout est ok on vérifie que le code existe en BD
      ***********************************************************************************/
     else {
-        $req = BD::connexionBDD()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
+        $req = BD::connectionDB()->query("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY); SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
         $res = $req->fetch();
         $flag = is_bool($res);
         $error = "Aucune demande d'oubli de mot de passe recensée pour ce compte";

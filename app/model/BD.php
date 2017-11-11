@@ -42,7 +42,7 @@ class BD
     /**************************************************************
      *Fonction statique pour récupèrer l'unique connection à la base de donnée    *
      ***************************************************************/
-    public static function connexionBDD()
+    public static function connectionDB()
     {
         if (self::$bdd == null) {
             new BD();
