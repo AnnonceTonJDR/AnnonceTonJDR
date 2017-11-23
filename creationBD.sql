@@ -12,11 +12,12 @@ CREATE TABLE IF NOT EXISTS `Utilisateur` (
   AUTO_INCREMENT = 0;
 
 CREATE TABLE IF NOT EXISTS `UtilisateurPrivate` (
-  `id`         INT(11),
-  `mail`       VARCHAR(255) NOT NULL,
-  `etat`       INT(11)      NOT NULL,
-  `motDePasse` VARCHAR(128) NOT NULL,
-  `sel`        VARCHAR(32)  NOT NULL
+  `id`            INT(11),
+  `mail`          VARCHAR(255) NOT NULL,
+  `etat`          INT(11)      NOT NULL,
+  `motDePasse`    VARCHAR(128) NOT NULL,
+  `sel`           VARCHAR(32)  NOT NULL,
+  `dateNaissance` DATETIME
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -117,14 +118,14 @@ CREATE TABLE IF NOT EXISTS `Annonce` (
   AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS `Campagne` (
-  `idCampagne`              INT(11)     NOT NULL AUTO_INCREMENT,
-  `sujetChangement`         TINYINT(1)  NOT NULL,
-  `nbSessions`              TINYINT(2)  NOT NULL,
-  `nom`                     INT(11)     NOT NULL,
-  `libre`                   TINYINT(1)  NOT NULL,
-  `frequence`               VARCHAR(63) NOT NULL,
-  `laisserLesGensMeJoindre` INT(11)     NOT NULL,
-  `idAnnonceAssociee`       INT(11)     NOT NULL,
+  `idCampagne`              INT(11)    NOT NULL AUTO_INCREMENT,
+  `sujetChangement`         TINYINT(1) NOT NULL,
+  `nbSessions`              TINYINT(2) NOT NULL,
+  `nom`                     INT(11)    NOT NULL,
+  `libre`                   TINYINT(1) NOT NULL,
+  `frequence`               VARCHAR(63),
+  `laisserLesGensMeJoindre` INT(11)    NOT NULL,
+  `idAnnonceAssociee`       INT(11)    NOT NULL,
   PRIMARY KEY (`idCampagne`),
   FOREIGN KEY (`idAnnonceAssociee`) REFERENCES `Annonce` (`idAnnonce`)
 )
