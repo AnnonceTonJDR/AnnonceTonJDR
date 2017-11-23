@@ -127,7 +127,19 @@ CREATE TABLE IF NOT EXISTS `Campagne` (
   AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS `Inscription` (
-  `idUtilisateur` int(11) NOT NULL,
-  `idAnnonce` int(11) NOT NULL,
-  PRIMARY KEY (`idUtilisateur`,`idAnnonce`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `idUtilisateur` INT(11) NOT NULL,
+  `idAnnonce`     INT(11) NOT NULL,
+  PRIMARY KEY (`idUtilisateur`, `idAnnonce`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `SeRealisera` (
+  `idCampagne` INT(11)      NOT NULL,
+  `date`       DATETIME     NOT NULL,
+  `lieu`       VARCHAR(255) NOT NULL,
+  `heure`      VARCHAR(5)   NOT NULL,
+  PRIMARY KEY (`idCampagne`, `date`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
