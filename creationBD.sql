@@ -90,12 +90,12 @@ CREATE TABLE IF NOT EXISTS `Annonce` (
   `ageMin`                    TINYTEXT     NOT NULL,
   `ageMax`                    TINYTEXT     NOT NULL,
   `nomJeu`                    VARCHAR(255) NOT NULL,
-  `edition`                   TINYINT(2)   NOT NULL,
+  `edition`                   VARCHAR(32)  NOT NULL,
   `nomScenario`               VARCHAR(255) NOT NULL,
-  `editionScenario`           TINYINT(2)   NOT NULL,
+  `editionScenario`           VARCHAR(32)  NOT NULL,
   `adresse`                   VARCHAR(255) NOT NULL,
-  `zone`                      INT(11)      NOT NULL,
-  `lieu`                      TINYINT(2)   NOT NULL,
+  `zone`                      VARCHAR(32)  NOT NULL,
+  `lieu`                      VARCHAR(32)   NOT NULL,
   `nourritureBoisson`         TINYTEXT     NOT NULL,
   `alcool`                    TINYINT(4)   NOT NULL,
   `fumer`                     TINYINT(4)   NOT NULL,
@@ -105,11 +105,42 @@ CREATE TABLE IF NOT EXISTS `Annonce` (
   `date`                      DATETIME     NOT NULL,
   `faitPartieCamapgneOuverte` TINYINT(1)   NOT NULL,
   `dateDerniereModif`         TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idAnnonce`)
+  PRIMARY KEY (`idAnnonce`),
+  FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`),
+  FOREIGN KEY (`edition`) REFERENCES `EditionJeu` (`type`),
+  FOREIGN KEY (`editionScenario`) REFERENCES `EditionScenario` (`type`),
+  FOREIGN KEY (`lieu`) REFERENCES `TypeLieu` (`type`)
+
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
+
+ALTER TABLE `Annonce`
+  ADD FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (
+  `id`
+)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
+ALTER TABLE `Annonce`
+  ADD FOREIGN KEY (`edition`) REFERENCES `EditionJeu` (
+  `type`
+)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
+ALTER TABLE `Annonce`
+  ADD FOREIGN KEY (`editionScenario`) REFERENCES `EditionScenario` (
+  `type`
+)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
+
+ALTER TABLE `Annonce`
+  ADD FOREIGN KEY (`lieu`) REFERENCES `TypeLieu` (
+  `type`
+)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
 
 CREATE TABLE IF NOT EXISTS `Campagne` (
   `idCampagne`              INT(11)     NOT NULL AUTO_INCREMENT,
@@ -153,3 +184,24 @@ CREATE TABLE IF NOT EXISTS `SpecialEvennement` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
+
+CREATE TABLE IF NOT EXISTS `EditionJeu` (
+  `type` VARCHAR(32),
+  PRIMARY KEY (`type`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `EditionScenario` (
+  `type` VARCHAR(32),
+  PRIMARY KEY (`type`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `TypeLieu` (
+  `type` VARCHAR(32),
+  PRIMARY KEY (`type`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
