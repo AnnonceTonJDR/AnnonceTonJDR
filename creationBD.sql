@@ -143,3 +143,13 @@ CREATE TABLE IF NOT EXISTS `SeRealisera` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `SpecialEvennement` (
+  `idEvennement`  INT(11)      NOT NULL AUTO_INCREMENT,
+  `idAnnonce`     INT(11)      NOT NULL,
+  `nomEvennement` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`idEvennement`, `idAnnonce`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  AUTO_INCREMENT = 1;
