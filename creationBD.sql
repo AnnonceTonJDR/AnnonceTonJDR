@@ -110,3 +110,18 @@ CREATE TABLE IF NOT EXISTS `Annonce` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
+
+CREATE TABLE IF NOT EXISTS `Campagne` (
+  `idCampagne`              INT(11)     NOT NULL AUTO_INCREMENT,
+  `sujetChangement`         TINYINT(1)  NOT NULL,
+  `nbSessions`              TINYINT(2)  NOT NULL,
+  `nom`                     INT(11)     NOT NULL,
+  `libre`                   TINYINT(1)  NOT NULL,
+  `frequence`               VARCHAR(63) NOT NULL,
+  `laisserLesGensMeJoindre` INT(11)     NOT NULL,
+  `idAnnonceAssociee`       INT(11)     NOT NULL,
+  PRIMARY KEY (`idCampagne`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  AUTO_INCREMENT = 1;
