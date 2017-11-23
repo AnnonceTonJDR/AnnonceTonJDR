@@ -125,3 +125,9 @@ CREATE TABLE IF NOT EXISTS `Campagne` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
+
+CREATE TABLE IF NOT EXISTS `Inscription` (
+  `idUtilisateur` int(11) NOT NULL,
+  `idAnnonce` int(11) NOT NULL,
+  PRIMARY KEY (`idUtilisateur`,`idAnnonce`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
