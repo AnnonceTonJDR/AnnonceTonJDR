@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `UtilisateurPrivate` (
   `id`         INT(11),
   `mail`       VARCHAR(255) NOT NULL,
   `etat`       INT(11)      NOT NULL,
-  `motDePasse` VARCHAR(128)  NOT NULL,
+  `motDePasse` VARCHAR(128) NOT NULL,
   `sel`        VARCHAR(32)  NOT NULL
 )
   ENGINE = InnoDB
@@ -50,31 +50,63 @@ ALTER TABLE `RecupMDP`
   ON DELETE NO ACTION
   ON UPDATE CASCADE;
 
-ALTER TABLE  `RecupMDP` ADD UNIQUE (
+ALTER TABLE `RecupMDP`
+  ADD UNIQUE (
   `idUtilisateur`
 );
 
 
 /* Ajout d'un compte de test pour la connection */
-INSERT INTO  `Utilisateur` (
-`id` ,
-`nom` ,
-`prenom` ,
-`pseudo` ,
-`dateInscription`
+INSERT INTO `Utilisateur` (
+  `id`,
+  `nom`,
+  `prenom`,
+  `pseudo`,
+  `dateInscription`
 )
 VALUES (
-1, 'test','test','test', NOW()
+  1, 'test', 'test', 'test', NOW()
 );
 
-INSERT INTO  `UtilisateurPrivate` (
-`id` ,
-`mail` ,
-`etat` ,
-`motDePasse` ,
-`sel` ,
-`dateNaissance`
+INSERT INTO `UtilisateurPrivate` (
+  `id`,
+  `mail`,
+  `etat`,
+  `motDePasse`,
+  `sel`,
+  `dateNaissance`
 )
 VALUES (
-'2',  'test@test.fr',  '1',  'c508630359b61efdb2c9912e9188a8db',  '132e21374bc8ac35487014f7780fe7eb8bfe2e1991433dd8af28768e7ba6dcc2c21d01a1e0c2695c4a642b6190bb8d2c9d8ebd91a79fc3ad6e761fcdbc316125', '31-10-2017'
+  '2', 'test@test.fr', '1', 'c508630359b61efdb2c9912e9188a8db',
+  '132e21374bc8ac35487014f7780fe7eb8bfe2e1991433dd8af28768e7ba6dcc2c21d01a1e0c2695c4a642b6190bb8d2c9d8ebd91a79fc3ad6e761fcdbc316125',
+  '31-10-2017'
 );
+
+CREATE TABLE IF NOT EXISTS `Annonce` (
+  `idAnnonce`                 INT(11)      NOT NULL AUTO_INCREMENT,
+  `idUtilisateur`             INT(11)      NOT NULL,
+  `lienAssocie`               VARCHAR(255),
+  `joueurMax`                 TINYINT(2)   NOT NULL,
+  `ageMin`                    TINYTEXT     NOT NULL,
+  `ageMax`                    TINYTEXT     NOT NULL,
+  `nomJeu`                    VARCHAR(255) NOT NULL,
+  `edition`                   TINYINT(2)   NOT NULL,
+  `nomScenario`               VARCHAR(255) NOT NULL,
+  `editionScenario`           TINYINT(2)   NOT NULL,
+  `adresse`                   VARCHAR(255) NOT NULL,
+  `zone`                      INT(11)      NOT NULL,
+  `lieu`                      TINYINT(2)   NOT NULL,
+  `nourritureBoisson`         TINYTEXT     NOT NULL,
+  `alcool`                    TINYINT(4)   NOT NULL,
+  `fumer`                     TINYINT(4)   NOT NULL,
+  `titreForum`                VARCHAR(255) NOT NULL,
+  `considerForumThread`       TINYINT(1)   NOT NULL,
+  `commentaire`               TEXT         NOT NULL,
+  `date`                      DATETIME     NOT NULL,
+  `faitPartieCamapgneOuverte` TINYINT(1)   NOT NULL,
+  `dateDerniereModif`         TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idAnnonce`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  AUTO_INCREMENT = 1;
