@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `Annonce` (
   `editionScenario`           VARCHAR(32)  NOT NULL,
   `adresse`                   VARCHAR(255) NOT NULL,
   `zone`                      VARCHAR(32)  NOT NULL,
-  `lieu`                      VARCHAR(32)   NOT NULL,
+  `lieu`                      VARCHAR(32)  NOT NULL,
   `nourritureBoisson`         TINYTEXT     NOT NULL,
   `alcool`                    TINYINT(4)   NOT NULL,
   `fumer`                     TINYINT(4)   NOT NULL,
@@ -116,32 +116,6 @@ CREATE TABLE IF NOT EXISTS `Annonce` (
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
 
-ALTER TABLE `Annonce`
-  ADD FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (
-  `id`
-)
-  ON DELETE NO ACTION
-  ON UPDATE CASCADE;
-ALTER TABLE `Annonce`
-  ADD FOREIGN KEY (`edition`) REFERENCES `EditionJeu` (
-  `type`
-)
-  ON DELETE NO ACTION
-  ON UPDATE CASCADE;
-ALTER TABLE `Annonce`
-  ADD FOREIGN KEY (`editionScenario`) REFERENCES `EditionScenario` (
-  `type`
-)
-  ON DELETE NO ACTION
-  ON UPDATE CASCADE;
-
-ALTER TABLE `Annonce`
-  ADD FOREIGN KEY (`lieu`) REFERENCES `TypeLieu` (
-  `type`
-)
-  ON DELETE NO ACTION
-  ON UPDATE CASCADE;
-
 CREATE TABLE IF NOT EXISTS `Campagne` (
   `idCampagne`              INT(11)     NOT NULL AUTO_INCREMENT,
   `sujetChangement`         TINYINT(1)  NOT NULL,
@@ -151,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `Campagne` (
   `frequence`               VARCHAR(63) NOT NULL,
   `laisserLesGensMeJoindre` INT(11)     NOT NULL,
   `idAnnonceAssociee`       INT(11)     NOT NULL,
-  PRIMARY KEY (`idCampagne`)
+  PRIMARY KEY (`idCampagne`),
+  FOREIGN KEY (`idAnnonceAssociee`) REFERENCES `Annonce` (`idAnnonce`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -160,7 +135,9 @@ CREATE TABLE IF NOT EXISTS `Campagne` (
 CREATE TABLE IF NOT EXISTS `Inscription` (
   `idUtilisateur` INT(11) NOT NULL,
   `idAnnonce`     INT(11) NOT NULL,
-  PRIMARY KEY (`idUtilisateur`, `idAnnonce`)
+  PRIMARY KEY (`idUtilisateur`, `idAnnonce`),
+  FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`idUtilisateur`),
+  FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
@@ -170,7 +147,8 @@ CREATE TABLE IF NOT EXISTS `SeRealisera` (
   `date`       DATETIME     NOT NULL,
   `lieu`       VARCHAR(255) NOT NULL,
   `heure`      VARCHAR(5)   NOT NULL,
-  PRIMARY KEY (`idCampagne`, `date`)
+  PRIMARY KEY (`idCampagne`, `date`),
+  FOREIGN KEY (`idCampagne`) REFERENCES `Annonce` (`idCampagne`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
@@ -179,7 +157,8 @@ CREATE TABLE IF NOT EXISTS `SpecialEvennement` (
   `idEvennement`  INT(11)      NOT NULL AUTO_INCREMENT,
   `idAnnonce`     INT(11)      NOT NULL,
   `nomEvennement` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`idEvennement`, `idAnnonce`)
+  PRIMARY KEY (`idEvennement`, `idAnnonce`),
+  FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -192,6 +171,17 @@ CREATE TABLE IF NOT EXISTS `EditionJeu` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
+INSERT INTO `EditionJeu` (
+  `type`
+)
+VALUES (
+  'Commercial'
+), (
+  'Amateur'
+), (
+  'Personnel'
+);
+
 CREATE TABLE IF NOT EXISTS `EditionScenario` (
   `type` VARCHAR(32),
   PRIMARY KEY (`type`)
@@ -199,9 +189,33 @@ CREATE TABLE IF NOT EXISTS `EditionScenario` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
+INSERT INTO `EditionScenario` (
+  `type`
+)
+VALUES (
+  'Commercial'
+), (
+  'Internet'
+), (
+  'Personnel'
+);
+
 CREATE TABLE IF NOT EXISTS `TypeLieu` (
   `type` VARCHAR(32),
   PRIMARY KEY (`type`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
+
+INSERT INTO `TypeLieu` (
+  `type`
+)
+VALUES (
+  'Maison'
+), (
+  'Salle'
+), (
+  'Bar'
+), (
+  'Jardin'
+);
