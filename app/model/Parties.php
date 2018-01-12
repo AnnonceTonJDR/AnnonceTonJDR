@@ -61,4 +61,148 @@ class Parties
 class Party
 {
 
+    private $idOwner;
+    private $ageMin;
+    private $ageMax;
+    private $maxPlayer;
+    private $gameName;
+    private $gameEdition;
+    private $scenarioName;
+    private $scenarioEdition;
+    private $address;
+    private $area;
+    private $place;
+    private $foodBeverage;
+    private $alcohol;
+    private $smoker;
+    private $forumTitle;
+    private $comment;
+    private $date;
+    private $isOpenedCampain;
+    private $nbPlayerAlreadyIn;
+
+    /**
+     * Party constructor.
+     */
+    public function __construct($idOwner, $ageMin, $ageMax, $maxPlayer, $gameName, $gameEdition, $scenarioName, $scenarioEdition, $address, $area, $place, $foodBeverage, $alcohol, $smoker, $forumTitle, $comment, $date, $isOpenedCampain, $nbPlayerAlreadyIn)
+    {
+        $this->idOwner = $idOwner;
+        $this->ageMin = $ageMin;
+        $this->ageMax = $ageMax;
+        $this->maxPlayer = $maxPlayer;
+        $this->gameName = $gameName;
+        $this->gameEdition = $gameEdition;
+        $this->scenarioName = $scenarioName;
+        $this->scenarioEdition = $scenarioEdition;
+        $this->address = $address;
+        $this->area = $area;
+        $this->place = $place;
+        $this->foodBeverage = $foodBeverage;
+        $this->alcohol = $alcohol;
+        $this->smoker = $smoker;
+        $this->forumTitle = $forumTitle;
+        $this->comment = $comment;
+        $this->date = $date;
+        $this->isOpenedCampain = $isOpenedCampain;
+        $this->nbPlayerAlreadyIn = $nbPlayerAlreadyIn;
+    }
+
+    public function getIdOwner()
+    {
+        return $this->idOwner;
+    }
+
+    public function getAgeMin()
+    {
+        return $this->ageMin;
+    }
+
+    public function getAgeMax()
+    {
+        return $this->ageMax;
+    }
+
+    public function getMaxPlayer()
+    {
+        return $this->maxPlayer;
+    }
+
+    public function getGameName()
+    {
+        return $this->gameName;
+    }
+
+    public function getGameEdition()
+    {
+        return $this->gameEdition;
+    }
+
+    public function getScenarioName()
+    {
+        return $this->scenarioName;
+    }
+
+    public function getScenarioEdition()
+    {
+        return $this->scenarioEdition;
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    public function getFoodBeverage()
+    {
+        return $this->foodBeverage;
+    }
+
+    public function getAlcohol()
+    {
+        return $this->alcohol;
+    }
+
+    public function getSmoker()
+    {
+        return $this->smoker;
+    }
+
+    public function getForumTitle()
+    {
+        return $this->forumTitle;
+    }
+
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    
+    public function getisOpenedCampain()
+    {
+        return $this->isOpenedCampain;
+    }
+
+    public function getNbPlayerAlreadyIn()
+    {
+        return $this->nbPlayerAlreadyIn;
+    }
+
+    
+
 }
