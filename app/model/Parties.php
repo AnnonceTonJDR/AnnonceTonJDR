@@ -6,13 +6,33 @@
  * Time: 16:38
  */
 
+include_once "DB.php";
 include_once "DB_readOnly.php";
 
 class Parties
 {
     static function createParty($idOwner, $minAge, $maxAge, $maxPlayer, $gameName, $gameEdition, $scenarioName, $scenarioEdition, $address, $area, $place, $foodBeverage, $alcohol, $smokerFree, $forumTitle, $comment, $date, $isOpenedCampain, $playersAlreadyIn)
     {
-
+        $req = DB::connectionDB()->prepare("INSERT INTO Annonce VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $req->execute(array($idOwner,
+            $minAge,
+            $maxAge,
+            $maxPlayer,
+            $gameName,
+            $gameEdition,
+            $scenarioName,
+            $scenarioEdition,
+            $address,
+            $area,
+            $place,
+            $foodBeverage,
+            $alcohol,
+            $smokerFree,
+            $forumTitle,
+            $comment,
+            $date,
+            $isOpenedCampain,
+            $playersAlreadyIn));
     }
 
     public static function isValidGameEdition($edition): bool
@@ -192,7 +212,7 @@ class Party
         return $this->date;
     }
 
-    
+
     public function getisOpenedCampain()
     {
         return $this->isOpenedCampain;
@@ -203,6 +223,5 @@ class Party
         return $this->nbPlayerAlreadyIn;
     }
 
-    
 
 }
