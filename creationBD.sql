@@ -220,3 +220,13 @@ VALUES (
 ), (
   'Jardin'
 );
+
+#region ============= Zone =============
+CREATE TABLE Zone (
+  id     INT(11) PRIMARY KEY,
+  idPere INT(11)     NOT NULL REFERENCES Zone (`id`),
+  nom    VARCHAR(32) NOT NULL
+);
+
+#endregion
+
