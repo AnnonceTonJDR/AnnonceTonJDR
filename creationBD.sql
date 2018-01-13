@@ -381,6 +381,19 @@ INSERT INTO Zone VALUES (134, 128, "Vaison-la-Romaine");
 INSERT INTO Zone VALUES (135, 128, "Bollène");
 INSERT INTO Zone VALUES (136, 128, "Carpentras");
 
+# Requete censée fonctionner
+# WITH Region AS (
+#   SELECT z1.*
+#     FROM Zone AS z1
+#     WHERE z1.`id` = 2
+#   UNION ALL
+#   SELECT z.*
+#     FROM Region AS r, Zone AS z
+#     WHERE r.`id` = z.`idPere`
+# )
+# SELECT * FROM Region;
+
+
 #endregion
 
 #endregion
