@@ -4,7 +4,7 @@ require_once 'DB_readOnly.php';
 
 class Users
 {
-    public static function registerUser($pseudo, $mail, $pwd, $lastName, $firstName, $birthday)
+    public static function registerUser(string $pseudo, string $mail, string $pwd, string $lastName, string $firstName, $birthday)
     {
         $resp = DB::connectionDB()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
         $id = ($resp != null ? $resp : 0) + 1;
@@ -36,14 +36,14 @@ class Users
 
     }
 
-    public static function mailUser($idUser, $subject, $msg, $compactSubject)
+    public static function mailUser(int $idUser, string $subject, string $msg, string $compactSubject)
     {
         $user = Users::getById($idUser);
 
         mail($user->getMail(), $subject, $msg, "From: " . $compactSubject . "inscription@annoncetonjdr.fr"); // Envoi du mail
     }
 
-    public static function mailUsers(Array $idUsers, $subject, $msg, $compactSubject)
+    public static function mailUsers(Array $idUsers, string $subject, string $msg, string $compactSubject)
     {
         foreach ($idUsers as $idUser) {
             mail(Users::getById($idUser)->getMail(), $subject, $msg, "From: " . $compactSubject . "inscription@annoncetonjdr.fr"); // Envoi du mail
@@ -164,7 +164,7 @@ class User
     private $lastName;
     private $subscriptionDate;
 
-    public function __construct($id, $pseudo, $mail, $pwd, $state, $salt, $lastName, $firstName, $subDate)
+    public function __construct(int $id, string $pseudo, string $mail, string $pwd, int $state, string $salt, string $lastName, string $firstName, $subDate)
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
@@ -177,7 +177,7 @@ class User
         $this->subscriptionDate = $subDate;
     }
 
-    public function getMail()
+    public function getMail(): string
     {
         return $this->mail;
     }
@@ -187,42 +187,42 @@ class User
         return $this->subscriptionDate;
     }
 
-    public function getPwd()
+    public function getPwd(): string
     {
         return $this->pwd;
     }
 
-    public function getState()
+    public function getState(): int
     {
         return $this->state;
     }
 
-    public function getPseudo()
+    public function getPseudo(): string
     {
         return $this->pseudo;
     }
 
-    public function getSalt()
+    public function getSalt(): string
     {
         return $this->salt;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->lastName;
     }
 
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
 
-    public function validateRegister()
+    public function validateRegister(): bool
     {
         $valdiateReq = DB::connectionDB()->exec("UPDATE UtilisateurPrivate SET etat = 1 WHERE id = $this->id;");
         if ($valdiateReq != 0) {
@@ -233,7 +233,7 @@ class User
         }
     }
 
-    public function changePwd($pwd)
+    public function changePwd($pwd): bool
     {
         $pwd_hashed = hash('sha512', $pwd . $this->salt);
         if ($pwd_hashed == $this->pwd)
@@ -242,7 +242,7 @@ class User
         return $modifPwdReq != 0;
     }
 
-    public function verifyPwd($pwd)
+    public function verifyPwd($pwd): bool
     {
         //On vérifie si le mdp+sel de la DB correspond au mdp+sel entré
         $pass_hashed = hash('sha512', $pwd . $this->salt);
