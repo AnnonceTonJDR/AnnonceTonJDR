@@ -11,12 +11,15 @@ include_once "DB_readOnly.php";
 
 class Parties
 {
-    static function createParty($idOwner, $minAge, $maxAge, $maxPlayer, $gameName, $gameEdition, $scenarioName, $scenarioEdition, $address, $area, $place, $foodBeverage, $alcohol, $smokerFree, $forumTitle, $comment, $date, $isOpenedCampain, $playersAlreadyIn)
+    static function createParty(int $idOwner, int $ageMin, int $ageMax, int $maxPlayer, string $gameName,
+                                string $gameEdition, string $scenarioName, string $scenarioEdition, string $address,
+                                int $area, string $place, int $foodBeverage, int $alcohol, int $smokerFree,
+                                string $forumTitle, string $comment, $date, bool $isOpenedCampain, int $nbPlayerAlreadyIn)
     {
         $req = DB::connectionDB()->prepare("INSERT INTO Annonce VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $req->execute(array($idOwner,
-            $minAge,
-            $maxAge,
+            $ageMin,
+            $ageMax,
             $maxPlayer,
             $gameName,
             $gameEdition,
@@ -32,10 +35,10 @@ class Parties
             $comment,
             $date,
             $isOpenedCampain,
-            $playersAlreadyIn));
+            $nbPlayerAlreadyIn));
     }
 
-    public static function isValidGameEdition($edition): bool
+    public static function isValidGameEdition(string $edition): bool
     {
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM EditionJeu")->fetchAll();
         foreach ($req as $ed) {
@@ -45,7 +48,7 @@ class Parties
         return false;
     }
 
-    public static function isValidScenarioEdition($edition): bool
+    public static function isValidScenarioEdition(string $edition): bool
     {
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM EditionScenario")->fetchAll();
         foreach ($req as $ed) {
@@ -55,19 +58,19 @@ class Parties
         return false;
     }
 
-    public static function doesAreaExist($idZone): bool
+    public static function doesAreaExist(int $idZone): bool
     {
         //TODO vérif l'id en BD
         return true;
     }
 
-    public static function isAreaAccurateEnough($idZone): bool
+    public static function isAreaAccurateEnough(int $idZone): bool
     {
         //TODO Check level of the area from the root of the tree
         return true;
     }
 
-    public static function isValidPlace($lieu): bool
+    public static function isValidPlace(string $lieu): bool
     {
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM TypeLieu")->fetchAll();
         foreach ($req as $place) {
@@ -104,7 +107,10 @@ class Party
     /**
      * Party constructor.
      */
-    public function __construct($idOwner, $ageMin, $ageMax, $maxPlayer, $gameName, $gameEdition, $scenarioName, $scenarioEdition, $address, $area, $place, $foodBeverage, $alcohol, $smoker, $forumTitle, $comment, $date, $isOpenedCampain, $nbPlayerAlreadyIn)
+    public function __construct(int $idOwner, int $ageMin, int $ageMax, int $maxPlayer, string $gameName,
+                                string $gameEdition, string $scenarioName, string $scenarioEdition, string $address,
+                                int $area, string $place, int $foodBeverage, int $alcohol, int $smoker,
+                                string $forumTitle, string $comment, $date, bool $isOpenedCampain, int $nbPlayerAlreadyIn)
     {
         $this->idOwner = $idOwner;
         $this->ageMin = $ageMin;
@@ -127,82 +133,82 @@ class Party
         $this->nbPlayerAlreadyIn = $nbPlayerAlreadyIn;
     }
 
-    public function getIdOwner()
+    public function getIdOwner(): int
     {
         return $this->idOwner;
     }
 
-    public function getAgeMin()
+    public function getAgeMin(): int
     {
         return $this->ageMin;
     }
 
-    public function getAgeMax()
+    public function getAgeMax(): int
     {
         return $this->ageMax;
     }
 
-    public function getMaxPlayer()
+    public function getMaxPlayer(): int
     {
         return $this->maxPlayer;
     }
 
-    public function getGameName()
+    public function getGameName(): string
     {
         return $this->gameName;
     }
 
-    public function getGameEdition()
+    public function getGameEdition(): string
     {
         return $this->gameEdition;
     }
 
-    public function getScenarioName()
+    public function getScenarioName(): string
     {
         return $this->scenarioName;
     }
 
-    public function getScenarioEdition()
+    public function getScenarioEdition(): string
     {
         return $this->scenarioEdition;
     }
 
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
 
-    public function getArea()
+    public function getArea(): int
     {
         return $this->area;
     }
 
-    public function getPlace()
+    public function getPlace(): string
     {
         return $this->place;
     }
 
-    public function getFoodBeverage()
+    public function getFoodBeverage(): int
     {
         return $this->foodBeverage;
     }
 
-    public function getAlcohol()
+    public function getAlcohol(): int
     {
         return $this->alcohol;
     }
 
-    public function getSmoker()
+    public function getSmoker(): int
     {
         return $this->smoker;
     }
 
-    public function getForumTitle()
+    public function getForumTitle(): string
     {
         return $this->forumTitle;
     }
 
-    public function getComment()
+    public function getComment(): string
     {
         return $this->comment;
     }
@@ -213,12 +219,12 @@ class Party
     }
 
 
-    public function getisOpenedCampain()
+    public function getisOpenedCampain(): bool
     {
         return $this->isOpenedCampain;
     }
 
-    public function getNbPlayerAlreadyIn()
+    public function getNbPlayerAlreadyIn(): int
     {
         return $this->nbPlayerAlreadyIn;
     }
