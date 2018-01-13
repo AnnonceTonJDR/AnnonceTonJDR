@@ -4,10 +4,7 @@ require_once 'DB_readOnly.php';
 
 class Users
 {
-    private $bdd;
-    private $users;
-
-    public function registerUser($pseudo, $mail, $pwd, $lastName, $firstName, $birthday)
+    public static function registerUser($pseudo, $mail, $pwd, $lastName, $firstName, $birthday)
     {
         $resp = DB::connectionDB()->query("SELECT MAX(id) AS maxId FROM Utilisateur")->fetch()['maxId'];
         $id = ($resp != null ? $resp : 0) + 1;
@@ -39,70 +36,103 @@ class Users
 
     }
 
-    public function __construct()
+    //region =========================== Getters ===========================
+    public static function getUsers(): array
     {
-        $this->bdd = DB::connectionDB();
-        $this->users = array();
-
-        $reqSelectUser = $this->bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM Utilisateur JOIN UtilisateurPrivate ON Utilisateur.id=UtilisateurPrivate.id;");
+        $bdd = DB_readOnly::connectionDB_readOnly();
+        $utilisateurs = array();
+        $reqSelectUser = $bdd->prepare("SELECT *,DATE_FORMAT(dateInscription, '%d %m %Y') AS dateInsc FROM Utilisateur JOIN UtilisateurPrivate ON Utilisateur.id=UtilisateurPrivate.idJoueur;");
         $reqSelectUser->execute();
-        $res = $reqSelectUser->fetchall();
+        $res = $reqSelectUser->fetchAll();
         foreach ($res as $user) {
-            $this->users[] = new User($user['id'], $user['pseudo'], $user['mail'], $user['motDePasse'], $user['etat'], $user['sel'], $user['nom'], $user['prenom'], $user['dateInsc']);
+            $utilisateurs[] = new User($user['id'], $user['pseudo'], $user['mail'], $user['motDePasse'],
+                $user['etat'], $user['sel'], $user['nom'], $user['prenom'], $user['dateInsc']);
         }
+        return $utilisateurs;
     }
 
-    public function getUsers() : array
+    public static function getByConnectionId($identifiant)
     {
-        return $this->users;
-    }
-
-    public function getByConnectionId($identifiant) : User
-    {
-        foreach ($this->users as $user)
-            if ($user->getMail() == $identifiant || $user->getPseudo() == $identifiant)
-                return $user;
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Utilisateur U JOIN UtilisateurPrivate P ON U.id = P.id " .
+            "WHERE P.mail = \"" . $identifiant . "\" OR U.pseudo=\"" . $identifiant . "\"");
+        $user = $req->fetch();
+        if ($user != null)
+            return new User($user['id'],
+                $user['pseudo'],
+                $user['mail'],
+                $user['motDePasse'],
+                $user['etat'],
+                $user['sel'],
+                $user['nom'],
+                $user['prenom'],
+                $user['dateInsc']);
         return null;
     }
 
-    public function getById($id) : User
+    public static function getById($id)
     {
-        foreach ($this->users as $user)
-            if ($user->getId() == $id)
-                return $user;
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Utilisateur U JOIN UtilisateurPrivate P ON U.id = P.id " .
+            "WHERE U.id=\"" . $id . "\"");
+        $user = $req->fetch();
+        if ($user != null)
+            return new User($user['id'],
+                $user['pseudo'],
+                $user['mail'],
+                $user['motDePasse'],
+                $user['etat'],
+                $user['sel'],
+                $user['nom'],
+                $user['prenom'],
+                $user['dateInsc']);
         return null;
     }
 
-    public function getByPseudo($pseudo) : User
+    public static function getByPseudo($pseudo)
     {
-        foreach ($this->users as $user)
-            if ($user->getPseudo() == $pseudo)
-                return $user;
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Utilisateur U JOIN UtilisateurPrivate P ON U.id = P.id " .
+            "WHERE U.pseudo=\"" . $pseudo . "\"");
+        $user = $req->fetch();
+        if ($user != null)
+            return new User($user['id'],
+                $user['pseudo'],
+                $user['mail'],
+                $user['motDePasse'],
+                $user['etat'],
+                $user['sel'],
+                $user['nom'],
+                $user['prenom'],
+                $user['dateInsc']);
         return null;
     }
 
-    public function pseudoAlreadyExists($pseudo)
+    public static function getByMail($mail)
     {
-        foreach ($this->users as $user)
-            if ($user->getPseudo() == $pseudo)
-                return true;
-        return false;
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Utilisateur U JOIN UtilisateurPrivate P ON U.id = P.id " .
+            "WHERE P.mail=\"" . $mail . "\"");
+        $user = $req->fetch();
+        if ($user != null)
+            return new User($user['id'],
+                $user['pseudo'],
+                $user['mail'],
+                $user['motDePasse'],
+                $user['etat'],
+                $user['sel'],
+                $user['nom'],
+                $user['prenom'],
+                $user['dateInsc']);
+        return null;
     }
 
-    public function mailAlreadyExists($mail)
+    public static function pseudoAlreadyExists($pseudo): bool
     {
-        foreach ($this->users as $user)
-            if ($user->getMail() == $mail)
-                return true;
-        return false;
+        return !is_bool(DB_readOnly::connectionDB_readOnly()
+            ->query("SELECT id FROM Utilisateur WHERE pseudo=\"" . $pseudo . "\"")->fetch());
     }
 
-    public function getByMail($mail) : User
+    public static function mailAlreadyExists($mail): bool
     {
-        foreach ($this->users as $user)
-            if ($user->getMail() == $mail)
-                return $user;
-        return false;
+        return !is_bool(DB_readOnly::connectionDB_readOnly()
+            ->query("SELECT id FROM UtilisateurPrivate WHERE mail=\"" . $mail . "\"")->fetch());
     }
 }
 

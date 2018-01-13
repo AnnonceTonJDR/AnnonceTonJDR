@@ -18,8 +18,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
     $flag = true;  //pour l'instant on peut modifier le mot de passe
 
     //En premier lieu, on vérifie son code
-    $users = new Users();
-    $user = $users->getByMail($_GET['id']);
+    $user = Users::getByMail($_GET['id']);
 
     if (!isset($user)) {
         $error = 'Mail inexistant!';

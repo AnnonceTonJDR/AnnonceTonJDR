@@ -24,8 +24,7 @@ if (!isset($_GET['cle']))
  *On essaie de récupérer le compte lié au pseudo    *
  *Si on y arrive pas c'est que le compte n'existe pas        *
  *******************************************/
-$users = new Users();
-$user = $users->getByPseudo($pseudo);
+$user = Users::getByPseudo($pseudo);
 if (!isset($user))
     $returnMsg = "Ce compte n'existe pas";
 

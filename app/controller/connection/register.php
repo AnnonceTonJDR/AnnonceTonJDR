@@ -19,7 +19,6 @@ $pwdConfirm = false;
 
 if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['birth']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdConfirm'])) {  //si tous les champs obligatoire ont été renseignés
     $flag = true;  //pourl'instant on peut ajouter l'utilisateur
-    $users = new Users();
 
     /****************************************************
      *Vérifications des différentes infos saisies dans le formulaire        *
@@ -47,14 +46,14 @@ if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pse
     } else
         $pseudo = true;
 
-    if ($users->pseudoAlreadyExists($_POST['pseudo'])) {
+    if (Users::pseudoAlreadyExists($_POST['pseudo'])) {
         $AInscriptionsError[] = 'Le pseudo que vous voulez utiliser existe déjà';
         $pseudo = false;
         $flag = false;
     } else
         $pseudo = true;
 
-    if ($users->mailAlreadyExists($_POST['mail'])) {
+    if (Users::mailAlreadyExists($_POST['mail'])) {
         $AInscriptionsError[] = 'Le mail que vous voulez utiliser est déjà associé à un compte';
         $mail = false;
         $flag = false;
@@ -76,7 +75,7 @@ if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pse
         $pwd = true;
 
     if ($flag) {
-        $users->registerUser($_POST['pseudo'], $_POST['mail'], $_POST['pwd'], $_POST['lastName'], $_POST['firstName'], $_POST['birth']);
+        Users::registerUser($_POST['pseudo'], $_POST['mail'], $_POST['pwd'], $_POST['lastName'], $_POST['firstName'], $_POST['birth']);
     }
 } else
     $AInscriptionsError[] = 'Vous n\'avez pas renseigné tous les champs requis';
