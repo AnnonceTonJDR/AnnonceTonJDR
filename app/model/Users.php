@@ -21,7 +21,7 @@ class Users
         $entete = "From: inscription@annoncetonjdr.fr";
 
         //Le lien d'activation est composé du pseudo(log) et de la clé(cle)
-        $message = 'Bienvenue sur annonceTonJDR,
+        $message = 'Bienvenue sur Annonce Ton JDR,
     		
 			Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 			ou le copier/coller dans votre navigateur internet.
@@ -34,6 +34,20 @@ class Users
 
         mail($destinataire, $sujet, $message, $entete); // Envoi du mail
 
+    }
+
+    public static function mailUser($idUser, $subject, $msg, $compactSubject)
+    {
+        $user = Users::getById($idUser);
+
+        mail($user->getMail(), $subject, $msg, "From: " . $compactSubject . "inscription@annoncetonjdr.fr"); // Envoi du mail
+    }
+
+    public static function mailUsers(Array $idUsers, $subject, $msg, $compactSubject)
+    {
+        foreach ($idUsers as $idUser) {
+            mail(Users::getById($idUser)->getMail(), $subject, $msg, "From: " . $compactSubject . "inscription@annoncetonjdr.fr"); // Envoi du mail
+        }
     }
 
     //region =========================== Getters ===========================
@@ -134,6 +148,8 @@ class Users
         return !is_bool(DB_readOnly::connectionDB_readOnly()
             ->query("SELECT id FROM UtilisateurPrivate WHERE mail=\"" . $mail . "\"")->fetch());
     }
+
+    //endregion
 }
 
 class User
