@@ -372,7 +372,7 @@ INSERT INTO Zone VALUES (125, 120, "Tourrettes");
 INSERT INTO Zone VALUES (126, 120, "Draguignan");
 INSERT INTO Zone VALUES (127, 120, "Brignoles");
 
-INSERT INTO Zone VALUES (128, 80, "Var");
+INSERT INTO Zone VALUES (128, 80, "Vaucluse");
 INSERT INTO Zone VALUES (129, 128, "Orange");
 INSERT INTO Zone VALUES (130, 128, "Avignon");
 INSERT INTO Zone VALUES (131, 128, "Gordes");
