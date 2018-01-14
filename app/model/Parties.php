@@ -60,8 +60,8 @@ class Parties
 
     public static function doesAreaExist(int $idZone): bool
     {
-        //TODO vérif l'id en BD
-        return true;
+        return !is_bool(DB_readOnly::connectionDB_readOnly()
+            ->query("SELECT id FROM Zone WHERE id=" . $idZone)->fetch());
     }
 
     public static function isAreaAccurateEnough(int $idZone): bool
@@ -80,6 +80,51 @@ class Parties
         return true;
     }
 }
+
+class Zone
+{
+    private $id;
+    private $fatherId;
+    private $name;
+
+    public function __construct(int $id, $fatherId, string $name)
+    {
+        $this->id = $id;
+        $this->fatherId = $fatherId;
+        $this->name = $name;
+    }
+
+    public static function getSubZone($idStart): array
+    {
+        $result = array();
+        $zones = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Zone WHERE " .
+            ($idStart != null ? "idPere = " . $idStart : "idPere IS NULL"))->fetchAll();
+        foreach ($zones as $zone) {
+            array_push($result, new Zone($zone['id'], $zone['idPere'], $zone['nom']));
+            foreach (self::getSubZone($zone['id']) as $child) {
+                $result[] = new Zone($child->getId(), $child->getFatherId(), $child->getName());
+            }
+        }
+        return $result;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getFatherId()
+    {
+        return $this->fatherId;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+}
+
 
 class Party
 {

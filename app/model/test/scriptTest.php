@@ -1,5 +1,6 @@
 <?php
 include_once '../Users.php';
+include_once '../Parties.php';
 ?>
 
     <!DOCTYPE html>
@@ -110,3 +111,11 @@ echo '<p class="' . (Users::getByMail("grfsgergsewrgf") == null ? 'passed' : 'fa
 
 //endregion
 //endregion
+
+echo '<p class="fonction">getSubZone</p>';
+
+echo '<p class="' . (count(Zone::getSubZone(1)) == 0 ? 'passed' : 'failed')
+    . '">Virtuel ne doit pas avoir d\'enfant dans l\'arbre Zone</p>';
+$req = Zone::getSubZone(2);
+echo '<p class="' . (count($req) >= 77 ? 'passed' : 'failed')
+    . '">La France entière (id = 2) doit comporter au moins 77 sous zones, ' . count($req) . ' trouvées </p>';
