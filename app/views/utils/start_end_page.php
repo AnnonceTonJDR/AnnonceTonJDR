@@ -33,7 +33,7 @@ function startPage($title)
     <?php include_once 'app/views/utils/header.php'; ?>
     <div class="leftBorder"></div>
     <div class="rightBorder"></div>
-    <div class="js_close_connectionInterface"><br>
+    <div id="startContent" class="js_close_connectionInterface"><br>
     <?php
 
 }
