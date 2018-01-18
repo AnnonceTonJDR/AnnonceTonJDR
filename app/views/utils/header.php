@@ -15,11 +15,11 @@ session_start();
     </header>
     <div id="menuConnexion" class="invisible">
         <div class="formulaireConnexion">
-            <label for="identifiantConnexion">Identifiant</label><input type="text" name="identifiantConnexion"
-                                                                        id="identifiantConnexion"/><br/>
-            <label for="motDePasseConnexion">Mot de passe</label><input type="password" name="motDePasseConnexion"
-                                                                        id="motDePasseConnexion"/><br/>
-            <button id="boutonConnexion">Se connecter</button>
+            <label for="idConnection">Identifiant</label><input type="text" name="idConnection"
+                                                                id="idConnection"/><br/>
+            <label for="pwdConnection">Mot de passe</label><input type="password" name="pwdConnection"
+                                                                  id="pwdConnection"/><br/>
+            <button id="connectionButton">Se connecter</button>
             <a id="motDePasseOublie" href="/?p=fp">Mot de passe oublié ?</a>
             <a id="inscription" href="/?p=r">S'inscrire</a>
         </div>
@@ -27,6 +27,8 @@ session_start();
 
 <?php } else { ?>
     <header>
+        <div class="leftBorderScroll"></div>
+        <div class="rightBorderScroll"></div>
         <div>
             <p>
                 <?php echo unserialize($_SESSION['session'])->getUtilisateur()->getPseudo(); ?>

@@ -58,9 +58,7 @@ function closeConnectionInterface() {
 
 $(document).ready(function () {
 
-    $("#connectionButton").click(function () {
-        seConnecter();
-    });
+    $("#connectionButton").click(seConnecter);
 
     $('#idConnection').keypress(function (event) {
         if (event.key === 'Enter')

@@ -19,6 +19,7 @@ body {
     height: 100%;
     position: relative;
     text-align: center;
+    overflow-x: hidden;
 }
 
 /*endregion*/
@@ -168,7 +169,7 @@ h2 {
     margin: 5px 0 5px 5px;
 }
 
-.formulaireConnexion #identifiant, .formulaireConnexion #motDePasse {
+.formulaireConnexion #idConnection, .formulaireConnexion #pwdConnection {
     border: none;
     padding: 1px;
 }

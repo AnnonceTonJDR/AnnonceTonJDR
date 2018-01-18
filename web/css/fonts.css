@@ -1,4 +1,9 @@
 @font-face {
+    font-family: "Tangerine";
+    src: url(/font/Tangerine_Regular.ttf);
+}
+
+@font-face {
     font-family: "Montserrat Light";
     src: url(/font/Montserrat/Montserrat-Light.ttf);
 }
