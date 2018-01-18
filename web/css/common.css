@@ -1,0 +1,303 @@
+/*region =========================== General ==========================*/
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    position: relative;
+    background: url(https://image.ibb.co/kKhmbm/20180114_220145.jpg) bottom fixed;
+    background-size: cover;
+}
+
+#wrapper {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+}
+
+/*endregion*/
+
+/*region =========================== Content ==========================*/
+
+#contenu {
+    position: relative;
+    max-width: 1000px;
+    background: #CCB99A;
+    margin: 0 20px 0 20px;
+    display: inline-block;
+    min-height: calc(100% - 94px);
+    padding-bottom: 50px;
+    font-family: "Montserrat", sans-serif;
+}
+
+#contenu p {
+    text-align: justify;
+    padding: 25px;
+}
+
+/*region =========================== Titles ===========================*/
+h1 {
+    font-size: 35pt;
+    text-align: center;
+    font-family: Tangerine, serif;
+    color: #483C27;
+}
+
+h2 {
+    padding-left: 25px;
+    font-size: 23pt;
+    text-align: left;
+    font-family: Tangerine, serif;
+    color: #483C27;
+    text-decoration: underline;
+}
+
+/*endregion*/
+
+/*region =========================== Scroll border ====================*/
+#contenu .leftBorder, #contenu .rightBorder {
+    width: 20px;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 2;
+}
+
+#contenu .leftBorder {
+    left: -19px;
+    background: url(../../image/parchemin/parcheminGauche.png) repeat-y;
+    background-size: contain;
+}
+
+#contenu .rightBorder {
+    right: -19px;
+    background: url(../../image/parchemin/parcheminDroite.png) repeat-y;
+    background-size: contain;
+}
+
+/*endregion*/
+
+/*region =========================== Scroll End =======================*/
+
+#finParchemin {
+    width: calc(100% - 160px);
+    margin-left: 80px;
+    position: absolute;
+    bottom: 0;
+    height: 43px;
+    background: url(/image/parchemin/fondFinParchemin.png) repeat-x;
+    background-size: contain;
+    z-index: 1338;
+}
+
+#finParchemin .leftBorderScroll, #finParchemin .rightBorderScroll {
+    width: 123px;
+    height: 62px;
+    position: absolute;
+    top: -4px;
+}
+
+#finParchemin .leftBorderScroll {
+    left: -123px;
+    background: url(/image/parchemin/gaucheBas.png) no-repeat;
+    background-size: contain;
+}
+
+#finParchemin .rightBorderScroll {
+    right: -123px;
+    background: url(/image/parchemin/droiteBas.png) no-repeat;
+    background-size: contain;
+}
+
+/*endregion*/
+
+/*endregion*/
+
+/*region =========================== Header ===========================*/
+
+#openConnectionMenuButton {
+    cursor: pointer;
+    display: inline-block;
+    background: #483C27;
+    color: white;
+    background-size: contain;
+    width: 165px;
+    height: 100%;
+    position: relative;
+    top: 0;
+    z-index: 55;
+}
+
+#openConnectionMenuButton p {
+    margin: 0;
+    padding: 0 5px 0 5px;
+}
+
+#openConnectionMenuButton.hover {
+    background: #635236 !important;
+}
+
+#menuConnexion {
+    background: #443622;
+    position: fixed;
+    bottom: calc(50% - 60px);
+    left: calc(50% - 160px);
+    width: 321px;
+    height: 120px;
+    z-index: 60;
+    padding: 5px;
+    font-family: "Montserrat Light", sans-serif;
+}
+
+.formulaireConnexion label {
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+    color: white;
+    margin: 5px 0 5px 0;
+}
+
+.formulaireConnexion input {
+    width: 200px;
+    margin: 5px 0 5px 5px;
+}
+
+.formulaireConnexion #identifiant, .formulaireConnexion #motDePasse {
+    border: none;
+    padding: 1px;
+}
+
+.formulaireConnexion a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute;
+}
+
+.formulaireConnexion #inscription {
+    right: 15px;
+    bottom: 2px;
+}
+
+.formulaireConnexion #motDePasseOublie {
+    left: 15px;
+    bottom: 2px;
+}
+
+#menuConnexion button {
+    font-size: small;
+    height: 20px;
+    width: 200px;
+    margin: 3px 0 5px calc(50% - 100px);
+    border: solid 1px #392a1c;
+    background: #483C27;
+    color: #fff;
+}
+
+#menuConnexion button:hover {
+    background: #704f38;
+}
+
+#menuConnexion a {
+    color: #ffffff;
+    font-size: small;
+}
+
+#menuConnexion button {
+
+    color: white;
+    background: #483C27;
+}
+
+/*region =========================== Start Scroll =====================*/
+header {
+    width: calc(100% - 160px);
+    margin-left: 80px;
+    position: absolute;
+    top: -1px;
+    height: 43px;
+    background: url(/image/parchemin/fondFinParchemin.png) repeat-x;
+    background-size: contain;
+    z-index: 1338;
+}
+
+header .leftBorderScroll, header .rightBorderScroll {
+    width: 123px;
+    height: 62px;
+    position: absolute;
+    top: -15px;
+}
+
+header .leftBorderScroll {
+    left: -123px;
+    background: url(/image/parchemin/droiteBas.png) no-repeat;
+    transform: rotate(180deg);
+    background-size: contain;
+}
+
+header .rightBorderScroll {
+    right: -123px;
+    background: url(/image/parchemin/gaucheBas.png) no-repeat;
+    transform: rotate(180deg);
+    background-size: contain;
+}
+
+/*endregion*/
+
+/*endregion*/
+
+/*region =========================== Footer ===========================*/
+
+footer {
+    background-color: black;
+    color: white;
+    font-family: Macondo, serif;
+    text-align: center;
+    border-top: black solid 5px;
+    border-bottom: black solid 5px;
+    width: 100%;
+    line-height: normal;
+    position: absolute;
+    z-index: 1337;
+    opacity: 0.9;
+}
+
+footer div {
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+footer #liensCGU #ligneCGU p {
+    vertical-align: middle;
+}
+
+footer a:link, footer a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+#ligneCGU {
+    display: inline-table;
+    padding-bottom: 3px;
+}
+
+#ligneCGU p {
+    padding: 0 5px 0 5px;
+}
+
+#ligneCGU p, #ligneCGU img {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*endregion*/
