@@ -4,6 +4,9 @@
  * @author Lucas OMS
  */
 
+var connectionInterfaceIsOpened = false;
+
+
 function erreurCritique() {
     $('#contenu').html(
         'Une erreur irrécupérable est survenue. <br />'
@@ -33,7 +36,28 @@ function seConnecter() {
     }).fail(erreurCritique);
 }
 
+//region =================== Bouton jouer ===================
+function connectionInterface() {
+    if (connectionInterfaceIsOpened) {
+        $('#menuConnexion').addClass('invisible');
+        connectionInterfaceIsOpened = false;
+    } else {
+        $('#menuConnexion').removeClass('invisible');
+        //Needed to allow user exiting interface b yclicking elsewhere
+        connectionInterfaceIsOpened = true;
+    }
+
+}
+
+function closeConnectionInterface() {
+    $('#menuConnexion').addClass('invisible');
+    connectionInterfaceIsOpened = false;
+}
+
+// endregion
+
 $(document).ready(function () {
+
     $("#connectionButton").click(function () {
         seConnecter();
     });
@@ -56,4 +80,8 @@ $(document).ready(function () {
             location.reload(true);
         }).fail(erreurCritique);
     });
+
+    $('#openConnectionMenuButton').click(connectionInterface);
+    $('.js_close_connectionInterface, footer').click(closeConnectionInterface);
+
 });
