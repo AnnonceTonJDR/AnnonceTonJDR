@@ -1,6 +1,6 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR - CGU");
+startPage("Annonce ton JDR - CGU", []);
 ?>
     <h1 id="CGU">Conditions générales d'utilisations - AnnonceTonJDR</h1>
     <div class="titre">

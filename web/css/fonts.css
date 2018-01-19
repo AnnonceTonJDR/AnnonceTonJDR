@@ -22,3 +22,8 @@
     font-family: "Devonshire";
     src: url(/font/Devonshire-Regular.ttf);
 }
+
+@font-face {
+    font-family: "Badscript";
+    src: url(/font/BadScript-Regular.ttf);
+}

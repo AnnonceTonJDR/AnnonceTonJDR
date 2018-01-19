@@ -1,6 +1,6 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR - Inscription");
+startPage("Annonce ton JDR - Inscription", ["register.css"]);
 ?>
     <div id="erreur" style="display: none;">
         Votre inscription n'a pue être réalisée, voici les erreurs:
@@ -32,17 +32,18 @@ startPage("Annonce ton JDR - Inscription");
         <div id="inputPassword">
             <label for="motDePasse">Mot de passe : <strong style="color: red">*</strong> </label>
             <input type="password" name="motDePasse" id="motDePasse" required="">
-            <p>Le mot de passe doit faire une taille minimale de 8 charactères</p>
+            <p class="condition">Le mot de passe doit faire une taille minimale de 8 charactères</p>
             <!-- comporter une majuscule, une minuscule, et un caractère spécial -->
             <!-- doit contenir une majuscule, un caractère spécial, 8 caractère minimum, un chiffre -->
         </div>
         <div id="inputPasswordConfirm">
             <label for="motDePasseConfirmation">Confirmer le mot de passe : <strong
                         style="color: red">*</strong></label>
-            <input type="password" name="motDePasseConfirmation" id="motDePasseConfirmation" required="">
+            <input type="password" name="motDePasseConfirmation" id="motDePasseConfirmation" required=""
+                   autocomplete="new-password">
             <!-- doit être le même -->
         </div>
-        <p>Les champs suivis d'une <strong style="color: red">*</strong> sont obligatoires.</p>
+        <p id="tips">Les champs suivis d'une <strong style="color: red">*</strong> sont obligatoires.</p>
         <button id="boutonValider">Valider</button>
     </div>
 

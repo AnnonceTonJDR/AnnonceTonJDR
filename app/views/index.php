@@ -1,6 +1,6 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR");
+startPage("Annonce ton JDR", []);
 ?>
     <br>
     <h1> Annonce ton JDR </h1>
