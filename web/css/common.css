@@ -287,7 +287,8 @@ header .rightBorderScroll {
 footer {
     background-color: black;
     color: white;
-    font-family: Macondo, serif;
+    font-family: Montserrat, serif;
+    font-size: 13px;
     text-align: center;
     border-top: black solid 15px;
     border-bottom: black solid 5px;

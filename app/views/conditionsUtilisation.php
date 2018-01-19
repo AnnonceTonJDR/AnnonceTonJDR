@@ -1,39 +1,33 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR - CGU", []);
+startPage("Annonce ton JDR - CGU", ["cgu.css"]);
 ?>
     <h1 id="CGU">Conditions générales d'utilisations - AnnonceTonJDR</h1>
-    <div class="titre">
-        <img src="/img/site/titreCGU.png">
-        <h2>Présentation</h2>
-    </div>
+    <h2>Présentation</h2>
     <div class="mentionsLégales">
         <p>
-            <strong>1.1</strong> Les présentes Conditions Générales d'Utilisation (ci-après les <strong>«&nbsp;CGU&nbsp;»</strong>)
+            <strong>1.1</strong> Les présentes Conditions Générales d'Utilisation (ci-après les <strong>« CGU »</strong>)
             énoncent les conditions d'utilisation des services fournis par AnnonceTonJDR,
             projet en équipe à but non lucratif ci-après individuellement ou conjointement désignés
-            <strong>«&nbsp;AnnonceTonJDR&nbsp;»</strong>,
-            l'<strong>«&nbsp;Équipe&nbsp;»</strong> ou <strong>«&nbsp;Nous&nbsp;»</strong>).<br><br>
+            <strong>« AnnonceTonJDR »</strong>,
+            l'<strong>« Équipe »</strong> ou <strong>« Nous »</strong>).<br><br>
 
             <strong>1.2</strong> Certains services ne nécessite pas de connection et vous place en <strong>
-                «&nbsp;visiteur&nbsp;»</strong>, le reste des services que Nous proposons vous place en
-            <strong>«&nbsp;utilisateur&nbsp;»</strong>.<br>
+                « visiteur »</strong>, le reste des services que Nous proposons vous place en
+            <strong>« utilisateur »</strong>.<br>
 
             La consultation, l'utilisation des annonces, les contacts et toutes fonctionnalités du site sont
             désignés
-            collectivement par le terme «&nbsp;Services&nbsp;».<br><br>
+            collectivement par le terme « Services ».<br><br>
 
             <strong>1.3</strong> Ainsi, les CGU déterminent le cadre contractuel des relations entre
             l'utilisateur
-            des Services (ci-après <strong>«&nbsp;vous&nbsp;»</strong>, le
-            <strong>«&nbsp;visiteur&nbsp;»</strong> ou l'<strong>«&nbsp;utilisateur&nbsp;»</strong>) et
+            des Services (ci-après <strong>« vous »</strong>, le
+            <strong>« visiteur »</strong> ou l'<strong>« utilisateur »</strong>) et
             AnnonceTonJDR.<br><br>
         </p>
     </div>
-    <div class="titre">
-        <img src="/img/site/titreCGU.png">
-        <h2>Acceptation des CGU</h2>
-    </div>
+    <h2>Acceptation des CGU</h2>
     <div class="mentionsLégales">
         <p>
             <strong>2.1</strong> Vous reconnaissez que vous êtes une personne physique ayant atteint l'âge de la
@@ -56,10 +50,7 @@ startPage("Annonce ton JDR - CGU", []);
             d’acceptation des CGU, faute de quoi ils ne pourront plus accéder aux Services.<br><br>
         </p>
     </div>
-    <div class="titre">
-        <img src="/img/site/titreCGU.png">
-        <h2>Acces au site</h2>
-    </div>
+    <h2>Acces au site</h2>
     <div class="mentionsLégales">
         <p>
             <strong>3.1</strong> Les Services étant proposés sur Internet, pour y accéder, vous devez avoir
@@ -68,7 +59,7 @@ startPage("Annonce ton JDR - CGU", []);
             l'utilisation d'une connexion Internet ou de l'installation sur votre ordinateur de logiciels
             malveillants.<br><br>
             <strong>3.2</strong> Certains Services sont accessibles via un appareil mobile. On entend par
-            «&nbsp;appareil mobile&nbsp;» tout appareil portable capable de se connecter à Internet pour accéder
+            « appareil mobile » tout appareil portable capable de se connecter à Internet pour accéder
             auxdits Services (téléphones mobiles, tablettes tactiles, assistants numériques personnels …).
             Vous reconnaissez que la qualité des Services, le délai de réponse ou l’accès à certaines
             fonctionnalités peuvent
@@ -77,18 +68,16 @@ startPage("Annonce ton JDR - CGU", []);
             disponibles sur tous
             les appareils mobiles ou certaines résolutions d'écran.<br><br>
             <strong>3.3</strong> Pour accéder aux Services et/ou à l’ensemble des fonctionnalités des
-            Services, Nous pourrons vous demander de créer un compte AnnonceTonJDR (ci-après le <strong>«&nbsp;Compte&nbsp;»</strong>).
+            Services, Nous pourrons vous demander de créer un compte AnnonceTonJDR (ci-après le <strong>« Compte
+                »</strong>).
             Vous pouvez créer un Compte à partir des encarts prévus à cet effet sur le
             site
-            internet de AnnonceTonJDR (ci-après le <strong>«&nbsp;Site&nbsp;»</strong>), se trouvant dans le
+            internet de AnnonceTonJDR (ci-après le <strong>« Site »</strong>), se trouvant dans le
             formulaire de connexion
-            après l'appuie du bouton <strong>«&nbsp;INSCRIPTION&nbsp;»</strong>.<br><br>
+            après l'appuie du bouton <strong>« INSCRIPTION »</strong>.<br><br>
         </p>
     </div>
-    <div class="titre">
-        <img src="/img/site/titreCGU.png">
-        <h2>Creation de compte</h2>
-    </div>
+    <h2>Creation de compte</h2>
     <div class="mentionsLégales">
         <p>
             <strong>4.1.1</strong> Pour créer un Compte, vous devez être une personne physique ayant atteint
@@ -148,10 +137,7 @@ startPage("Annonce ton JDR - CGU", []);
             <br><br>
         </p>
     </div>
-    <div class="titre">
-        <img src="/img/site/titreCGU.png">
-        <h2>Support</h2>
-    </div>
+    <h2>Support</h2>
     <div class="mentionsLégales">
         <p>
             <strong>5.1</strong> Le Support AnnonceTonJDR mettra tout en œuvre pour vous assister dans les
@@ -169,10 +155,7 @@ startPage("Annonce ton JDR - CGU", []);
             Site.<br><br>
         </p>
     </div>
-    <div class="titre">
-        <img src="/img/site/titreCGU.png">
-        <h2>Copyright</h2>
-    </div>
+    <h2>Copyright</h2>
     <div class="mentionsLégales">
         <p>
             <strong>6.1</strong> Toutes les images, documents, vidéos sont protégés par les lois françaises
@@ -191,10 +174,7 @@ startPage("Annonce ton JDR - CGU", []);
             accordée par AnnonceTonJDR<br><br>
         </p>
     </div>
-    <div class="titre" id="donneesPersonnelles">
-        <img src="/img/site/titreCGU.png">
-        <h2>Données personnelles</h2>
-    </div>
+    <h2 id="donneesPersonnelles">Données personnelles</h2>
     <div class="mentionsLégales">
         <p>
             <strong>7.1</strong> Vous reconnaissez que vous êtes en mesure de Nous communiquer vos données à
@@ -219,10 +199,7 @@ startPage("Annonce ton JDR - CGU", []);
             d'une enquête judiciaire.<br><br>
         </p>
     </div>
-    <div class="titre" id="cookies">
-        <img src="/img/site/titreCGU.png">
-        <h2>Cookies</h2>
-    </div>
+    <h2 id="cookies">Cookies</h2>
     <div class="mentionsLégales">
         <p>
             Lorsqu’une personne visite nos Sites, des cookies ou fichiers similaires sont susceptibles
@@ -260,9 +237,9 @@ startPage("Annonce ton JDR - CGU", []);
         <p>
             AnnonceTonJDR<br>
             Projet à but non lucratif<br>
-            Chef de projet et directeur des publications&nbsp;:<br>
+            Chef de projet et directeur des publications :<br>
             Amir Hammoutene
-            Email&nbsp;: amir.hammoutene@gmail.com<br><br>
+            Email : amir.hammoutene@gmail.com<br><br>
         </p>
 
         <h3>Hébergement</h3>
