@@ -1,6 +1,6 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR - Inscription");
+startPage("Annonce ton JDR - Inscription", ["register.css"]);
 ?>
     <div id="erreur" style="display: none;">
         Votre inscription n'a pue être réalisée, voici les erreurs:
