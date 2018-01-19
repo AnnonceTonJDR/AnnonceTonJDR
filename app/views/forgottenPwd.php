@@ -9,8 +9,10 @@ startPage("Annonce ton JDR - Oubli de mot de passe");
                 Un mail vous sera envoyé avec un code pour changer votre mot de passe.
             </div>
             <div id="idError"></div>
-            <label for="id"> Votre mail : </label>
-            <input type="text" name="id" id="id">
+            <div style="margin-top: 5px;">
+                <label for="id"> Votre mail : </label>
+                <input type="text" name="id" id="id">
+            </div>
         </div>
         <div>
             <button id="sendCodeButton" type="button">Envoyez moi le code</button>
