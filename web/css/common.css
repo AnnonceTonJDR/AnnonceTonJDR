@@ -202,13 +202,13 @@ h2 {
 }
 
 #menuConnexion button {
+    color: white;
     font-size: small;
     height: 20px;
     width: 200px;
     margin: 3px 0 5px calc(50% - 100px);
     border: solid 1px #392a1c;
     background: #483C27;
-    color: #fff;
 }
 
 #menuConnexion button:hover {
@@ -218,12 +218,6 @@ h2 {
 #menuConnexion a {
     color: #ffffff;
     font-size: small;
-}
-
-#menuConnexion button {
-
-    color: white;
-    background: #483C27;
 }
 
 /*region =========================== Start Scroll =====================*/
