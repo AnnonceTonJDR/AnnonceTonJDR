@@ -32,7 +32,7 @@ startPage("Annonce ton JDR - Inscription", ["register.css"]);
         <div id="inputPassword">
             <label for="motDePasse">Mot de passe : <strong style="color: red">*</strong> </label>
             <input type="password" name="motDePasse" id="motDePasse" required="">
-            <p>Le mot de passe doit faire une taille minimale de 8 charactères</p>
+            <p class="condition">Le mot de passe doit faire une taille minimale de 8 charactères</p>
             <!-- comporter une majuscule, une minuscule, et un caractère spécial -->
             <!-- doit contenir une majuscule, un caractère spécial, 8 caractère minimum, un chiffre -->
         </div>
@@ -43,7 +43,7 @@ startPage("Annonce ton JDR - Inscription", ["register.css"]);
                    autocomplete="new-password">
             <!-- doit être le même -->
         </div>
-        <p id="askedFieldTips">Les champs suivis d'une <strong style="color: red">*</strong> sont obligatoires.</p>
+        <p id="tips">Les champs suivis d'une <strong style="color: red">*</strong> sont obligatoires.</p>
         <button id="boutonValider">Valider</button>
     </div>
 
