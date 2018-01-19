@@ -1,10 +1,10 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR - CGU", []);
+startPage("Annonce ton JDR - CGU", ["cgu.css"]);
 ?>
     <h1 id="CGU">Conditions générales d'utilisations - AnnonceTonJDR</h1>
     <div class="titre">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Présentation</h2>
     </div>
     <div class="mentionsLégales">
@@ -31,7 +31,7 @@ startPage("Annonce ton JDR - CGU", []);
         </p>
     </div>
     <div class="titre">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Acceptation des CGU</h2>
     </div>
     <div class="mentionsLégales">
@@ -57,7 +57,7 @@ startPage("Annonce ton JDR - CGU", []);
         </p>
     </div>
     <div class="titre">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Acces au site</h2>
     </div>
     <div class="mentionsLégales">
@@ -86,7 +86,7 @@ startPage("Annonce ton JDR - CGU", []);
         </p>
     </div>
     <div class="titre">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Creation de compte</h2>
     </div>
     <div class="mentionsLégales">
@@ -149,7 +149,7 @@ startPage("Annonce ton JDR - CGU", []);
         </p>
     </div>
     <div class="titre">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Support</h2>
     </div>
     <div class="mentionsLégales">
@@ -170,7 +170,7 @@ startPage("Annonce ton JDR - CGU", []);
         </p>
     </div>
     <div class="titre">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Copyright</h2>
     </div>
     <div class="mentionsLégales">
@@ -192,7 +192,7 @@ startPage("Annonce ton JDR - CGU", []);
         </p>
     </div>
     <div class="titre" id="donneesPersonnelles">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Données personnelles</h2>
     </div>
     <div class="mentionsLégales">
@@ -220,7 +220,7 @@ startPage("Annonce ton JDR - CGU", []);
         </p>
     </div>
     <div class="titre" id="cookies">
-        <img src="/img/site/titreCGU.png">
+        <img src="/image/logo.png">
         <h2>Cookies</h2>
     </div>
     <div class="mentionsLégales">

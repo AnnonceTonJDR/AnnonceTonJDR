@@ -10,7 +10,7 @@
 
 #startContent label {
     margin-top: 10px;
-    padding-right: 5px;
+    /*padding-right: 5px;*/
     width: calc(50% - 20px);
     display: inline-block;
     text-align: right;
@@ -30,6 +30,7 @@ p.condition {
     font-family: Badscript, cursive;
     font-weight: 600;
     color: #483C27;
+    height: 20px;
     width: calc(50% - 20px);
     background: initial;
     border-top: none;
