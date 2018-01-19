@@ -39,7 +39,8 @@ startPage("Annonce ton JDR - Inscription", ["register.css"]);
         <div id="inputPasswordConfirm">
             <label for="motDePasseConfirmation">Confirmer le mot de passe : <strong
                         style="color: red">*</strong></label>
-            <input type="password" name="motDePasseConfirmation" id="motDePasseConfirmation" required="">
+            <input type="password" name="motDePasseConfirmation" id="motDePasseConfirmation" required=""
+                   autocomplete="new-password">
             <!-- doit être le même -->
         </div>
         <p id="askedFieldTips">Les champs suivis d'une <strong style="color: red">*</strong> sont obligatoires.</p>

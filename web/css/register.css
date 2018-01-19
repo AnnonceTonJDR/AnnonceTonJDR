@@ -15,6 +15,8 @@ label {
 }
 
 input {
+    font-family: Badscript, cursive;
+    font-weight: 600;
     color: #483C27;
     width: calc(50% - 20px);
     background: initial;
@@ -27,6 +29,15 @@ input {
 /* Disable the ugly blue border when focusing inputs */
 textarea:focus, input:focus {
     outline: none;
+}
+
+/* Setting the background transparent and the text #483C27 when autocomplete by chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #483C27 !important;
 }
 
 #askedFieldTips {
