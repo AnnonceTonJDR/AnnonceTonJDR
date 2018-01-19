@@ -43,7 +43,8 @@ function connectionInterface() {
         connectionInterfaceIsOpened = false;
     } else {
         $('#menuConnexion').removeClass('invisible');
-        //Needed to allow user exiting interface b yclicking elsewhere
+        $('#idConnection').focus();
+
         connectionInterfaceIsOpened = true;
     }
 
