@@ -46,17 +46,19 @@ body {
 h1 {
     font-size: 35pt;
     text-align: center;
-    font-family: Tangerine, serif;
+    font-family: Devonshire, serif;
     color: #483C27;
+    font-weight: initial;
+    letter-spacing: 5px;
 }
 
 h2 {
     padding-left: 25px;
     font-size: 23pt;
     text-align: left;
-    font-family: Tangerine, serif;
+    font-family: Devonshire, serif;
     color: #483C27;
-    text-decoration: underline;
+    font-weight: initial;
 }
 
 /*endregion*/

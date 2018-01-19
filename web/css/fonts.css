@@ -17,3 +17,8 @@
     font-family: "Montserrat Bold";
     src: url(/font/Montserrat/Montserrat-Bold.ttf);
 }
+
+@font-face {
+    font-family: "Devonshire";
+    src: url(/font/Devonshire-Regular.ttf);
+}
