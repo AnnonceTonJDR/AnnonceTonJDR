@@ -3,16 +3,16 @@ require_once 'utils/start_end_page.php';
 startPage("Annonce ton JDR - Oubli de mot de passe");
 ?>
     <div id="askingReset" class="panel panel-danger">
-        <div>
-            <strong>Quel est votre mail ?</strong>
-        </div>
+        <h3>Quel est votre mail ?</h3>
         <div>
             <div>
                 Un mail vous sera envoyé avec un code pour changer votre mot de passe.
             </div>
             <div id="idError"></div>
-            <label for="id"> Votre mail : </label>
-            <input type="text" name="id" id="id">
+            <div style="margin-top: 5px;">
+                <label for="id"> Votre mail : </label>
+                <input type="text" name="id" id="id">
+            </div>
         </div>
         <div>
             <button id="sendCodeButton" type="button">Envoyez moi le code</button>
