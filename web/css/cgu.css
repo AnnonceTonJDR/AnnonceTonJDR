@@ -4,4 +4,42 @@
     padding: 0 10px 0 10px;
 }
 
+#startContent li {
+    list-style: square;
+    text-align: left;
+}
+
+#startContent a, #startContent a:visited {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#startContent a:hover {
+    border-bottom: solid #392a1c 2px;
+}
 /*endregion*/
+
+.titre {
+    padding-left: 40px;
+    display: table;
+    width: 300px;
+    position: relative;
+    top: 0;
+    left: calc(50% - 200px);
+    text-align: right;
+}
+
+#startContent .titre img {
+    height: 50px;
+    padding-right: 5px;
+}
+
+#startContent .titre h2 {
+    font-size: 26px;
+    font-stretch: expanded;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 400;
+}
