@@ -5,3 +5,13 @@
 .errorForm {
 
 }
+
+label {
+    width: calc(50% - 20px);
+    display: inline-block;
+    text-align: right;
+}
+
+input {
+    width: calc(50% - 20px);
+}
