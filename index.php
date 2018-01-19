@@ -13,6 +13,9 @@ else if (isset($_GET["p"]) && $_GET["p"] === "fp") {
 } // CGU
 else if (isset($_GET["p"]) && $_GET["p"] === "cgu") {
     include_once 'app/views/conditionsUtilisation.php';
+} // Créer partie
+else if (isset($_GET["p"]) && $_GET["p"] === "c") {
+    include_once 'app/controller/createParty.php';
 } // Profil l'utilisateur
 else if (isset($_GET["p"]) && $_GET["p"] === "user") {
     include_once 'app/controller/userProfile.php';

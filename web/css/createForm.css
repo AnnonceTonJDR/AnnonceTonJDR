@@ -1,0 +1,62 @@
+/*region =========================== Form ===========================*/
+
+.successForm {
+
+}
+
+.errorForm {
+
+}
+
+#startContent label {
+    margin-top: 10px;
+    /*padding-right: 5px;*/
+    width: calc(50% - 20px);
+    display: inline-block;
+    text-align: right;
+}
+
+p.condition {
+    margin: 5px 0 10px 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: smaller;
+    font-style: italic;
+}
+
+/*region =========================== Inputs =========================*/
+
+#startContent input {
+    font-family: Badscript, cursive;
+    font-weight: 600;
+    color: #483C27;
+    height: 20px;
+    width: calc(50% - 20px);
+    background: initial;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #483C27 !important;
+}
+
+/* Disable the ugly blue border when focusing inputs */
+#startContent textarea:focus, input:focus {
+    outline: none;
+}
+
+/* Setting the background transparent and the text #483C27 when autocomplete by chrome */
+#startContent input:-webkit-autofill,
+#startContent input:-webkit-autofill:hover,
+#startContent input:-webkit-autofill:focus,
+#startContent input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #483C27 !important;
+}
+
+/*endregion*/
+/*endregion*/
+
+#askedFieldTips {
+    font-style: italic;
+    font-size: smaller;
+}
