@@ -1,5 +1,5 @@
 <?php
-function startPage($title, array $supCSS)
+function startPage($title, array $supCSS, array $supJS)
 {
     session_start();
     ?>
@@ -20,6 +20,9 @@ function startPage($title, array $supCSS)
         <link rel="stylesheet" type="text/css" href="/web/css/index.css">
         <?php foreach ($supCSS as $css) { ?>
             <link rel="stylesheet" type="text/css" href="/web/css/<?php echo $css; ?>">
+        <?php } ?>
+        <?php foreach ($supJS as $js) { ?>
+            <script src="/web/js/"><?php echo $js; ?></script>
         <?php } ?>
         <script src="/web/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>

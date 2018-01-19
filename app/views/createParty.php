@@ -3,7 +3,7 @@ require_once 'utils/start_end_page.php';
 require_once 'app/model/Parties.php';
 echo getcwd();
 
-startPage("Annonce ton JDR - Créer une partie", ["createForm.css"]);
+startPage("Annonce ton JDR - Créer une partie", ["createForm.css"], ["createParty.js"]);
 ?>
     <!--region age-->
     <div id="age">
