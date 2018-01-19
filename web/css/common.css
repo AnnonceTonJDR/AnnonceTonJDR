@@ -61,6 +61,38 @@ h2 {
     font-weight: initial;
 }
 
+h3 {
+    padding-left: 25px;
+    font-size: 23pt;
+    text-align: center;
+    font-family: Devonshire, serif;
+    color: #483C27;
+    font-weight: initial;
+    letter-spacing: 2px;
+}
+
+/*endregion*/
+
+/*region =========================== Real content =====================*/
+
+#startContent {
+    padding: 40px 5px 0 5px;
+}
+
+#contenu button {
+    color: white;
+    font-size: small;
+    height: 20px;
+    width: 200px;
+    margin: 10px 0 5px 0;
+    border: solid 1px #392a1c;
+    background: #483C27;
+}
+
+#contenu button:hover {
+    background: #704f38;
+}
+
 /*endregion*/
 
 /*region =========================== Scroll border ====================*/
@@ -116,12 +148,6 @@ h2 {
     right: -123px;
     background: url(/image/parchemin/droiteBas.png) no-repeat;
     background-size: contain;
-}
-
-/*region =========================== Real content =====================*/
-
-#startContent {
-    padding: 40px 5px 0 5px;
 }
 
 /*endregion*/
