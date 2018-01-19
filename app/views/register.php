@@ -42,7 +42,7 @@ startPage("Annonce ton JDR - Inscription", ["register.css"]);
             <input type="password" name="motDePasseConfirmation" id="motDePasseConfirmation" required="">
             <!-- doit être le même -->
         </div>
-        <p>Les champs suivis d'une <strong style="color: red">*</strong> sont obligatoires.</p>
+        <p id="askedFieldTips">Les champs suivis d'une <strong style="color: red">*</strong> sont obligatoires.</p>
         <button id="boutonValider">Valider</button>
     </div>
 

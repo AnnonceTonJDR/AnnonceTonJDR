@@ -7,11 +7,29 @@
 }
 
 label {
+    margin-top: 10px;
+    padding-right: 5px;
     width: calc(50% - 20px);
     display: inline-block;
     text-align: right;
 }
 
 input {
+    color: #483C27;
     width: calc(50% - 20px);
+    background: initial;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #483C27 !important;
+}
+
+/* Disable the ugly blue border when focusing inputs */
+textarea:focus, input:focus {
+    outline: none;
+}
+
+#askedFieldTips {
+    font-style: italic;
+    font-size: smaller;
 }
