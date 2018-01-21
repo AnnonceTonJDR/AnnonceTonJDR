@@ -1,9 +1,11 @@
 <?php
 require_once 'utils/start_end_page.php';
 require_once 'app/model/Parties.php';
-echo getcwd();
+require_once 'app/model/Users.php';
+require_once 'app/model/session.php';
 
-startPage("Annonce ton JDR - Créer une partie", ["createForm.css"], ["createParty.js"]);
+startPage("Annonce ton JDR - Créer une partie", ["createParty.css"], ["site/createParty.js"]);
+$user = Session::unserializeConnectedUser();
 ?>
     <!--region age-->
     <div id="age">
@@ -30,12 +32,13 @@ startPage("Annonce ton JDR - Créer une partie", ["createForm.css"], ["createPar
     </p>
     <!--endregion-->
 
-    <!--region nom et edition scénario-->
+    <!--region nom et edition scénario et description-->
     <p><label for="nomScenario">Pour réaliser le scénario "</label><input type="text" maxlength="255" id="nomScenario"/>"
         qui provient de
         <!-- Choix de l'édition jeu -->
         <?php echo Parties::comboBoxWithChoicesFor("editionScenario") ?>
-        .
+        <label for="commentaire">et dont voilà une brève description :</label>
+        <textarea id="commentaire"></textarea>
     </p>
     <!--endregion-->
 
@@ -44,26 +47,26 @@ startPage("Annonce ton JDR - Créer une partie", ["createForm.css"], ["createPar
     <!--region A amener/possibilité de fumer -->
     <p><label for="typeLieu">Nous jouerions</label>
         <?php echo Parties::comboBoxWithChoicesFor("typeLieu") ?>
-        <label for="nourritureBoisson">et les joueurs sont priés </label><input type="" id=""/>
+        <label for="nourritureBoisson">et les joueurs sont priés </label>
 
         <!--select boisson/nourriture-->
         <select id="nourritureBoisson">
-            <option value="">d'amener</option>
-            <option value="" selected>d'amener ou non</option>
-            <option value="">de ne pas amener</option>
+            <option value="2">d'amener</option>
+            <option value="1" selected>d'amener ou non</option>
+            <option value="0">de ne pas amener</option>
         </select>
         <label for="alcool">de la nourriture ou des boissons, l'alcool étant</label>
         <!--select alcool-->
         <select id="alcool">
-            <option value="" selected>autorisé</option>
-            <option value="">prohibé</option>
-            <option value="">exigé</option>
+            <option value="1" selected>autorisé</option>
+            <option value="0">prohibé</option>
+            <option value="2">exigé</option>
         </select>
         <label for="fumer">et il sera</label>
         <!--select -->
         <select id="fumer">
-            <option value="">possible</option>
-            <option value="">impossible</option>
+            <option value="1" selected>possible</option>
+            <option value="0">impossible</option>
         </select>
         de fumer.
     </p>
@@ -71,6 +74,10 @@ startPage("Annonce ton JDR - Créer une partie", ["createForm.css"], ["createPar
 
     <p><label for="titreForum">J'ai également créer un sujet du nom de </label>
         <input type="text" maxlength="255" id="titreForum"/> sur le forum</p>
+
+    <p>Je certifie sur l'honneur les données ci-dessus valides</p>
+
+    <p id="signature"><?php echo $user->getPseudo() ?></p>
 <?php
 endPage();
 ?>

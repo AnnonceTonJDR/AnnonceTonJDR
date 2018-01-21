@@ -180,8 +180,8 @@ h3 {
 }
 
 #menuConnexion {
-    /*background: #443622;*/
-    background: url(/image/parcheminConnexion.png) no-repeat;
+    background: #443622;
+    /*background: url(/image/parcheminConnexion.png) no-repeat;*/
     background-size: contain;
 
     position: fixed;

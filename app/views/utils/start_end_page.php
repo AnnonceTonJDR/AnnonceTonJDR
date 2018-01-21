@@ -21,8 +21,10 @@ function startPage($title, array $supCSS, array $supJS)
         <?php foreach ($supCSS as $css) { ?>
             <link rel="stylesheet" type="text/css" href="/web/css/<?php echo $css; ?>">
         <?php } ?>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/web/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <?php foreach ($supJS as $js) { ?>
-            <script src="/web/js/"><?php echo $js; ?></script>
+            <script src="/web/js/<?php echo $js; ?>"></script>
         <?php } ?>
         <script src="/web/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
@@ -52,9 +54,6 @@ function endPage()
     </div>
 <?php include_once 'app/views/utils/footer.php'; ?>
     </div>
-
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/web/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
     </body>
     </html>
     <?php
