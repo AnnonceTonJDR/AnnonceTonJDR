@@ -27,7 +27,7 @@ $user = Session::unserializeConnectedUser();
     <p><label for="nomJeu">Pour jouer à </label><input type="text" maxlength="255" id="nomJeu"/> qui
         est un jeu
         <!-- Choix de l'édition jeu -->
-        <?php echo Parties::comboBoxWithChoicesFor("editionJeu") ?>
+        <?php echo Parties::comboBoxWithChoicesFor("EditionJeu") ?>
         .
     </p>
     <!--endregion-->
@@ -36,7 +36,7 @@ $user = Session::unserializeConnectedUser();
     <p><label for="nomScenario">Pour réaliser le scénario "</label><input type="text" maxlength="255" id="nomScenario"/>"
         qui provient de
         <!-- Choix de l'édition jeu -->
-        <?php echo Parties::comboBoxWithChoicesFor("editionScenario") ?>
+        <?php echo Parties::comboBoxWithChoicesFor("EditionScenario") ?>
         <label for="commentaire">et dont voilà une brève description :</label>
         <textarea id="commentaire"></textarea>
     </p>
@@ -46,7 +46,7 @@ $user = Session::unserializeConnectedUser();
 
     <!--region A amener/possibilité de fumer -->
     <p><label for="typeLieu">Nous jouerions</label>
-        <?php echo Parties::comboBoxWithChoicesFor("typeLieu") ?>
+        <?php echo Parties::comboBoxWithChoicesFor("TypeLieu") ?>
         <label for="nourritureBoisson">et les joueurs sont priés </label>
 
         <!--select boisson/nourriture-->
@@ -75,7 +75,7 @@ $user = Session::unserializeConnectedUser();
     <p><label for="titreForum">J'ai également créer un sujet du nom de </label>
         <input type="text" maxlength="255" id="titreForum"/> sur le forum</p>
 
-    <p>Je certifie sur l'honneur les données ci-dessus valides</p>
+    <p><br/><br/>Je certifie sur l'honneur les données ci-dessus valides<br/></p>
 
     <p id="signature"><?php echo $user->getPseudo() ?></p>
 <?php

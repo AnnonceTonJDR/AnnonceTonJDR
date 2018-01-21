@@ -82,7 +82,21 @@ class Parties
 
     public static function comboBoxWithChoicesFor(string $string): string
     {
-        return "";
+        $result = "<select>";
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM " . $string);
+        if (is_bool($req))
+            return "";
+        $req = $req->fetchAll();
+
+        //TODO
+        $first = true;
+        foreach ($req as $row) {
+            $result .= "<option value=\"1\" " . ($first ? "selected" : "") . " >" . $row[0] . "</option>";
+            if ($first)
+                $first = false;
+        }
+        $result .= "</select>";
+        return $result;
     }
 }
 
