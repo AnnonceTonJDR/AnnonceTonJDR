@@ -79,6 +79,11 @@ class Parties
         }
         return true;
     }
+
+    public static function comboBoxWithChoicesFor(string $string): string
+    {
+        return "";
+    }
 }
 
 class Zone

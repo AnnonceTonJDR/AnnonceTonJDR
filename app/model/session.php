@@ -21,6 +21,11 @@ class Session
         $this->utilisateur = $utilisateur;
     }
 
+    public static function unserializeConnectedUser(): User
+    {
+        return unserialize($_SESSION['session'])->getUtilisateur();
+    }
+
     public function getUtilisateur(): User
     {
         return $this->utilisateur;
