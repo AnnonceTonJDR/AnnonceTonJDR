@@ -13,7 +13,7 @@ $returnValue = false;
  *Si une session est initialisée c'est qu'un utilisateur est connecté et on récupère son id    *
  *************************************************************************/
 if (isset($_SESSION['session'])) {
-    $id = unserialize($_SESSION['session'])->getUtilisateur()->getId();
+    $id = Session::unserializeConnectedUser()->getId();
     $returnValue = true;
 }
 
