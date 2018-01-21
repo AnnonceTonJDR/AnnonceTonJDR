@@ -88,7 +88,6 @@ class Parties
             return "";
         $req = $req->fetchAll();
 
-        //TODO
         $first = true;
         foreach ($req as $row) {
             $result .= "<option value=\"1\" " . ($first ? "selected" : "") . " >" . $row[0] . "</option>";
