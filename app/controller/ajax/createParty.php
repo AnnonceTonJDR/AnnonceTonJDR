@@ -52,7 +52,7 @@ if (!isset($_SESSION['session'])) {
      *On considère au départ que aucune action n'est valide        *
      *************************************************/
     $flag = true;//While flag is true, the party still can be created
-    $user = unserialize($_SESSION['session'])->getUtilisateur();
+    $user = Session::unserializeConnectedUser();
 
     if (!isset($_POST['ageMin']) || !isset($_POST['ageMax'])) {
         $creationErrors[] = "L'age maximum et l'age minimum doivent être spécifiés";
