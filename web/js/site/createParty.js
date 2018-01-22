@@ -56,6 +56,19 @@ function resizeInput() {
 
 $(document).ready(function () {
 
+    //Adapt if virtual or IRL
+    $('#isVirtual').change(function () {
+        if ($(this).is(':checked'))
+            $('#addressText').slideUp();
+        else
+            $('#addressText').slideDown();
+    });
+    $('#placebo').change(function () {
+        if ($(this).is(':checked'))
+            $('.nameForum').slideDown();
+        else
+            $('.nameForum').slideUp();
+    });
 
     initControls();
 

@@ -7,6 +7,18 @@ require_once 'app/model/session.php';
 startPage("Annonce ton JDR - Créer une partie", ["createParty.css"], ["site/createParty.js"]);
 $user = Session::unserializeConnectedUser();
 ?>
+    <p id="addressText"><label for="adresse">J'organiserais mon jeu de rôle en ce lieu : </label><input type="text"
+                                                                                                        id="adresse"/>.
+    </p>
+    <p><input type="checkbox" id="isVirtual"/><label for="isVirtual">Cette partie se déroulera sur le net.</label></p>
+    <!--region nombre de joueur-->
+    <p><label for="joueurMax">Via cette annonce, je cherche à recruter</label><input type="number" min="1" max="99"
+                                                                                     id="joueurMax"/>
+        <label for="nbJoueurDejaInscrits">joueurs, en plus des </label><input type="number" min="0" max="98"
+                                                                              id="nbJoueurDejaInscrits"> joueurs déjà
+        inscrits.</p>
+    <!--endregion-->
+
     <!--region age-->
     <div id="age">
         <p><label for="ageMin">Je souhaiterais jouer avec des gens ayant de </label>
@@ -16,15 +28,9 @@ $user = Session::unserializeConnectedUser();
     </div>
     <!--endregion-->
 
-    <!--region nombre de joueur-->
-    <p><label for="joueurMax">J'aimerai </label><input type="number" min="1" max="99" id="joueurMax"/>
-        <label for="nbJoueurDejaInscrits">joueurs, en plus des </label><input type="number" min="0" max="98"
-                                                                              id="nbJoueurDejaInscrits"> joueurs déjà
-        inscrits</p>
-    <!--endregion-->
-
     <!--region nom et edition jeu-->
-    <p><label for="nomJeu">Pour jouer à </label><input type="text" maxlength="255" id="nomJeu"/> qui
+    <p><label for="nomJeu">Ma partie se jouerait dans l'univers de </label><input type="text" maxlength="255"
+                                                                                  id="nomJeu"/> qui
         est un jeu
         <!-- Choix de l'édition jeu -->
         <?php echo Parties::comboBoxWithChoicesFor("EditionJeu") ?>
@@ -33,11 +39,19 @@ $user = Session::unserializeConnectedUser();
     <!--endregion-->
 
     <!--region nom et edition scénario et description-->
-    <p><label for="nomScenario">Pour réaliser le scénario "</label><input type="text" maxlength="255" id="nomScenario"/>"
-        qui provient de
+    <p><label for="nomScenario">Le scénario s'intitulerait "</label><input type="text" maxlength="255"
+                                                                           id="nomScenario"/>"
+        scénario provenant
         <!-- Choix de l'édition jeu -->
-        <?php echo Parties::comboBoxWithChoicesFor("EditionScenario") ?>
-        <label for="commentaire">et dont voilà une brève description :</label>
+        <?php echo Parties::comboBoxWithChoicesFor("EditionScenario") ?>.
+        <label for="isOpenedCampain">Ce scénario </label>
+        <select id="isOpenedCampain">
+            <option value="0" selected>ne fait pas partie</option>
+            <option value="1">fait partie</option>
+        </select>
+        d'une campagne ouverte.
+
+        <label for="commentaire">Voici une brève description et d'autres élèments que je voudrais ajouter :</label>
         <textarea id="commentaire"></textarea>
     </p>
     <!--endregion-->
@@ -46,8 +60,8 @@ $user = Session::unserializeConnectedUser();
 
     <!--region A amener/possibilité de fumer -->
     <p><label for="typeLieu">Nous jouerions</label>
-        <?php echo Parties::comboBoxWithChoicesFor("TypeLieu") ?>
-        <label for="nourritureBoisson">et les joueurs sont priés </label>
+        <?php echo Parties::comboBoxWithChoicesFor("TypeLieu") ?>.
+        <label for="nourritureBoisson">Les joueurs sont priés </label>
 
         <!--select boisson/nourriture-->
         <select id="nourritureBoisson">
@@ -62,18 +76,22 @@ $user = Session::unserializeConnectedUser();
             <option value="0">prohibé</option>
             <option value="2">exigé</option>
         </select>
-        <label for="fumer">et il sera</label>
+        <label for="fumer">, il sera</label>
         <!--select -->
         <select id="fumer">
             <option value="1" selected>possible</option>
             <option value="0">impossible</option>
         </select>
-        de fumer.
+        de fumer à l'intérieur.
     </p>
     <!--endregion-->
 
-    <p><label for="titreForum">J'ai également créer un sujet du nom de </label>
-        <input type="text" maxlength="255" id="titreForum"/> sur le forum</p>
+    <p>
+        <input type="checkbox" id="placebo" title=""/>
+        <label for="placebo">J'ai créé un sujet sur le forum</label><label class="nameForum" style="display: none">
+            &nbsp;portant le nom de </label>
+        <input class="nameForum" style="display: none" type="text" maxlength="255" id="titreForum"
+               title="sujet du forum associé"/></p>
 
     <p><br/><br/>Je certifie sur l'honneur les données ci-dessus valides<br/></p>
 
