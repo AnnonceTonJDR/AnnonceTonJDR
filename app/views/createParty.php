@@ -8,7 +8,7 @@ startPage("Annonce ton JDR - Créer une partie", ["createParty.css"], ["site/cre
 $user = Session::unserializeConnectedUser();
 ?>
     <p id="addressText"><label for="adresse">J'organiserais mon jeu de rôle en ce lieu : </label>
-        <input type="text" style="min-width: 200px;" id="place-input">.
+        <input type="text" style="min-width: 200px;" id="place-input" title="Où habitez-vous ?">.
     </p>
 
     <!--    la library javascript avec notre apiKey-->
