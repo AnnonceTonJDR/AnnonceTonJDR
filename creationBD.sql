@@ -175,11 +175,11 @@ INSERT INTO `EditionJeu` (
   `type`
 )
 VALUES (
-  'Commercial'
+  'commercial'
 ), (
-  'Amateur'
+  'amateur'
 ), (
-  'Personnel'
+  'personnel'
 );
 
 CREATE TABLE IF NOT EXISTS `EditionScenario` (
@@ -193,11 +193,11 @@ INSERT INTO `EditionScenario` (
   `type`
 )
 VALUES (
-  'Commercial'
+  'du commerce'
 ), (
-  'Internet'
+  'd\'internet'
 ), (
-  'Personnel'
+  'de moi ou d\'un proche'
 );
 
 CREATE TABLE IF NOT EXISTS `TypeLieu` (
@@ -211,13 +211,13 @@ INSERT INTO `TypeLieu` (
   `type`
 )
 VALUES (
-  'Maison'
+  'chez moi'
 ), (
-  'Salle'
+  'dans un bar/café'
 ), (
-  'Bar'
+  'dans une salle'
 ), (
-  'Jardin'
+  'à l\'extérieur'
 );
 
 #region ============= Zone =============
