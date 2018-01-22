@@ -32,7 +32,7 @@ body {
     background: #CCB99A;
     margin: 0 20px 0 20px;
     display: inline-block;
-    min-height: calc(100% - 104px);
+    min-height: calc(100% - 103px);
     padding-bottom: 50px;
     font-family: "Montserrat", sans-serif;
 }
