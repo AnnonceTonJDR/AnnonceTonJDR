@@ -326,6 +326,8 @@ if (isset($_SESSION['session'])) {
     $obj->nbPlayerAlreadyIn = $nbPlayerAlreadyIn;
 }
 $obj->msgError = Array();
+//TODO CHECK CA
+$obj->ok = true;
 if (count($creationErrors) > 0)
     foreach ($creationErrors as $erreur) {
         array_push($obj->msgError, $erreur);
