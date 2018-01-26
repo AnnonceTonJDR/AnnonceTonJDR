@@ -37,7 +37,6 @@ function sendForm() {
         }
     }).done(function (data) {
         if (data.ok) {
-            //TODO Alert custom : partie créée
             popUp("Partie créée avec succès !");
             setTimeout(function () {
                 document.location = "/?p=i";
