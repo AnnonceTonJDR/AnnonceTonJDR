@@ -14,7 +14,7 @@ function sendForm() {
             'joueurMax': $('#joueurMax').val(),
             'nomJeu': $('#nomJeu').val(),
             'edition': $('#editionjeu').val(),
-            'nomScenario': $('#nomJeu').val(),
+            'nomScenario': $('#nomScenario').val(),
             'editionScneario': $('#editionscenario').val(),
             'adresse': $('#addressText').val(),
             'lieu': $('#typelieu').val(),
@@ -29,6 +29,7 @@ function sendForm() {
         }
     }).done(function (data) {
         if (data.ok) {
+            document.location = "/?p=i";
         }
         else {
         }
