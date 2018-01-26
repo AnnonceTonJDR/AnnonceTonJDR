@@ -4,6 +4,14 @@
  * @author Lucas OMS
  */
 
+function popUp(message) {
+    $('#contenu').append("<div id=\"popup\" style=\"width: 200px;height: 100px;position: absolute;" +
+        "left: calc(50% - 100px);z-index: 1339;background: #CCB99A; color: #392a1c; top: calc(50% - 50px);\">" +
+        "<p style='display:  block; text-align:  center; font-family: Tangerine, cursive; " +
+        "font-size: 51px; margin: auto;'>" + message + "</p>" +
+        "</div>");
+}
+
 function sendForm() {
     $.ajax({
         type: 'post',
@@ -29,7 +37,11 @@ function sendForm() {
         }
     }).done(function (data) {
         if (data.ok) {
-            document.location = "/?p=i";
+            //TODO Alert custom : partie créée
+            popUp("Partie créée avec succès !");
+            setTimeout(function () {
+                document.location = "/?p=i";
+            }, 1500);
         }
         else {
         }
