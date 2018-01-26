@@ -4,6 +4,37 @@
  * @author Lucas OMS
  */
 
+function sendForm() {
+    $.ajax({
+        type: 'post',
+        url: '/app/controller/ajax/createParty.php',
+        data: {
+            'ageMin': $('#ageMin').val(),
+            'ageMax': $('#ageMax').val(),
+            'joueurMax': $('#joueurMax').val(),
+            'nomJeu': $('#nomJeu').val(),
+            'edition': $('#editionjeu').val(),
+            'nomScenario': $('#nomJeu').val(),
+            'editionScneario': $('#editionscenario').val(),
+            'adresse': $('#addressText').val(),
+            'lieu': $('#typelieu').val(),
+            'nourritureBoisson': $('#nourritureBoisson').val(),
+            'alcool': $('#alcool').val(),
+            'fumer': $('#fumer').val(),
+            'titreForum': $('#titreForum').val(),
+            'commentaire': $('#commentaire').val(),
+            'date': $('#date').val(),
+            'faitPartieCampagneOuverte': $('#isopenedcampain').val(),
+            'nbJoueurDejaInscrits': $('#nbJoueurDejaInscrits').val()
+        }
+    }).done(function (data) {
+        if (data.ok) {
+        }
+        else {
+        }
+    })
+}
+
 function initControls() {
 
     //region ========= Control age =========

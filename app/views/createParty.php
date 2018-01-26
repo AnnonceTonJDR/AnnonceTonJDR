@@ -11,6 +11,8 @@ $user = Session::unserializeConnectedUser();
         <input type="text" style="min-width: 300px;" id="place-input" title="Où habitez-vous ?" placeholder="">.
     </p>
 
+    <p><label for="date">Elle se déroulera le </label><input type="date" min="1" max="99" id="date"></p>
+
     <!--    la library javascript avec notre apiKey-->
     <script type="text/javascript"
             src="//maps.googleapis.com/maps/api/js?key=AIzaSyDtnql0_LAPbI6QU8GTnlShmyJ7QQMSL1Q&libraries=places"></script>
