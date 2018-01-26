@@ -5,8 +5,9 @@
  */
 
 function popUp(message) {
-    $('#contenu').append("<div id=\"popup\" style=\"width: 200px;height: 100px;position: absolute;" +
-        "left: calc(50% - 100px);z-index: 1339;background: #CCB99A; color: #392a1c; top: calc(50% - 50px);\">" +
+    $('#wrapper').prepend("<div id=\"popup\" style=\"width: 200px; padding: 5px; height: 100px;position: absolute;" +
+        "left: calc(50% - 100px);z-index: 1326;background: #84755b;color: #ccb99a;top: calc(50% - 50px);" +
+        "box-shadow: 0 0 15px black;\">" +
         "<p style='display:  block; text-align:  center; font-family: Tangerine, cursive; " +
         "font-size: 51px; margin: auto;'>" + message + "</p>" +
         "</div>");
