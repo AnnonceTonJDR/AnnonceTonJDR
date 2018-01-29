@@ -25,7 +25,10 @@ function seConnecter() {
         }
     }).done(function (data) {
         if (data.ok === 1) {
-            location.reload(true);
+            if (document.location.search === "?p=c")
+                document.location = "/" + document.location.search;
+            else
+                document.location = "/?p=i";
         }
         else if (data.ok === -1) {
             $('#pwdConnection').css({'background': 'rgb(200,25,25)'});
@@ -35,6 +38,40 @@ function seConnecter() {
         }
     }).fail(erreurCritique);
 }
+
+//region =================== Responsive of banner ===================
+var leftBanner = $('#leftBanner');
+var leftBannerDown = true;
+function bannerLeftUp() {
+    leftBannerDown = false;
+    leftBanner.animate({
+        top: -leftBanner.height()
+    }, 1000);
+}
+
+function bannerLeftDown() {
+    leftBannerDown = true;
+    leftBanner.animate({
+        top: 0
+    }, 1000);
+}
+
+function enableResponsiveOfHeader() {
+    leftBanner.hover(function () {
+        bannerLeftDown();
+    }, function () {
+        bannerLeftUp();
+    });
+    // leftBanner.click(function () {
+    //     if (leftBannerDown)
+    //         bannerLeftUp();
+    //     else
+    //         bannerLeftDown();
+    // });
+}
+
+//endregion
+
 
 //region =================== Bouton jouer ===================
 function connectionInterface() {
@@ -82,5 +119,6 @@ $(document).ready(function () {
 
     $('#openConnectionMenuButton').click(connectionInterface);
     $('.js_close_connectionInterface, footer').click(closeConnectionInterface);
-
+    leftBanner = $('#leftBanner');
+    // enableResponsiveOfHeader();
 });

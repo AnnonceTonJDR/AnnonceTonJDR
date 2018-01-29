@@ -250,35 +250,82 @@ h3 {
 
 /*region =========================== Start Scroll =====================*/
 header {
-    width: calc(100% - 160px);
-    margin-left: 80px;
+    height: 35px;
+    background-color: #520000;
+    width: 100%;
     position: absolute;
-    top: -1px;
-    height: 43px;
-    background: url(/image/parchemin/fondFinParchemin.png) repeat-x;
-    background-size: contain;
-    z-index: 1338;
+    z-index: 3;
 }
 
-header .leftBorderScroll, header .rightBorderScroll {
-    width: 123px;
-    height: 62px;
+header .title a, header .title a:hover, header .title a:visited {
+    color: #fff;
+    font-size: 28px;
+    font-family: Devonshire, cursive;
+    letter-spacing: 4px;
+    margin: 0;
+    text-decoration: none;
+}
+
+header .banner {
     position: absolute;
-    top: -15px;
+    background-color: #780000;
+    width: 125px;
 }
 
-header .leftBorderScroll {
-    left: -123px;
-    background: url(/image/parchemin/droiteBas.png) no-repeat;
-    transform: rotate(180deg);
-    background-size: contain;
+header .banner ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
 }
 
-header .rightBorderScroll {
-    right: -123px;
-    background: url(/image/parchemin/gaucheBas.png) no-repeat;
-    transform: rotate(180deg);
-    background-size: contain;
+header .banner ul li {
+    margin: 10px 0 0 0;
+}
+
+header .banner a, header .banner a:visited, header .banner a:hover {
+    color: #fff;
+    text-decoration: none;
+    font-family: Tangerine, cursive;
+    font-size: 26px;
+}
+
+header .banner .endBanner {
+    background: url(/image/header/basBanniere.png) no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 62;
+    width: 125px;
+    height: 88px;
+    bottom: -88px;
+}
+
+header .banner .avatar {
+    width: 55%;
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+header .banner .pseudo {
+    margin: 5px 0 0 0;
+    color: #fff;
+    font-family: Tangerine, cursive;
+    word-break: break-all;
+    font-size: 35px;
+}
+
+#deconnectionButton {
+    cursor: pointer;
+}
+
+#leftBanner {
+    top: 0;
+    left: 3%;
+}
+
+#rightBanner {
+    top: 0;
+    right: 3%;
 }
 
 /*endregion*/

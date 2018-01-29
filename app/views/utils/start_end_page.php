@@ -37,8 +37,8 @@ function startPage($title, array $supCSS, array $supJS)
 
     <!-- Add your site or application content here -->
     <div id="wrapper">
-    <div id="contenu">
     <?php include_once 'app/views/utils/header.php'; ?>
+    <div id="contenu">
     <div class="leftBorder"></div>
     <div class="rightBorder"></div>
     <div id="startContent" class="js_close_connectionInterface"><br>
@@ -50,9 +50,9 @@ function endPage()
 {
     ?>
     </div>
-<?php include_once 'app/views/utils/endScroll.php'; ?>
+    <?php include_once 'app/views/utils/endScroll.php'; ?>
     </div>
-<?php include_once 'app/views/utils/footer.php'; ?>
+    <?php include_once 'app/views/utils/footer.php'; ?>
     </div>
     </body>
     </html>

@@ -19,6 +19,9 @@ else if (isset($_GET["p"]) && $_GET["p"] === "c") {
 } // Profil l'utilisateur
 else if (isset($_GET["p"]) && $_GET["p"] === "user") {
     include_once 'app/controller/userProfile.php';
+} // Connexion
+else if (isset($_GET["p"]) && $_GET["p"] === "signin") {
+    include_once 'app/controller/connection.php';
 } // Index
 else {
     include_once 'app/controller/index.php';

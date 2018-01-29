@@ -9,31 +9,41 @@ session_start();
 
 <?php if (!isset($_SESSION['session'])) { ?>
     <header>
-        <div class="leftBorderScroll"></div>
-        <div class="rightBorderScroll"></div>
-        <div id="openConnectionMenuButton"><p>S'identifier</p></div>
-    </header>
-    <div id="menuConnexion" class="invisible">
-        <div class="formulaireConnexion">
-            <label for="idConnection">Identifiant</label><input type="text" name="idConnection"
-                                                                id="idConnection"/><br/>
-            <label for="pwdConnection">Mot de passe</label><input type="password" name="pwdConnection"
-                                                                  id="pwdConnection"/><br/>
-            <button id="connectionButton">Se connecter</button>
-            <a id="motDePasseOublie" href="/?p=fp">Mot de passe oublié ?</a>
-            <a id="inscription" href="/?p=r">S'inscrire</a>
+        <div class="banner" id="leftBanner">
+            <ul>
+                <li><a href="/?p=i">Accueil</a></li>
+                <li><a href="/?p=s">Chercher une partie</a></li>
+                <li><a href="/?p=c">Créer une partie</a></li>
+                <li><a target="_blank" href="//www.annoncetonjdr.fr/forum/">Forum</a></li>
+            </ul>
+            <div class="endBanner"></div>
         </div>
-    </div>
-
+        <div class="banner" id="rightBanner">
+            <img class="avatar" src="/image/header/defaultAvatar.png">
+            <a href="/?p=signin">Se connecter</a>
+            <div class="endBanner"></div>
+        </div>
+        <div class="title"><a href="/?p=i">Annonce ton JDR</a></div>
+        <!--        <div id="openConnectionMenuButton"><p>S'identifier</p></div>-->
+    </header>
 <?php } else { ?>
     <header>
-        <div class="leftBorderScroll"></div>
-        <div class="rightBorderScroll"></div>
-        <div>
-            <p>
-                <?php echo unserialize($_SESSION['session'])->getUtilisateur()->getPseudo(); ?>
-                <button id="deconnectionButton">Déconnexion</button>
-            </p>
+        <div class="banner" id="leftBanner">
+            <ul>
+                <li><a href="/?p=i">Accueil</a></li>
+                <li><a href="/?p=s">Chercher une partie</a></li>
+                <li><a href="/?p=c">Créer une partie</a></li>
+                <li><a target="_blank" href="//www.annoncetonjdr.fr/forum/">Forum</a></li>
+            </ul>
+            <div class="endBanner"></div>
         </div>
+        <div class="banner" id="rightBanner">
+            <img class="avatar" src="/image/header/defaultAvatar.png">
+            <p class="pseudo"><?php echo Session::unserializeConnectedUser()->getPseudo(); ?></p>
+            <a id="deconnectionButton">Se déconnecter</a>
+            <div class="endBanner"></div>
+        </div>
+        <div class="title"><a href="/?p=i">Annonce ton JDR</a></div>
+        <!--        <div id="openConnectionMenuButton"><p>S'identifier</p></div>-->
     </header>
 <?php }
