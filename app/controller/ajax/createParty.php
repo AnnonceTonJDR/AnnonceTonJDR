@@ -7,6 +7,7 @@
 session_start();
 include_once '../../model/Users.php';
 include_once '../../model/Parties.php';
+include_once '../../model/session.php';
 include_once '../../controller/Utils.php';
 
 //region Tags for client to know what is wrong

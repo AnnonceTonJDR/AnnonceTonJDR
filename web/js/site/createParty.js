@@ -4,6 +4,50 @@
  * @author Lucas OMS
  */
 
+function popUp(message) {
+    $('#wrapper').prepend("<div id=\"popup\" style=\"width: 200px; padding: 5px; height: 100px;position: absolute;" +
+        "left: calc(50% - 100px);z-index: 1326;background: #84755b;color: #ccb99a;top: calc(50% - 50px);" +
+        "box-shadow: 0 0 15px black;\">" +
+        "<p style='display:  block; text-align:  center; font-family: Tangerine, cursive; " +
+        "font-size: 51px; margin: auto;'>" + message + "</p>" +
+        "</div>");
+}
+
+function sendForm() {
+    $.ajax({
+        type: 'post',
+        url: '/app/controller/ajax/createParty.php',
+        data: {
+            'ageMin': $('#ageMin').val(),
+            'ageMax': $('#ageMax').val(),
+            'joueurMax': $('#joueurMax').val(),
+            'nomJeu': $('#nomJeu').val(),
+            'edition': $('#editionjeu').val(),
+            'nomScenario': $('#nomScenario').val(),
+            'editionScneario': $('#editionscenario').val(),
+            'adresse': $('#addressText').val(),
+            'lieu': $('#typelieu').val(),
+            'nourritureBoisson': $('#nourritureBoisson').val(),
+            'alcool': $('#alcool').val(),
+            'fumer': $('#fumer').val(),
+            'titreForum': $('#titreForum').val(),
+            'commentaire': $('#commentaire').val(),
+            'date': $('#date').val(),
+            'faitPartieCampagneOuverte': $('#isopenedcampain').val(),
+            'nbJoueurDejaInscrits': $('#nbJoueurDejaInscrits').val()
+        }
+    }).done(function (data) {
+        if (data.ok) {
+            popUp("Partie créée avec succès !");
+            setTimeout(function () {
+                document.location = "/?p=i";
+            }, 1500);
+        }
+        else {
+        }
+    })
+}
+
 function initControls() {
 
     //region ========= Control age =========

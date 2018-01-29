@@ -82,7 +82,7 @@ class Parties
 
     public static function comboBoxWithChoicesFor(string $string): string
     {
-        $result = "<select>";
+        $result = "<select id='" . strtolower($string) . "'>";
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM " . $string);
         if (is_bool($req))
             return "";

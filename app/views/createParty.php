@@ -10,6 +10,9 @@ $user = Session::unserializeConnectedUser();
     <p id="addressText"><label for="adresse">J'organiserais mon jeu de rôle en ce lieu : </label>
         <input type="text" style="min-width: 300px;" id="place-input" title="Où habitez-vous ?" placeholder="">.
     </p>
+    <p><input type="checkbox" id="isVirtual"/><label for="isVirtual">Cette partie se déroulera sur le net.</label></p>
+
+    <p><label for="date">Elle se déroulera le </label><input type="date" min="1" max="99" id="date"></p>
 
     <!--    la library javascript avec notre apiKey-->
     <script type="text/javascript"
@@ -21,7 +24,6 @@ $user = Session::unserializeConnectedUser();
     </script>
 
 
-    <p><input type="checkbox" id="isVirtual"/><label for="isVirtual">Cette partie se déroulera sur le net.</label></p>
     <!--region nombre de joueur-->
     <p><label for="joueurMax">Via cette annonce, je cherche à recruter</label><input type="number" min="1" max="99"
                                                                                      id="joueurMax"/>
@@ -103,6 +105,9 @@ $user = Session::unserializeConnectedUser();
                title="sujet du forum associé"/></p>
 
     <p><br/><br/>Je certifie sur l'honneur les données ci-dessus valides<br/></p>
+
+    <button id="sendForm" onclick="sendForm(); return false;" style="display: block; margin: auto;">Créer la partie
+    </button>
 
     <p id="signature"><?php echo $user->getPseudo() ?></p>
 <?php
