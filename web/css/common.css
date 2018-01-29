@@ -301,6 +301,7 @@ header .banner .endBanner {
 
 header .banner .avatar {
     width: 55%;
+    border-radius: 50%;
     margin: auto;
     display: block;
     margin-top: 10px;
