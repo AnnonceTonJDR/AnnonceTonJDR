@@ -6,7 +6,7 @@ html {
 body {
     height: 100%;
     position: relative;
-    background: url(https://image.ibb.co/kKhmbm/20180114_220145.jpg) bottom fixed;
+    background: url(/image/fond.png) bottom fixed;
     background-size: cover;
 }
 
