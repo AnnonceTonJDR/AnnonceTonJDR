@@ -17,7 +17,7 @@ $pseudo = false;
 $pwd = false;
 $pwdConfirm = false;
 
-if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pseudo']) && isset($_POST['birth']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdConfirm'])) {  //si tous les champs obligatoire ont été renseignés
+if (isset($_POST['pseudo']) && isset($_POST['birth']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdConfirm'])) {  //si tous les champs obligatoire ont été renseignés
     $flag = true;  //pourl'instant on peut ajouter l'utilisateur
 
     /****************************************************
@@ -75,7 +75,8 @@ if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['pse
         $pwd = true;
 
     if ($flag) {
-        Users::registerUser($_POST['pseudo'], $_POST['mail'], $_POST['pwd'], $_POST['lastName'], $_POST['firstName'], $_POST['birth']);
+        Users::registerUser($_POST['pseudo'], $_POST['mail'], $_POST['pwd'], $_POST['lastName'] ?? '',
+            $_POST['firstName'] ?? '', $_POST['birth']);
     }
 } else
     $AInscriptionsError[] = 'Vous n\'avez pas renseigné tous les champs requis';
