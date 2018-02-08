@@ -131,6 +131,7 @@ if (!isset($_SESSION['session'])) {
 
     //endregion
 
+    //TODO Effectuer la modification via l'API google
     if (!isset($_POST['adresse'])) {
         $address = true;
     } else {
@@ -141,21 +142,6 @@ if (!isset($_SESSION['session'])) {
             $address = true;
     }
 
-
-    if (!isset($_POST['zone'])) {
-        $creationErrors[] = "La zone doit être spécifié";
-        $flag = false;
-    } else {
-        if (!Parties::doesAreaExist($_POST['zone'])) {
-            $flag = false;
-        } else {
-            if (!Parties::isAreaAccurateEnough($_POST[''])) {
-                $creationErrors[] = "Vous devez être plus précis dans lal ocalisation de la partie";
-                $flag = false;
-            } else
-                $area = true;
-        }
-    }
 
     if (!isset($_POST['lieu'])) {
         $creationErrors[] = "Le lieu doit être spécifié";
@@ -273,7 +259,6 @@ if (!isset($_SESSION['session'])) {
             $_POST['nomScenario'],
             $_POST['editionScenario'],
             $_POST['adresse'],
-            $_POST['zone'],
             $_POST['lieu'],
             $_POST['nourritureBoisson'],
             $_POST['alcool'],
