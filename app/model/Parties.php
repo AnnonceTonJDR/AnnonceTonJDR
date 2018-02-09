@@ -11,31 +11,47 @@ include_once "DB_readOnly.php";
 
 class Parties
 {
-    static function createParty(int $idOwner, int $ageMin, int $ageMax, int $maxPlayer, string $gameName,
-                                string $gameEdition, string $scenarioName, string $scenarioEdition, string $address,
-                                int $area, string $place, int $foodBeverage, int $alcohol, int $smokerFree,
-                                string $forumTitle, string $comment, $date, bool $isOpenedCampain, int $nbPlayerAlreadyIn)
+    static function createParty(int $idOwner,
+                                int $ageMin,
+                                int $ageMax,
+                                int $maxPlayer,
+                                string $gameName,
+                                string $gameEdition,
+                                string $scenarioName,
+                                string $scenarioEdition,
+                                string $address,
+                                string $place,
+                                int $foodBeverage,
+                                int $alcohol,
+                                int $smokerFree,
+                                string $forumTitle,
+                                string $comment,
+                                $date,
+                                bool $isOpenedCampain,
+                                int $nbPlayerAlreadyIn)
     {
-        $req = DB::connectionDB()->prepare("INSERT INTO Annonce VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $req->execute(array($idOwner,
-            $ageMin,
-            $ageMax,
-            $maxPlayer,
-            $gameName,
-            $gameEdition,
-            $scenarioName,
-            $scenarioEdition,
-            $address,
-            $area,
-            $place,
-            $foodBeverage,
-            $alcohol,
-            $smokerFree,
-            $forumTitle,
-            $comment,
-            $date,
-            $isOpenedCampain,
-            $nbPlayerAlreadyIn));
+        $req = DB::connectionDB()->prepare("INSERT INTO Annonce VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)");
+        $req->execute(
+            array($idOwner,         //idUtilisateur
+                null,               //Lien associée
+                $maxPlayer,         //joueurMax
+                $nbPlayerAlreadyIn, //playersAlreadyIn
+                $ageMin,            //ageMin
+                $ageMax,            //ageMax
+                $gameName,          //nomJeu
+                $gameEdition,       //edition
+                $scenarioName,      //nomScenario
+                $scenarioEdition,   //editionScenario
+                $address,           //adresse
+                $place,             //lieu
+                $foodBeverage,      //nourritureBoisson
+                $alcohol,           //alcool
+                $smokerFree,        //fumer
+                $forumTitle,        //titreforum
+                $comment,           //commentaire
+                $date,              //date
+                $isOpenedCampain    //faitPartieCampagneOuverte
+            ));
     }
 
     public static function isValidGameEdition(string $edition): bool

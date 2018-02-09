@@ -22,8 +22,6 @@ $scenarioEdition = false;
 
 $address = false;
 
-$area = false;
-
 $place = false;
 
 $foodBeverage = false;
@@ -160,7 +158,7 @@ if (!isset($_SESSION['session'])) {
         $creationErrors[] = "L'apport de nourriture et de boissons doit être spécifié";
         $flag = false;
     } else {
-        if ($_POST['nourritureBoisson'] >= 0 && $_POST['nourritureBoisson'] <= 2) {
+        if ($_POST['nourritureBoisson'] < 0 || $_POST['nourritureBoisson'] > 2) {
             $creationErrors[] = "Le choix sur l'apport de nourriture et de boissons doit être parmis les choix proposés";
             $flag = false;
         } else
@@ -171,7 +169,7 @@ if (!isset($_SESSION['session'])) {
         $creationErrors[] = "L'apport d'alcool doit être spécifié";
         $flag = false;
     } else {
-        if ($_POST['alcool'] >= 0 && $_POST['alcool'] <= 2) {
+        if ($_POST['alcool'] < 0 || $_POST['alcool'] > 2) {
             $creationErrors[] = "Le choix sur l'apport d'alcool doit être parmis les choix proposés";
             $flag = false;
         } else
@@ -183,7 +181,7 @@ if (!isset($_SESSION['session'])) {
         $creationErrors[] = "Vous devez spécifier si vous acceptez les fumeurs";
         $flag = false;
     } else {
-        if ($_POST['fumer']) {
+        if ($_POST['fumer'] < 0 || $_POST['fumer'] > 2) {
             $creationErrors[] = "L'acceptation des fumeurs doit être parmis les choix possibles";
             $flag = false;
         } else
@@ -208,7 +206,7 @@ if (!isset($_SESSION['session'])) {
         $creationErrors[] = "Vous devez expliquer le scénario de manière à donner envie aux joueurs";
         $flag = false;
     } else {
-        if ($_POST['commentaire'] > 1024 || $_POST['commentaire'] < 50) {
+        if (strlen($_POST['commentaire']) > 1024 || strlen($_POST['commentaire']) < 50) {
             $creationErrors[] = "La description du scénario doit dépasser 50 caractères et ne pas dépasser 1000";
             $flag = false;
         } else
@@ -242,7 +240,7 @@ if (!isset($_SESSION['session'])) {
         $creationErrors[] = "Le nombre de joueur(s) déjà inscrit(s) doit être spécifié";
         $flag = false;
     } else {
-        if ($_POST['nbJoueurDejaInscrits'] < $_POST['joueurMax'] && $maxPlayer) {
+        if ($_POST['nbJoueurDejaInscrits'] > $_POST['joueurMax']) {
             $creationErrors[] = "Le nombre de joueur inscrit ne peux pas dépasser le nombre de joueur maximum et le nombre maximum doit être valide";
             $flag = false;
         } else
@@ -291,8 +289,6 @@ if (isset($_SESSION['session'])) {
 
     $obj->address = $address;
 
-    $obj->area = $area;
-
     $obj->place = $place;
 
     $obj->foodBeverage = $foodBeverage;
@@ -313,7 +309,7 @@ if (isset($_SESSION['session'])) {
 }
 $obj->msgError = Array();
 //TODO CHECK CA
-$obj->ok = true;
+$obj->ok = false;
 if (count($creationErrors) > 0)
     foreach ($creationErrors as $erreur) {
         array_push($obj->msgError, $erreur);
