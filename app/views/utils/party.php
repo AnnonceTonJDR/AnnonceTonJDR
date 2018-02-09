@@ -17,7 +17,7 @@ function displayParty(Party $party)
                         <p>Date</p>
                     </div>
                     <div style="display: table-cell;">
-                        <p>Nombre de joueur</p>
+                        <p>Joueurs</p>
                     </div>
                 </div>
                 <div class="details">                   <!-- table row -->

@@ -258,8 +258,8 @@ header {
     height: 35px;
     background-color: #520000;
     width: 100%;
-    position: absolute;
     z-index: 3;
+    position: fixed;
 }
 
 header .title a, header .title a:hover, header .title a:visited {

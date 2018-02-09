@@ -309,7 +309,7 @@ if (isset($_SESSION['session'])) {
 }
 $obj->msgError = Array();
 //TODO CHECK CA
-$obj->ok = false;
+$obj->ok = $flag;
 if (count($creationErrors) > 0)
     foreach ($creationErrors as $erreur) {
         array_push($obj->msgError, $erreur);

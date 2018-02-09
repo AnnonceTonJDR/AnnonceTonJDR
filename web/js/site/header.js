@@ -83,6 +83,7 @@ function enableResponsiveOfHeader() {
             location.reload(true);
         }).fail(erreurCritique);
     });
+    $('header .title').css('text-align', 'right');
 }
 
 //endregion
@@ -145,10 +146,6 @@ $(document).ready(function () {
         if (responsiveBannerEnabled) {
             if (leftBannerDown)
                 bannerLeftUp();
-            $('header').css({
-                position: 'fixed',
-                top: 0
-            })
         }
     });
 });

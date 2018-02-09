@@ -18,7 +18,7 @@ function details($id) {
 }
 
 $(document).ready(function () {
-    if ($('#wrapper').width() < 345) {
+    if ($('#wrapper').width() < 415) {
         responsive();
     }
 });
