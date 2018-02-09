@@ -74,7 +74,7 @@ $user = Session::unserializeConnectedUser();
         <?php echo Parties::comboBoxWithChoicesFor("TypeLieu") ?>.
         <label for="nourritureBoisson">Les joueurs sont priés </label>
 
-        <!--select boisson/nourriture-->
+        <!--select boisson/nourricture-->
         <select id="nourritureBoisson">
             <option value="2">d'amener</option>
             <option value="1" selected>d'amener ou non</option>

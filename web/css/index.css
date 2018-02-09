@@ -1,0 +1,58 @@
+.party {
+    box-shadow: #392a1c 0 0 5px -1px;
+}
+
+.party .headerParty {
+    display: table;
+    border-collapse: collapse;
+    vertical-align: middle;
+    background-color: #b29d7f;
+}
+
+.party .headerParty:hover {
+    background-color: #a49079;
+    cursor: pointer;
+}
+
+.party .headerParty p {
+    text-align: center !important;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.party .headerParty .infos, .party .headerParty .details {
+    display: table-row;
+}
+
+.party .headerParty .infos div, .party .headerParty .details div {
+    border: solid 1px #392a1c;
+    padding: 5px;
+    width: 40%;
+}
+
+.party .partyDetails {
+    border-right: solid 1px #392a1c;
+    border-bottom: solid 1px #392a1c;
+    border-left: solid 1px #392a1c;
+}
+
+.label, .info {
+    padding: 5px;
+}
+
+.label p, .info p {
+    margin: 0;
+}
+
+.label p {
+    text-align: right !important;
+    margin-left: 3px;
+    font-weight: bold;
+    color: #392a1c;
+}
+
+.info p {
+    text-align: left !important;
+    margin-right: 3px;
+    color: #503b27;
+}

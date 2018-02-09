@@ -113,56 +113,54 @@ class Parties
         $result .= "</select>";
         return $result;
     }
-}
 
-class Zone
-{
-    private $id;
-    private $fatherId;
-    private $name;
-
-    public function __construct(int $id, $fatherId, string $name)
+    public static function getLastFiveParties(): array
     {
-        $this->id = $id;
-        $this->fatherId = $fatherId;
-        $this->name = $name;
-    }
-
-    public static function getSubZone($idStart): array
-    {
-        $result = array();
-        $zones = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Zone WHERE " .
-            ($idStart != null ? "idPere = " . $idStart : "idPere IS NULL"))->fetchAll();
-        foreach ($zones as $zone) {
-            array_push($result, new Zone($zone['id'], $zone['idPere'], $zone['nom']));
-            foreach (self::getSubZone($zone['id']) as $child) {
-                $result[] = new Zone($child->getId(), $child->getFatherId(), $child->getName());
-            }
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT idAnnonce FROM Annonce " .
+            "ORDER BY idAnnonce DESC LIMIT 0,5");
+        $partiesId = $req->fetchAll();
+        $parties = array();
+        foreach ($partiesId as $party) {
+            $parties[] = self::getPartyFromId($party['idAnnonce']);
         }
-        return $result;
+        return $parties;
     }
 
-    public function getId(): int
+    public static function getPartyFromId(int $id)
     {
-        return $this->id;
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Annonce " .
+            "WHERE idAnnonce=" . $id);
+        $party = $req->fetch();
+        if ($party != null)
+            return new Party(
+                $party['idAnnonce'],
+                $party['idUtilisateur'],
+                $party['ageMin'],
+                $party['ageMax'],
+                $party['joueurMax'],
+                $party['nomJeu'],
+                $party['edition'],
+                $party['nomScenario'],
+                $party['editionScenario'],
+                $party['adresse'],
+                $party['lieu'],
+                $party['nourritureBoisson'],
+                $party['alcool'],
+                $party['fumer'],
+                $party['titreForum'],
+                $party['commentaire'],
+                $party['date'],
+                $party['faitPartieCampagneOuverte'] == 1,
+                $party['joueurDejaInscrits']
+            );
+        return null;
     }
-
-    public function getFatherId()
-    {
-        return $this->fatherId;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
 }
-
 
 class Party
 {
 
+    private $id;
     private $idOwner;
     private $ageMin;
     private $ageMax;
@@ -172,7 +170,6 @@ class Party
     private $scenarioName;
     private $scenarioEdition;
     private $address;
-    private $area;
     private $place;
     private $foodBeverage;
     private $alcohol;
@@ -186,11 +183,12 @@ class Party
     /**
      * Party constructor.
      */
-    public function __construct(int $idOwner, int $ageMin, int $ageMax, int $maxPlayer, string $gameName,
+    public function __construct(int $id, int $idOwner, int $ageMin, int $ageMax, int $maxPlayer, string $gameName,
                                 string $gameEdition, string $scenarioName, string $scenarioEdition, string $address,
-                                int $area, string $place, int $foodBeverage, int $alcohol, int $smoker,
+                                string $place, int $foodBeverage, int $alcohol, int $smoker,
                                 string $forumTitle, string $comment, $date, bool $isOpenedCampain, int $nbPlayerAlreadyIn)
     {
+        $this->id = $id;
         $this->idOwner = $idOwner;
         $this->ageMin = $ageMin;
         $this->ageMax = $ageMax;
@@ -200,7 +198,6 @@ class Party
         $this->scenarioName = $scenarioName;
         $this->scenarioEdition = $scenarioEdition;
         $this->address = $address;
-        $this->area = $area;
         $this->place = $place;
         $this->foodBeverage = $foodBeverage;
         $this->alcohol = $alcohol;
@@ -210,6 +207,11 @@ class Party
         $this->date = $date;
         $this->isOpenedCampain = $isOpenedCampain;
         $this->nbPlayerAlreadyIn = $nbPlayerAlreadyIn;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getIdOwner(): int
@@ -255,11 +257,6 @@ class Party
     public function getAddress(): string
     {
         return $this->address;
-    }
-
-    public function getArea(): int
-    {
-        return $this->area;
     }
 
     public function getPlace(): string
