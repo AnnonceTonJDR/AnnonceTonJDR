@@ -156,6 +156,11 @@ h3 {
 /*endregion*/
 
 /*region =========================== Header ===========================*/
+#leftBannerArrow {
+    width: 30px;
+    margin-top: 12px;
+    cursor: pointer;
+}
 
 #openConnectionMenuButton {
     cursor: pointer;

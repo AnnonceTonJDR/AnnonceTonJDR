@@ -5,7 +5,8 @@
  */
 
 var connectionInterfaceIsOpened = false;
-
+var wrapper = $('#wrapper');
+var responsiveBannerEnabled = false;
 
 function erreurCritique() {
     $('#contenu').html(
@@ -15,59 +16,73 @@ function erreurCritique() {
     );
 }
 
-function seConnecter() {
-    $.ajax({
-        type: 'post',
-        url: '/app/controller/connection/connection.php',
-        data: {
-            'id': $('#idConnection').val(),
-            'pwd': $('#pwdConnection').val()
-        }
-    }).done(function (data) {
-        if (data.ok === 1) {
-            if (document.location.search === "?p=c")
-                document.location = "/" + document.location.search;
-            else
-                document.location = "/?p=i";
-        }
-        else if (data.ok === -1) {
-            $('#pwdConnection').css({'background': 'rgb(200,25,25)'});
-        }
-        else if (data.ok === -2) {
-            $('#idConnection').css({'background': 'rgb(200,25,25)'});
-        }
-    }).fail(erreurCritique);
-}
-
 //region =================== Responsive of banner ===================
 var leftBanner = $('#leftBanner');
 var leftBannerDown = true;
+var leftBannerArrow = $('#leftBannerArrow');
+
 function bannerLeftUp() {
+    leftBanner.clearQueue();
     leftBannerDown = false;
     leftBanner.animate({
         top: -leftBanner.height()
-    }, 1000);
+    }, 700);
+    $({deg: 0}).animate({deg: 180}, {
+        duration: 700,
+        step: function (now) {
+            // in the step-callback (that is fired each step of the animation),
+            // you can use the `now` paramter which contains the current
+            // animation-position (`0` up to `angle`)
+            leftBannerArrow.css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        }
+    });
 }
 
 function bannerLeftDown() {
+    leftBanner.clearQueue();
     leftBannerDown = true;
     leftBanner.animate({
         top: 0
-    }, 1000);
+    }, 700);
+    $({deg: 180}).animate({deg: 360}, {
+        duration: 700,
+        step: function (now) {
+            // in the step-callback (that is fired each step of the animation),
+            // you can use the `now` paramter which contains the current
+            // animation-position (`0` up to `angle`)
+            leftBannerArrow.css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        }
+    });
 }
 
 function enableResponsiveOfHeader() {
-    leftBanner.hover(function () {
-        bannerLeftDown();
-    }, function () {
-        bannerLeftUp();
+    leftBannerArrow.click(function () {
+        if (leftBannerDown) {
+            bannerLeftUp();
+        } else {
+            bannerLeftDown();
+        }
     });
-    // leftBanner.click(function () {
-    //     if (leftBannerDown)
-    //         bannerLeftUp();
-    //     else
-    //         bannerLeftDown();
-    // });
+    $('#rightBanner').remove();
+    $('#leftBanner ul li').first().remove();
+    var addTo = $('#leftBanner ul');
+    if ($('header').data('connected') === 1)
+        addTo.prepend('<li><a id="deconnectionButton">Se déconnecter</a></li>');
+    else
+        addTo.prepend('<li><a href="/?p=signin">Se connecter</a></li>');
+    addTo.prepend('<li><a href="/?p=i">Accueil</a></li>');
+    $('#deconnectionButton').click(function () {
+        $.ajax({
+            type: 'get',
+            url: '/app/controller/connection/deconnexion.php'
+        }).done(function () {
+            location.reload(true);
+        }).fail(erreurCritique);
+    });
 }
 
 //endregion
@@ -96,8 +111,6 @@ function closeConnectionInterface() {
 
 $(document).ready(function () {
 
-    $("#connectionButton").click(seConnecter);
-
     $('#idConnection').keypress(function (event) {
         if (event.key === 'Enter')
             seConnecter();
@@ -108,17 +121,34 @@ $(document).ready(function () {
             seConnecter();
     });
 
-    $('#deconnectionButton').click(function () {
-        $.ajax({
-            type: 'get',
-            url: '/app/controller/connection/deconnexion.php'
-        }).done(function () {
-            location.reload(true);
-        }).fail(erreurCritique);
-    });
-
     $('#openConnectionMenuButton').click(connectionInterface);
     $('.js_close_connectionInterface, footer').click(closeConnectionInterface);
     leftBanner = $('#leftBanner');
-    // enableResponsiveOfHeader();
+    leftBannerArrow = $('#leftBannerArrow');
+    if (wrapper.width() < 1350) {
+        responsiveBannerEnabled = true;
+    }
+    if (responsiveBannerEnabled) {
+        enableResponsiveOfHeader();
+    } else {
+        $('#leftBannerArrow').hide();
+        $('#deconnectionButton').click(function () {
+            $.ajax({
+                type: 'get',
+                url: '/app/controller/connection/deconnexion.php'
+            }).done(function () {
+                location.reload(true);
+            }).fail(erreurCritique);
+        });
+    }
+    wrapper.scroll(function () {
+        if (responsiveBannerEnabled) {
+            if (leftBannerDown)
+                bannerLeftUp();
+            $('header').css({
+                position: 'fixed',
+                top: 0
+            })
+        }
+    });
 });
