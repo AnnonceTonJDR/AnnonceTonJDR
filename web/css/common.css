@@ -273,6 +273,7 @@ header .title a, header .title a:hover, header .title a:visited {
 
 header .banner {
     position: absolute;
+    filter: drop-shadow(0px 0px 2px black);
     background-color: #780000;
     width: 125px;
 }

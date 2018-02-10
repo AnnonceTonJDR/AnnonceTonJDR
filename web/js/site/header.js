@@ -25,7 +25,7 @@ function bannerLeftUp() {
     leftBanner.clearQueue();
     leftBannerDown = false;
     leftBanner.animate({
-        top: -leftBanner.height()
+        top: -leftBanner.height() + 7
     }, 700);
     $({deg: 0}).animate({deg: 180}, {
         duration: 700,
