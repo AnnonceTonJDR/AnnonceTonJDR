@@ -155,6 +155,20 @@ class Parties
             );
         return null;
     }
+
+    public static function registerToParty(int $idUser, int $idPart)
+    {
+        $req = DB::connectionDB()->exec("
+        UPDATE Annonce SET joueurDejaInscrits = (SELECT SUM(joueurDejaInscrits + 1)) WHERE idAnnonce=" . $idPart . ';' .
+            "INSERT INTO Inscription VALUES(" . $idUser . ", " . $idPart . ")");
+
+    }
+
+    public static function isRegisteredOn($idUser, $idParty): bool
+    {
+        return !is_bool(DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Inscription WHERE idAnnonce=" . $idParty .
+            " AND idUtilisateur=" . $idUser)->fetch());
+    }
 }
 
 class Party

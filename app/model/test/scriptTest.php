@@ -112,10 +112,8 @@ echo '<p class="' . (Users::getByMail("grfsgergsewrgf") == null ? 'passed' : 'fa
 //endregion
 //endregion
 
-echo '<p class="fonction">getSubZone</p>';
 
-echo '<p class="' . (count(Zone::getSubZone(1)) == 0 ? 'passed' : 'failed')
-    . '">Virtuel ne doit pas avoir d\'enfant dans l\'arbre Zone</p>';
-$req = Zone::getSubZone(2);
-echo '<p class="' . (count($req) >= 77 ? 'passed' : 'failed')
-    . '">La France entière (id = 2) doit comporter au moins 77 sous zones, ' . count($req) . ' trouvées </p>';
+echo '<p class="' . (Parties::isRegisteredOn(1, 4) === true ? 'passed' : 'failed')
+    . '">L\'utilisateur 1 est inscrit a la partie 4</p>';
+echo '<p class="' . (Parties::isRegisteredOn(0, 53) === false ? 'passed' : 'failed')
+    . '">L\'utilisateur 0 ne peut etre inscrit nul part</p>';

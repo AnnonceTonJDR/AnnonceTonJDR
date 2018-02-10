@@ -31,7 +31,8 @@ function displayParty(Party $party)
                         <p><?php echo $party->getDate(); ?></p>
                     </div>
                     <div style="display: table-cell;">
-                        <p><?php echo $party->getNbPlayerAlreadyIn(); ?>/<?php echo $party->getMaxPlayer(); ?></p>
+                        <p class="nbPlayer"><?php echo $party->getNbPlayerAlreadyIn(); ?>
+                            /<?php echo $party->getMaxPlayer(); ?></p>
                     </div>
                 </div>
             </div>
@@ -175,8 +176,13 @@ function displayParty(Party $party)
                         echo $party->getComment();
                         ?></p>
                 </div>
-                <button class="contact" onclick="messageTo(<?php echo $party->getIdOwner() ?>)">Contacter le créateur
-                </button>
+                <?php if (isset($_SESSION['session'])) { ?>
+                    <button class="contact" onclick="messageTo(<?php echo $party->getIdOwner() ?>)">Contacter le
+                        créateur
+                    </button>
+                    <button class="contact" onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
+                    </button>
+                <?php } ?>
             </div>
         </div>
 
