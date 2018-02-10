@@ -7,7 +7,7 @@ require_once 'app/model/session.php';
 startPage("Annonce ton JDR - Créer une partie", ["createParty.css"], ["site/createParty.js"]);
 $user = Session::unserializeConnectedUser();
 ?>
-    <p id="addressText"><label for="adresse">J'organiserais mon jeu de rôle en ce lieu : </label>
+    <p id="addressText"><label for="adresse">J'organiserai mon jeu de rôle en ce lieu : </label>
         <input type="text" style="min-width: 300px;" id="place-input" title="Où habitez-vous ?" placeholder="">.
     </p>
     <p><input type="checkbox" id="isVirtual"/><label for="isVirtual">Cette partie se déroulera sur le net.</label></p>
@@ -42,7 +42,7 @@ $user = Session::unserializeConnectedUser();
     <!--endregion-->
 
     <!--region nom et edition jeu-->
-    <p><label for="nomJeu">Ma partie se jouerait dans l'univers de </label><input type="text" maxlength="255"
+    <p><label for="nomJeu">Ma partie se jouera dans l'univers de </label><input type="text" maxlength="255"
                                                                                   id="nomJeu"/> qui
         est un jeu
         <!-- Choix de l'édition jeu -->
@@ -52,7 +52,7 @@ $user = Session::unserializeConnectedUser();
     <!--endregion-->
 
     <!--region nom et edition scénario et description-->
-    <p><label for="nomScenario">Le scénario s'intitulerait "</label><input type="text" maxlength="255"
+    <p><label for="nomScenario">Le scénario s'intitulera "</label><input type="text" maxlength="255"
                                                                            id="nomScenario"/>"
         scénario provenant
         <!-- Choix de l'édition jeu -->
@@ -70,7 +70,7 @@ $user = Session::unserializeConnectedUser();
     <!--endregion-->
 
     <!--region A amener/possibilité de fumer -->
-    <p><label for="typeLieu">Nous jouerions</label>
+    <p><label for="typeLieu">Nous jouerons</label>
         <?php echo Parties::comboBoxWithChoicesFor("TypeLieu") ?>.
         <label for="nourritureBoisson">Les joueurs sont priés </label>
 

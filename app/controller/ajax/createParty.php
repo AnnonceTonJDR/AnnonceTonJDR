@@ -54,18 +54,18 @@ if (!isset($_SESSION['session'])) {
     $user = Session::unserializeConnectedUser();
 
     if (!isset($_POST['ageMin']) || !isset($_POST['ageMax'])) {
-        $creationErrors[] = "L'age maximum et l'age minimum doivent être spécifiés";
+        $creationErrors[] = "L'âge maximum et l'âge minimum doivent être spécifiés";
         $flag = false;
     } else {
         if ($_POST['ageMin'] < 7 || $_POST['ageMax'] > 123 || $_POST['ageMax'] < $_POST['ageMin']) {
-            $creationErrors[] = "L'age maximum et l'age minimum doivent être entre 7 et 123, l'age maximum doit être au moins égal à l'age minimum";
+            $creationErrors[] = "L'âge maximum et l'âge minimum doivent être entre 7 et 123, l'âge maximum doit être au moins égal à l'âge minimum";
             $flag = false;
         } else
             $age = true;
     }
 
     if (!isset($_POST['joueurMax'])) {
-        $creationErrors[] = "Le nombre maximum de joueur doit être spécifié";
+        $creationErrors[] = "Le nombre maximum de joueurs doit être spécifié";
         $flag = false;
     } else {
         if ($_POST['joueurMax'] > 99) {
@@ -81,7 +81,7 @@ if (!isset($_SESSION['session'])) {
         $flag = false;
     } else {
         if (strlen($_POST['nomJeu']) > 255) {
-            $creationErrors[] = "Le nom du jeu ne peu excéder 255 caractères";
+            $creationErrors[] = "Le nom du jeu ne peut pas excéder 255 caractères";
             $flag = false;
         } else
             $gameName = true;
@@ -104,11 +104,11 @@ if (!isset($_SESSION['session'])) {
 
     //region Test scenario name and edition
     if (!isset($_POST['nomScenario'])) {
-        $creationErrors[] = "Le nom du jeu doit être spécifié";
+        $creationErrors[] = "Le nom du scénario doit être spécifié";
         $flag = false;
     } else {
         if (strlen($_POST['nomScenario']) > 255) {
-            $creationErrors[] = "Le nom du scénario ne peu excéder 255 caractères";
+            $creationErrors[] = "Le nom du scénario ne peut pas excéder 255 caractères";
             $flag = false;
         } else
             $scenarioName = true;
@@ -116,11 +116,11 @@ if (!isset($_SESSION['session'])) {
     }
 
     if (!isset($_POST['editionScenario'])) {
-        $creationErrors[] = "L'édition du jeu doit être spécifié";
+        $creationErrors[] = "La provenance du scénario doit être spécifié";
         $flag = false;
     } else {
         if (!Parties::isValidScenarioEdition($_POST['editionScenario'])) {
-            $creationErrors[] = "L'édition du scénario doit être l'un des choix possibles";
+            $creationErrors[] = "La provenance du scénario doit être l'un des choix possibles";
             $flag = false;
         } else
             $scenarioEdition = true;
@@ -155,11 +155,11 @@ if (!isset($_SESSION['session'])) {
 
     //region Test sur nourritures, boissons et fumeurs
     if (!isset($_POST['nourritureBoisson'])) {
-        $creationErrors[] = "L'apport de nourriture et de boissons doit être spécifié";
+        $creationErrors[] = "L'apport de nourriture et de boisson doit être spécifié";
         $flag = false;
     } else {
         if ($_POST['nourritureBoisson'] < 0 || $_POST['nourritureBoisson'] > 2) {
-            $creationErrors[] = "Le choix sur l'apport de nourriture et de boissons doit être parmis les choix proposés";
+            $creationErrors[] = "Le choix sur l'apport de nourriture et de boisson doit être parmi les choix proposés";
             $flag = false;
         } else
             $foodBeverage = true;
@@ -170,7 +170,7 @@ if (!isset($_SESSION['session'])) {
         $flag = false;
     } else {
         if ($_POST['alcool'] < 0 || $_POST['alcool'] > 2) {
-            $creationErrors[] = "Le choix sur l'apport d'alcool doit être parmis les choix proposés";
+            $creationErrors[] = "Le choix sur l'apport d'alcool doit être parmi les choix proposés";
             $flag = false;
         } else
             $alcohol = true;
@@ -178,11 +178,11 @@ if (!isset($_SESSION['session'])) {
 
 
     if (!isset($_POST['fumer'])) {
-        $creationErrors[] = "Vous devez spécifier si vous acceptez les fumeurs";
+        $creationErrors[] = "Vous devez spécifier si vous acceptez les fumeurs en intérieur";
         $flag = false;
     } else {
         if ($_POST['fumer'] < 0 || $_POST['fumer'] > 2) {
-            $creationErrors[] = "L'acceptation des fumeurs doit être parmis les choix possibles";
+            $creationErrors[] = "L'acceptation des fumeurs en intérieur doit être parmi les choix possibles";
             $flag = false;
         } else
             $smoker = true;
@@ -203,11 +203,11 @@ if (!isset($_SESSION['session'])) {
     }
 
     if (!isset($_POST['commentaire'])) {
-        $creationErrors[] = "Vous devez expliquer le scénario de manière à donner envie aux joueurs";
+        $creationErrors[] = "Vous devez décrire le scénario de manière à donner envie aux joueurs";
         $flag = false;
     } else {
         if (strlen($_POST['commentaire']) > 1024 || strlen($_POST['commentaire']) < 50) {
-            $creationErrors[] = "La description du scénario doit dépasser 50 caractères et ne pas dépasser 1000";
+            $creationErrors[] = "La description du scénario doit dépasser 50 caractères et ne pas en dépasser 1000";
             $flag = false;
         } else
             $comment = true;
@@ -241,7 +241,7 @@ if (!isset($_SESSION['session'])) {
         $flag = false;
     } else {
         if ($_POST['nbJoueurDejaInscrits'] > $_POST['joueurMax']) {
-            $creationErrors[] = "Le nombre de joueur inscrit ne peux pas dépasser le nombre de joueur maximum et le nombre maximum doit être valide";
+            $creationErrors[] = "Le nombre de joueur(s) inscrit(s) ne peux pas dépasser le nombre de joueur maximum et le nombre maximum doit être valide";
             $flag = false;
         } else
             $nbPlayerAlreadyIn = true;
