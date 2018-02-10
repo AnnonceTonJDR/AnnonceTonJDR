@@ -112,7 +112,7 @@ echo '<p class="' . (Users::getByMail("grfsgergsewrgf") == null ? 'passed' : 'fa
 //endregion
 //endregion
 
-
+echo '<p class="fonction">isRegisteredOn</p>';
 echo '<p class="' . (Parties::isRegisteredOn(1, 4) === true ? 'passed' : 'failed')
     . '">L\'utilisateur 1 est inscrit a la partie 4</p>';
 echo '<p class="' . (Parties::isRegisteredOn(0, 53) === false ? 'passed' : 'failed')

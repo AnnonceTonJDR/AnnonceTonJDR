@@ -202,6 +202,11 @@ class Party
                                 string $place, int $foodBeverage, int $alcohol, int $smoker,
                                 string $forumTitle, string $comment, $date, bool $isOpenedCampain, int $nbPlayerAlreadyIn)
     {
+        $this->registeredPlayers = array();
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Inscription WHERE idAnnonce=" . $id);
+        foreach ($req as $idPlayer) {
+            $this->registeredPlayers[] = Users::getById($idPlayer);
+        }
         $this->id = $id;
         $this->idOwner = $idOwner;
         $this->ageMin = $ageMin;
