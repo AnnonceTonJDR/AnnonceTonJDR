@@ -26,7 +26,7 @@ class Users
 			Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 			ou le copier/coller dans votre navigateur internet.
 			    		
-			http://lucasoms.alwaysdata.net/app/controller/connection/validateRegister.php?log=' . urlencode($pseudo) . '&cle=' . urlencode($salt) . '
+			http://lucasoms.alwaysdata.net/?p=validateMail&log=' . urlencode($pseudo) . '&cle=' . urlencode($salt) . '
 			    		
 			    		
 			---------------

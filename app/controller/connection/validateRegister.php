@@ -5,8 +5,9 @@
  * @author Lucas OMS
  */
 session_start();
-require_once '../../model/Users.php';
-require_once '../../model/session.php';
+require_once 'app/model/Users.php';
+require_once 'app/model/session.php';
+require_once 'app/views/utils/start_end_page.php';
 
 $flag = false;
 $returnMsg = "Erreur inconnue";
@@ -46,17 +47,6 @@ else if ($user->getState() == 0) {
     $returnMsg = "Votre compte a déjà été activé";
 }
 
-/******************************************************
- *Renvoie en JSON du drapeau et des messages en conséquences    *
- *******************************************************/
-
-$obj = new stdClass();
-$obj->ok = $flag;
-$obj->erreur = $returnMsg;
-
-header('Cache-Control: no-cache, must-revalidate');
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Content-type: application/json');
-echo json_encode($obj);
-
-?>
+startPage("Annonce ton JDR - Validation Mail", [], []);
+echo '<h1 style="margin-top: 50%">' . $returnMsg . '</h1>';
+endPage();
