@@ -84,21 +84,21 @@ VALUES (
 );
 
 CREATE TABLE IF NOT EXISTS `Annonce` (
-  `idAnnonce`          INT(11)      NOT NULL AUTO_INCREMENT,
-  `idUtilisateur`      INT(11)      NOT NULL,
-  `lienAssocie`        VARCHAR(255),
-  `joueurMax`          TINYINT(2)   NOT NULL,
-  `joueurDejaInscrits` TINYINT(2)   NOT NULL,
-  `ageMin`             TINYINT(3)   NOT NULL,
-  `ageMax`             TINYINT(3)   NOT NULL,
-  `nomJeu`             VARCHAR(255) NOT NULL,
-  `edition`            VARCHAR(32)  NOT NULL,
-  `nomScenario`        VARCHAR(255) NOT NULL,
-  `editionScenario`    VARCHAR(32)  NOT NULL,
-  `adresse`            VARCHAR(255) NOT NULL,
-  `lieu`               VARCHAR(32)  NOT NULL,
-  `nourritureBoisson`  TINYINT(1)   NOT NULL,
-  `alcool`             TINYINT(1)   NOT NULL,
+  `idAnnonce`                 INT(11)      NOT NULL AUTO_INCREMENT,
+  `idUtilisateur`             INT(11)      NOT NULL,
+  `lienAssocie`               VARCHAR(255),
+  `joueurMax`                 TINYINT(2)   NOT NULL,
+  `joueurDejaInscrits`        TINYINT(2)   NOT NULL,
+  `ageMin`                    TINYINT(3)   NOT NULL,
+  `ageMax`                    TINYINT(3)   NOT NULL,
+  `nomJeu`                    VARCHAR(255) NOT NULL,
+  `edition`                   VARCHAR(32)  NOT NULL,
+  `nomScenario`               VARCHAR(255) NOT NULL,
+  `editionScenario`           VARCHAR(32)  NOT NULL,
+  `adresse`                   VARCHAR(255) NOT NULL,
+  `lieu`                      VARCHAR(32)  NOT NULL,
+  `nourritureBoisson`         TINYINT(1)   NOT NULL,
+  `alcool`                    TINYINT(1)   NOT NULL,
   `fumer`                     TINYINT(1)   NOT NULL,
   `titreForum`                VARCHAR(255) NOT NULL,
   `commentaire`               TEXT         NOT NULL,
@@ -218,4 +218,15 @@ VALUES (
   'dans une salle'
 ), (
   'à l\'extérieur'
+);
+
+CREATE TABLE IF NOT EXISTS `message` (
+  `idMessage`     INT(11) NOT NULL AUTO_INCREMENT,
+  `idAnnonce`     INT(11) NOT NULL,
+  `idUtilisateur` INT(11) NOT NULL,
+  `prive`         BOOLEAN NOT NULL,
+  `message`       TEXT    NOT NULL,
+  PRIMARY KEY (`idMessage`),
+  FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`),
+  FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`idUtilisateur`)
 );
