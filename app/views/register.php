@@ -8,11 +8,11 @@ startPage("Annonce ton JDR - Inscription", ["register.css"], ["site/register.js"
     <div style="margin-top: 20px">
         <div id="inputPrenom">
             <label for="prenom">Prénom : <strong style="color: red">*</strong></label>
-            <input aria-required="true" type="text" name="prenom" id="prenom" required="required">
+            <input aria-required="true" type="text" name="prenom" id="prenom">
         </div>
         <div id="inputNom">
             <label for="nom">Nom : <strong style="color: red">*</strong></label>
-            <input type="text" name="nom" id="nom" required="required">
+            <input type="text" name="nom" id="nom">
         </div>
         <div id="inputDateNaissance">
             <label for="dateNaissance">Date de naissance : <strong style="color: red">*</strong></label>
