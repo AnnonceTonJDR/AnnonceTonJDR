@@ -70,9 +70,10 @@ function enableResponsiveOfHeader() {
     $('#rightBanner').remove();
     $('#leftBanner ul li').first().remove();
     var addTo = $('#leftBanner ul');
-    if ($('header').data('connected') === 1)
+    if ($('header').data('connected') === 1) {
         addTo.prepend('<li><a id="deconnectionButton">Se déconnecter</a></li>');
-    else
+        addTo.prepend('<li><a href="/?p=user">Profil</a></li>');
+    } else
         addTo.prepend('<li><a href="/?p=signin">Se connecter</a></li>');
     addTo.prepend('<li><a href="/?p=i">Accueil</a></li>');
     $('#deconnectionButton').click(function () {
@@ -84,6 +85,7 @@ function enableResponsiveOfHeader() {
         }).fail(erreurCritique);
     });
     $('header .title').css('text-align', 'right');
+    setTimeout(bannerLeftUp, 700);
 }
 
 //endregion

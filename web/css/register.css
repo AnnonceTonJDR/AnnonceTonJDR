@@ -1,11 +1,11 @@
 /*region =========================== Form ===========================*/
 
 .successForm {
-
+    text-decoration: none;
 }
 
 .errorForm {
-
+    text-decoration: line-through;
 }
 
 #startContent label {

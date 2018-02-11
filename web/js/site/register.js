@@ -42,28 +42,34 @@ function envoyerFormulaireInscription() {
             //     'motDePasseConfirmation': $('#motDePasseConfirmation').val()
             // });
             if (data.pseudo) {
-                $('#inputPseudo').removeClass("successForm").remove("errorForm").addClass("successForm");
+                $('#pseudo').removeClass("successForm").remove("errorForm").addClass("successForm");
             }
             else {
-                $('#inputPseudo').removeClass("successForm").remove("errorForm").addClass("errorForm");
+                $('#pseudo').removeClass("successForm").remove("errorForm").addClass("errorForm");
             }
             if (data.mail) {
-                $('#inputMail').removeClass("successForm").remove("errorForm").addClass("successForm");
+                $('#mail').removeClass("successForm").remove("errorForm").addClass("successForm");
             }
             else {
-                $('#inputMail').removeClass("successForm").remove("errorForm").addClass("errorForm");
+                $('#mail').removeClass("successForm").remove("errorForm").addClass("errorForm");
             }
-            if (data.motDePasse) {
-                $('#inputPassword').removeClass("successForm").remove("errorForm").addClass("successForm");
-            }
-            else {
-                $('#inputPassword').removeClass("successForm").remove("errorForm").addClass("errorForm");
-            }
-            if (data.motDePasseConfirmation) {
-                $('#inputPasswordConfirm').removeClass("successForm").remove("errorForm").addClass("successForm");
+            if (data.pwd) {
+                $('#motDePasse').removeClass("successForm").remove("errorForm").addClass("successForm");
             }
             else {
-                $('#inputPasswordConfirm').removeClass("successForm").remove("errorForm").addClass("errorForm");
+                $('#motDePasse').removeClass("successForm").remove("errorForm").addClass("errorForm");
+            }
+            if (data.birth) {
+                $('#dateNaissance').removeClass("successForm").remove("errorForm").addClass("successForm");
+            }
+            else {
+                $('#dateNaissance').removeClass("successForm").remove("errorForm").addClass("errorForm");
+            }
+            if (data.pwdConfirm) {
+                $('#motDePasseConfirmation').removeClass("successForm").remove("errorForm").addClass("successForm");
+            }
+            else {
+                $('#motDePasseConfirmation').removeClass("successForm").remove("errorForm").addClass("errorForm");
             }
             $('#erreur ul').empty();
             var ul = $('<ul />');
@@ -71,6 +77,9 @@ function envoyerFormulaireInscription() {
                 ul.append($('<li>').html(data.msgError[j]));
             }
             $('#erreur').append(ul).show();
+            $('input').focus(function () {
+                $('input').removeClass("errorForm").addClass("successForm");
+            })
         }
     });
     // .fail(erreurCritique);

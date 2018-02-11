@@ -16,6 +16,7 @@ $mail = false;
 $pseudo = false;
 $pwd = false;
 $pwdConfirm = false;
+$birth = false;
 
 if (isset($_POST['pseudo']) && isset($_POST['birth']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdConfirm'])) {  //si tous les champs obligatoire ont été renseignés
     $flag = true;  //pourl'instant on peut ajouter l'utilisateur
@@ -58,7 +59,7 @@ if (isset($_POST['pseudo']) && isset($_POST['birth']) && isset($_POST['mail']) &
         $mail = false;
         $flag = false;
     } else
-        $mail = true;
+        $mail = $mail && true;
 
     if ($_POST['motDePasse'] != $_POST['pwdConfirmation']) {
         $AInscriptionsError[] = 'Les mot de passes ne coresspondent pas';
@@ -89,6 +90,8 @@ $obj->ok = $flag;
 $obj->mail = $mail;
 $obj->pseudo = $pseudo;
 $obj->birth = $birth;
+$obj->pwd = $pwd;
+$obj->pwdConfirm = $pwdConfirm;
 $obj->msgError = Array();
 if (count($AInscriptionsError) > 0)
     foreach ($AInscriptionsError as $erreur) {

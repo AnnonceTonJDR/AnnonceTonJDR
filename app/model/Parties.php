@@ -193,6 +193,7 @@ class Party
     private $date;
     private $isOpenedCampain;
     private $nbPlayerAlreadyIn;
+    private $registeredPlayers;
 
     /**
      * Party constructor.
@@ -322,6 +323,11 @@ class Party
     public function getNbPlayerAlreadyIn(): int
     {
         return $this->nbPlayerAlreadyIn;
+    }
+
+    public function getRegisteredPlayers(): array
+    {
+        return $this->registeredPlayers;
     }
 
 
