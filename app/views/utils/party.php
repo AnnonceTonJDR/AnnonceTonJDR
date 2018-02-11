@@ -46,7 +46,7 @@ function displayParty(Party $party)
                             <p><?php echo $party->getAddress(); ?></p>
                         </div>
                         <div class="label" style="display: table-cell">
-                            <p>Limite d'âge :</p>
+                            <p>Limites d'âge :</p>
                         </div>
                         <div class="info" style="display: table-cell">
                             <p>De <?php echo $party->getAgeMin(); ?> à <?php echo $party->getAgeMax(); ?></p>
@@ -83,13 +83,13 @@ function displayParty(Party $party)
                     </div>
                     <div style="display: table-row">
                         <div class="label" style="display: table-cell">
-                            <p>Provenance jeu : </p>
+                            <p>Provenance du jeu : </p>
                         </div>
                         <div class="info" style="display: table-cell">
                             <p><?php echo $party->getGameEdition(); ?></p>
                         </div>
                         <div class="label" style="display: table-cell">
-                            <p>Provenance scénario : </p>
+                            <p>Provenance du scénario : </p>
                         </div>
                         <div class="info" style="display: table-cell">
                             <p><?php echo $party->getScenarioEdition(); ?></p>
@@ -109,7 +109,7 @@ function displayParty(Party $party)
                     </div>
                     <div style="display: table-row">
                         <div class="label" style="display: table-cell">
-                            <p>Limite d'âge :</p>
+                            <p>Limites d'âge :</p>
                         </div>
                         <div class="info" style="display: table-cell">
                             <p>De <?php echo $party->getAgeMin(); ?> à <?php echo $party->getAgeMax(); ?></p>
@@ -152,7 +152,7 @@ function displayParty(Party $party)
                     </div>
                     <div style="display: table-row">
                         <div class="label" style="display: table-cell">
-                            <p>Provenance jeu : </p>
+                            <p>Provenance du jeu : </p>
                         </div>
                         <div class="info" style="display: table-cell">
                             <p><?php echo $party->getGameEdition(); ?></p>
@@ -161,7 +161,7 @@ function displayParty(Party $party)
                     </div>
                     <div style="display: table-row">
                         <div class="label" style="display: table-cell">
-                            <p>Provenance scénario : </p>
+                            <p>Provenance du scénario : </p>
                         </div>
                         <div class="info" style="display: table-cell">
                             <p><?php echo $party->getScenarioEdition(); ?></p>
@@ -178,7 +178,7 @@ function displayParty(Party $party)
                 </div>
                 <?php if (isset($_SESSION['session'])) { ?>
                     <button class="contact" onclick="messageTo(<?php echo $party->getIdOwner() ?>)">Contacter le
-                        créateur
+                        MJ
                     </button>
                     <button class="contact" onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
                     </button>

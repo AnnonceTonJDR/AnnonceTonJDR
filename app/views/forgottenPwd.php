@@ -3,14 +3,14 @@ require_once 'utils/start_end_page.php';
 startPage("Annonce ton JDR - Oubli de mot de passe", [], []);
 ?>
     <div id="askingReset" class="panel panel-danger">
-        <h3>Quel est votre mail ?</h3>
+        <h3>Quel est votre adresse mail ?</h3>
         <div>
             <div>
                 Un mail vous sera envoyé avec un code pour changer votre mot de passe.
             </div>
             <div id="idError"></div>
             <div style="margin-top: 5px;">
-                <label for="id"> Votre mail : </label>
+                <label for="id"> Votre adresse mail : </label>
                 <input type="text" name="id" id="id">
             </div>
         </div>
@@ -20,8 +20,8 @@ startPage("Annonce ton JDR - Oubli de mot de passe", [], []);
         </div>
     </div>
     <div id="askingMail" style="display: none">
-        <p>Veuillez indiquez votre mail (cela a pour but de vérifier votre identité)</p>
-        <label for="mail">Votre mail : </label>
+        <p>Veuillez indiquer votre mail (cela a pour but de vérifier votre identité)</p>
+        <label for="mail">Votre adresse mail : </label>
         <input type="text" name="mail" id="mail">
         <button id="validateMail" type="button">Valider</button>
     </div>

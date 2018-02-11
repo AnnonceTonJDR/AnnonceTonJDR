@@ -19,7 +19,7 @@ $key = $_GET['cle'];
  *On en informe donc l'utilisateur qui doit réouvrir le lien depuis sa boite mail    *
  *****************************************************************/
 if (!isset($_GET['cle']))
-    $returnMsg = "Essayer de ré-ouvrir le lien depuis votre boite mail";
+    $returnMsg = "Essayez de réouvrir le lien depuis votre boite mail";
 
 /******************************************
  *On essaie de récupérer le compte lié au pseudo    *

@@ -3,7 +3,7 @@ require_once 'utils/start_end_page.php';
 startPage("Annonce ton JDR - Inscription", ["register.css"], ["site/register.js"]);
 ?>
     <div id="erreur" style="display: none;">
-        Votre inscription n'a pue être réalisée, voici les erreurs:
+        Votre inscription n'a pas pu être réalisée, voici les erreurs:
     </div>
     <div style="margin-top: 20px">
         <div id="inputPrenom">
@@ -19,22 +19,22 @@ startPage("Annonce ton JDR - Inscription", ["register.css"], ["site/register.js"
             <input type="date" name="dateNaissance" id="dateNaissance" required="">
         </div>
         <div id="inputPseudo">
-            <label for="pseudo">Pseudo : <strong style="color: red">*</strong></label>
+            <label for="pseudo">Pseudonyme : <strong style="color: red">*</strong></label>
             <input type="text" name="pseudo" id="pseudo" required="">
-            <p class="condition">Le pseudo doit être unique et faire au minimum 4 caractères</p>
+            <p class="condition">Le pseudonyme doit être unique et faire au minimum 4 caractères</p>
             <!-- doit être unique taille min de 4 char-->
         </div>
         <div id="inputMail">
-            <label for="mail">Mail : <strong style="color: red">*</strong></label>
+            <label for="mail">Adresse mail : <strong style="color: red">*</strong></label>
             <input type="text" name="mail" id="mail" required="">
             <p class="condition">Vous ne pouvez associer qu'un unique compte par adresse mail</p>
         </div>
         <div id="inputPassword">
             <label for="motDePasse">Mot de passe : <strong style="color: red">*</strong> </label>
             <input type="password" name="motDePasse" id="motDePasse" required="">
-            <p class="condition">Le mot de passe doit faire une taille minimale de 8 caractères</p>
+            <p class="condition">Le mot de passe doit faire une taille minimale de 6 caractères</p>
             <!-- comporter une majuscule, une minuscule, et un caractère spécial -->
-            <!-- doit contenir une majuscule, un caractère spécial, 8 caractère minimum, un chiffre -->
+            <!-- doit contenir une majuscule, un caractère spécial, 6 caractère minimum, un chiffre -->
         </div>
         <div id="inputPasswordConfirm">
             <label for="motDePasseConfirmation">Confirmer le mot de passe : <strong

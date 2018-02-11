@@ -23,7 +23,7 @@ if (isset($_GET['id']) && isset($_GET['code'])) {
     $user = Users::getByMail($_GET['id']);
 
     if (!isset($user)) {
-        $error = 'Mail inexistant!';
+        $error = 'Adresse mail inexistante !';
     } else if ($user->getState() == 0) {
         $error = 'Votre compte n\'a pas été activé !';
     } /**********************************************************************************

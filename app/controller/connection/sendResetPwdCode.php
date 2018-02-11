@@ -14,7 +14,7 @@ include_once '../../model/session.php';
 $flag = false;
 $rand = "";
 if (isset($_SESSION['session']))
-    $error = 'Vous êtes connecté vous ne pouvez donc pas réinitialiser votre mot de passe';
+    $error = 'Vous êtes connecté, vous ne pouvez donc pas réinitialiser votre mot de passe';
 
 /************************************************************************************************
  *Si un identifiant est renseigné on essaie de récupèrer l'utilisateur et on vérifie que son compte ai bien été activé        *
@@ -31,8 +31,8 @@ if (isset($_GET['id'])) {
      ***********************************************************************************/
     else {
         $mailTo = $user->getMail();
-        $subject = "Réinitialisation de votre mot de passe sur le jeu de Lucas OMS";
-        $header = "From: motDePasse@annonceTonJDR.fr";
+        $subject = "Réinitialisation de votre mot de passe sur Annonce Ton JDR";
+        $header = "From: motDePasse@annoncetonjdr.fr";
         $rand = md5(microtime());
         //Ajout en BD du code
         DB::connectionDB()->exec("DELETE FROM RecupMDP WHERE dateDemande < ADDDATE(NOW(), INTERVAL -1 DAY) OR idUtilisateur=" . $user->getId()
@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
                         ' . $rand . '            
                                     
                         ---------------
-                        Ceci est un mail automatique, Merci de ne pas y répondre.';
+                        Ceci est un mail automatique, merci de ne pas y répondre.';
 
         mail($mailTo, $subject, $msg, $header); // Envoi du mail
         $flag = true;

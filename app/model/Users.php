@@ -17,13 +17,13 @@ class Users
         DB::connectionDB()->exec("INSERT INTO UtilisateurPrivate(id, dateNaissance, mail, motDePasse, sel) 
                                               VALUES($id, '$birthday', '$mail', '$mdpHash','$salt');");
         $destinataire = $_POST['mail'];
-        $sujet = "Activer votre compte";
+        $sujet = "Activer votre compte Annonce Ton JDR";
         $entete = "From: inscription@annoncetonjdr.fr";
 
         //Le lien d'activation est composé du pseudo(log) et de la clé(cle)
         $message = 'Bienvenue sur Annonce Ton JDR,
     		
-			Pour activer votre compte, veuillez cliquer sur le lien ci dessous
+			Pour activer votre compte, veuillez cliquer sur le lien ci-dessous
 			ou le copier/coller dans votre navigateur internet.
 			    		
 			http://lucasoms.alwaysdata.net/?p=validateMail&log=' . urlencode($pseudo) . '&cle=' . urlencode($salt) . '

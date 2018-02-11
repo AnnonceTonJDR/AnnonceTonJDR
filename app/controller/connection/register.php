@@ -41,35 +41,35 @@ if (isset($_POST['pseudo']) && isset($_POST['birth']) && isset($_POST['mail']) &
     }
 
     if (strlen($_POST['pseudo']) < 4) {
-        $AInscriptionsError[] = 'Le pseudo doit faire au minimum 4 charactères';
+        $AInscriptionsError[] = 'Le pseudonyme doit faire au minimum 4 caractères';
         $pseudo = false;
         $flag = false;
     } else
         $pseudo = true;
 
     if (Users::pseudoAlreadyExists($_POST['pseudo'])) {
-        $AInscriptionsError[] = 'Le pseudo que vous voulez utiliser existe déjà';
+        $AInscriptionsError[] = 'Le pseudonyme que vous voulez utiliser existe déjà';
         $pseudo = false;
         $flag = false;
     } else
         $pseudo = true;
 
     if (Users::mailAlreadyExists($_POST['mail'])) {
-        $AInscriptionsError[] = 'Le mail que vous voulez utiliser est déjà associé à un compte';
+        $AInscriptionsError[] = 'L\'adresse mail que vous voulez utiliser est déjà associée à un autre compte';
         $mail = false;
         $flag = false;
     } else
         $mail = $mail && true;
 
     if ($_POST['motDePasse'] != $_POST['pwdConfirmation']) {
-        $AInscriptionsError[] = 'Les mot de passes ne coresspondent pas';
+        $AInscriptionsError[] = 'Les mots de passe ne correspondent pas';
         $flag = false;
         $pwdConfirm = false;
     } else
         $pwdConfirm = true;
 
     if (!Utils::isValidPwd($_POST['pwd'])) {
-        $AInscriptionsError[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
+        $AInscriptionsError[] = 'Le mot de passe ne remplit pas les conditions nécessaires';
         $pwd = false;
         $flag = false;
     } else

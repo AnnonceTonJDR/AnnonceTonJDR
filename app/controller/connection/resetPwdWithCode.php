@@ -21,7 +21,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
     $user = Users::getByMail($_GET['id']);
 
     if (!isset($user)) {
-        $error = 'Mail inexistant!';
+        $error = 'Adresse mail inexistante !';
         $flag = false;
     } else if ($user->getState() == 0) {
         $error = 'Votre compte n\'a pas été activé !';
@@ -34,7 +34,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM RecupMDP WHERE idUtilisateur=" . $user->getId() . " AND code='" . $_GET['code'] . "'");
         $res = $req->fetch();
         $flag = is_array($res);
-        $error = "Aucune demande d'oubli de mot de passe recensée pour ce compte";
+        $error = "Aucune demande d'oubli de mot de passe n'est recensée pour ce compte";
     }
 
     if ($flag) {
@@ -43,7 +43,7 @@ if (isset($_GET['pwd']) && isset($_GET['confirm']) && isset($_GET['code']) && is
             $flag = false;
         }
         if (!Utils::isValidPwd($_GET['pwd'])) {
-            $AInscriptionError[] = 'Le mot de passe ne remplis pas les conditions nécéssaires';
+            $AInscriptionError[] = 'Le mot de passe ne remplit pas les conditions nécessaires';
             $flag = false;
         }
 
