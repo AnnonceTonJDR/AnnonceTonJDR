@@ -30,7 +30,7 @@ session_start();
 
     <div class="banner" id="rightBanner">
         <img class="avatar" src="/image/header/defaultAvatar.png">
-        <p class="pseudo"><?php echo Session::unserializeConnectedUser()->getPseudo(); ?></p>
+        <a class="pseudo" href="/?p=user"><?php echo Session::unserializeConnectedUser()->getPseudo(); ?></a>
         <a id="deconnectionButton">Se déconnecter</a>
         <div class="endBanner"></div>
     </div>

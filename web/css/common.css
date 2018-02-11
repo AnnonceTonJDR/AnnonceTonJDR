@@ -339,7 +339,8 @@ header .banner .avatar {
     margin-top: 10px;
 }
 
-header .banner .pseudo {
+header .banner a.pseudo, header .banner a.pseudo:hover {
+    display: block;
     margin: 5px 0 0 0;
     color: #fff;
     font-family: Tangerine, cursive;
