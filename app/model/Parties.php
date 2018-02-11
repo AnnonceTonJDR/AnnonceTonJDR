@@ -169,7 +169,75 @@ class Parties
         return !is_bool(DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Inscription WHERE idAnnonce=" . $idParty .
             " AND idUtilisateur=" . $idUser)->fetch());
     }
+
+    public static function getMessagesByIdParty($idParty): array
+    {
+        $returnMessages = array();
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Message WHERE idAnnonce=" . $idParty . " ORDER BY idMessage DESC");
+        foreach ($req as $msg) {
+            $returnMessages[] = new Message($msg['idMessage'],
+                $msg['idAnnonce'],
+                $msg['idUtilisateur'],
+                $msg['prive'],
+                $msg['message']);
+        }
+        return $returnMessages;
+    }
+
 }
+
+class Message
+{
+    private $id;
+    private $idUser;
+    private $idParty;
+    private $isPrivate;
+    private $message;
+
+    /**
+     * Message constructor.
+     * @param $id
+     * @param $idUser
+     * @param $idParty
+     * @param $isPrivate
+     * @param $message
+     */
+    public function __construct($id, $idParty, $idUser, $isPrivate, $message)
+    {
+        $this->id = $id;
+        $this->idUser = $idUser;
+        $this->idParty = $idParty;
+        $this->isPrivate = $isPrivate;
+        $this->message = $message;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getIdUser(): int
+    {
+        return $this->idUser;
+    }
+
+    public function getIdParty(): int
+    {
+        return $this->idParty;
+    }
+
+    public function isPrivate(): bool
+    {
+        return $this->isPrivate;
+    }
+
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+}
+
 
 class Party
 {
@@ -194,6 +262,7 @@ class Party
     private $isOpenedCampain;
     private $nbPlayerAlreadyIn;
     private $registeredPlayers;
+    private $messages;
 
     /**
      * Party constructor.
@@ -206,8 +275,10 @@ class Party
         $this->registeredPlayers = array();
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Inscription WHERE idAnnonce=" . $id);
         foreach ($req as $idPlayer) {
-            $this->registeredPlayers[] = Users::getById($idPlayer);
+            $this->registeredPlayers[] = Users::getById($idPlayer['idUtilisateur']);
         }
+        $this->registeredPlayers = Parties::getMessagesByIdParty($msg);
+
         $this->id = $id;
         $this->idOwner = $idOwner;
         $this->ageMin = $ageMin;
