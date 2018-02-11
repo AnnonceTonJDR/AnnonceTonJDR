@@ -7,4 +7,7 @@
  */
 
 //IF everything ok :
-include_once 'app/views/user.php';
+if (isset($_SESSION['session']))
+    include_once 'app/views/user.php';
+else
+    include_once 'app/views/connection.php';

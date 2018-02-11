@@ -10,6 +10,8 @@ function connection() {
         if (data.ok === 1) {
             if (document.location.search === "?p=c")
                 document.location = "/" + document.location.search;
+            else if (document.location.search === "?p=user")
+                document.location = "/?p=user";
             else
                 document.location = "/?p=i";
         }
