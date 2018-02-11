@@ -220,7 +220,7 @@ VALUES (
   'à l\'extérieur'
 );
 
-CREATE TABLE IF NOT EXISTS `message` (
+CREATE TABLE IF NOT EXISTS `Message` (
   `idMessage`     INT(11) NOT NULL AUTO_INCREMENT,
   `idAnnonce`     INT(11) NOT NULL,
   `idUtilisateur` INT(11) NOT NULL,
