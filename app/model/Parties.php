@@ -126,7 +126,7 @@ class Parties
         return $parties;
     }
 
-    public static function getPartyFromId(int $id)
+    public static function getPartyFromId(int $id): Party
     {
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Annonce " .
             "WHERE idAnnonce=" . $id);
@@ -174,13 +174,14 @@ class Parties
     {
         $returnMessages = array();
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Message WHERE idAnnonce=" . $idParty . " ORDER BY idMessage DESC");
-        foreach ($req as $msg) {
-            $returnMessages[] = new Message($msg['idMessage'],
-                $msg['idAnnonce'],
-                $msg['idUtilisateur'],
-                $msg['prive'],
-                $msg['message']);
-        }
+        if (!is_bool($req))
+            foreach ($req->fetchAll() as $msg) {
+                $returnMessages[] = new Message($msg['idMessage'],
+                    $msg['idAnnonce'],
+                    $msg['idUtilisateur'],
+                    $msg['prive'],
+                    $msg['message']);
+            }
         return $returnMessages;
     }
 
@@ -277,8 +278,7 @@ class Party
         foreach ($req as $idPlayer) {
             $this->registeredPlayers[] = Users::getById($idPlayer['idUtilisateur']);
         }
-        $this->registeredPlayers = Parties::getMessagesByIdParty($msg);
-
+        $this->messages = Parties::getMessagesByIdParty($id);
         $this->id = $id;
         $this->idOwner = $idOwner;
         $this->ageMin = $ageMin;
@@ -399,6 +399,17 @@ class Party
     public function getRegisteredPlayers(): array
     {
         return $this->registeredPlayers;
+    }
+
+    public function message($idUser, $message, $private)
+    {
+        $req = DB::connectionDB()->prepare("INSERT INTO Message VALUES(NULL, ?,?,?,?)");
+        $req->execute(array(
+            $this->id,
+            $idUser,
+            $private,
+            $message
+        ));
     }
 
 

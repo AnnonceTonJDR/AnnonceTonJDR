@@ -177,12 +177,20 @@ function displayParty(Party $party)
                         ?></p>
                 </div>
                 <?php if (isset($_SESSION['session'])) { ?>
-                    <button class="contact" onclick="messageTo(<?php echo $party->getIdOwner() ?>)">Contacter le
+                    <button id="contactParty<?php echo $party->getId() ?>"
+                            onclick="messageTo(<?php echo $party->getId() ?>)">
+                        Contacter le
                         MJ
                     </button>
-                    <button class="contact" onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
+                    <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
                     </button>
                 <?php } ?>
+                <div class="divMessage" id="divMessage<?php echo $party->getId(); ?>" style="display: none">
+                    <textarea class="messageArea" title="message"></textarea>
+                    <button class="sendMessageButton"
+                            onclick="sendTo(<?php echo $party->getId(); ?>)">Envoyer
+                    </button>
+                </div>
             </div>
         </div>
 
