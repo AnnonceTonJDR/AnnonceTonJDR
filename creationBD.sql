@@ -228,5 +228,5 @@ CREATE TABLE IF NOT EXISTS `Message` (
   `message`       TEXT    NOT NULL,
   PRIMARY KEY (`idMessage`),
   FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`),
-  FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`idUtilisateur`)
+  FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`)
 );
