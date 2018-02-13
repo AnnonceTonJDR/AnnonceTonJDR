@@ -42,8 +42,8 @@ $user = Session::unserializeConnectedUser();
     <!--endregion-->
 
     <!--region nom et edition jeu-->
-    <p><label for="nomJeu">Ma partie se jouera dans l'univers de </label><input type="text" maxlength="255"
-                                                                                  id="nomJeu"/> qui
+    <p><label for="nomJeu">Ma partie s'appuiera sur le système de jeu "</label><input type="text" maxlength="255"
+                                                                                      id="nomJeu"/>" qui
         est un jeu
         <!-- Choix de l'édition jeu -->
         <?php echo Parties::comboBoxWithChoicesFor("EditionJeu") ?>
@@ -53,7 +53,7 @@ $user = Session::unserializeConnectedUser();
 
     <!--region nom et edition scénario et description-->
     <p><label for="nomScenario">Le scénario s'intitulera "</label><input type="text" maxlength="255"
-                                                                           id="nomScenario"/>"
+                                                                         id="nomScenario"/>"
         scénario provenant
         <!-- Choix de l'édition jeu -->
         <?php echo Parties::comboBoxWithChoicesFor("EditionScenario") ?>.

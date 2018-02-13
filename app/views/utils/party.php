@@ -126,7 +126,7 @@ function displayParty(Party $party)
                     </div>
                     <div style="display: table-row">
                         <div class="label" style="display: table-cell">
-                            <p>Possibilité de fumer :</p>
+                            <p>Fumer à l'intérieur :</p>
                         </div>
                         <div class="info" style="display: table-cell">
                             <p><?php echo $party->getSmoker() == 1 ? "Oui" : "Non"; ?></p>

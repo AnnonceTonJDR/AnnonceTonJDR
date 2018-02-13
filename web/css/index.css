@@ -57,3 +57,22 @@
     margin-right: 3px;
     color: #503b27;
 }
+
+.speechIndex {
+    margin: 0 5% 0 5%;
+    font-size: 20px;
+}
+
+.speechIndex p {
+    text-align: center !important;
+    color: #392a1c;
+}
+
+.speechIndex a, .speechIndex a:visited {
+    text-decoration: none;
+    color: #392a1c;
+}
+
+.speechIndex a:hover {
+    text-decoration: underline;
+}
