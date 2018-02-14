@@ -28,4 +28,14 @@ $(document).ready(function () {
     $('#connectionButton').click(function () {
         connection();
     });
+
+    $('#idConnection').keypress(function (event) {
+        if (event.key === 'Enter')
+            connection();
+    });
+
+    $('#pwdConnection').keypress(function (event) {
+        if (event.key === 'Enter')
+            connection();
+    });
 });

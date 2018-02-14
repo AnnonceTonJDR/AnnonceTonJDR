@@ -114,16 +114,6 @@ function closeConnectionInterface() {
 
 $(document).ready(function () {
 
-    $('#idConnection').keypress(function (event) {
-        if (event.key === 'Enter')
-            seConnecter();
-    });
-
-    $('#pwdConnection').keypress(function (event) {
-        if (event.key === 'Enter')
-            seConnecter();
-    });
-
     $('#openConnectionMenuButton').click(connectionInterface);
     $('.js_close_connectionInterface, footer').click(closeConnectionInterface);
     leftBanner = $('#leftBanner');
