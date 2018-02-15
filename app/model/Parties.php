@@ -380,9 +380,9 @@ class Party
         return $this->comment;
     }
 
-    public function getDate()
+    public function getDate(): string
     {
-        return $this->date;
+        return date_format(new DateTime($this->date), 'd/m/Y H:i');
     }
 
 
