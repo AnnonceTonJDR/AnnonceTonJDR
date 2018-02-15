@@ -56,8 +56,7 @@ ALTER TABLE `RecupMDP`
   `idUtilisateur`
 );
 
-
-/* Ajout d'un compte de test pour la connection */
+# region Ajout d'un compte de test pour la connection
 INSERT INTO `Utilisateur` (
   `id`,
   `nom`,
@@ -78,10 +77,24 @@ INSERT INTO `UtilisateurPrivate` (
   `dateNaissance`
 )
 VALUES (
-  '2', 'test@test.fr', '1', 'c508630359b61efdb2c9912e9188a8db',
+  1, 'test@test.fr', 1, 'c508630359b61efdb2c9912e9188a8db',
   '132e21374bc8ac35487014f7780fe7eb8bfe2e1991433dd8af28768e7ba6dcc2c21d01a1e0c2695c4a642b6190bb8d2c9d8ebd91a79fc3ad6e761fcdbc316125',
   '31-10-2017'
 );
+
+# endregion
+
+# region Ajout du compte avec le mail lucas.oms@hotmail.fr necessaires aux tests
+INSERT INTO `Utilisateur` (
+  `id`, `nom`, `prenom`, `pseudo`, `dateInscription`) VALUES
+  (2, 'Nom', 'Prenom', 'Pseudo', '2017-10-26');
+
+INSERT INTO `UtilisateurPrivate` (`id`, `mail`, `etat`, `motDePasse`, `sel`, `dateNaissance`) VALUES
+  (2, 'lucas.oms@hotmail.fr', 1,
+   'e2b094ca683fddd60663df9a0bafecfc62445e21f66e4ffe7affa66e40b5a08a850da342d0928df41758fa3b4d3b2eb9582336434e64c0498e60c0094292cf46',
+   '7b1f6eae3c92d2665f033008ba974b20', '2017-11-22');
+
+# endregion
 
 CREATE TABLE IF NOT EXISTS `Annonce` (
   `idAnnonce`                 INT(11)      NOT NULL AUTO_INCREMENT,

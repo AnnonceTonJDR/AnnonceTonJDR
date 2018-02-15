@@ -78,7 +78,7 @@ echo '<p class="' . (Users::mailAlreadyExists("fsdfsfs") ? 'failed' : 'passed')
 //region ==================== Test getters =========================
 
 echo '<p class="fonction">getByIdentifiantConnexion</p>';
-echo '<p class="' . (Users::getByConnectionId("Test") == null ? 'failed' : 'passed')
+echo '<p class="' . (Users::getByConnectionId("test") == null ? 'failed' : 'passed')
     . '">L\'utilisateur devrait etre trouvable avec le pseudo Test</p> ';
 echo '<p class="' . (Users::getByConnectionId("lucas.oms@hotmail.fr") == null ? 'failed' : 'passed')
     . '">L\'utilisateur devrait etre trouvable avec le mail lucas.oms@hotmail.fr</p> ';
@@ -96,7 +96,7 @@ echo '<p class="' . (Users::getById(555555) == null ? 'passed' : 'failed')
 echo '';
 
 echo '<p class="fonction">getByPseudo</p>';
-echo '<p class="' . (Users::getByPseudo("Test") == null ? 'failed' : 'passed')
+echo '<p class="' . (Users::getByPseudo("test") == null ? 'failed' : 'passed')
     . '">L\'utilisateur devrait etre trouvable avec le pseudo Test</p> ';
 echo '<p class="' . (Users::getByPseudo("grfsgergsewrgf") == null ? 'passed' : 'passed')
     . '">Aucun utilisateur ne devrait avoir le pseudo grfsgergsewrgf</p>';
