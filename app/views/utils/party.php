@@ -191,9 +191,20 @@ function displayParty(Party $party, bool $withMessage)
                             onclick="sendTo(<?php echo $party->getId(); ?>)">Envoyer
                     </button>
                 </div>
+                <?php
+                if ($withMessage)
+                    afficherMessage();
+                ?>
             </div>
         </div>
 
         <?php
     }
+}
+
+function afficherMessage()
+{ ?>
+
+
+    <?php
 }
