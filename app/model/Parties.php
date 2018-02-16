@@ -179,8 +179,9 @@ class Parties
                 $returnMessages[] = new Message($msg['idMessage'],
                     $msg['idAnnonce'],
                     $msg['idUtilisateur'],
-                    $msg['prive'],
-                    $msg['message']);
+                    $msg['prive'] == 1,
+                    $msg['message'],
+                    $msg['datePost']);
             }
         return $returnMessages;
     }
@@ -221,7 +222,7 @@ class Parties
     public static function getPartyFromIdRegistered($id): array
     {
         $parties = array();
-        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Annonce A JOIN Inscription I ON  A.idAnnonce=I.idAnnonce " .
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT A.* FROM Annonce A JOIN Inscription I ON  A.idAnnonce=I.idAnnonce " .
             "WHERE I.idUtilisateur=" . $id);
         if (!is_bool($req)) {
             $partiesReq = $req->fetchAll();
@@ -251,15 +252,21 @@ class Parties
         return $parties;
     }
 
+    public static function deleteParty(int $id)
+    {
+        DB::connectionDB()->exec("DELETE FROM Annonce WHERE idAnnonce = " . $id);
+    }
+
 }
 
 class Message
 {
     private $id;
-    private $idUser;
+    private $user;
     private $idParty;
     private $isPrivate;
     private $message;
+    private $date;
 
     /**
      * Message constructor.
@@ -269,13 +276,14 @@ class Message
      * @param $isPrivate
      * @param $message
      */
-    public function __construct($id, $idParty, $idUser, $isPrivate, $message)
+    public function __construct($id, $idParty, $idUser, $isPrivate, $message, $date)
     {
         $this->id = $id;
-        $this->idUser = $idUser;
+        $this->user = Users::getById($idUser);
         $this->idParty = $idParty;
         $this->isPrivate = $isPrivate;
         $this->message = $message;
+        $this->date = $date;
     }
 
     public function getId(): int
@@ -283,9 +291,9 @@ class Message
         return $this->id;
     }
 
-    public function getIdUser(): int
+    public function getUser(): User
     {
-        return $this->idUser;
+        return $this->user;
     }
 
     public function getIdParty(): int
@@ -301,6 +309,11 @@ class Message
     public function getMessage(): string
     {
         return $this->message;
+    }
+
+    public function getDate(): string
+    {
+        return $this->date;
     }
 
 }
@@ -340,7 +353,7 @@ class Party
                                 string $forumTitle, string $comment, $date, bool $isOpenedCampain, int $nbPlayerAlreadyIn)
     {
         $this->registeredPlayers = array();
-        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Inscription WHERE idAnnonce=" . $id);
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Inscription WHERE idAnnonce = " . $id);
         foreach ($req as $idPlayer) {
             $this->registeredPlayers[] = Users::getById($idPlayer['idUtilisateur']);
         }
@@ -474,7 +487,7 @@ class Party
 
     public function message($idUser, $message, $private)
     {
-        $req = DB::connectionDB()->prepare("INSERT INTO Message VALUES(NULL, ?,?,?,?)");
+        $req = DB::connectionDB()->prepare("INSERT INTO Message VALUES(NULL, ?,?,?,?, NULL)");
         $req->execute(array(
             $this->id,
             $idUser,
