@@ -2,7 +2,7 @@
 require_once 'utils/start_end_page.php';
 require_once 'utils/party.php';
 require_once 'app/model/Parties.php';
-startPage("Annonce ton JDR", [], ["site/party.js"]);
+startPage("Annonce ton JDR", ["index.css"], ["site/party.js"]);
 ?>
     <br>
     <div class="speechIndex">

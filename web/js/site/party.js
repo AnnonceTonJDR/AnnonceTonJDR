@@ -34,7 +34,7 @@ function messageTo(idParty) {
     }
 }
 
-function sendTo(idParty) {
+function sendTo(idParty, isPrivate) {
     //If no error
     if (openMessage === idParty) {
         $.ajax({
@@ -42,7 +42,7 @@ function sendTo(idParty) {
             url: '/app/controller/ajax/sendMessage.php',
             data: {
                 'idParty': idParty,
-                'private': 1,
+                'private': isPrivate,
                 'message': $('#divMessage' + idParty + ' .messageArea').val()
             }
         }).done(function (data) {
@@ -53,9 +53,30 @@ function sendTo(idParty) {
                 alert("Vous tentez de vous envoyer un message à vous même");
             } else if (data.ok === -2) {
                 alert("Votre message est trop court ! La concision n'est pas toujours de mise.");
+            } else if (data.ok === -3) {
+                alert("Partie à supprimer invalide");
             }
         });
     }
+}
+
+function deleteParty(idParty) {
+    $.ajax({
+        type: 'post',
+        url: '/app/controller/ajax/deleteParty.php',
+        data: {
+            'idParty': idParty
+        }
+    }).done(function (data) {
+        if (data.ok === true) {
+            alert("Partie supprimée");
+            location.reload();
+        } else if (data.ok === -1) {
+            alert("Vous n'êtes pas le propriétaire de cette partie !");
+        } else if (data.ok === -2) {
+            alert("Vous devriez être connecté");
+        }
+    });
 }
 
 function registerTo(id) {

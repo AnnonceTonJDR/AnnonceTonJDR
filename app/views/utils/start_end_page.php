@@ -17,7 +17,6 @@ function startPage($title, array $supCSS, array $supJS)
         <link rel="stylesheet" href="/web/css/normalize.css">
         <link rel="stylesheet" type="text/css" href="/web/css/common.css">
         <link rel="stylesheet" type="text/css" href="/web/css/fonts.css">
-        <link rel="stylesheet" type="text/css" href="/web/css/index.css">
         <?php foreach ($supCSS as $css) { ?>
             <link rel="stylesheet" type="text/css" href="/web/css/<?php echo $css; ?>">
         <?php } ?>
