@@ -185,6 +185,72 @@ class Parties
         return $returnMessages;
     }
 
+    public static function getPartyFromIdOwner($id): array
+    {
+        $parties = array();
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Annonce " .
+            "WHERE idUtilisateur=" . $id);
+        if (!is_bool($req)) {
+            $partiesReq = $req->fetchAll();
+            foreach ($partiesReq as $party)
+                $parties[] = new Party(
+                    $party['idAnnonce'],
+                    $party['idUtilisateur'],
+                    $party['ageMin'],
+                    $party['ageMax'],
+                    $party['joueurMax'],
+                    $party['nomJeu'],
+                    $party['edition'],
+                    $party['nomScenario'],
+                    $party['editionScenario'],
+                    $party['adresse'],
+                    $party['lieu'],
+                    $party['nourritureBoisson'],
+                    $party['alcool'],
+                    $party['fumer'],
+                    $party['titreForum'],
+                    $party['commentaire'],
+                    $party['date'],
+                    $party['faitPartieCampagneOuverte'] == 1,
+                    $party['joueurDejaInscrits']
+                );
+        }
+        return $parties;
+    }
+
+    public static function getPartyFromIdRegistered($id): array
+    {
+        $parties = array();
+        $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM Annonce A JOIN Inscription I ON  A.idAnnonce=I.idAnnonce " .
+            "WHERE I.idUtilisateur=" . $id);
+        if (!is_bool($req)) {
+            $partiesReq = $req->fetchAll();
+            foreach ($partiesReq as $party)
+                $parties[] = new Party(
+                    $party['idAnnonce'],
+                    $party['idUtilisateur'],
+                    $party['ageMin'],
+                    $party['ageMax'],
+                    $party['joueurMax'],
+                    $party['nomJeu'],
+                    $party['edition'],
+                    $party['nomScenario'],
+                    $party['editionScenario'],
+                    $party['adresse'],
+                    $party['lieu'],
+                    $party['nourritureBoisson'],
+                    $party['alcool'],
+                    $party['fumer'],
+                    $party['titreForum'],
+                    $party['commentaire'],
+                    $party['date'],
+                    $party['faitPartieCampagneOuverte'] == 1,
+                    $party['joueurDejaInscrits']
+                );
+        }
+        return $parties;
+    }
+
 }
 
 class Message
@@ -399,6 +465,11 @@ class Party
     public function getRegisteredPlayers(): array
     {
         return $this->registeredPlayers;
+    }
+
+    public function getMessages(): array
+    {
+        return $this->messages;
     }
 
     public function message($idUser, $message, $private)
