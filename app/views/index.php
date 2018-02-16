@@ -16,7 +16,7 @@ startPage("Annonce ton JDR", [], ["site/party.js"]);
     <h1> Dernières parties créées </h1>
 <?php
 foreach (Parties::getLastFiveParties() as $party) {
-    displayParty($party);
+    displayParty($party, false);
 }
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 include_once 'app/model/Parties.php';
-function displayParty(Party $party)
+function displayParty(Party $party, bool $withMessage)
 {
     if ($party != null) {
         ?>
