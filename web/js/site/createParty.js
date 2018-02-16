@@ -14,7 +14,7 @@ function popUp(message) {
 }
 
 function sendForm() {
-    if ($('#ageMin').val() === "" || $('#ageMax').val()
+    if ($('#ageMin').val() === "" || $('#ageMax').val() === ""
         || (parseInt($('#joueurMax').val()) + parseInt($('#nbJoueurDejaInscrits').val())) === ""
         || $('#nomJeu').val() === "" || $('#editionjeu').val() === "" || $('#nomScenario').val() === ""
         || $('#editionscenario').val() === "" || $('#typelieu').val() === "" || $('#nourritureBoisson').val() === ""
