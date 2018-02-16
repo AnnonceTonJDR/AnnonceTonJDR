@@ -12,7 +12,13 @@ $user = Session::unserializeConnectedUser();
     </p>
     <p><input type="checkbox" id="isVirtual"/><label for="isVirtual">Cette partie se déroulera sur le net.</label></p>
 
-    <p><label for="date">Elle se déroulera le </label><input type="date" min="1" max="99" id="date"></p>
+    <p><label for="date">Elle se déroulera le </label><input type="date" id="date">
+        à <input id="heure" type="number" min="0" max="24" title="heure" placeholder="00">:<input id="minute"
+                                                                                                  type="number" min="0"
+                                                                                                  max="59"
+                                                                                                  title="minute"
+                                                                                                  placeholder="00"
+                                                                                                  size="2"></p>
 
     <!--    la library javascript avec notre apiKey-->
     <script type="text/javascript"

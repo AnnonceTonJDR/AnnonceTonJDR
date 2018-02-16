@@ -14,38 +14,49 @@ function popUp(message) {
 }
 
 function sendForm() {
-    $.ajax({
-        type: 'post',
-        url: '/app/controller/ajax/createParty.php',
-        data: {
-            'ageMin': $('#ageMin').val(),
-            'ageMax': $('#ageMax').val(),
-            'joueurMax': parseInt($('#joueurMax').val()) + parseInt($('#nbJoueurDejaInscrits').val()),
-            'nomJeu': $('#nomJeu').val(),
-            'edition': $('#editionjeu').val(),
-            'nomScenario': $('#nomScenario').val(),
-            'editionScenario': $('#editionscenario').val(),
-            'adresse': $('#isVirtual').is(':checked') ? 'Internet' : $('#place-input').val(),
-            'lieu': $('#typelieu').val(),
-            'nourritureBoisson': $('#nourritureBoisson').val(),
-            'alcool': $('#alcool').val(),
-            'fumer': $('#fumer').val(),
-            'titreForum': $('#titreForum').val(),
-            'commentaire': $('#commentaire').val(),
-            'date': $('#date').val(),
-            'faitPartieCampagneOuverte': $('#isOpenedCampain').val(),
-            'nbJoueurDejaInscrits': $('#nbJoueurDejaInscrits').val()
-        }
-    }).done(function (data) {
-        if (data.ok) {
-            popUp("Partie créée avec succès !");
-            setTimeout(function () {
-                document.location = "/?p=i";
-            }, 1500);
-        }
-        else {
-        }
-    })
+    if ($('#ageMin').val() === "" || $('#ageMax').val()
+        || (parseInt($('#joueurMax').val()) + parseInt($('#nbJoueurDejaInscrits').val())) === ""
+        || $('#nomJeu').val() === "" || $('#editionjeu').val() === "" || $('#nomScenario').val() === ""
+        || $('#editionscenario').val() === "" || $('#typelieu').val() === "" || $('#nourritureBoisson').val() === ""
+        || $('#alcool').val() === "" || $('#fumer').val() === "" || $('#commentaire').val() === ""
+        || $('#date').val() === "" || $('#nbJoueurDejaInscrits').val() === ""
+        || $('#heure').val() === "" || $('#minute').val() === "") {
+        alert("Vous devez remplir tous les champs !");
+    } else
+        $.ajax({
+            type: 'post',
+            url: '/app/controller/ajax/createParty.php',
+            data: {
+                'ageMin': $('#ageMin').val(),
+                'ageMax': $('#ageMax').val(),
+                'joueurMax': parseInt($('#joueurMax').val()) + parseInt($('#nbJoueurDejaInscrits').val()),
+                'nomJeu': $('#nomJeu').val(),
+                'edition': $('#editionjeu').val(),
+                'nomScenario': $('#nomScenario').val(),
+                'editionScenario': $('#editionscenario').val(),
+                'adresse': $('#isVirtual').is(':checked') ? 'Internet' : $('#place-input').val(),
+                'lieu': $('#typelieu').val(),
+                'nourritureBoisson': $('#nourritureBoisson').val(),
+                'alcool': $('#alcool').val(),
+                'fumer': $('#fumer').val(),
+                'titreForum': $('#titreForum').val(),
+                'commentaire': $('#commentaire').val(),
+                'date': $('#date').val(),
+                'heure': $('#heure').val(),
+                'minute': $('#minute').val(),
+                'faitPartieCampagneOuverte': $('#isOpenedCampain').val(),
+                'nbJoueurDejaInscrits': $('#nbJoueurDejaInscrits').val()
+            }
+        }).done(function (data) {
+            if (data.ok) {
+                popUp("Partie créée avec succès !");
+                setTimeout(function () {
+                    document.location = "/?p=i";
+                }, 1500);
+            }
+            else {
+            }
+        })
 }
 
 function initControls() {

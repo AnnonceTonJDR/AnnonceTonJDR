@@ -213,8 +213,8 @@ if (!isset($_SESSION['session'])) {
             $comment = true;
     }
 
-    if (!isset($_POST['date'])) {
-        $creationErrors[] = "La date doit être spécifiée";
+    if (!isset($_POST['date']) || !isset($_POST['heure']) || !isset($_POST['minute'])) {
+        $creationErrors[] = "La date et l'heure doivent être spécifiées";
         $flag = false;
     } else {
         //TODO vérifier que la date est bien future à aujourd'hui
@@ -264,6 +264,8 @@ if (!isset($_SESSION['session'])) {
             $_POST['titreForum'],
             $_POST['commentaire'],
             $_POST['date'],
+            $_POST['heure'],
+            $_POST['minute'],
             $_POST['faitPartieCampagneOuverte'],
             $_POST['nbJoueurDejaInscrits']);
     }

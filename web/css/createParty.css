@@ -87,6 +87,14 @@ p.condition {
     min-width: 160px;
 }
 
+#heure, #minute {
+    width: 33px;
+}
+
+#heure::placeholder, #minute::placeholder {
+    color: rgba(71, 60, 39, 0.59);
+}
+
 /*endregion*/
 
 /* Disable the ugly blue border when focusing inputs */

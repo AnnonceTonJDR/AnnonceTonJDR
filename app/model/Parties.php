@@ -27,6 +27,8 @@ class Parties
                                 string $forumTitle,
                                 string $comment,
                                 $date,
+                                int $heure,
+                                int $minute,
                                 bool $isOpenedCampain,
                                 int $nbPlayerAlreadyIn)
     {
@@ -49,7 +51,9 @@ class Parties
                 $smokerFree,        //fumer
                 $forumTitle,        //titreforum
                 $comment,           //commentaire
-                $date,              //date
+                $date . " "
+                . $heure . ":"
+                . $minute . ":00",  //date
                 $isOpenedCampain    //faitPartieCampagneOuverte
             ));
     }
