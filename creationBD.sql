@@ -289,39 +289,4 @@ ALTER TABLE Message
   ON DELETE CASCADE
   ON UPDATE CASCADE;
 
-#_______________________
-INSERT INTO `Utilisateur` (`id`, `nom`, `prenom`, `pseudo`, `dateInscription`) VALUES
-  (3, 'Test', 'Test', 'TestTrad', '2017-11-11'),
-  (4, 'Hammoutene', 'Amir', 'Amir', '2018-01-22');
-INSERT INTO `UtilisateurPrivate` (`id`, `mail`, `etat`, `motDePasse`, `sel`, `dateNaissance`) VALUES
-  (3, 'lucas.smo@hotmail.fr', 1,
-   '7bbcc93f8eb918b66ded41873d29c3a6a4e0036378ff8c102e97b1dfaf2850a4e75db1c691f23514f1b4b24dc5b19484b680d3b243d7ce3485a78d9535046eb5',
-   '940d2235b97d1dadce6242a220994381', '2017-12-31'),
-  (4, 'annoncetonjdr@gmail.com', 1,
-   'd3762cba89de17bd8bac7764ad23d439967aa8180a0d83df103098585602e866e991804b156b22581cd93523cd1bdbbe269a8a1c1c2820b64b2cd13c522eb16b',
-   '283c1d0baf5a54c5c65ec6579c893444', '1987-02-27');
-
-INSERT INTO `Annonce` (`idAnnonce`, `idUtilisateur`, `lienAssocie`, `joueurMax`, `joueurDejaInscrits`, `ageMin`, `ageMax`, `nomJeu`, `edition`, `nomScenario`, `editionScenario`, `adresse`, `lieu`, `nourritureBoisson`, `alcool`, `fumer`, `titreForum`, `commentaire`, `date`, `faitPartieCamapgneOuverte`, `dateDerniereModif`)
-VALUES
-  (2, 1, NULL, 5, 1, 18, 20, 'Deathwatch', 'commercial', 'Troululu', 'de moi ou d''un proche',
-    '136 Boulevard Chave, Marseille, France', 'chez moi', 2, 1, 0, '',
-    'Je suis un troululu et j''aime troululuter les troululus. Je suis un troululu et j''aime troululuter les troululus. Je suis un troululu et j''aime troululuter les troululus. Je suis un troululu et j''aime troululuter les troululus. Je suis un troululu et j''aime troululuter les troululus. Je suis un troululu et j''aime troululuter les troululus. Je suis un troululu et j''aime troululuter les troululus. ',
-    '2018-09-04 00:00:00', 0, '2018-02-10 19:27:46'),
-  (4, 4, NULL, 5, 1, 18, 70, 'Chroniques Oubliées', 'commercial', 'Le Siège de Cormelia', 'de moi ou d''un proche',
-    'Cormeilles-en-Parisis, France', 'dans une salle', 1, 1, 0, '',
-    'Votre compagnie s''est fait engagé pour poser des pièges autour de la ville, vos proches sont en sécurité dans les sous-sols de l''école, en effet, votre ville se fait assiégée.\nCeci dit, plusieurs choix s’offriront à vous, et aucun choix n''est le meilleur. Comment vous en sortirez-vous ?',
-    '2018-02-24 00:00:00', 0, '2018-02-10 01:27:32');
-
-INSERT INTO `Inscription` (`idUtilisateur`, `idAnnonce`) VALUES
-  (1, 3),
-  (1, 4),
-  (4, 2);
-INSERT INTO `Message` (`idMessage`, `idAnnonce`, `idUtilisateur`, `prive`, `message`, `datePost`) VALUES
-  (9, 2, 1, 0, 'Message non privé du créateur', '2018-02-16 19:49:05'),
-  (10, 2, 4, 1, 'Message privé au créateur', '2018-02-16 19:49:05'),
-  (11, 4, 1, 1, 'message privé au créateur', '2018-02-16 19:49:05'),
-  (12, 4, 1, 0, 'Message non privé a tout le monde', '2018-02-16 19:49:05'),
-  (13, 4, 3, 1, 'Message au créateur privé, non visibile par Pseudo', '2018-02-16 20:24:26'),
-  (14, 4, 1, 0, 'Essai de message public', '2018-02-16 21:08:40');
-
 SET FOREIGN_KEY_CHECKS = 1;
