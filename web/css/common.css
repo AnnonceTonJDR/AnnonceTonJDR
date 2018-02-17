@@ -96,7 +96,7 @@ h3 {
 .messageArea {
     display: inline-block;
     width: 95%;
-    margin: 3px 2.5% 0 2.5%;
+    margin: 3px auto 0 auto;
     resize: none;
     font-family: Badscript, cursive;
     font-weight: 600;
@@ -178,8 +178,111 @@ h3 {
 
 /*endregion*/
 
-/*endregion*/
+/*region =========================== Parties ==========================*/
+.party {
+    box-shadow: #392a1c 0 0 5px -1px;
+    margin-bottom: 10px;
+}
 
+.party .headerParty {
+    display: table;
+    border-collapse: collapse;
+    vertical-align: middle;
+    background-color: #b29d7f;
+    color: #2f2217;
+}
+
+.party .headerParty:hover {
+    background-color: #a49079;
+    cursor: pointer;
+}
+
+.party .headerParty p {
+    text-align: center !important;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.party .headerParty .infos, .party .headerParty .details {
+    display: table-row;
+}
+
+.party .headerParty .infos div, .party .headerParty .details div {
+    border: solid 1px #392a1c;
+    padding: 5px;
+    width: 40%;
+}
+
+.party .partyDetails {
+    border-right: solid 1px #392a1c;
+    border-bottom: solid 1px #392a1c;
+    border-left: solid 1px #392a1c;
+}
+
+.label, .info {
+    padding: 5px;
+}
+
+.label p, .info p {
+    margin: 0;
+}
+
+.label p {
+    text-align: right !important;
+    margin-left: 3px;
+    font-weight: bold;
+    color: #392a1c;
+}
+
+.info p {
+    text-align: left !important;
+    margin-right: 3px;
+    color: #503b27;
+}
+
+.party .partyDetails > .message {
+    margin-top: 20px;
+}
+
+.party .partyDetails > .message ~ .message {
+    margin-top: 0;
+}
+
+.message {
+    box-shadow: #392a1c 0 0 5px -1px;
+    border: solid 1px #483524;
+    width: 95%;
+    margin: 0 auto 10px auto;
+    color: #392a1c;
+}
+
+.message .header {
+    width: 100%;
+    border-bottom: solid 1px #483524;
+    background-color: #b29d7f;
+    display: table;
+}
+
+.message .header .pseudo {
+    font-weight: bold;
+    color: #392a1c;
+}
+
+.message .header div p {
+    margin: 8px 10px 8px 10px;
+}
+
+.message .messageDisplay {
+    padding: 0 5px 5px 5px;
+}
+
+.message .messageDisplay .corpsMessage {
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-top: 15px;
+}
+
+/*endregion*/
 /*endregion*/
 
 /*region =========================== Header ===========================*/

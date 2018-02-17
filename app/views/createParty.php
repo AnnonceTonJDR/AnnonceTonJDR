@@ -10,10 +10,6 @@ $user = Session::unserializeConnectedUser();
     <p id="addressText"><label for="adresse">J'organiserai mon jeu de rôle en ce lieu : </label>
         <input type="text" style="min-width: 300px;" id="place-input" title="Où habitez-vous ?" placeholder="">.
     </p>
-    <p><input type="checkbox" id="isVirtual"/><label for="isVirtual">Cette partie se déroulera sur le net.</label></p>
-
-    <p><label for="date">Elle se déroulera le </label><input type="date" min="1" max="99" id="date"></p>
-
     <!--    la library javascript avec notre apiKey-->
     <script type="text/javascript"
             src="//maps.googleapis.com/maps/api/js?key=AIzaSyDtnql0_LAPbI6QU8GTnlShmyJ7QQMSL1Q&libraries=places"></script>
@@ -22,6 +18,15 @@ $user = Session::unserializeConnectedUser();
         var input = document.getElementById('place-input');
         autocomplete = new google.maps.places.Autocomplete(input);
     </script>
+    <p><input type="checkbox" id="isVirtual"/><label for="isVirtual">Cette partie se déroulera sur le net.</label></p>
+
+    <p><label for="date">Elle se déroulera le </label><input type="date" id="date">
+        à <input id="heure" type="number" min="0" max="24" title="heure" placeholder="00">:<input id="minute"
+                                                                                                  type="number" min="0"
+                                                                                                  max="59"
+                                                                                                  title="minute"
+                                                                                                  placeholder="00"
+                                                                                                  size="2"></p>
 
 
     <!--region nombre de joueur-->
