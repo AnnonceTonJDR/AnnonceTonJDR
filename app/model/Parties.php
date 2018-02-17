@@ -20,6 +20,8 @@ class Parties
                                 string $scenarioName,
                                 string $scenarioEdition,
                                 string $address,
+                                float $longitude,
+                                float $latitude,
                                 string $place,
                                 int $foodBeverage,
                                 int $alcohol,
@@ -30,7 +32,7 @@ class Parties
                                 bool $isOpenedCampain,
                                 int $nbPlayerAlreadyIn)
     {
-        $req = DB::connectionDB()->prepare("INSERT INTO Annonce VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)");
+        $req = DB::connectionDB()->prepare("INSERT INTO Annonce VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)");
         $req->execute(
             array($idOwner,         //idUtilisateur
                 null,               //Lien associée
@@ -43,6 +45,8 @@ class Parties
                 $scenarioName,      //nomScenario
                 $scenarioEdition,   //editionScenario
                 $address,           //adresse
+                $longitude,         //longitude
+                $latitude,          //latitude
                 $place,             //lieu
                 $foodBeverage,      //nourritureBoisson
                 $alcohol,           //alcool

@@ -129,12 +129,15 @@ if (!isset($_SESSION['session'])) {
 
     //endregion
 
-    //TODO Effectuer la modification via l'API google
     if (!isset($_POST['adresse'])) {
         $address = true;
     } else {
+        $location = Utils::adressToCoordinates($_POST["adresse"]);
         if (strlen($_POST['adresse']) > 255) {
             $creationErrors[] = "L'adresse ne peut exceder 255 caractères";
+            $flag = false;
+        } else if (!$location["lon"] && !$location["lat"]) {
+            $creationErrors[] = "L'adresse saisie doit être reconnue parmis les choix proposés";
             $flag = false;
         } else
             $address = true;
@@ -248,6 +251,7 @@ if (!isset($_SESSION['session'])) {
     }
 
     if ($flag) {
+        $location = Utils::adressToCoordinates($_POST["adresse"]);
         Parties::createParty($user->getId(),
             $_POST['ageMin'],
             $_POST['ageMax'],
@@ -257,6 +261,8 @@ if (!isset($_SESSION['session'])) {
             $_POST['nomScenario'],
             $_POST['editionScenario'],
             $_POST['adresse'],
+            $location["lon"],
+            $location["lat"],
             $_POST['lieu'],
             $_POST['nourritureBoisson'],
             $_POST['alcool'],
