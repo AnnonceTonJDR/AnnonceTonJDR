@@ -119,6 +119,11 @@ h3 {
     -webkit-text-fill-color: inherit !important;
 }
 
+/* google autocompletion styles*/
+.pac-container, .pac-logo {
+    z-index: 15000;
+}
+
 /*endregion*/
 
 /*region =========================== Scroll border ====================*/
