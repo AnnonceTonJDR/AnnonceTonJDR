@@ -16,6 +16,9 @@ else if (isset($_GET["p"]) && $_GET["p"] === "cgu") {
 } // Créer partie
 else if (isset($_GET["p"]) && $_GET["p"] === "c") {
     include_once 'app/controller/createParty.php';
+} // Chercher partie
+else if (isset($_GET["p"]) && $_GET["p"] === "s") {
+    include_once 'app/controller/searchParty.php';
 } // Profil l'utilisateur
 else if (isset($_GET["p"]) && $_GET["p"] === "user") {
     include_once 'app/controller/userProfile.php';
