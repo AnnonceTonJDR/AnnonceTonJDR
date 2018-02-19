@@ -194,7 +194,7 @@ function displayParty(Party $party, bool $withMessage)
                     </div>
                     <?php
                 }
-                if ($withMessage)
+                if ($withMessage) {
                     if (isset($_SESSION['session'])) {
                         ?>
                         <button class="sendMessageButton" style="width: auto !important;"
@@ -212,12 +212,13 @@ function displayParty(Party $party, bool $withMessage)
                     } else
                         foreach ($party->getMessages() as $msg)
                             afficherMessage($msg, false);
-                if (Session::unserializeConnectedUser()->getId() == $party->getIdOwner()) {
-                    ?>
-                    <button class="cancelParty"
-                            onclick="deleteParty(<?php echo $party->getId() ?>)">Annuler cette partie
-                    </button>
-                    <?php
+                    if (Session::unserializeConnectedUser()->getId() == $party->getIdOwner()) {
+                        ?>
+                        <button class="cancelParty"
+                                onclick="deleteParty(<?php echo $party->getId() ?>)">Annuler cette partie
+                        </button>
+                        <?php
+                    }
                 }
                 ?>
             </div>

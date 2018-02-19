@@ -17,6 +17,8 @@ class Utils
      */
     public static function adressToCoordinates($address)
     {
+        if ($address === 'Internet')
+            return ["lat" => 0, "lon" => 0];
         $googleAPIKey = "AIzaSyDtnql0_LAPbI6QU8GTnlShmyJ7QQMSL1Q";
         $address = urlencode($address);
         $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key=$googleAPIKey";
