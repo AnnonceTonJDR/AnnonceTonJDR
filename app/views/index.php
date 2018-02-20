@@ -15,8 +15,9 @@ startPage("Annonce ton JDR", ["index.css"], ["site/party.js"]);
     <br>
     <h1> Dernières parties créées </h1>
 <?php
+$user = isset($_SESSION['session']) ? Session::unserializeConnectedUser() : null;
 foreach (Parties::getLastFiveParties() as $party) {
-    displayParty($party, false);
+    displayParty($party, false, $user);
 }
 ?>
 

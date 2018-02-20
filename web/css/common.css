@@ -214,15 +214,15 @@ h3 {
 }
 
 .party .headerParty .infos div, .party .headerParty .details div {
-    border: solid 1px #392a1c;
+    border: solid 1px #624e39;
     padding: 5px;
     width: 40%;
 }
 
 .party .partyDetails {
-    border-right: solid 1px #392a1c;
-    border-bottom: solid 1px #392a1c;
-    border-left: solid 1px #392a1c;
+    border-right: solid 1px #624e39;
+    border-bottom: solid 1px #624e39;
+    border-left: solid 1px #624e39;
 }
 
 .label, .info {
