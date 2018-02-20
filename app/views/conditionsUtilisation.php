@@ -226,10 +226,11 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
             site
             <a href="//www.allaboutcookies.org/">allaboutcookies.org</a>.<br><br>
 
-            <strong>8.1</strong> En naviguant sur notre Site, vous acceptez l'utilisation du cookie Google
+ <!--           <strong>8.1</strong> En naviguant sur notre Site, vous acceptez l'utilisation du cookie Google
             Analytics (fourni par Google Inc.) nécessaire à des fins statistiques et pour d'éventuelles
-            améliorations de nos Services.<br><br>
-        </p>
+            améliorations de nos Services.
+        </p> -->
+		<br><br>
     </div>
     <h1 id="mentionsLegales">Mentions légales - AnnonceTonJDR</h1>
     <div class="mentionsLégales center">
@@ -238,21 +239,21 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
             AnnonceTonJDR<br>
             Projet à but non lucratif<br>
             Chef de projet et directeur des publications :<br>
-            Amir Hammoutene<br>
+            Amir HAMMOUTENE<br>
             Email : annoncetonjdr@gmail.com<br><br>
         </p>
 		<h3>Contributeurs</h3>
 		<p>
-            Lucas Oms : webmaster et design<br>
-            Grégoire Peltier : conception et création<br>
-            Allison Marquis : consultante design<br>
-            Jiks : illustrations<br><br>
+            Lucas OMS : webmaster et design<br>
+            Grégoire PELTIER : conception et création<br>
+            Allison MARQUIS: consultante design<br>
+            JIKS : illustrations<br><br>
         </p>
         <h3>Hébergement</h3>
         <p>
             Serveur EX2<br>
             Détenteur du compte :<br>
-            Amir Hammoutene<br>
+            Amir HAMMOUTENE<br>
             annoncetonjdr@gmail.com<br>
             <br><br><br>
         </p>
