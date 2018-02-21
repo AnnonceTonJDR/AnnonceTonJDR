@@ -9,7 +9,8 @@ function searchParties() {
         data: {
             'address': $('#place-input').val(),
             'range': $('#range').val(),
-            'rpg': $('#nomJeu').val()
+            'rpg': $('#nomJeu').val(),
+            'virtual': $('#onlyNet').is(':checked') ? 'only' : $('#withNet').is(':checked') ? 'yes' : 'no'
         },
         dataType: "html"
     }).done(function (data) {

@@ -48,23 +48,23 @@ function search_party($datas)
         $params["range"] = $datas["range"];
     }
 
+    if (isset($datas["rpg"])) {
+        $where .= " `nomJeu` like :rpg ";
+        $params["rpg"] = "%" . $datas["rpg"] . "%";
+    }
+
     if (isset($datas["virtual"])) {
         switch ($datas["virtual"]) {
             case "no":
-                //add no case
+                $where .= " AND  `adresse` != \"Internet\" ";
                 break;
             case "yes":
-                //add yes case
+                $where .= " OR `adresse` = \"Internet\" ";
                 break;
             case "only":
-                //add only case
+                $where = " `adresse` = \"Internet\" ";
                 break;
         }
-    }
-
-    if (isset($datas["rpg"])) {
-        $where .= " `nomJeu` like :rpg";
-        $params["rpg"] = "%" . $datas["rpg"] . "%";
     }
 
     $req = DB_readOnly::connectionDB_readOnly()->prepare("Select " . $fields . " FROM `" . $table . "` WHERE " . $where . $having);
@@ -98,7 +98,6 @@ function search_party($datas)
     }
 
     return null;
-
 }
 
 ////////////Sorties des variables en JSON
