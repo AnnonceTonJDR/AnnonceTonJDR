@@ -96,6 +96,7 @@ class Parties
 
     public static function isValidPlace(string $lieu): bool
     {
+        if ($lieu === 'Internet') return true;
         $req = DB_readOnly::connectionDB_readOnly()->query("SELECT * FROM TypeLieu")->fetchAll();
         foreach ($req as $place) {
             if ($place['type'] == $lieu)

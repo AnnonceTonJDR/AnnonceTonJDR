@@ -1,6 +1,6 @@
 <?php
 include_once 'app/model/Parties.php';
-function displayParty(Party $party, bool $withMessage)
+function displayParty(Party $party, bool $withMessage, $userConnected)
 {
     if ($party != null) {
         ?>
@@ -176,7 +176,7 @@ function displayParty(Party $party, bool $withMessage)
                         echo $party->getComment();
                         ?></p>
                 </div>
-                <?php if (isset($_SESSION['session']) && !$withMessage) { ?>
+                <?php if ($userConnected != null && !$withMessage && $party->getIdOwner() != $userConnected->getId()) { ?>
                     <button id="contactParty<?php echo $party->getId() ?>"
                             onclick="messageTo(<?php echo $party->getId() ?>)">
                         Contacter le
@@ -184,7 +184,16 @@ function displayParty(Party $party, bool $withMessage)
                     </button>
                     <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
                     </button>
-                <?php }
+                <?php } else if ($userConnected != null && $party->getIdOwner() == $userConnected->getId() && !$withMessage) {
+                    ?>
+                    <p style="text-align: center;
+                                font-family: inherit;
+                                color: #503b27;
+                                font-style: italic;
+                                font-size: 14px;">
+                        Vous êtes le créateur de cette partie</p>
+                    <?php
+                }
                 if (!$withMessage) { ?>
                     <div class="divMessage" id="divMessage<?php echo $party->getId(); ?>" style="display: none">
                         <textarea class="messageArea" title="message"></textarea>
@@ -194,8 +203,8 @@ function displayParty(Party $party, bool $withMessage)
                     </div>
                     <?php
                 }
-                if ($withMessage)
-                    if (isset($_SESSION['session'])) {
+                if ($withMessage) {
+                    if ($userConnected != null) {
                         ?>
                         <button class="sendMessageButton" style="width: auto !important;"
                                 onclick="messageTo(<?php echo $party->getId() ?>)">Envoyer un message à tout le monde
@@ -208,16 +217,17 @@ function displayParty(Party $party, bool $withMessage)
                         </div>
                         <?php
                         foreach ($party->getMessages() as $msg)
-                            afficherMessage($msg, Session::unserializeConnectedUser()->getId() == $party->getIdOwner());
+                            afficherMessage($msg, Session::unserializeConnectedUser()->getId() == $party->getIdOwner(), $party);
                     } else
                         foreach ($party->getMessages() as $msg)
-                            afficherMessage($msg, false);
-                if (Session::unserializeConnectedUser()->getId() == $party->getIdOwner()) {
-                    ?>
-                    <button class="cancelParty"
-                            onclick="deleteParty(<?php echo $party->getId() ?>)">Annuler cette partie
-                    </button>
-                    <?php
+                            afficherMessage($msg, false, $party);
+                    if (Session::unserializeConnectedUser()->getId() == $party->getIdOwner()) {
+                        ?>
+                        <button class="cancelParty"
+                                onclick="deleteParty(<?php echo $party->getId() ?>)">Annuler cette partie
+                        </button>
+                        <?php
+                    }
                 }
                 ?>
             </div>
@@ -227,14 +237,15 @@ function displayParty(Party $party, bool $withMessage)
     }
 }
 
-function afficherMessage(Message $message, bool $isOwner)
+function afficherMessage(Message $message, bool $isOwner, Party $party)
 {
     if (!$message->isPrivate() || $isOwner) {
         ?>
         <div class="message">
             <div class="header">
                 <div style="display: table-cell; text-align: left;">
-                    <p class="pseudo" style="text-align: left;"><?php echo $message->getUser()->getPseudo(); ?></p>
+                    <p class="pseudo"
+                       style="text-align: left;"><?php echo $message->getUser()->getPseudo(); ?><?php echo $message->getUser()->getId() == $party->getIdOwner() ? '(MJ)' : ''; ?></p>
                 </div>
                 <div style="display: table-cell; text-align: right;">
                     <p style="text-align: right;"><?php echo date_format(new DateTime($message->getDate()), 'd/m/Y H:i'); ?></p>

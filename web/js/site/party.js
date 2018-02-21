@@ -49,6 +49,7 @@ function sendTo(idParty, isPrivate) {
             if (data.ok === true) {
                 alert("Message envoyé");
                 $('#divMessage' + openMessage).slideUp();
+                location.reload();
             } else if (data.ok === -1) {
                 alert("Vous tentez de vous envoyer un message à vous même");
             } else if (data.ok === -2) {

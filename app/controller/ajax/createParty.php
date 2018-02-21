@@ -136,7 +136,7 @@ if (!isset($_SESSION['session'])) {
         if (strlen($_POST['adresse']) > 255) {
             $creationErrors[] = "L'adresse ne peut exceder 255 caractères";
             $flag = false;
-        } else if (!$location["lon"] && !$location["lat"]) {
+        } else if (!$location["lon"] && !$location["lat"] && $_POST["adresse"] !== 'Internet') {
             $creationErrors[] = "L'adresse saisie doit être reconnue parmis les choix proposés";
             $flag = false;
         } else
@@ -251,6 +251,7 @@ if (!isset($_SESSION['session'])) {
     }
 
     if ($flag) {
+        //FIXME Ligne inutile ?
         $location = Utils::adressToCoordinates($_POST["adresse"]);
         Parties::createParty($user->getId(),
             $_POST['ageMin'],
@@ -261,8 +262,8 @@ if (!isset($_SESSION['session'])) {
             $_POST['nomScenario'],
             $_POST['editionScenario'],
             $_POST['adresse'],
-            $location["lon"],
-            $location["lat"],
+            $_POST['adresse'] === 'Internet' ? 0 : $location["lon"],
+            $_POST['adresse'] === 'Internet' ? 0 : $location["lat"],
             $_POST['lieu'],
             $_POST['nourritureBoisson'],
             $_POST['alcool'],
