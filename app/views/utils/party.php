@@ -184,7 +184,7 @@ function displayParty(Party $party, bool $withMessage, $userConnected)
                     </button>
                     <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
                     </button>
-                <?php } else if ($party->getIdOwner() == $userConnected->getId() && !$withMessage) {
+                <?php } else if ($userConnected != null && $party->getIdOwner() == $userConnected->getId() && !$withMessage) {
                     ?>
                     <p style="text-align: center;
                                 font-family: inherit;

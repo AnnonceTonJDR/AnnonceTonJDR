@@ -56,7 +56,7 @@ function sendForm() {
             }
             else {
             }
-        })
+        });
 }
 
 function initControls() {

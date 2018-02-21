@@ -19,6 +19,13 @@ else if (isset($_GET["p"]) && $_GET["p"] === "c") {
 } // Chercher partie
 else if (isset($_GET["p"]) && $_GET["p"] === "s") {
     include_once 'app/controller/searchParty.php';
+} // Ajax search
+/**
+ * This AJAX call must be in the main index in order to access all directories the same way
+ * and can use /views/* properly
+ */
+else if (isset($_GET["p"]) && $_GET["p"] === "sAjax") {
+    include_once 'app/controller/ajax/searchParty.php';
 } // Profil l'utilisateur
 else if (isset($_GET["p"]) && $_GET["p"] === "user") {
     include_once 'app/controller/userProfile.php';
