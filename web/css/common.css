@@ -321,25 +321,30 @@ h3 {
 }
 
 #menuConnexion {
-    background: #443622;
-    /*background: url(/image/parcheminConnexion.png) no-repeat;*/
+    background: url(/image/parcheminConnexion.png) no-repeat;
     background-size: contain;
-
     position: fixed;
     bottom: calc(50% - 60px);
     left: calc(50% - 160px);
-    width: 321px;
-    height: 120px;
+    width: 350px;
+    height: 167px;
     z-index: 60;
     padding: 5px;
     font-family: "Montserrat Light", sans-serif;
+    filter: drop-shadow(0 0 6px #392a1c);
+}
+
+.formulaireConnexion {
+    margin-top: 39px;
+    position: relative;
+    left: -5px;
 }
 
 .formulaireConnexion label {
     display: inline-block;
     width: 110px;
     text-align: right;
-    color: white;
+    color: #392a1c;
     margin: 5px 0 5px 0;
 }
 
@@ -354,20 +359,20 @@ h3 {
 }
 
 .formulaireConnexion a {
-    color: white;
+    color: #392a1c;
     text-decoration: none;
     display: inline-block;
     position: absolute;
 }
 
 .formulaireConnexion #inscription {
-    right: 15px;
-    bottom: 2px;
+    right: 16px;
+    bottom: -15px;
 }
 
 .formulaireConnexion #motDePasseOublie {
-    left: 15px;
-    bottom: 2px;
+    left: 53px;
+    bottom: -15px;
 }
 
 #menuConnexion button {
@@ -375,7 +380,7 @@ h3 {
     font-size: small;
     height: 20px;
     width: 200px;
-    margin: 3px 0 5px calc(50% - 100px);
+    margin: 1px 0 5px calc(50% - 100px);
     border: solid 1px #392a1c;
     background: #483C27;
 }
@@ -385,7 +390,7 @@ h3 {
 }
 
 #menuConnexion a {
-    color: #ffffff;
+    color: #392a1c;
     font-size: small;
 }
 

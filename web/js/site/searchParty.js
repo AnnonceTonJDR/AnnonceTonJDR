@@ -14,6 +14,9 @@ function searchParties() {
         dataType: "html"
     }).done(function (data) {
         $('#reponseRecherche').html(data);
+        if ($('#wrapper').width() < 415) {
+            responsive();
+        }
     })
 }
 
@@ -33,7 +36,10 @@ $(document).ready(function () {
     $('#withNet').change(function () {
         if ($(this).is(':checked'))
             $('#onlyNetText').slideDown();
-        else
+        else {
             $('#onlyNetText').slideUp();
+            $('#onlyNet').prop('checked', false);
+            $('#addressText').slideDown();
+        }
     });
 });
