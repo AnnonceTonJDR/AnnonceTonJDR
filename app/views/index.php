@@ -6,7 +6,7 @@ startPage("Annonce ton JDR", ["index.css"], ["site/party.js"]);
 ?>
     <br>
     <div class="speechIndex">
-        <p>Bienvenue sur AnnonceTonJDR. Ce site vous permettra de consulter et de créer des annonces de jeux de rôle
+        <p>Bienvenue sur AnnonceTonJDR. Ce site vous permet de consulter et de créer des annonces de jeux de rôle
             autour
             d'une table.
             <a target="_blank" href="//www.facebook.com/Annonce-Ton-JDR-1248933045203703/">Suivre notre page

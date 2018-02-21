@@ -8,7 +8,7 @@ startPage("Annonce ton JDR - Chercher une partie", ["searchParty.css", "createPa
 $user = isset($_SESSION['session']) ? Session::unserializeConnectedUser() : null;
 ?>
     <div id="formRecherche">
-        <p id="addressText"><label for="place-input">Votre adresse : </label><input id="place-input" name="place-input"
+        <p id="addressText"><label for="place-input">Adresse de recherche : </label><input id="place-input" name="place-input"
                                                                                     type="text"/>
             <script type="text/javascript"
                     src="//maps.googleapis.com/maps/api/js?key=AIzaSyDtnql0_LAPbI6QU8GTnlShmyJ7QQMSL1Q&libraries=places"></script>
@@ -24,7 +24,7 @@ $user = isset($_SESSION['session']) ? Session::unserializeConnectedUser() : null
                 Inclure les parties sur le net</label></p>
         <p id="onlyNetText" style="display: none;"><input id="onlyNet" name="onlyNet" type="checkbox"/><label
                     for="onlyNet">Ne rechercher que les parties sur le net</label></p>
-        <p><label for="nomJeu">Chercher ce jeu : </label><input id="nomJeu" name="nomJeu" type="text"/></p>
+        <p><label for="nomJeu">Le nom du jeu recherché contient : </label><input id="nomJeu" name="nomJeu" type="text"/></p>
         <button onclick="searchParties()">Lancer la recherche</button>
     </div>
     <div id="reponseRecherche"></div>
