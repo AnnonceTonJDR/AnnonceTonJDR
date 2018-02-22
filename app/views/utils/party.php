@@ -177,13 +177,21 @@ function displayParty(Party $party, bool $withMessage, $userConnected)
                         ?></p>
                 </div>
                 <?php if ($userConnected != null && !$withMessage && $party->getIdOwner() != $userConnected->getId()) { ?>
-                    <button id="contactParty<?php echo $party->getId() ?>"
-                            onclick="messageTo(<?php echo $party->getId() ?>)">
-                        Contacter le
-                        MJ
-                    </button>
-                    <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
-                    </button>
+                    <!--                    <button id="contactParty--><?php //echo $party->getId() ?><!--"-->
+                    <!--                            onclick="messageTo(--><?php //echo $party->getId() ?><!--)">-->
+                    <!--                        Contacter le-->
+                    <!--                        MJ-->
+                    <!--                    </button>-->
+                    <?php
+                    if (!Parties::isRegisteredOn($userConnected->getId(), $party->getId())) {
+                        ?>
+                        <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
+                        </button>
+                    <?php } else {
+                        ?>
+                        <button onclick="unregisterTo(<?php echo $party->getId() ?>)">Se désinscrire
+                        </button>
+                    <?php } ?>
                 <?php } else if ($userConnected != null && $party->getIdOwner() == $userConnected->getId() && !$withMessage) {
                     ?>
                     <p style="text-align: center;

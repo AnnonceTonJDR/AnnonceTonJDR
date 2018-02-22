@@ -102,6 +102,26 @@ function registerTo(id) {
     });
 }
 
+function unregisterTo(id) {
+    $.ajax({
+        type: 'post',
+        url: '/app/controller/ajax/unregisterToParty.php',
+        data: {
+            'id': id
+        }
+    }).done(function (data) {
+        if (data.ok === true) {
+            var nbPlayerText = $('#party' + id + ' .nbPlayer');
+            nbPlayerText.html((parseInt(nbPlayerText.html().split('/')[0]) - 1) + "/" + nbPlayerText.html().split('/')[1]);
+            alert("Désinscription effectuée");
+        } else if (data.ok === -1) {
+            alert("Vous n'êtes pas inscrit à cette partie ! Allez voir sur votre profil");
+        } else if (data.ok === -2) {
+            alert("Ceci est votre partie !");
+        }
+    });
+}
+
 $(document).ready(function () {
     if ($('#wrapper').width() < 415) {
         responsive();

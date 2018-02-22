@@ -19,7 +19,8 @@ session_start();
         </div>
         <?php if (!isset($_SESSION['session'])) { ?>
         <div class="banner" id="rightBanner">
-            <img class="avatar" src="/image/header/defaultAvatar.png">
+            <img class="avatar"
+                 src="/image/header/defaultAvatar.png">
             <a href="/?p=signin">Se connecter</a>
             <div class="endBanner"></div>
         </div>
@@ -29,7 +30,8 @@ session_start();
 <?php } else { ?>
 
     <div class="banner" id="rightBanner">
-        <a href="/?p=user"><img class="avatar" src="/image/header/defaultAvatar.png"></a>
+        <a href="/?p=user"><img class="avatar" src="/image/header/defaultAvatar.png"
+                                title="Vous pourrez bientôt choisir une image !"></a>
         <a class="pseudo" href="/?p=user"><?php echo Session::unserializeConnectedUser()->getPseudo(); ?></a>
         <a id="deconnectionButton">Se déconnecter</a>
         <div class="endBanner"></div>

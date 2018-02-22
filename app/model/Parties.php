@@ -266,6 +266,12 @@ class Parties
         DB::connectionDB()->exec("DELETE FROM Annonce WHERE idAnnonce = " . $id);
     }
 
+    public static function unregisterToParty(int $idUser, int $idPart)
+    {
+        $req = DB::connectionDB()->exec("DELETE FROM Inscription WHERE idAnnonce=" . $idPart . " AND idUtilisateur=" . $idUser . "; 
+        UPDATE Annonce SET joueurDejaInscrits = (SELECT SUM(joueurDejaInscrits - 1)) WHERE idAnnonce=" . $idPart . ';');
+    }
+
 }
 
 class Message
