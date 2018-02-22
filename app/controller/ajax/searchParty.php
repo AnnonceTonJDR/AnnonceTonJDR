@@ -59,7 +59,7 @@ function search_party($datas)
                 $where .= " AND  `adresse` != \"Internet\" ";
                 break;
             case "yes":
-                $where .= " OR `adresse` = \"Internet\" ";
+                $having .= " OR `adresse` = \"Internet\" ";
                 break;
             case "only":
                 $where = " `adresse` = \"Internet\" ";
