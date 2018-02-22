@@ -18,12 +18,8 @@ if (isset($_SESSION['session'])) {
         $flag = -2;
     } else {
         if (Parties::isRegisteredOn($user->getId(), $party->getId())) {
-            if ($party->getMaxPlayer() > $party->getNbPlayerAlreadyIn()) {
-                Parties::unregisterToParty($user->getId(), $party->getId());
-                $flag = true;
-            } else {
-                $flag = -2;
-            }
+            Parties::unregisterToParty($user->getId(), $party->getId());
+            $flag = true;
         } else {
             $flag = -1;
         }
