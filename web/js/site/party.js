@@ -114,6 +114,7 @@ function unregisterTo(id) {
             var nbPlayerText = $('#party' + id + ' .nbPlayer');
             nbPlayerText.html((parseInt(nbPlayerText.html().split('/')[0]) - 1) + "/" + nbPlayerText.html().split('/')[1]);
             alert("Désinscription effectuée");
+            location.reload();
         } else if (data.ok === -1) {
             alert("Vous n'êtes pas inscrit à cette partie ! Allez voir sur votre profil");
         } else if (data.ok === -2) {
