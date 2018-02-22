@@ -11,8 +11,8 @@ function startPage($title, array $supCSS, array $supJS)
         <title><?php echo $title ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="icon" type="image/png" href="/image/logo.png"/>
+        <link rel="icon" type="image/png" href="/image/logoBlanc.png"/>
+        <link rel="icon" href="/image/favicon.ico"/>
 
         <link rel="stylesheet" href="/web/css/normalize.css">
         <link rel="stylesheet" type="text/css" href="/web/css/common.css">
