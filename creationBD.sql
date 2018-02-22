@@ -141,20 +141,6 @@ CREATE TABLE IF NOT EXISTS `Annonce` (
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
 
-ALTER TABLE Annonce
-  ADD CONSTRAINT `annonce_user` FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE,
-  ADD CONSTRAINT `annonce_editionJeu` FOREIGN KEY (`edition`) REFERENCES `EditionJeu` (`type`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE,
-  ADD CONSTRAINT `annonce_editionScenario` FOREIGN KEY (`editionScenario`) REFERENCES `EditionScenario` (`type`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE,
-  ADD CONSTRAINT `annonce_typeLieu` FOREIGN KEY (`lieu`) REFERENCES `TypeLieu` (`type`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
-
 CREATE TABLE IF NOT EXISTS `Campagne` (
   `idCampagne`              INT(11)    NOT NULL AUTO_INCREMENT,
   `idAnnonceAssociee`       INT(11)    NOT NULL,
@@ -169,11 +155,6 @@ CREATE TABLE IF NOT EXISTS `Campagne` (
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
 
-ALTER TABLE Campagne
-  ADD CONSTRAINT `campagne_annonce` FOREIGN KEY (`idAnnonceAssociee`) REFERENCES `Annonce` (`idAnnonce`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
-
 CREATE TABLE IF NOT EXISTS `Inscription` (
   `idUtilisateur` INT(11) NOT NULL,
   `idAnnonce`     INT(11) NOT NULL,
@@ -181,14 +162,6 @@ CREATE TABLE IF NOT EXISTS `Inscription` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
-
-ALTER TABLE Inscription
-  ADD CONSTRAINT `inscription_user` FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE,
-  ADD CONSTRAINT `inscription_annonce` FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
 
 CREATE TABLE IF NOT EXISTS `SeRealisera` (
   `idCampagne` INT(11)      NOT NULL,
@@ -199,10 +172,6 @@ CREATE TABLE IF NOT EXISTS `SeRealisera` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
-ALTER TABLE SeRealisera
-  ADD CONSTRAINT `serealisera_idCampagne` FOREIGN KEY (`idCampagne`) REFERENCES `Campagne` (`idCampagne`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
 
 CREATE TABLE IF NOT EXISTS `SpecialEvennement` (
   `idEvennement`  INT(11)      NOT NULL AUTO_INCREMENT,
@@ -213,10 +182,6 @@ CREATE TABLE IF NOT EXISTS `SpecialEvennement` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   AUTO_INCREMENT = 1;
-ALTER TABLE SpecialEvennement
-  ADD CONSTRAINT `specialevent_idAnnonce` FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
 
 CREATE TABLE IF NOT EXISTS `EditionJeu` (
   `type` VARCHAR(32),
@@ -224,6 +189,78 @@ CREATE TABLE IF NOT EXISTS `EditionJeu` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `EditionScenario` (
+  `type` VARCHAR(32),
+  PRIMARY KEY (`type`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `TypeLieu` (
+  `type` VARCHAR(32),
+  PRIMARY KEY (`type`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+
+CREATE TABLE IF NOT EXISTS `Message` (
+  `idMessage`     INT(11)   NOT NULL AUTO_INCREMENT,
+  `idAnnonce`     INT(11)   NOT NULL,
+  `idUtilisateur` INT(11)   NOT NULL,
+  `prive`         BOOLEAN   NOT NULL,
+  `message`       TEXT      NOT NULL,
+  `datePost`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idMessage`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+ALTER TABLE Annonce
+  ADD CONSTRAINT `annonce_user` FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  ADD CONSTRAINT `annonce_editionJeu` FOREIGN KEY (`edition`) REFERENCES `EditionJeu` (`type`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  ADD CONSTRAINT `annonce_editionScenario` FOREIGN KEY (`editionScenario`) REFERENCES `EditionScenario` (`type`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  ADD CONSTRAINT `annonce_typeLieu` FOREIGN KEY (`lieu`) REFERENCES `TypeLieu` (`type`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+ALTER TABLE Campagne
+  ADD CONSTRAINT `campagne_annonce` FOREIGN KEY (`idAnnonceAssociee`) REFERENCES `Annonce` (`idAnnonce`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+ALTER TABLE Inscription
+  ADD CONSTRAINT `inscription_user` FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  ADD CONSTRAINT `inscription_annonce` FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+ALTER TABLE SeRealisera
+  ADD CONSTRAINT `serealisera_idCampagne` FOREIGN KEY (`idCampagne`) REFERENCES `Campagne` (`idCampagne`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+ALTER TABLE SpecialEvennement
+  ADD CONSTRAINT `specialevent_idAnnonce` FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+ALTER TABLE Message
+  ADD CONSTRAINT `message_annonce` FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  ADD CONSTRAINT `message_user` FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 INSERT INTO `EditionJeu` (
   `type`
@@ -236,12 +273,6 @@ VALUES (
   'personnel'
 );
 
-CREATE TABLE IF NOT EXISTS `EditionScenario` (
-  `type` VARCHAR(32),
-  PRIMARY KEY (`type`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
 
 INSERT INTO `EditionScenario` (
   `type`
@@ -253,13 +284,6 @@ VALUES (
 ), (
   'de moi ou d\'un proche'
 );
-
-CREATE TABLE IF NOT EXISTS `TypeLieu` (
-  `type` VARCHAR(32),
-  PRIMARY KEY (`type`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
 
 INSERT INTO `TypeLieu` (
   `type`
@@ -273,24 +297,5 @@ VALUES (
 ), (
   'à l\'extérieur'
 );
-
-CREATE TABLE IF NOT EXISTS `Message` (
-  `idMessage`     INT(11)   NOT NULL AUTO_INCREMENT,
-  `idAnnonce`     INT(11)   NOT NULL,
-  `idUtilisateur` INT(11)   NOT NULL,
-  `prive`         BOOLEAN   NOT NULL,
-  `message`       TEXT      NOT NULL,
-  `datePost`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idMessage`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
-ALTER TABLE Message
-  ADD CONSTRAINT `message_annonce` FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE,
-  ADD CONSTRAINT `message_user` FOREIGN KEY (`idUtilisateur`) REFERENCES `Utilisateur` (`id`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
 
 SET FOREIGN_KEY_CHECKS = 1;
