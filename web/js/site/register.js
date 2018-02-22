@@ -28,9 +28,9 @@ function envoyerFormulaireInscription() {
     }).done(function (data) {
         if (data.ok) {
             $('#erreur').hide();
-            alert("Inscription effectuée!");
-            //TODO Afficher l'activation par mail requise
+            alert("Inscription effectuée! Validez votre compte via votre adresse mail");
             //TODO Un bouton pour revnir à l'accueil explicitement
+            document.location.href = "/?p=i";
         }
         else {
             // console.log({

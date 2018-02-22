@@ -10,7 +10,6 @@ class Utils
     }
 
     /**
-     * todo:  link to google api
      * return the latitude and longitude of an adress as per computer by the google API
      * @param $acdress String address to be queried
      * @return array linked array with "lon" the longitude and "lat" the latitude

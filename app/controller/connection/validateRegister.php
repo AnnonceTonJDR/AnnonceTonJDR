@@ -41,7 +41,6 @@ else if ($user->getState() == 0) {
         $flag = true;
         $returnMsg = "Votre compte a été activé";
         $_SESSION['session'] = serialize(new Session($user));
-        //TODO rediriger l'utilisateur après l'activation vers le site
     }
 } else {
     $returnMsg = "Votre compte a déjà été activé";

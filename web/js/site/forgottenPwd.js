@@ -51,8 +51,6 @@ function resetMDP() {
             alert(data.message);
         }
     }).fail(erreurCritique);
-    //TODO ajax avec mail, code, et new mdp /mdp confirm
-    //TODO renvoie oui ou non (et si erreur, affichage)
 }
 
 $(document).ready(function () {

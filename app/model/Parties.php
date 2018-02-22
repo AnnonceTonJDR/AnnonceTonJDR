@@ -88,12 +88,6 @@ class Parties
             ->query("SELECT id FROM Zone WHERE id=" . $idZone)->fetch());
     }
 
-    public static function isAreaAccurateEnough(int $idZone): bool
-    {
-        //TODO Check level of the area from the root of the tree
-        return true;
-    }
-
     public static function isValidPlace(string $lieu): bool
     {
         if ($lieu === 'Internet') return true;
