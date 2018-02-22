@@ -1,6 +1,6 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR - Oubli de mot de passe", [], []);
+startPage("Annonce Ton JDR - Oubli de mot de passe", [], []);
 ?>
     <div id="askingReset" class="panel panel-danger">
         <h3>Quel est votre adresse mail ?</h3>

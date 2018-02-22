@@ -23,7 +23,7 @@ session_start();
             <a href="/?p=signin">Se connecter</a>
             <div class="endBanner"></div>
         </div>
-        <div class="title"><a href="/?p=i">Annonce ton JDR</a></div>
+        <div class="title"><a href="/?p=i">Annonce Ton JDR</a></div>
         <!--        <div id="openConnectionMenuButton"><p>S'identifier</p></div>-->
     </header>
 <?php } else { ?>
@@ -34,7 +34,7 @@ session_start();
         <a id="deconnectionButton">Se déconnecter</a>
         <div class="endBanner"></div>
     </div>
-    <div class="title"><a href="/?p=i">Annonce ton JDR</a></div>
+    <div class="title"><a href="/?p=i">Annonce Ton JDR</a></div>
     <!--        <div id="openConnectionMenuButton"><p>S'identifier</p></div>-->
     </header>
 <?php }

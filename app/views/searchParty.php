@@ -4,11 +4,11 @@ require_once 'app/model/Parties.php';
 require_once 'app/model/Users.php';
 require_once 'app/model/session.php';
 
-startPage("Annonce ton JDR - Chercher une partie", ["searchParty.css", "createParty.css"], ["site/searchParty.js", "site/party.js"]);
+startPage("Annonce Ton JDR - Chercher une partie", ["searchParty.css", "createParty.css"], ["site/searchParty.js", "site/party.js"]);
 $user = isset($_SESSION['session']) ? Session::unserializeConnectedUser() : null;
 ?>
     <div id="formRecherche">
-        <p id="addressText"><label for="place-input">Adresse de recherche : </label><input id="place-input" name="place-input"
+        <p id="addressText"><label for="place-input">Adresse : </label><input id="place-input" name="place-input"
                                                                                     type="text"/>
             <script type="text/javascript"
                     src="//maps.googleapis.com/maps/api/js?key=AIzaSyDtnql0_LAPbI6QU8GTnlShmyJ7QQMSL1Q&libraries=places"></script>

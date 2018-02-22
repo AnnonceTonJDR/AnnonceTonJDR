@@ -12,7 +12,7 @@ function erreurCritique() {
     $('#contenu').html(
         'Une erreur irrécupérable est survenue. <br />'
         + 'Merci de contcter l\'admin <br/>'
-        + 'contact@annonceTonJDR.fr'
+        + 'annoncetonjdr@gmail.com'
     );
 }
 

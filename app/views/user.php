@@ -2,7 +2,7 @@
 require_once 'utils/start_end_page.php';
 require_once 'utils/party.php';
 require_once 'app/model/Parties.php';
-startPage("Annonce ton JDR", [], ["site/party.js"]);
+startPage("Annonce Ton JDR", [], ["site/party.js"]);
 $user = Session::unserializeConnectedUser();
 ?>
     <h1><?php echo $user->getPseudo(); ?></h1>

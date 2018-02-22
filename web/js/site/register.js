@@ -8,7 +8,7 @@ function erreurCritique() {
     $('body').html(
         'Une erreur irrécupérable est survenue. <br />'
         + 'Merci de contcter l\'admin <br/>'
-        + 'contact@projectworld.fr'
+        + 'annoncetonjdr@gmail.com'
     );
 }
 

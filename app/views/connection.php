@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Annonce ton JDR - Connexion</title>
+    <title>Annonce Ton JDR - Connexion</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,7 +43,7 @@
         <div id="ligneCGU">
             <a href="/"><img src="/image/logoBlanc.png"
                              style="height: 30px; display: table-cell;"></a>
-            <p> 2018 Annonce ton JDR . Tous droits réservés . <a
+            <p> 2018 Annonce Ton JDR . Tous droits réservés . <a
                         href="/?p=cgu#mentionsLegales"> Mentions
                     légales </a> - <a href="/?p=cgu#CGU"> Condition
                     d'utilisation</a> - <a

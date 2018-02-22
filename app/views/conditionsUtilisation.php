@@ -1,13 +1,13 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
+startPage("Annonce Ton JDR - CGU", ["cgu.css"], []);
 ?>
-    <h1 id="CGU">Conditions générales d'utilisations - AnnonceTonJDR</h1>
+    <h1 id="CGU">Conditions générales d'utilisations - Annonce Ton JDR</h1>
     <h2>Présentation</h2>
     <div class="mentionsLégales">
         <p>
             <strong>1.1</strong> Les présentes Conditions Générales d'Utilisation (ci-après les <strong>« CGU »</strong>)
-            énoncent les conditions d'utilisation des services fournis par AnnonceTonJDR,
+            énoncent les conditions d'utilisation des services fournis par Annonce Ton JDR,
             projet en équipe à but non lucratif ci-après individuellement ou conjointement désignés
             <strong>« AnnonceTonJDR »</strong>,
             l'<strong>« Équipe »</strong> ou <strong>« Nous »</strong>).<br><br>
@@ -24,7 +24,7 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
             l'utilisateur
             des Services (ci-après <strong>« vous »</strong>, le
             <strong>« visiteur »</strong> ou l'<strong>« utilisateur »</strong>) et
-            AnnonceTonJDR.<br><br>
+            Annonce Ton JDR.<br><br>
         </p>
     </div>
     <h2>Acceptation des CGU</h2>
@@ -64,15 +64,15 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
             Vous reconnaissez que la qualité des Services, le délai de réponse ou l’accès à certaines
             fonctionnalités peuvent
             dépendre des capacités de votre appareil mobile et du réseau de communication électronique.
-            Vous reconnaissez que les Services proposés par AnnonceTonJDR sur appareil mobile peuvent ne pas être
+            Vous reconnaissez que les Services proposés par Annonce Ton JDR sur appareil mobile peuvent ne pas être
             disponibles sur tous
             les appareils mobiles ou certaines résolutions d'écran.<br><br>
             <strong>3.3</strong> Pour accéder aux Services et/ou à l’ensemble des fonctionnalités des
-            Services, Nous pourrons vous demander de créer un compte AnnonceTonJDR (ci-après le <strong>« Compte
+            Services, Nous pourrons vous demander de créer un compte Annonce Ton JDR (ci-après le <strong>« Compte
                 »</strong>).
             Vous pouvez créer un Compte à partir des encarts prévus à cet effet sur le
             site
-            internet de AnnonceTonJDR (ci-après le <strong>« Site »</strong>), se trouvant dans le
+            internet de Annonce Ton JDR (ci-après le <strong>« Site »</strong>), se trouvant dans le
             formulaire de connexion
             après l'appuie du bouton <strong>« INSCRIPTION »</strong>.<br><br>
         </p>
@@ -140,7 +140,7 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
     <h2>Support</h2>
     <div class="mentionsLégales">
         <p>
-            <strong>5.1</strong> Le Support AnnonceTonJDR mettra tout en œuvre pour vous assister dans les
+            <strong>5.1</strong> Le Support Annonce Ton JDR mettra tout en œuvre pour vous assister dans les
             meilleurs délais. Néanmoins, le Support se réserve le droit de ne pas répondre à une demande,
             notamment en cas de non-respect des règles du présent article.<br><br>
             <strong>5.2</strong> Tout harcèlement, menace, insulte ou autre comportement inadéquat à l’égard
@@ -160,18 +160,18 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
         <p>
             <strong>6.1</strong> Toutes les images, documents, vidéos sont protégés par les lois françaises
             et internationales sur le droit d'auteur et la propriété intellectuelle. Tous ces éléments,
-            fonctionnalités, outils, documents appartiennent à AnnonceTonJDR. Sauf autorisation écrite
-            préalable de AnnonceTonJDR, vous vous engagez à ne pas faire le commerce d’éléments issus des créations de
-            AnnonceTonJDR et à ne pas faire la promotion de ce genre d’activités portant atteinte aux droits
-            de AnnonceTonJDR. AnnonceTonJDR mettra tout en œuvre pour empêcher de tels actes.<br><br>
+            fonctionnalités, outils, documents appartiennent à Annonce Ton JDR. Sauf autorisation écrite
+            préalable de Annonce Ton JDR, vous vous engagez à ne pas faire le commerce d’éléments issus des créations de
+            Annonce Ton JDR et à ne pas faire la promotion de ce genre d’activités portant atteinte aux droits
+            de Annonce Ton JDR. Annonce Ton JDR mettra tout en œuvre pour empêcher de tels actes.<br><br>
             <strong>6.2</strong> Toutes données liées au Site ou Services appartiennent à AnnonceTonJDR et
             sont protégées par les lois françaises, européennes et internationales sur le droit d'auteur. Vous
             n'avez pas le droit, en tout ou partie, de copier, reproduire, traduire, extraire, modifier le code
             source,
             désassembler, décompiler, modifier, louer, vendre, distribuer ou créer des œuvres dérivées
-            inspirées du Site de AnnonceTonJDR sans notre accord préalable.<br><br>
+            inspirées du Site de Annonce Ton JDR sans notre accord préalable.<br><br>
             <strong>6.4</strong> Toute utilisation non conforme met fin à l'autorisation ou à la licence
-            accordée par AnnonceTonJDR<br><br>
+            accordée par Annonce Ton JDR<br><br>
         </p>
     </div>
     <h2 id="donneesPersonnelles">Données personnelles</h2>
@@ -192,7 +192,7 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
             concernant.<br><br>
             <strong>7.3</strong> L'Équipe s'engage à ne pas communiquer vos informations à des tiers et
             à tout mettre en œuvre pour empêcher la diffusion de celles-ci, sauf autorisation expresse de votre
-            part. AnnonceTonJDR se réserve le droit de poursuivre toute personne qui tenterait d'accéder à des
+            part. Annonce Ton JDR se réserve le droit de poursuivre toute personne qui tenterait d'accéder à des
             informations personnelles qui ne la concernerait pas.<br><br>
             <strong>7.5</strong> L'Équipe n'a aucune obligation de fournir des informations liées à un
             Compte spécifique, même si un utilisateur le demande, sauf aux autorités compétentes dans le cadre
@@ -232,11 +232,11 @@ startPage("Annonce ton JDR - CGU", ["cgu.css"], []);
         </p> -->
 		<br><br>
     </div>
-    <h1 id="mentionsLegales">Mentions légales - AnnonceTonJDR</h1>
+    <h1 id="mentionsLegales">Mentions légales - Annonce Ton JDR</h1>
     <div class="mentionsLégales center">
         <h3>Editeur</h3>
         <p>
-            AnnonceTonJDR<br>
+            Annonce Ton JDR<br>
             Projet à but non lucratif<br>
             Chef de projet et directeur des publications :<br>
             Amir HAMMOUTENE<br>

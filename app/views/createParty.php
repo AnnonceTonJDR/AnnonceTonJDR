@@ -4,7 +4,7 @@ require_once 'app/model/Parties.php';
 require_once 'app/model/Users.php';
 require_once 'app/model/session.php';
 
-startPage("Annonce ton JDR - Créer une partie", ["createParty.css"], ["site/createParty.js"]);
+startPage("Annonce Ton JDR - Créer une partie", ["createParty.css"], ["site/createParty.js"]);
 $user = Session::unserializeConnectedUser();
 ?>
     <p id="addressText"><label for="adresse">J'organiserai mon jeu de rôle en ce lieu : </label>

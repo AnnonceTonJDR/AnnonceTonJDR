@@ -47,6 +47,6 @@ else if ($user->getState() == 0) {
     $returnMsg = "Votre compte a déjà été activé";
 }
 
-startPage("Annonce ton JDR - Validation Mail", [], []);
+startPage("Annonce Ton JDR - Validation Mail", [], []);
 echo '<h1 style="margin-top: 50%">' . $returnMsg . '</h1>';
 endPage();
