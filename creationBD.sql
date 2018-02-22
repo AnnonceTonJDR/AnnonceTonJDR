@@ -112,29 +112,29 @@ INSERT INTO `UtilisateurPrivate` (`id`, `mail`, `etat`, `motDePasse`, `sel`, `da
 # endregion
 
 CREATE TABLE IF NOT EXISTS `Annonce` (
-  `idAnnonce`                 INT(11)      NOT NULL AUTO_INCREMENT,
-  `idUtilisateur`             INT(11)      NOT NULL,
+  `idAnnonce`                 INT(11)        NOT NULL AUTO_INCREMENT,
+  `idUtilisateur`             INT(11)        NOT NULL,
   `lienAssocie`               VARCHAR(255),
-  `joueurMax`                 TINYINT(2)   NOT NULL,
-  `joueurDejaInscrits`        TINYINT(2)   NOT NULL,
-  `ageMin`                    TINYINT(3)   NOT NULL,
-  `ageMax`                    TINYINT(3)   NOT NULL,
-  `nomJeu`                    VARCHAR(255) NOT NULL,
-  `edition`                   VARCHAR(32)  NOT NULL,
-  `nomScenario`               VARCHAR(255) NOT NULL,
-  `editionScenario`           VARCHAR(32)  NOT NULL,
-  `adresse`                   VARCHAR(255) NOT NULL,
+  `joueurMax`                 TINYINT(2)     NOT NULL,
+  `joueurDejaInscrits`        TINYINT(2)     NOT NULL,
+  `ageMin`                    TINYINT(3)     NOT NULL,
+  `ageMax`                    TINYINT(3)     NOT NULL,
+  `nomJeu`                    VARCHAR(255)   NOT NULL,
+  `edition`                   VARCHAR(32)    NOT NULL,
+  `nomScenario`               VARCHAR(255)   NOT NULL,
+  `editionScenario`           VARCHAR(32)    NOT NULL,
+  `adresse`                   VARCHAR(255)   NOT NULL,
   `longitude`                 DECIMAL(11, 8) NOT NULL,
   `latitude`                  DECIMAL(10, 8) NOT NULL,
-  `lieu`                      VARCHAR(32)  NOT NULL,
-  `nourritureBoisson`         TINYINT(1)   NOT NULL,
-  `alcool`                    TINYINT(1)   NOT NULL,
-  `fumer`                     TINYINT(1)   NOT NULL,
-  `titreForum`                VARCHAR(255) NOT NULL,
-  `commentaire`               TEXT         NOT NULL,
-  `date`                      DATETIME     NOT NULL,
-  `faitPartieCamapgneOuverte` BOOLEAN      NOT NULL,
-  `dateDerniereModif`         TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `lieu`                      VARCHAR(32)    NOT NULL,
+  `nourritureBoisson`         TINYINT(1)     NOT NULL,
+  `alcool`                    TINYINT(1)     NOT NULL,
+  `fumer`                     TINYINT(1)     NOT NULL,
+  `titreForum`                VARCHAR(255)   NOT NULL,
+  `commentaire`               TEXT           NOT NULL,
+  `date`                      DATETIME       NOT NULL,
+  `faitPartieCamapgneOuverte` BOOLEAN        NOT NULL,
+  `dateDerniereModif`         TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`idAnnonce`)
 )
   ENGINE = InnoDB
@@ -282,7 +282,9 @@ CREATE TABLE IF NOT EXISTS `Message` (
   `message`       TEXT      NOT NULL,
   `datePost`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idMessage`)
-);
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
 ALTER TABLE Message
   ADD CONSTRAINT `message_annonce` FOREIGN KEY (`idAnnonce`) REFERENCES `Annonce` (`idAnnonce`)
   ON DELETE CASCADE
