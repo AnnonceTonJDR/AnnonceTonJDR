@@ -92,7 +92,10 @@ function registerTo(id) {
             var nbPlayerText = $('#party' + id + ' .nbPlayer');
             nbPlayerText.html((parseInt(nbPlayerText.html().split('/')[0]) + 1) + "/" + nbPlayerText.html().split('/')[1]);
             alert("Inscription effectuée");
-            location.reload();
+            $('#party' + id + ' .subButton').remove();
+            $('#party' + id + ' .partyDetails').append('' +
+                '<button class="unsubButton" onclick="unregisterTo(' + id + ')">Se désinscrire\n' +
+                '</button>');
         } else if (data.ok === -1) {
             alert("Vous êtes déjà inscrit à cette partie ! Allez voir sur votre profil");
         } else if (data.ok === -2) {
@@ -115,7 +118,10 @@ function unregisterTo(id) {
             var nbPlayerText = $('#party' + id + ' .nbPlayer');
             nbPlayerText.html((parseInt(nbPlayerText.html().split('/')[0]) - 1) + "/" + nbPlayerText.html().split('/')[1]);
             alert("Désinscription effectuée");
-            location.reload();
+            $('#party' + id + ' .unsubButton').remove();
+            $('#party' + id + ' .partyDetails').append('' +
+                '<button class="subButton" onclick="registerTo(' + id + ')">S\'inscrire\n' +
+                '</button>');
         } else if (data.ok === -1) {
             alert("Vous n'êtes pas inscrit à cette partie ! Allez voir sur votre profil");
         } else if (data.ok === -2) {
