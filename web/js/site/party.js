@@ -92,6 +92,7 @@ function registerTo(id) {
             var nbPlayerText = $('#party' + id + ' .nbPlayer');
             nbPlayerText.html((parseInt(nbPlayerText.html().split('/')[0]) + 1) + "/" + nbPlayerText.html().split('/')[1]);
             alert("Inscription effectuée");
+            location.reload();
         } else if (data.ok === -1) {
             alert("Vous êtes déjà inscrit à cette partie ! Allez voir sur votre profil");
         } else if (data.ok === -2) {
