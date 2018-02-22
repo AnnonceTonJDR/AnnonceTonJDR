@@ -184,10 +184,12 @@ function displayParty(Party $party, bool $withMessage, $userConnected)
                     <!--                    </button>-->
                     <?php
                     if (!Parties::isRegisteredOn($userConnected->getId(), $party->getId())) {
-                        ?>
-                        <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
-                        </button>
-                    <?php } else {
+                        if ($userConnected->getId() != $party->getIdOwner()) {
+                            ?>
+                            <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
+                            </button>
+                        <?php }
+                    } else {
                         ?>
                         <button onclick="unregisterTo(<?php echo $party->getId() ?>)">Se désinscrire
                         </button>
@@ -217,6 +219,18 @@ function displayParty(Party $party, bool $withMessage, $userConnected)
                         <button class="sendMessageButton" style="width: auto !important;"
                                 onclick="messageTo(<?php echo $party->getId() ?>)">Envoyer un message à tout le monde
                         </button>
+                        <?php
+                        if (!Parties::isRegisteredOn($userConnected->getId(), $party->getId())) {
+                            if ($userConnected->getId() != $party->getIdOwner()) {
+                                ?>
+                                <button onclick="registerTo(<?php echo $party->getId() ?>)">S'inscrire
+                                </button>
+                            <?php }
+                        } else {
+                            ?>
+                            <button onclick="unregisterTo(<?php echo $party->getId() ?>)">Se désinscrire
+                            </button>
+                        <?php } ?>
                         <div class="divMessage" id="divMessage<?php echo $party->getId(); ?>" style="display: none">
                             <textarea class="messageArea" title="message"></textarea>
                             <button class="sendMessageButton"
