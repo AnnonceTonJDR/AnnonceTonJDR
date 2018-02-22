@@ -55,6 +55,11 @@ function sendForm() {
                 }, 1500);
             }
             else {
+                var errors = $('#errorsForm');
+                errors.html('');
+                data.msgError.forEach(function (msg) {
+                    errors.append('<p>' + msg + '</p>');
+                });
             }
         });
 }
