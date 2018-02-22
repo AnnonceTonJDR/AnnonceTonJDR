@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "Tangerine";
+    src: url(/font/Tangerine_Regular.ttf);
+}
+
+@font-face {
+    font-family: "Montserrat Light";
+    src: url(/font/Montserrat/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url(/font/Montserrat/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Montserrat Bold";
+    src: url(/font/Montserrat/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Devonshire";
+    src: url(/font/Devonshire-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Badscript";
+    src: url(/font/BadScript-Regular.ttf);
+}

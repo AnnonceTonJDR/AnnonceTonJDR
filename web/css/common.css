@@ -1,0 +1,533 @@
+/*region =========================== General ==========================*/
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    position: relative;
+    background: url(/image/fond.png) bottom fixed;
+    background-size: cover;
+}
+
+#wrapper {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/*endregion*/
+
+/*region =========================== Content ==========================*/
+
+#contenu {
+    position: relative;
+    max-width: 1000px;
+    background: #CCB99A;
+    margin: 0 20px 0 20px;
+    display: inline-block;
+    min-height: calc(100% - 103px);
+    padding-bottom: 50px;
+    font-family: "Montserrat", sans-serif;
+    z-index: 1339;
+    min-width: 180px;
+}
+
+#contenu p {
+    text-align: justify;
+}
+
+/*region =========================== Titles ===========================*/
+h1 {
+    font-size: 35pt;
+    text-align: center;
+    font-family: Devonshire, serif;
+    color: #483C27;
+    font-weight: initial;
+    letter-spacing: 5px;
+}
+
+h2 {
+    padding-left: 25px;
+    font-size: 23pt;
+    text-align: left;
+    font-family: Devonshire, serif;
+    color: #483C27;
+    font-weight: initial;
+}
+
+h3 {
+    padding-left: 25px;
+    font-size: 23pt;
+    text-align: center;
+    font-family: Devonshire, serif;
+    color: #483C27;
+    font-weight: initial;
+    letter-spacing: 2px;
+}
+
+/*endregion*/
+
+/*region =========================== Real content =====================*/
+
+#startContent {
+    padding: 40px 5px 0 5px;
+}
+
+#contenu button {
+    color: white;
+    font-size: small;
+    height: 20px;
+    width: 200px;
+    margin: 10px 0 5px 0;
+    border: solid 1px #392a1c;
+    background: #483C27;
+}
+
+#contenu button:hover {
+    background: #704f38;
+}
+
+.messageArea {
+    display: inline-block;
+    width: 95%;
+    margin: 3px auto 0 auto;
+    resize: none;
+    font-family: Badscript, cursive;
+    font-weight: 600;
+    color: #483C27;
+    padding: 5px;
+    height: 200px;
+    background: inherit;
+    border: 1px solid #483C27;
+}
+
+#startContent textarea:focus, input:focus, button:focus {
+    outline: none;
+}
+
+#startContent input:-webkit-autofill,
+#startContent input:-webkit-autofill:hover,
+#startContent input:-webkit-autofill:focus,
+#startContent input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: inherit !important;
+}
+
+/* google autocompletion styles*/
+.pac-container, .pac-logo {
+    z-index: 15000;
+}
+
+/*endregion*/
+
+/*region =========================== Scroll border ====================*/
+#contenu .leftBorder, #contenu .rightBorder {
+    width: 20px;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 2;
+}
+
+#contenu .leftBorder {
+    left: -19px;
+    background: url(../../image/parchemin/parcheminGauche.png) repeat-y;
+    background-size: contain;
+}
+
+#contenu .rightBorder {
+    right: -19px;
+    background: url(../../image/parchemin/parcheminDroite.png) repeat-y;
+    background-size: contain;
+}
+
+/*endregion*/
+
+/*region =========================== Scroll End =======================*/
+
+#finParchemin {
+    width: calc(100% - 160px);
+    margin-left: 80px;
+    position: absolute;
+    bottom: 0;
+    height: 43px;
+    background: url(/image/parchemin/fondFinParchemin.png) repeat-x;
+    background-size: contain;
+    z-index: 1338;
+}
+
+#finParchemin .leftBorderScroll, #finParchemin .rightBorderScroll {
+    width: 123px;
+    height: 62px;
+    position: absolute;
+    top: -4px;
+}
+
+#finParchemin .leftBorderScroll {
+    left: -123px;
+    background: url(/image/parchemin/gaucheBas.png) no-repeat;
+    background-size: contain;
+}
+
+#finParchemin .rightBorderScroll {
+    right: -123px;
+    background: url(/image/parchemin/droiteBas.png) no-repeat;
+    background-size: contain;
+}
+
+/*endregion*/
+
+/*region =========================== Parties ==========================*/
+.party {
+    box-shadow: #392a1c 0 0 5px -1px;
+    margin-bottom: 10px;
+}
+
+.party .headerParty {
+    display: table;
+    border-collapse: collapse;
+    vertical-align: middle;
+    background-color: #b29d7f;
+    color: #2f2217;
+}
+
+.party .headerParty:hover {
+    background-color: #a49079;
+    cursor: pointer;
+}
+
+.party .headerParty p {
+    text-align: center !important;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.party .headerParty .infos, .party .headerParty .details {
+    display: table-row;
+}
+
+.party .headerParty .infos div, .party .headerParty .details div {
+    border: solid 1px #624e39;
+    padding: 5px;
+    width: 40%;
+}
+
+.party .partyDetails {
+    border-right: solid 1px #624e39;
+    border-bottom: solid 1px #624e39;
+    border-left: solid 1px #624e39;
+}
+
+.label, .info {
+    padding: 5px;
+}
+
+.label p, .info p {
+    margin: 0;
+}
+
+.label p {
+    text-align: right !important;
+    margin-left: 3px;
+    font-weight: bold;
+    color: #392a1c;
+}
+
+.info p {
+    text-align: left !important;
+    margin-right: 3px;
+    color: #503b27;
+}
+
+.party .partyDetails > .message {
+    margin-top: 20px;
+}
+
+.party .partyDetails > .message ~ .message {
+    margin-top: 0;
+}
+
+.message {
+    box-shadow: #392a1c 0 0 5px -1px;
+    border: solid 1px #483524;
+    width: 95%;
+    margin: 0 auto 10px auto;
+    color: #392a1c;
+}
+
+.message .header {
+    width: 100%;
+    border-bottom: solid 1px #483524;
+    background-color: #b29d7f;
+    display: table;
+}
+
+.message .header .pseudo {
+    font-weight: bold;
+    color: #392a1c;
+}
+
+.message .header div p {
+    margin: 8px 10px 8px 10px;
+}
+
+.message .messageDisplay {
+    padding: 0 5px 5px 5px;
+}
+
+.message .messageDisplay .corpsMessage {
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-top: 15px;
+}
+
+/*endregion*/
+/*endregion*/
+
+/*region =========================== Header ===========================*/
+#leftBannerArrow {
+    width: 30px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+#openConnectionMenuButton {
+    cursor: pointer;
+    display: inline-block;
+    background: #483C27;
+    color: white;
+    background-size: contain;
+    width: 165px;
+    height: 100%;
+    position: relative;
+    top: 0;
+    z-index: 55;
+}
+
+#openConnectionMenuButton p {
+    margin: 0;
+    padding: 0 5px 0 5px;
+}
+
+#openConnectionMenuButton.hover {
+    background: #635236 !important;
+}
+
+#menuConnexion {
+    background: url(/image/parcheminConnexion.png) no-repeat;
+    background-size: contain;
+    position: fixed;
+    bottom: calc(50% - 60px);
+    left: calc(50% - 160px);
+    width: 350px;
+    height: 167px;
+    z-index: 60;
+    padding: 5px;
+    font-family: "Montserrat Light", sans-serif;
+    filter: drop-shadow(0 0 6px #392a1c);
+}
+
+.formulaireConnexion {
+    margin-top: 39px;
+    position: relative;
+    left: -5px;
+}
+
+.formulaireConnexion label {
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+    color: #392a1c;
+    margin: 5px 0 5px 0;
+}
+
+.formulaireConnexion input {
+    width: 200px;
+    margin: 5px 0 5px 5px;
+}
+
+.formulaireConnexion #idConnection, .formulaireConnexion #pwdConnection {
+    border: none;
+    padding: 1px;
+}
+
+.formulaireConnexion a {
+    color: #392a1c;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute;
+}
+
+.formulaireConnexion #inscription {
+    right: 16px;
+    bottom: -15px;
+}
+
+.formulaireConnexion #motDePasseOublie {
+    left: 53px;
+    bottom: -15px;
+}
+
+#menuConnexion button {
+    color: white;
+    font-size: small;
+    height: 20px;
+    width: 200px;
+    margin: 1px 0 5px calc(50% - 100px);
+    border: solid 1px #392a1c;
+    background: #483C27;
+}
+
+#menuConnexion button:hover {
+    background: #704f38;
+}
+
+#menuConnexion a {
+    color: #392a1c;
+    font-size: small;
+}
+
+/*region =========================== Start Scroll =====================*/
+header {
+    height: 35px;
+    background-color: #520000;
+    width: 100%;
+    z-index: 3210;
+    position: fixed;
+}
+
+header .title a, header .title a:hover, header .title a:visited {
+    color: #fff;
+    font-size: 28px;
+    font-family: Devonshire, cursive;
+    letter-spacing: 4px;
+    margin: 0;
+    text-decoration: none;
+}
+
+header .banner {
+    position: absolute;
+    filter: drop-shadow(0px 0px 2px black);
+    background-color: #780000;
+    width: 125px;
+}
+
+header .banner ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+}
+
+header .banner ul li {
+    margin: 10px 0 0 0;
+}
+
+header .banner a, header .banner a:visited, header .banner a:hover {
+    color: #fff;
+    text-decoration: none;
+    font-family: Tangerine, cursive;
+    font-size: 26px;
+}
+
+header .banner .endBanner {
+    background: url(/image/header/basBanniere.png) no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 62;
+    width: 125px;
+    height: 88px;
+    bottom: -87px;
+}
+
+header .banner .avatar {
+    width: 55%;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+header .banner a.pseudo, header .banner a.pseudo:hover {
+    display: block;
+    margin: 5px 0 0 0;
+    color: #fff;
+    font-family: Tangerine, cursive;
+    word-break: break-all;
+    font-size: 35px;
+}
+
+#deconnectionButton {
+    cursor: pointer;
+}
+
+#leftBanner {
+    top: 0;
+    left: 3%;
+}
+
+#rightBanner {
+    top: 0;
+    right: 3%;
+}
+
+/*endregion*/
+
+/*endregion*/
+
+/*region =========================== Footer ===========================*/
+
+footer {
+    background-color: black;
+    color: white;
+    font-family: Montserrat, serif;
+    font-size: 13px;
+    text-align: center;
+    border-top: black solid 15px;
+    border-bottom: black solid 5px;
+    width: 100%;
+    line-height: normal;
+    position: absolute;
+    z-index: 1337;
+    opacity: 0.9;
+}
+
+footer div {
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+footer #liensCGU #ligneCGU p {
+    vertical-align: middle;
+}
+
+footer a:link, footer a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+#ligneCGU {
+    display: inline-table;
+    padding-bottom: 3px;
+}
+
+#ligneCGU p {
+    padding: 0 5px 0 5px;
+}
+
+#ligneCGU p, #ligneCGU img {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*endregion*/

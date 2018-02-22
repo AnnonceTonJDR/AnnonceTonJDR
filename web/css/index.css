@@ -1,0 +1,24 @@
+.speechIndex {
+    margin: 0 5% 0 5%;
+    font-size: 20px;
+}
+
+.speechIndex p {
+    text-align: center !important;
+    color: #392a1c;
+}
+
+.speechIndex a {
+    margin-top: 10px;
+    display: block;
+}
+
+.speechIndex a, .speechIndex a:visited {
+    text-decoration: none;
+    font-style: italic;
+    color: #392a1c;
+}
+
+.speechIndex a:hover {
+    text-decoration: underline;
+}

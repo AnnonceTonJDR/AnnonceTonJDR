@@ -1,0 +1,15 @@
+p {
+}
+
+.function {
+    font-size: large;
+    font-weight: 800;
+}
+
+.failed {
+    color: red;
+}
+
+.passed {
+    color: green;
+}
