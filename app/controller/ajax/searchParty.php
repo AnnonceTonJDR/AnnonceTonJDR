@@ -67,7 +67,7 @@ function search_party($datas)
         }
     }
 
-    $req = DB_readOnly::connectionDB_readOnly()->prepare("Select " . $fields . " FROM `" . $table . "` WHERE " . $where . $having);
+    $req = DB_readOnly::connectionDB_readOnly()->prepare("Select " . $fields . " FROM `" . $table . "` WHERE " . $where . $having . " ORDER BY date ASC");
 
     if ($req->execute($params)) {
         $returnedArray = array();

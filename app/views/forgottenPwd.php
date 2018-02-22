@@ -1,6 +1,6 @@
 <?php
 require_once 'utils/start_end_page.php';
-startPage("Annonce Ton JDR - Oubli de mot de passe", [], []);
+startPage("Annonce Ton JDR - Oubli de mot de passe", [], ["site/forgottenPwd.js"]);
 ?>
     <div id="askingReset" class="panel panel-danger">
         <h3>Quel est votre adresse mail ?</h3>
@@ -39,7 +39,7 @@ startPage("Annonce Ton JDR - Oubli de mot de passe", [], []);
     </div>
     <div id="reset" style="display: none;">
         <div>
-            <strong>Veuillez saisir votre nouveau mot de passe</strong>
+            <strong>Veuillez saisir votre nouveau mot de passe<br></strong>
         </div>
         <div>
             <div id="pwdError" style="display: none;">
