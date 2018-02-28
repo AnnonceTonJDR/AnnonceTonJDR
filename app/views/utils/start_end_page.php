@@ -9,7 +9,9 @@ function startPage($title, array $supCSS, array $supJS)
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title><?php echo $title ?></title>
-        <meta name="description" content="">
+        <meta name="description" content="Site d'annonces de parties de jeux de rôle autour d'une table">
+        <meta name="keywords" content="JDR, jeux de rôle, jeu de rôle, annonces, annonce, jeu de role, jeux de roles, autour d'une table, table, papier">
+        <meta name="publisher" content="Amir Hammoutene">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/image/logoBlanc.png"/>
         <link rel="icon" href="/image/favicon.ico"/>
